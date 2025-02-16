@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      property="og:title"
+      content="Have I Been Pwned: Check if your email has been compromised in a data breach"
+    />
+    <meta
+      name="description"
+      content="Have I Been Pwned allows you to search across multiple data breaches to see if your email address or phone number has been compromised."
+    />
+    <meta
+      property="og:description"
+      content="Have I Been Pwned allows you to search across multiple data breaches to see if your email address or phone number has been compromised."
+    />
+
+    <title>
+      Have I Been Pwned: Check if your email has been compromised in a data
+      breach
+    </title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    <link href="assets/css/components.css" rel="stylesheet" />
+    <link href="assets/css/custom.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="/">
+          <img
+            src="assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+        <div class="d-flex align-items-center gap-3 d-lg-none">
+          <button class="btn btn-secondary">Notify me</button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Domain search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Who's been pwned</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Passwords</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donate</a>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-secondary d-none d-lg-inline-flex">
+          Notify me
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section Component -->
+    <section class="hero">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8">
+            <img
+              src="assets/images/hero.svg"
+              alt="Have I Been Pwned"
+              class="hero-logo img-fluid mb-4"
+            />
+            <p class="lead text-muted mb-5">
+              Check if your email address is in a data breach
+            </p>
+            <div class="input-group mb-4">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email address"
+              />
+              <button class="btn btn-primary">Check</button>
+            </div>
+            <p class="text-grey-600 body-small">
+              Using Have I Been Pwned is subject to the
+              <a class="text-grey-600" href="#">terms of use</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

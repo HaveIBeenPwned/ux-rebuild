@@ -1,0 +1,353 @@
+/*
+ * Note on !important usage:
+ * We're using !important declarations to override Bootstrap's default color values.
+ * If we have a build system, we would instead override these
+ * using Sass variables before Bootstrap compilation, avoiding the need for !important.
+ * This would be done by setting our custom values for Bootstrap's Sass variables
+ * before importing Bootstrap's source files.
+ */
+
+:root {
+  /* Colors */
+  --primary: #1d72a7;
+  --secondary: #152b39;
+  --white: #f6f8fa;
+  --black: #030304;
+
+  /* Grey Scale */
+  --grey-100: #ecf1f4;
+  --grey-200: #d9e2e8;
+  --grey-300: #c1cfd9;
+  --grey-400: #9cb1c2;
+  --grey-500: #6a8aa4;
+  --grey-600: #4b667b;
+  --grey-700: #374a5a;
+  --grey-800: #1d282f;
+  --grey-900: #131a20;
+
+  /* Typography */
+  --font-family-base: "Switzer", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Body Text Sizes */
+  --body-large-size: 18px;
+  --body-large-line-height: 27px;
+  --body-default-size: 16px;
+  --body-default-line-height: 24px;
+  --body-small-size: 14px;
+  --body-small-line-height: 21px;
+
+  /* Lead Text */
+  --lead-font-size: 21px;
+  --lead-line-height: 32px;
+}
+
+/* Base Typography */
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--body-default-size);
+  line-height: var(--body-default-line-height);
+  font-weight: var(--font-weight-normal);
+  color: var(--white);
+  background-color: var(--black);
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background glow effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(
+    circle at center,
+    rgba(29, 114, 167, 0.4) 0%,
+    rgba(3, 3, 4, 0) 70%
+  );
+  pointer-events: none;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+/* Heading Styles */
+h1,
+.h1 {
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: var(--font-weight-medium);
+}
+
+h2,
+.h2 {
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: var(--font-weight-medium);
+}
+
+h3,
+.h3 {
+  font-size: 28px;
+  line-height: 37px;
+  font-weight: var(--font-weight-medium);
+}
+
+h4,
+.h4 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: var(--font-weight-medium);
+}
+
+h5,
+.h5 {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: var(--font-weight-medium);
+}
+
+h6,
+.h6 {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Special Display Headings */
+.display-xxxl {
+  font-size: 104px;
+  line-height: 104px;
+  font-weight: var(--font-weight-bold);
+}
+
+.display-xxl {
+  font-size: 88px;
+  line-height: 88px;
+  font-weight: var(--font-weight-bold);
+}
+
+.display-xl {
+  font-size: 72px;
+  line-height: 72px;
+  font-weight: var(--font-weight-bold);
+}
+
+.display-lg {
+  font-size: 56px;
+  line-height: 56px;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Body Text Styles */
+.body-large {
+  font-size: var(--body-large-size);
+  line-height: var(--body-large-line-height);
+  font-weight: var(--font-weight-normal);
+}
+
+.body-default {
+  font-size: var(--body-default-size);
+  line-height: var(--body-default-line-height);
+  font-weight: var(--font-weight-normal);
+}
+
+.body-small {
+  font-size: var(--body-small-size);
+  line-height: var(--body-small-line-height);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Lead Text */
+.lead {
+  font-size: var(--lead-font-size);
+  line-height: var(--lead-line-height);
+  font-weight: var(--font-weight-normal);
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.display-xxxl,
+.display-xxl,
+.display-xl,
+.display-lg {
+  letter-spacing: -0.03em;
+}
+
+/* Bootstrap Color Overrides */
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary) !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.text-secondary {
+  color: var(--secondary) !important;
+}
+
+.text-muted {
+  color: var(--grey-400) !important;
+}
+
+/* Color Utility Classes */
+.text-white {
+  color: var(--white) !important;
+}
+
+.text-black {
+  color: var(--black) !important;
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.text-secondary {
+  color: var(--secondary) !important;
+}
+
+/* Grey Scale Text Colors */
+.text-grey-100 {
+  color: var(--grey-100) !important;
+}
+
+.text-grey-200 {
+  color: var(--grey-200) !important;
+}
+
+.text-grey-300 {
+  color: var(--grey-300) !important;
+}
+
+.text-grey-400 {
+  color: var(--grey-400) !important;
+}
+
+.text-grey-500 {
+  color: var(--grey-500) !important;
+}
+
+.text-grey-600 {
+  color: var(--grey-600) !important;
+}
+
+.text-grey-700 {
+  color: var(--grey-700) !important;
+}
+
+.text-grey-800 {
+  color: var(--grey-800) !important;
+}
+
+.text-grey-900 {
+  color: var(--grey-900) !important;
+}
+
+/* Background Color Utilities */
+.bg-white {
+  background-color: var(--white) !important;
+}
+
+.bg-black {
+  background-color: var(--black) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary) !important;
+}
+
+/* Grey Scale Background Colors */
+.bg-grey-100 {
+  background-color: var(--grey-100) !important;
+}
+
+.bg-grey-200 {
+  background-color: var(--grey-200) !important;
+}
+
+.bg-grey-300 {
+  background-color: var(--grey-300) !important;
+}
+
+.bg-grey-400 {
+  background-color: var(--grey-400) !important;
+}
+
+.bg-grey-500 {
+  background-color: var(--grey-500) !important;
+}
+
+.bg-grey-600 {
+  background-color: var(--grey-600) !important;
+}
+
+.bg-grey-700 {
+  background-color: var(--grey-700) !important;
+}
+
+.bg-grey-800 {
+  background-color: var(--grey-800) !important;
+}
+
+.bg-grey-900 {
+  background-color: var(--grey-900) !important;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  .display-xxxl {
+    font-size: 72px;
+    line-height: 72px;
+  }
+
+  .display-xxl {
+    font-size: 64px;
+    line-height: 64px;
+  }
+
+  .display-xl {
+    font-size: 56px;
+    line-height: 56px;
+  }
+
+  .display-lg {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  h1,
+  .h1 {
+    font-size: 36px;
+    line-height: 47px;
+  }
+
+  h2,
+  .h2 {
+    font-size: 28px;
+    line-height: 37px;
+  }
+}
