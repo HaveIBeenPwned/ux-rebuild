@@ -1,0 +1,195 @@
+/* Navbar Component */
+.navbar {
+  padding: 0.75rem 1.5rem;
+  margin: 1rem auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background-color: rgba(3, 3, 4, 0.8) !important;
+  backdrop-filter: blur(10px);
+  max-width: 1140px;
+  width: 95%;
+}
+
+.nav-link {
+  font-weight: var(--font-weight-medium);
+  color: var(--white);
+  padding: 0.5rem 0.75rem !important;
+  transition: color 0.3s ease;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--white) !important;
+  opacity: 0.7;
+}
+
+.navbar-nav {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+/* Hero Section Component */
+.hero {
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.hero-title {
+  background: linear-gradient(to right, #c8e5f8, var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+}
+
+/* Button Components */
+.btn {
+  font-weight: var(--font-weight-medium);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  line-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  height: 40px;
+  padding: 8px 24px;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+.btn-primary:active,
+.btn-primary:focus-visible {
+  background-color: var(--grey-900) !important;
+  border-color: var(--grey-900) !important;
+  box-shadow: none !important;
+}
+
+.btn-primary:disabled {
+  background-color: var(--grey-900);
+  border-color: var(--grey-900);
+  opacity: 0.5;
+}
+
+/* Secondary Large Button */
+.btn-secondary {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  height: 40px;
+  padding: 8px 24px;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:focus-visible {
+  background-color: var(--grey-800) !important;
+  border-color: var(--grey-800) !important;
+  box-shadow: none !important;
+}
+
+.btn-secondary:disabled {
+  background-color: var(--grey-900);
+  border-color: var(--grey-900);
+  opacity: 0.5;
+}
+
+/* Secondary Small Button */
+.btn-secondary-sm {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  height: 32px;
+  padding: 4px 16px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.btn-secondary-sm:hover,
+.btn-secondary-sm:active,
+.btn-secondary-sm:focus-visible {
+  background-color: var(--grey-800) !important;
+  border-color: var(--grey-800) !important;
+  box-shadow: none !important;
+}
+
+.btn-secondary-sm:disabled {
+  background-color: var(--grey-900);
+  border-color: var(--grey-900);
+  opacity: 0.5;
+}
+
+/* All button states */
+.btn-primary,
+.btn-secondary,
+.btn-secondary-sm {
+  color: var(--white);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-secondary-sm:hover,
+.btn-primary:active,
+.btn-secondary:active,
+.btn-secondary-sm:active,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-secondary-sm:focus-visible,
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-secondary-sm:disabled {
+  color: var(--white);
+}
+
+.input-group .form-control {
+  height: 56px;
+  border-radius: 16px !important;
+}
+
+.input-group .form-control::placeholder {
+  color: var(--grey-400);
+}
+
+.input-group .btn {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  bottom: 8px;
+  z-index: 5;
+  min-width: 120px;
+  margin-left: 0 !important;
+  border-radius: 8px !important;
+}
+
+.input-group .btn.btn-primary {
+  height: 40px;
+}
+
+.form-control {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--grey-300);
+  border-radius: 8px;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 114, 167, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 0;
+  }
+}
