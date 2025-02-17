@@ -42,6 +42,13 @@
   /* Lead Text */
   --lead-font-size: 21px;
   --lead-line-height: 32px;
+
+  /* Border Radius */
+  --border-radius: 16px;
+  --border-radius-sm: 8px;
+
+  /* Border Colors */
+  --border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Base Typography */

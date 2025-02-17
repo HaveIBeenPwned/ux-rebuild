@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HIBP Table Components</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <link href="../assets/css/components.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+  </head>
+  <body class="bg-black">
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="/">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <h1 class="mb-5">Table Components</h1>
+
+      <!-- Table without headers -->
+
+      <h2 class="h2">Without Headers</h2>
+      <div class="table-responsive">
+        <table class="table mb-0">
+          <tbody>
+            <tr>
+              <td>
+                <a href="#" class="table-row-link">
+                  <div class="table-row-icon me-3">
+                    <i class="bi bi-database"></i>
+                  </div>
+                  <div class="flex-grow-1">Collection #1 accounts</div>
+                  <div class="breach-count me-3 text-grey-400">772,904,991</div>
+                  <button class="btn btn-secondary-sm table-action">
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" class="table-row-link">
+                  <div class="table-row-icon me-3">
+                    <i class="bi bi-envelope"></i>
+                  </div>
+                  <div class="flex-grow-1">Verifications.io accounts</div>
+                  <div class="breach-count me-3 text-grey-400">763,117,241</div>
+                  <button class="btn btn-secondary-sm table-action">
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table with headers -->
+
+      <h2 class="h2 mt-5">With Headers</h2>
+      <div class="table-responsive">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">Service</th>
+              <th scope="col">Breach Date</th>
+              <th scope="col">Affected Accounts</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="table-row-icon me-3">
+                    <i class="bi bi-database"></i>
+                  </div>
+                  <div>Collection #1 accounts</div>
+                </div>
+              </td>
+              <td>2019-01-07</td>
+              <td>772,904,991</td>
+              <td>
+                <button class="btn btn-secondary-sm table-action">
+                  <i class="bi bi-arrow-right"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="table-row-icon me-3">
+                    <i class="bi bi-envelope"></i>
+                  </div>
+                  <div>Verifications.io accounts</div>
+                </div>
+              </td>
+              <td>2019-02-25</td>
+              <td>763,117,241</td>
+              <td>
+                <button class="btn btn-secondary-sm table-action">
+                  <i class="bi bi-arrow-right"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
