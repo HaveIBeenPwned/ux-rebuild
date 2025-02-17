@@ -46,6 +46,84 @@ All components are built with Bootstrap 5 and enhanced with custom styling:
    - Hover effects
    - Active states
 
+3. **Tables**
+
+   - Two variants: with and without headers
+   - Customizable row icons
+   - Flexible action buttons
+   - Hover states
+   - Responsive design
+
+   Basic table structure:
+
+   ```html
+   <div class="table-responsive">
+     <table class="table">
+       <tbody>
+         <tr>
+           <td>
+             <!-- For clickable rows -->
+             <a href="#" class="table-row-link">
+               <!-- Left icon (optional) -->
+               <div class="table-row-icon me-3">
+                 <i class="bi bi-database"></i>
+               </div>
+               <!-- Main content -->
+               <div class="flex-grow-1">Row content</div>
+               <!-- Number formatting (optional) -->
+               <div class="text-grey-400 me-3">123,456</div>
+               <!-- Action button (optional) -->
+               <button class="btn btn-secondary-sm table-action">
+                 <i class="bi bi-arrow-right"></i>
+               </button>
+             </a>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   ```
+
+   With headers:
+
+   ```html
+   <div class="table-responsive">
+     <table class="table">
+       <thead>
+         <tr>
+           <th scope="col">Column 1</th>
+           <th scope="col">Column 2</th>
+           <th scope="col"></th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr>
+           <td>
+             <div class="d-flex align-items-center">
+               <div class="table-row-icon me-3">
+                 <i class="bi bi-database"></i>
+               </div>
+               <div>Content</div>
+             </div>
+           </td>
+           <td>Content</td>
+           <td>
+             <button class="btn btn-secondary-sm table-action">
+               <i class="bi bi-arrow-right"></i>
+             </button>
+           </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   ```
+
+   Available classes apart from Bootstrap classes:
+
+   - `table-row-link`: For clickable rows
+   - `table-row-icon`: Left-side icon container
+   - `table-action`: Right-side action button
+
 ## Usage
 
 ### Basic Structure
