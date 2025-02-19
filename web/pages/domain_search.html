@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domain Search - Have I Been Pwned</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <link href="../assets/css/components.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+  </head>
+  <body class="bg-black">
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="/">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+        <div class="d-flex align-items-center gap-3 d-lg-none">
+          <button class="btn btn-secondary">Notify me</button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Domain search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Who's been pwned</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Passwords</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donate</a>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-secondary d-none d-lg-inline-flex">
+          Notify me
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+      <!-- Header Section -->
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-8 text-center">
+          <h1 class="display-4 mb-4">Add a new domain</h1>
+          <p class="lead text-grey-400 mb-0">
+            Add a new domain to search for pwned accounts and receive future
+            notifications
+          </p>
+        </div>
+      </div>
+
+      <!-- Domain Verification Section -->
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card card-glass">
+            <div class="tooltip-container">
+              <div class="card-help">
+                <i class="bi bi-question"></i>
+                <div class="tooltip-content">
+                  <h6>Domain verification</h6>
+                  <p>
+                    To add a new domain, you need to verify that you control it
+                    first. Begin by entering the domain name then you'll be
+                    given verification options.
+                  </p>
+                  <p>
+                    If you cannot verify that you control the domain, you will
+                    not be able to search for breached email addresses on it.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Domain Input Form -->
+            <div class="form-field mb-4">
+              <label class="input-label h5 mb-3">Add a new domain</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your domain name"
+                  aria-label="Domain name"
+                />
+                <button class="btn btn-primary">
+                  Begin domain verification
+                </button>
+              </div>
+            </div>
+
+            <!-- reCAPTCHA -->
+            <div class="form-field mb-0">
+              <div
+                class="g-recaptcha"
+                data-sitekey="your-recaptcha-site-key"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

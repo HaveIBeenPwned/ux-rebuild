@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HIBP Input Components</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <link href="../assets/css/components.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+  </head>
+  <body class="bg-black">
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="/">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+      </div>
+    </nav>
+
+    <div class="container py-5 w-50">
+      <h1 class="mb-5">Input Components</h1>
+
+      <!-- Text Inputs -->
+      <section class="form-section mb-5">
+        <h2 class="mb-4">Text Inputs</h2>
+
+        <!-- Default -->
+        <div class="form-field">
+          <label class="input-label">Default Input</label>
+          <input type="text" class="text-input" placeholder="Enter text here" />
+        </div>
+
+        <!-- With Icon -->
+        <div class="form-field">
+          <label class="input-label">Input with Icon</label>
+          <div class="input-with-icon">
+            <input type="text" class="text-input" placeholder="Search" />
+            <svg
+              class="input-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- With Button -->
+        <div class="form-field">
+          <label class="input-label">Input with Button</label>
+          <div class="input-group">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email address"
+            />
+            <button class="btn btn-primary">Check</button>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div class="form-field">
+          <label class="input-label">Error Input</label>
+          <input
+            type="text"
+            class="text-input error"
+            placeholder="Error state"
+            value="Invalid input"
+          />
+          <div class="input-error-message">
+            Please enter a valid input value
+          </div>
+        </div>
+
+        <!-- Disabled -->
+        <div class="form-field">
+          <label class="input-label">Disabled Input</label>
+          <input
+            type="text"
+            class="text-input"
+            placeholder="Disabled input"
+            disabled
+          />
+        </div>
+      </section>
+
+      <!-- Radio Inputs -->
+      <section class="form-section">
+        <h2>Radio Inputs</h2>
+
+        <!-- Default Radio Group -->
+        <div class="form-field">
+          <label class="input-label">Select an option</label>
+          <div class="radio-group">
+            <label class="radio-input">
+              <input type="radio" name="option" value="1" />
+              <span class="radio-control"></span>
+              <span class="radio-label">Option 1</span>
+            </label>
+            <label class="radio-input">
+              <input type="radio" name="option" value="2" />
+              <span class="radio-control"></span>
+              <span class="radio-label">Option 2</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Error Radio -->
+        <div class="form-field">
+          <label class="input-label">Error state</label>
+          <div class="radio-group">
+            <label class="radio-input error">
+              <input type="radio" name="error-option" value="1" />
+              <span class="radio-control"></span>
+              <span class="radio-label">Error Option</span>
+            </label>
+          </div>
+          <div class="input-error-message">Please select a valid option</div>
+        </div>
+
+        <!-- Disabled Radio -->
+        <div class="form-field">
+          <label class="input-label">Disabled state</label>
+          <div class="radio-group">
+            <label class="radio-input">
+              <input type="radio" name="disabled-option" value="1" disabled />
+              <span class="radio-control"></span>
+              <span class="radio-label">Disabled Option</span>
+            </label>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
