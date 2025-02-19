@@ -13,6 +13,7 @@
   --secondary: #152b39;
   --white: #f6f8fa;
   --black: #030304;
+  --danger: #db336e;
 
   /* Grey Scale */
   --grey-100: #ecf1f4;
@@ -88,6 +89,7 @@ h1,
   font-size: 40px;
   line-height: 52px;
   font-weight: var(--font-weight-medium);
+  color: var(--white);
 }
 
 h2,
@@ -95,6 +97,7 @@ h2,
   font-size: 32px;
   line-height: 42px;
   font-weight: var(--font-weight-medium);
+  color: var(--white);
 }
 
 h3,
@@ -102,6 +105,7 @@ h3,
   font-size: 28px;
   line-height: 37px;
   font-weight: var(--font-weight-medium);
+  color: var(--white);
 }
 
 h4,
@@ -109,6 +113,7 @@ h4,
   font-size: 24px;
   line-height: 32px;
   font-weight: var(--font-weight-medium);
+  color: var(--white);
 }
 
 h5,
@@ -116,6 +121,7 @@ h5,
   font-size: 20px;
   line-height: 26px;
   font-weight: var(--font-weight-medium);
+  color: var(--white);
 }
 
 h6,
@@ -123,6 +129,7 @@ h6,
   font-size: 16px;
   line-height: 21px;
   font-weight: var(--font-weight-medium);
+  color: var(--white);
 }
 
 /* Special Display Headings */
