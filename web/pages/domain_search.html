@@ -30,7 +30,7 @@
     <!-- Navigation Component -->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a href="/">
+        <a href="../index.html">
           <img
             src="../assets/images/hibp-logo.svg"
             alt="Have I Been Pwned"
@@ -81,50 +81,598 @@
       <!-- Header Section -->
       <div class="row justify-content-center mb-5">
         <div class="col-lg-8 text-center">
-          <h1 class="display-4 mb-4">Add a new domain</h1>
+          <h1 class="display-4 mb-4">Domain Search</h1>
           <p class="lead text-grey-400 mb-0">
-            Add a new domain to search for pwned accounts and receive future
-            notifications
+            Search for pwned accounts across your verified domains
           </p>
         </div>
       </div>
 
-      <!-- Domain Verification Section -->
+      <!-- Domain Content Section -->
       <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="card card-glass">
-            <div class="tooltip-container">
-              <div class="card-help">
-                <i class="bi bi-question"></i>
-                <div class="tooltip-content">
-                  <h6>Domain verification</h6>
-                  <p>
-                    To add a new domain, you need to verify that you control it
-                    first. Begin by entering the domain name then you'll be
-                    given verification options.
-                  </p>
-                  <p>
-                    If you cannot verify that you control the domain, you will
-                    not be able to search for breached email addresses on it.
-                  </p>
+        <div class="col-lg-10">
+          <!-- No Domains View (hidden by default) -->
+          <div id="noDomainView" style="display: none">
+            <div class="card card-glass">
+              <div class="tooltip-container">
+                <div class="card-help">
+                  <i class="bi bi-question"></i>
+                  <div class="tooltip-content">
+                    <h6>Domain verification</h6>
+                    <p>
+                      To add a new domain, you need to verify that you control
+                      it first. Begin by entering the domain name then you'll be
+                      given verification options.
+                    </p>
+                    <p>
+                      If you cannot verify that you control the domain, you will
+                      not be able to search for breached email addresses on it.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Domain Input Form -->
+              <div class="form-field mb-4">
+                <label class="input-label h5 mb-3">Add a new domain</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="noDomainInput"
+                    placeholder="Enter your domain name"
+                    aria-label="Domain name"
+                  />
+                  <button
+                    class="btn btn-primary"
+                    id="beginVerificationBtn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#verificationModal"
+                  >
+                    Begin domain verification
+                  </button>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Domain Input Form -->
-            <div class="form-field mb-4">
-              <label class="input-label h5 mb-3">Add a new domain</label>
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter your domain name"
-                  aria-label="Domain name"
-                />
-                <button class="btn btn-primary">
-                  Begin domain verification
-                </button>
+          <!-- Domains Table View (shown by default for demo) -->
+          <div id="domainsTableView">
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end mb-4">
+              <button
+                class="btn btn-sm btn-outline-primary me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#verificationModal"
+              >
+                <i class="bi bi-plus-circle me-1"></i> Verify New Domain
+              </button>
+              <button
+                class="btn btn-sm btn-outline-secondary"
+                data-bs-toggle="modal"
+                data-bs-target="#subscriptionModal"
+              >
+                <i class="bi bi-gear me-1"></i> Manage Subscription
+              </button>
+            </div>
+
+            <!-- Domains Table -->
+            <div class="card card-glass">
+              <div class="card-body p-0">
+                <div class="table-responsive">
+                  <table class="table table-dark table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>Domain</th>
+                        <th>
+                          Addresses
+                          <span class="tooltip-container d-inline-block ms-1">
+                            <i class="bi bi-question"></i>
+                            <div class="tooltip-content">
+                              <h6>Addresses</h6>
+                              <p>
+                                The number of breached addresses on the domain
+                                the last time it was successfully indexed, based
+                                on breaches that are not classified as spam
+                                lists. The domain may be larger when next
+                                indexed if more breaches have impacted it since.
+                              </p>
+                              <p>
+                                This number does not include addresses found in
+                                pastes. A blank value will be shown if the
+                                domain hasn't yet been indexed. Enable debug
+                                mode to see more.
+                              </p>
+                            </div>
+                          </span>
+                        </th>
+                        <th>
+                          Stealer Logs
+                          <span class="tooltip-container d-inline-block ms-1">
+                            <i class="bi bi-question"></i>
+                            <div class="tooltip-content">
+                              <h6>Stealer Logs</h6>
+                              <p>
+                                The stealer log count is the number of email
+                                addresses captured by infostealers when the
+                                victim has been entering their credentials into
+                                a website on this domain. These addresses are
+                                searchable by the API to get all stealer log
+                                email addresses for a website domain.
+                              </p>
+                            </div>
+                          </span>
+                        </th>
+                        <th class="text-end">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="domainsTableBody">
+                      <tr>
+                        <td>example.com</td>
+                        <td>1,245</td>
+                        <td>38</td>
+                        <td class="table-actions">
+                          <button class="btn btn-xs btn-outline-primary me-1">
+                            <i class="bi bi-search"></i>
+                          </button>
+                          <button
+                            class="btn btn-xs btn-outline-danger remove-domain"
+                            data-domain="example.com"
+                          >
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>mydomain.org</td>
+                        <td>87</td>
+                        <td>12</td>
+                        <td class="table-actions">
+                          <button class="btn btn-xs btn-outline-primary me-1">
+                            <i class="bi bi-search"></i>
+                          </button>
+                          <button
+                            class="btn btn-xs btn-outline-danger remove-domain"
+                            data-domain="mydomain.org"
+                          >
+                            <i class="bi bi-trash"></i>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Domain Verification Modal -->
+    <div
+      class="modal modal-dark fade"
+      id="verificationModal"
+      tabindex="-1"
+      aria-labelledby="verificationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="verificationModalLabel">
+              Verify Domain Ownership
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <!-- Left Column - Domain Input and Verification Methods -->
+              <div class="col-md-5 border-end border-secondary pe-4">
+                <div class="mb-4">
+                  <label class="form-label fw-bold mb-3">1. Enter Domain</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="domainInput"
+                    placeholder="example.com"
+                  />
+                  <div class="invalid-feedback" id="domainInputError">
+                    Please provide a domain to verify
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <label class="form-label fw-bold mb-3"
+                    >2. Select verification method</label
+                  >
+                  <div class="verification-methods">
+                    <div
+                      class="verification-method-option active"
+                      data-method="dns"
+                    >
+                      <div class="method-icon">
+                        <i class="bi bi-globe"></i>
+                      </div>
+                      <div class="method-content">
+                        <h6 class="mb-0">DNS TXT Record</h6>
+                        <p class="mb-0 text-grey-400">
+                          Add a TXT record to your domain's DNS
+                        </p>
+                      </div>
+                      <div class="method-indicator">
+                        <i class="bi bi-check-circle-fill"></i>
+                      </div>
+                    </div>
+                    <div class="verification-method-option" data-method="file">
+                      <div class="method-icon">
+                        <i class="bi bi-file-earmark"></i>
+                      </div>
+                      <div class="method-content">
+                        <h6 class="mb-0">File Upload</h6>
+                        <p class="mb-0 text-grey-400">
+                          Upload a verification file to your website
+                        </p>
+                      </div>
+                      <div class="method-indicator">
+                        <i class="bi bi-check-circle-fill"></i>
+                      </div>
+                    </div>
+                    <div class="verification-method-option" data-method="meta">
+                      <div class="method-icon">
+                        <i class="bi bi-code-slash"></i>
+                      </div>
+                      <div class="method-content">
+                        <h6 class="mb-0">Meta Tag</h6>
+                        <p class="mb-0 text-grey-400">
+                          Add a meta tag to your website's homepage
+                        </p>
+                      </div>
+                      <div class="method-indicator">
+                        <i class="bi bi-check-circle-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column - Verification Instructions -->
+              <div class="col-md-7 ps-4">
+                <div id="verificationInstructions">
+                  <!-- DNS TXT Record Instructions (default) -->
+                  <div id="dnsInstructions">
+                    <h5 class="mb-3">DNS TXT Record Verification</h5>
+                    <p>
+                      Add the following TXT record to your domain's DNS
+                      settings:
+                    </p>
+                    <div class="card card-glass mb-3">
+                      <div class="card-body">
+                        <code>hibp-verify=abc123def456</code>
+                      </div>
+                    </div>
+                    <p>
+                      DNS changes may take up to 24 hours to propagate. Once
+                      you've added the record, click "Verify Now".
+                    </p>
+                  </div>
+
+                  <!-- File Upload Instructions (hidden by default) -->
+                  <div id="fileInstructions" style="display: none">
+                    <h5 class="mb-3">File Upload Verification</h5>
+                    <p>
+                      Upload the following file to your website's root
+                      directory:
+                    </p>
+                    <div class="card card-glass mb-3">
+                      <div class="card-body">
+                        <p class="mb-0">
+                          Filename: <code>hibp-verification.txt</code>
+                        </p>
+                        <p class="mb-0">
+                          Content: <code>hibp-verify=abc123def456</code>
+                        </p>
+                      </div>
+                    </div>
+                    <p>
+                      The file should be accessible at:
+                      <code>https://yourdomain.com/hibp-verification.txt</code>
+                    </p>
+                  </div>
+
+                  <!-- Meta Tag Instructions (hidden by default) -->
+                  <div id="metaInstructions" style="display: none">
+                    <h5 class="mb-3">Meta Tag Verification</h5>
+                    <p>
+                      Add the following meta tag to the
+                      <code>&lt;head&gt;</code> section of your website's
+                      homepage:
+                    </p>
+                    <div class="card card-glass mb-3">
+                      <div class="card-body">
+                        <code
+                          >&lt;meta name="hibp-verification"
+                          content="abc123def456"&gt;</code
+                        >
+                      </div>
+                    </div>
+                    <p>Once you've added the meta tag, click "Verify Now".</p>
+                  </div>
+
+                  <!-- Verification Spinner (hidden by default) -->
+                  <div
+                    id="verificationSpinner"
+                    style="display: none"
+                    class="verification-spinner"
+                  >
+                    <div class="logo-mark-spinner mb-3">
+                      <svg
+                        width="60"
+                        height="40"
+                        viewBox="0 0 400 271"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          class="logo-piece logo-piece-1"
+                          d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                          fill="#F6F8FA"
+                        />
+                        <path
+                          class="logo-piece logo-piece-2"
+                          d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                          fill="#F6F8FA"
+                        />
+                        <path
+                          class="logo-piece logo-piece-3"
+                          d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                          fill="#F6F8FA"
+                        />
+                        <path
+                          class="logo-piece logo-piece-4"
+                          d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                          fill="#F6F8FA"
+                        />
+                        <path
+                          class="logo-piece logo-piece-5"
+                          d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
+                          fill="#F6F8FA"
+                        />
+                      </svg>
+                    </div>
+                    <p>Verifying your domain...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary" id="verifyButton">
+              Verify Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscription Modal -->
+    <div
+      class="modal modal-dark fade"
+      id="subscriptionModal"
+      tabindex="-1"
+      aria-labelledby="subscriptionModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="subscriptionModalLabel">
+              Manage Subscription
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-grey-400 mb-4">
+              Choose the plan that best fits your needs. All plans include
+              access to our breach monitoring service.
+            </p>
+            <div class="row g-4">
+              <!-- Free Tier -->
+              <div class="col-md-4">
+                <div class="card card-glass h-100 subscription-card">
+                  <div class="card-body d-flex flex-column">
+                    <div class="plan-header mb-3">
+                      <span class="plan-badge">Current</span>
+                      <h5 class="card-title mb-1">Free</h5>
+                      <p class="card-text text-primary fs-4 fw-bold mb-0">$0</p>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <ul class="list-unstyled my-4 plan-features">
+                      <li class="mb-3">
+                        <i
+                          class="bi bi-check-circle-fill text-success me-2"
+                        ></i>
+                        <span>1 domain</span>
+                      </li>
+                      <li class="mb-3">
+                        <i
+                          class="bi bi-check-circle-fill text-success me-2"
+                        ></i>
+                        <span>Basic breach alerts</span>
+                      </li>
+                      <li class="mb-3">
+                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                        <span class="text-grey-400">No API access</span>
+                      </li>
+                      <li class="mb-3">
+                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                        <span class="text-grey-400">No priority support</span>
+                      </li>
+                    </ul>
+                    <button
+                      class="btn btn-sm btn-outline-primary mt-auto w-100"
+                      disabled
+                    >
+                      Current Plan
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pro Tier -->
+              <div class="col-md-4">
+                <div
+                  class="card card-glass h-100 subscription-card border-primary"
+                >
+                  <div class="card-body d-flex flex-column">
+                    <div class="plan-header mb-3">
+                      <span class="plan-badge bg-primary">Popular</span>
+                      <h5 class="card-title mb-1">Pro</h5>
+                      <p class="card-text text-primary fs-4 fw-bold mb-0">
+                        $29<span class="fs-6">/month</span>
+                      </p>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <ul class="list-unstyled my-4 plan-features">
+                      <li class="mb-3">
+                        <i
+                          class="bi bi-check-circle-fill text-success me-2"
+                        ></i>
+                        <span>Up to 5 domains</span>
+                      </li>
+                      <li class="mb-3">
+                        <i
+                          class="bi bi-check-circle-fill text-success me-2"
+                        ></i>
+                        <span>Advanced breach alerts</span>
+                      </li>
+                      <li class="mb-3">
+                        <i
+                          class="bi bi-check-circle-fill text-success me-2"
+                        ></i>
+                        <span>Basic API access</span>
+                      </li>
+                      <li class="mb-3">
+                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                        <span class="text-grey-400">No priority support</span>
+                      </li>
+                    </ul>
+                    <button class="btn btn-sm btn-primary mt-auto w-100">
+                      Upgrade to Pro
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Enterprise Tier -->
+              <div class="col-md-4">
+                <div class="card card-glass h-100 subscription-card">
+                  <div class="card-body d-flex flex-column">
+                    <div class="plan-header mb-3">
+                      <h5 class="card-title mb-1">Enterprise</h5>
+                      <p class="card-text text-primary fs-4 fw-bold mb-0">
+                        $99<span class="fs-6">/month</span>
+                      </p>
+                    </div>
+                    <div class="plan-divider"></div>
+                    <ul class="list-unstyled my-4 plan-features">
+                      <li class="mb-3">
+                        <i
+                          class="bi bi-check-circle-fill text-success me-2"
+                        ></i>
+                        <span>Unlimited domains</span>
+                      </li>
+                      <li class="mb-3">
+                        <i
+                          class="bi bi-check-circle-fill text-success me-2"
+                        ></i>
+                        <span>Real-time breach alerts</span>
+                      </li>
+                      <li class="mb-3">
+                        <i
+                          class="bi bi-check-circle-fill text-success me-2"
+                        ></i>
+                        <span>Full API access</span>
+                      </li>
+                      <li class="mb-3">
+                        <i
+                          class="bi bi-check-circle-fill text-success me-2"
+                        ></i>
+                        <span>Priority support</span>
+                      </li>
+                    </ul>
+                    <button
+                      class="btn btn-sm btn-outline-primary mt-auto w-100"
+                    >
+                      Contact Sales
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-sm btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Domain Removal Prompt -->
+    <div
+      class="modal modal-dark fade"
+      id="domainRemovalPrompt"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-body text-center p-4">
+            <h5 class="mb-3">Remove the domain?</h5>
+            <p class="mb-4">
+              Removing this domain will delete it from your account. You will no
+              longer be able to search for breached email addresses on this
+              domain unless you verify it again.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                id="confirmDomainRemoval"
+                data-bs-dismiss="modal"
+              >
+                Remove
+              </button>
             </div>
           </div>
         </div>
@@ -133,5 +681,239 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS for Page Interactions -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mock data for domains
+        const mockDomains = [
+          { name: "example.com", verifiedOn: "May 15, 2023", status: "Active" },
+          {
+            name: "mydomain.org",
+            verifiedOn: "June 3, 2023",
+            status: "Active",
+          },
+        ];
+
+        // Toggle between no domains and domains table views
+        function toggleDomainViews() {
+          const noDomainView = document.getElementById("noDomainView");
+          const domainsTableView = document.getElementById("domainsTableView");
+
+          if (mockDomains.length === 0) {
+            noDomainView.style.display = "block";
+            domainsTableView.style.display = "none";
+          } else {
+            noDomainView.style.display = "none";
+            domainsTableView.style.display = "block";
+          }
+        }
+
+        // Initialize the view
+        toggleDomainViews();
+
+        // Handle domain input from the no domain view
+        const noDomainInput = document.getElementById("noDomainInput");
+        const beginVerificationBtn = document.getElementById(
+          "beginVerificationBtn"
+        );
+        const domainInput = document.getElementById("domainInput");
+
+        // When the verification modal is shown, prefill the domain input if provided
+        const verificationModal = document.getElementById("verificationModal");
+        verificationModal.addEventListener("show.bs.modal", function () {
+          if (noDomainInput && noDomainInput.value.trim() !== "") {
+            domainInput.value = noDomainInput.value.trim();
+          }
+        });
+
+        // Variables for domain removal
+        let domainToRemove = null;
+        const domainRemovalPrompt = document.getElementById(
+          "domainRemovalPrompt"
+        );
+        const confirmDomainRemovalBtn = document.getElementById(
+          "confirmDomainRemoval"
+        );
+
+        // Handle domain removal
+        const removeButtons = document.querySelectorAll(".remove-domain");
+        removeButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            domainToRemove = this.getAttribute("data-domain");
+            // Show the custom prompt instead of using confirm()
+            const domainRemovalModal = new bootstrap.Modal(domainRemovalPrompt);
+            domainRemovalModal.show();
+          });
+        });
+
+        // Handle confirmation of domain removal
+        confirmDomainRemovalBtn.addEventListener("click", function () {
+          if (domainToRemove) {
+            // Find the domain in the mock data
+            const index = mockDomains.findIndex(
+              (d) => d.name === domainToRemove
+            );
+            if (index !== -1) {
+              // Remove the domain from the mock data
+              mockDomains.splice(index, 1);
+              // Remove the row from the table
+              document
+                .querySelector(`[data-domain="${domainToRemove}"]`)
+                .closest("tr")
+                .remove();
+              // Toggle views if no domains left
+              toggleDomainViews();
+              // Reset the domainToRemove
+              domainToRemove = null;
+            }
+          }
+        });
+
+        // Handle verification method selection
+        const verificationMethods = document.querySelectorAll(
+          ".verification-method-option"
+        );
+        const dnsInstructions = document.getElementById("dnsInstructions");
+        const fileInstructions = document.getElementById("fileInstructions");
+        const metaInstructions = document.getElementById("metaInstructions");
+        const verificationSpinner = document.getElementById(
+          "verificationSpinner"
+        );
+        const verifyButton = document.getElementById("verifyButton");
+
+        verificationMethods.forEach((method) => {
+          method.addEventListener("click", function () {
+            // Remove active class from all methods
+            verificationMethods.forEach((m) => {
+              m.classList.remove("active");
+            });
+
+            // Add active class to clicked method
+            this.classList.add("active");
+
+            // Hide all instruction divs
+            dnsInstructions.style.display = "none";
+            fileInstructions.style.display = "none";
+            metaInstructions.style.display = "none";
+            verificationSpinner.style.display = "none";
+
+            // Show the appropriate instruction div
+            const methodType = this.getAttribute("data-method");
+            if (methodType === "dns") {
+              dnsInstructions.style.display = "block";
+            } else if (methodType === "file") {
+              fileInstructions.style.display = "block";
+            } else if (methodType === "meta") {
+              metaInstructions.style.display = "block";
+            }
+          });
+        });
+
+        // Handle verify button click
+        verifyButton.addEventListener("click", function () {
+          const domain = domainInput.value.trim();
+          const domainInputError = document.getElementById("domainInputError");
+
+          if (!domain) {
+            // Show validation error
+            domainInput.classList.add("is-invalid");
+            domainInputError.classList.add("show");
+            return;
+          }
+
+          // Clear any previous validation errors
+          domainInput.classList.remove("is-invalid");
+          domainInputError.classList.remove("show");
+
+          // Hide all instruction divs
+          dnsInstructions.style.display = "none";
+          fileInstructions.style.display = "none";
+          metaInstructions.style.display = "none";
+
+          // Show spinner
+          verificationSpinner.style.display = "flex";
+
+          // Simulate verification process (6 seconds)
+          setTimeout(function () {
+            // Add the new domain to the mock data
+            const today = new Date();
+            const formattedDate = today.toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            });
+            mockDomains.push({
+              name: domain,
+              verifiedOn: formattedDate,
+              status: "Active",
+            });
+
+            // Add the new domain to the table
+            const tableBody = document.getElementById("domainsTableBody");
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `
+              <td>${domain}</td>
+              <td>${formattedDate}</td>
+              <td><span class="badge bg-success">Active</span></td>
+              <td class="table-actions">
+                <button class="btn btn-xs btn-outline-primary me-1">
+                  <i class="bi bi-search"></i>
+                </button>
+                <button class="btn btn-xs btn-outline-danger remove-domain" data-domain="${domain}">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            `;
+            tableBody.appendChild(newRow);
+
+            // Add event listener to the new remove button
+            const newRemoveButton = newRow.querySelector(".remove-domain");
+            newRemoveButton.addEventListener("click", function () {
+              domainToRemove = this.getAttribute("data-domain");
+              // Show the custom prompt instead of using confirm()
+              const domainRemovalModal = new bootstrap.Modal(
+                domainRemovalPrompt
+              );
+              domainRemovalModal.show();
+            });
+
+            // Close the modal
+            const verificationModalInstance =
+              bootstrap.Modal.getInstance(verificationModal);
+            verificationModalInstance.hide();
+
+            // Reset the modal state for next open
+            setTimeout(function () {
+              domainInput.value = "";
+              noDomainInput.value = "";
+              dnsInstructions.style.display = "block";
+              verificationSpinner.style.display = "none";
+
+              // Reset verification method buttons
+              verificationMethods.forEach((m) => {
+                m.classList.remove("active");
+              });
+
+              // Set the first method as active
+              verificationMethods[0].classList.add("active");
+            }, 500);
+
+            // Toggle views
+            toggleDomainViews();
+          }, 6000);
+        });
+
+        // Add input event listener to clear error when user types
+        domainInput.addEventListener("input", function () {
+          if (this.value.trim() !== "") {
+            this.classList.remove("is-invalid");
+            document
+              .getElementById("domainInputError")
+              .classList.remove("show");
+          }
+        });
+      });
+    </script>
   </body>
 </html>

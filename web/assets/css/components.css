@@ -130,6 +130,14 @@
   opacity: 0.5;
 }
 
+/* Extra Small Button */
+.btn-xs {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
 /* All button states */
 .btn-primary,
 .btn-secondary,
@@ -216,6 +224,10 @@
   width: 100%;
 }
 
+.table-actions {
+  text-align: right;
+}
+
 /* Form Components */
 .input-group .form-control {
   height: 56px;
@@ -268,6 +280,23 @@
 .form-control:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(29, 114, 167, 0.1);
+}
+
+/* Form Validation Styles */
+.form-control.is-invalid {
+  border-color: var(--danger);
+  background-image: none;
+}
+
+.invalid-feedback {
+  display: none;
+  color: var(--danger);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.invalid-feedback.show {
+  display: block;
 }
 
 .form-field {
@@ -433,6 +462,17 @@
   border: 1px solid var(--border-color);
 }
 
+.card-glass p,
+.card-glass li,
+.card-glass h1,
+.card-glass h2,
+.card-glass h3,
+.card-glass h4,
+.card-glass h5,
+.card-glass h6 {
+  color: var(--white);
+}
+
 /* Solid Card - with primary color background */
 .card-solid {
   background-color: var(--primary);
@@ -462,6 +502,27 @@
   background-color: var(--grey-600);
 }
 
+/* Table Header Tooltip Icon */
+.table th .tooltip-container i,
+.table th .bi-question-circle {
+  color: var(--white);
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--grey-700);
+  cursor: help;
+}
+
+.table th .tooltip-container:hover i,
+.table th .tooltip-container:hover .bi-question-circle {
+  background-color: var(--grey-600);
+}
+
 /* Tooltip */
 .tooltip-container {
   position: static;
@@ -483,13 +544,23 @@
   background-color: var(--grey-800);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
-  color: var(--white);
+  color: var(--grey-300);
   font-size: var(--body-small-size);
   line-height: var(--body-small-line-height);
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease-in-out;
   z-index: 1000;
+}
+
+.tooltip-content h6 {
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.tooltip-content p {
+  color: var(--grey-400);
+  margin-bottom: 8px;
 }
 
 .tooltip-content::after {
@@ -519,5 +590,98 @@
   .tooltip-content::after {
     left: auto;
     right: 0px;
+  }
+}
+
+/* Modal Components */
+.modal-dark {
+  background-color: rgba(3, 3, 4, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+.modal-dark .modal-content {
+  background-color: var(--grey-700);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+}
+
+.modal-dark .modal-header {
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem 1.5rem;
+}
+
+.modal-dark .modal-body {
+  padding: 1.5rem;
+}
+
+.modal-dark .modal-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 1.5rem;
+}
+
+.modal-dark .btn-close {
+  color: var(--white);
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Prompt Component */
+@media (min-width: 576px) {
+  .modal-sm {
+    --bs-modal-width: 450px !important;
+  }
+}
+
+.modal-dialog-centered.modal-sm .modal-content {
+  margin: 0 auto;
+}
+
+.modal-dialog-centered.modal-sm .modal-body {
+  padding: 1.75rem;
+}
+
+.modal-dialog-centered.modal-sm .modal-body h5 {
+  font-weight: var(--font-weight-bold);
+}
+
+.modal-dialog-centered.modal-sm .modal-body p {
+  color: var(--grey-400);
+  font-size: 0.9rem;
+}
+
+.verification-method {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 0.75rem;
+}
+
+.verification-method:hover,
+.verification-method.active {
+  background-color: var(--grey-800);
+}
+
+.verification-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Modal Responsive Adjustments */
+@media (max-width: 768px) {
+  .modal-dark .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .modal-dark .modal-content {
+    max-height: calc(100vh - 1rem);
+    overflow-y: auto;
   }
 }

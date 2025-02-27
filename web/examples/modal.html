@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Component - Have I Been Pwned</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <link href="../assets/css/components.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+  </head>
+  <body class="bg-black">
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="/">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <h1 class="mb-5">Modal Component Examples</h1>
+
+      <!-- Basic Modal Example -->
+      <div class="card card-glass mb-5">
+        <div class="card-body">
+          <h2 class="h4 mb-4">Basic Modal</h2>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#basicModal"
+          >
+            Open Basic Modal
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Basic Modal -->
+    <div
+      class="modal modal-dark fade"
+      id="basicModal"
+      tabindex="-1"
+      aria-labelledby="basicModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="basicModalLabel">Basic Modal Title</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              This is a basic modal example with standard header, body, and
+              footer sections.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS for Modal Interactions -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Handle verification method selection
+        const verificationMethods = document.querySelectorAll(
+          ".verification-method-option"
+        );
+        const dnsInstructions = document.getElementById("dnsInstructions");
+        const fileInstructions = document.getElementById("fileInstructions");
+        const verificationSpinner = document.getElementById(
+          "verificationSpinner"
+        );
+        const verifyButton = document.getElementById("verifyButton");
+
+        verificationMethods.forEach((method) => {
+          method.addEventListener("click", function () {
+            // Remove active class from all methods
+            verificationMethods.forEach((m) => m.classList.remove("active"));
+
+            // Add active class to clicked method
+            this.classList.add("active");
+
+            // Hide all instruction divs
+            dnsInstructions.style.display = "none";
+            fileInstructions.style.display = "none";
+            verificationSpinner.style.display = "none";
+
+            // Show the appropriate instruction div
+            const methodType = this.getAttribute("data-method");
+            if (methodType === "dns") {
+              dnsInstructions.style.display = "block";
+            } else if (methodType === "file") {
+              fileInstructions.style.display = "block";
+            }
+          });
+        });
+
+        // Handle verify button click
+        verifyButton.addEventListener("click", function () {
+          // Hide all instruction divs
+          dnsInstructions.style.display = "none";
+          fileInstructions.style.display = "none";
+
+          // Show spinner
+          verificationSpinner.style.display = "flex";
+
+          // Simulate verification process (5 seconds)
+          setTimeout(function () {
+            // Close the modal
+            const verificationModal = bootstrap.Modal.getInstance(
+              document.getElementById("verificationModal")
+            );
+            verificationModal.hide();
+
+            // Reset the modal state for next open
+            setTimeout(function () {
+              dnsInstructions.style.display = "block";
+              verificationSpinner.style.display = "none";
+              verificationMethods[0].classList.add("active");
+              verificationMethods[1].classList.remove("active");
+            }, 500);
+
+            // Alert success (in a real app, you'd update the UI instead)
+            alert("Domain verified successfully!");
+          }, 5000);
+        });
+      });
+    </script>
+  </body>
+</html>
