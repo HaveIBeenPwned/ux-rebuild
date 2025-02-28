@@ -1,3 +1,12 @@
+/* CSS Variables for Breakpoints */
+:root {
+  --breakpoint-xs: 390px; /* Extra small devices (phones) */
+  --breakpoint-sm: 576px; /* Small devices (landscape phones) */
+  --breakpoint-md: 768px; /* Medium devices (tablets) */
+  --breakpoint-lg: 991px; /* Large devices (desktops) */
+  --breakpoint-xl: 1200px; /* Extra large devices (large desktops) */
+}
+
 /* Navbar Component */
 .navbar {
   padding: 0.75rem 1.5rem;
@@ -28,6 +37,111 @@
 .navbar-nav {
   flex-wrap: nowrap;
   white-space: nowrap;
+}
+
+/* Mobile Navbar Adjustments */
+@media (max-width: var(--breakpoint-lg)) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-collapse {
+    margin-top: 1rem;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0 !important;
+    width: 100%;
+  }
+
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  /* Improved mobile navbar layout */
+  .d-flex.align-items-center.gap-3.d-lg-none {
+    gap: 0.5rem !important;
+  }
+
+  .d-flex.align-items-center.gap-3.d-lg-none .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    height: auto;
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .navbar {
+    margin: 0.5rem auto;
+    width: 92%;
+  }
+
+  /* Further adjustments for very small screens */
+  .navbar .container-fluid {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .navbar-brand img,
+  .navbar a img {
+    height: 24px;
+  }
+
+  .navbar-toggler {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Additional Bootstrap utility extensions for font sizes */
+.fs-7 {
+  font-size: 0.75rem !important;
+}
+
+.fs-8 {
+  font-size: 0.65rem !important;
+}
+
+@media (min-width: 576px) {
+  .fs-sm-7 {
+    font-size: 0.75rem !important;
+  }
+  .fs-sm-8 {
+    font-size: 0.65rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .fs-md-7 {
+    font-size: 0.75rem !important;
+  }
+  .fs-md-8 {
+    font-size: 0.65rem !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .fs-lg-7 {
+    font-size: 0.75rem !important;
+  }
+  .fs-lg-8 {
+    font-size: 0.65rem !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .fs-xl-7 {
+    font-size: 0.75rem !important;
+  }
+  .fs-xl-8 {
+    font-size: 0.65rem !important;
+  }
 }
 
 /* Hero Section Component */
@@ -160,13 +274,6 @@
   color: var(--white);
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero {
-    padding: 4rem 0;
-  }
-}
-
 /* Table Components */
 .table {
   --bs-table-bg: transparent;
@@ -226,6 +333,46 @@
 
 .table-actions {
   text-align: right;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.table-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Table Adjustments */
+@media (max-width: var(--breakpoint-sm)) {
+  .table > :not(caption) > * > * {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.875rem;
+  }
+
+  /* Fix for table actions alignment on mobile */
+  .table-actions {
+    white-space: nowrap;
+    min-width: 80px;
+  }
+
+  .table-actions .btn {
+    display: inline-flex;
+  }
+
+  .table-responsive {
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    width: calc(100% + 2rem);
+  }
+
+  .btn-xs {
+    padding: 0.2rem 0.4rem;
+  }
 }
 
 /* Form Components */
@@ -254,7 +401,7 @@
 }
 
 /* Mobile Input Group */
-@media (max-width: 576px) {
+@media (max-width: var(--breakpoint-sm)) {
   .input-group {
     flex-direction: column;
   }
@@ -473,6 +620,17 @@
   color: var(--white);
 }
 
+/* Mobile Card Adjustments */
+@media (max-width: var(--breakpoint-sm)) {
+  .card {
+    padding: 20px;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+}
+
 /* Solid Card - with primary color background */
 .card-solid {
   background-color: var(--primary);
@@ -575,21 +733,46 @@
 }
 
 /* Mobile Tooltip Adjustments */
-@media (max-width: 576px) {
+@media (max-width: var(--breakpoint-sm)) {
   .tooltip-content {
     width: calc(100vw - 48px);
-    left: auto;
-    right: 0;
-    transform: translate(0, 10px);
+    max-width: 300px;
+    left: 50%;
+    transform: translate(-50%, 10px);
   }
 
   .tooltip-container:hover .tooltip-content {
-    transform: translate(0, 0);
+    transform: translate(-50%, 0);
   }
 
   .tooltip-content::after {
+    left: 50%;
+  }
+
+  /* For tooltips near the right edge */
+  .tooltip-container.d-inline-block .tooltip-content {
     left: auto;
-    right: 0px;
+    right: -20px;
+    transform: translate(0, 10px);
+  }
+
+  .tooltip-container.d-inline-block:hover .tooltip-content {
+    transform: translate(0, 0);
+  }
+
+  .tooltip-container.d-inline-block .tooltip-content::after {
+    left: auto;
+    right: 20px;
+  }
+
+  /* Smaller font size for mobile tooltips */
+  .tooltip-content h6 {
+    font-size: 0.9rem;
+  }
+
+  .tooltip-content p {
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 }
 
@@ -623,6 +806,36 @@
 .modal-dark .btn-close {
   color: var(--white);
   filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Modal Responsive Adjustments */
+@media (max-width: var(--breakpoint-lg)) and (min-width: var(--breakpoint-md)) {
+  /* Tablet-specific modal adjustments */
+  .border-md-0 {
+    border-right: 0 !important;
+  }
+
+  .border-lg-end {
+    border-right: 1px solid var(--border-color);
+  }
+
+  .pb-md-4 {
+    padding-bottom: 1.5rem !important;
+  }
+
+  .pt-md-4 {
+    padding-top: 1.5rem !important;
+  }
+
+  .ps-md-0 {
+    padding-left: 0 !important;
+  }
+
+  /* Add a horizontal divider for tablet view */
+  .col-md-12.pb-md-4 {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+  }
 }
 
 /* Prompt Component */
@@ -675,7 +888,7 @@
 }
 
 /* Modal Responsive Adjustments */
-@media (max-width: 768px) {
+@media (max-width: var(--breakpoint-md)) {
   .modal-dark .modal-dialog {
     margin: 0.5rem;
   }
@@ -683,5 +896,80 @@
   .modal-dark .modal-content {
     max-height: calc(100vh - 1rem);
     overflow-y: auto;
+  }
+}
+
+/* Enhanced Mobile Modal Adjustments */
+@media (max-width: var(--breakpoint-sm)) {
+  .modal-dark .modal-header,
+  .modal-dark .modal-body,
+  .modal-dark .modal-footer {
+    padding: 1rem;
+  }
+
+  .modal-dark .modal-header h5 {
+    font-size: 1.1rem;
+  }
+
+  .modal-dark .modal-dialog {
+    margin: 0.5rem auto;
+    max-width: 95%;
+  }
+
+  .verification-method-option {
+    padding: 0.75rem;
+  }
+
+  .method-content h6 {
+    font-size: 0.9rem;
+  }
+
+  .method-content p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Alternative Mobile Navigation Suggestion */
+@media (max-width: var(--breakpoint-xs)) {
+  /* Hide the "Notify me" button completely on very small screens */
+  .d-flex.align-items-center.gap-3.d-lg-none .btn-sm {
+    display: none !important;
+  }
+
+  /* Make the navbar more compact */
+  .navbar {
+    padding: 0.4rem 0.75rem;
+  }
+
+  /* Reduce the size of the logo */
+  .navbar-brand img {
+    height: 22px;
+  }
+
+  /* Make the navbar toggler smaller and more compact */
+  .navbar-toggler {
+    padding: 0.15rem 0.3rem;
+    margin-left: auto;
+  }
+
+  /* Add a special style for the mobile menu */
+  .navbar-collapse {
+    background-color: var(--grey-800);
+    border-radius: 8px;
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Make nav links more compact */
+  .nav-link {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.9rem;
+  }
+
+  /* Ensure the navbar container has proper spacing */
+  .navbar .container-fluid {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
   }
 }

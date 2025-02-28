@@ -30,7 +30,7 @@
     <!-- Navigation Component -->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a href="../index.html">
+        <a href="../index.html" class="navbar-brand">
           <img
             src="../assets/images/hibp-logo.svg"
             alt="Have I Been Pwned"
@@ -38,7 +38,9 @@
           />
         </a>
         <div class="d-flex align-items-center gap-3 d-lg-none">
-          <button class="btn btn-secondary">Notify me</button>
+          <button class="btn btn-secondary btn-sm d-none d-sm-inline-flex">
+            Notify me
+          </button>
           <button
             class="navbar-toggler"
             type="button"
@@ -68,6 +70,9 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Donate</a>
             </li>
+            <li class="nav-item d-sm-none">
+              <a class="nav-link" href="#">Notify me</a>
+            </li>
           </ul>
         </div>
         <button class="btn btn-secondary d-none d-lg-inline-flex">
@@ -77,12 +82,14 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="container py-5">
+    <div class="container py-5 py-sm-3 py-md-4 py-lg-5">
       <!-- Header Section -->
-      <div class="row justify-content-center mb-5">
+      <div class="row justify-content-center mb-5 mb-sm-3 mb-md-4 mb-lg-5">
         <div class="col-lg-8 text-center">
-          <h1 class="display-4 mb-4">Domain Search</h1>
-          <p class="lead text-grey-400 mb-0">
+          <h1 class="display-4 fs-2 fs-md-3 fs-lg-4 mb-4 mb-sm-3">
+            Domain Search
+          </h1>
+          <p class="lead fs-6 fs-md-5 text-grey-400 mb-0">
             Search for pwned accounts across your verified domains
           </p>
         </div>
@@ -113,8 +120,10 @@
               </div>
 
               <!-- Domain Input Form -->
-              <div class="form-field mb-4">
-                <label class="input-label h5 mb-3">Add a new domain</label>
+              <div class="form-field mb-4 mb-sm-3">
+                <label class="input-label h5 mb-3 mb-sm-2"
+                  >Add a new domain</label
+                >
                 <div class="input-group">
                   <input
                     type="text"
@@ -139,16 +148,16 @@
           <!-- Domains Table View (shown by default for demo) -->
           <div id="domainsTableView">
             <!-- Action Buttons -->
-            <div class="d-flex justify-content-end mb-4">
+            <div class="d-flex justify-content-end mb-4 mb-sm-3">
               <button
-                class="btn btn-sm btn-outline-primary me-2"
+                class="btn btn-sm fs-7 fs-md-6 btn-outline-primary me-2"
                 data-bs-toggle="modal"
                 data-bs-target="#verificationModal"
               >
                 <i class="bi bi-plus-circle me-1"></i> Verify New Domain
               </button>
               <button
-                class="btn btn-sm btn-outline-secondary"
+                class="btn btn-sm fs-7 fs-md-6 btn-outline-secondary"
                 data-bs-toggle="modal"
                 data-bs-target="#subscriptionModal"
               >
@@ -273,9 +282,13 @@
           <div class="modal-body">
             <div class="row">
               <!-- Left Column - Domain Input and Verification Methods -->
-              <div class="col-md-5 border-end border-secondary pe-4">
-                <div class="mb-4">
-                  <label class="form-label fw-bold mb-3">1. Enter Domain</label>
+              <div
+                class="col-lg-5 col-md-12 border-end border-secondary pe-4 pe-sm-3 border-md-0 border-lg-end pb-md-4 pb-lg-0"
+              >
+                <div class="mb-4 mb-sm-3">
+                  <label class="form-label fw-bold mb-3 mb-sm-2"
+                    >1. Enter Domain</label
+                  >
                   <input
                     type="text"
                     class="form-control"
@@ -287,21 +300,21 @@
                   </div>
                 </div>
 
-                <div class="mt-4">
-                  <label class="form-label fw-bold mb-3"
+                <div class="mt-4 mt-sm-3">
+                  <label class="form-label fw-bold mb-3 mb-sm-2"
                     >2. Select verification method</label
                   >
                   <div class="verification-methods">
                     <div
-                      class="verification-method-option active"
+                      class="verification-method-option active p-3 p-sm-2"
                       data-method="dns"
                     >
                       <div class="method-icon">
                         <i class="bi bi-globe"></i>
                       </div>
                       <div class="method-content">
-                        <h6 class="mb-0">DNS TXT Record</h6>
-                        <p class="mb-0 text-grey-400">
+                        <h6 class="mb-0 fs-6">DNS TXT Record</h6>
+                        <p class="mb-0 text-grey-400 fs-7">
                           Add a TXT record to your domain's DNS
                         </p>
                       </div>
@@ -309,13 +322,16 @@
                         <i class="bi bi-check-circle-fill"></i>
                       </div>
                     </div>
-                    <div class="verification-method-option" data-method="file">
+                    <div
+                      class="verification-method-option p-3 p-sm-2"
+                      data-method="file"
+                    >
                       <div class="method-icon">
                         <i class="bi bi-file-earmark"></i>
                       </div>
                       <div class="method-content">
-                        <h6 class="mb-0">File Upload</h6>
-                        <p class="mb-0 text-grey-400">
+                        <h6 class="mb-0 fs-6">File Upload</h6>
+                        <p class="mb-0 text-grey-400 fs-7">
                           Upload a verification file to your website
                         </p>
                       </div>
@@ -323,13 +339,16 @@
                         <i class="bi bi-check-circle-fill"></i>
                       </div>
                     </div>
-                    <div class="verification-method-option" data-method="meta">
+                    <div
+                      class="verification-method-option p-3 p-sm-2"
+                      data-method="meta"
+                    >
                       <div class="method-icon">
                         <i class="bi bi-code-slash"></i>
                       </div>
                       <div class="method-content">
-                        <h6 class="mb-0">Meta Tag</h6>
-                        <p class="mb-0 text-grey-400">
+                        <h6 class="mb-0 fs-6">Meta Tag</h6>
+                        <p class="mb-0 text-grey-400 fs-7">
                           Add a meta tag to your website's homepage
                         </p>
                       </div>
@@ -342,7 +361,7 @@
               </div>
 
               <!-- Right Column - Verification Instructions -->
-              <div class="col-md-7 ps-4">
+              <div class="col-lg-7 col-md-12 ps-lg-4 ps-md-0 pt-md-4 pt-lg-0">
                 <div id="verificationInstructions">
                   <!-- DNS TXT Record Instructions (default) -->
                   <div id="dnsInstructions">
@@ -493,10 +512,10 @@
               Choose the plan that best fits your needs. All plans include
               access to our breach monitoring service.
             </p>
-            <div class="row g-4">
+            <div class="row g-4 g-sm-3">
               <!-- Free Tier -->
-              <div class="col-md-4">
-                <div class="card card-glass h-100 subscription-card">
+              <div class="col-lg-4 col-md-12 mb-md-4 mb-lg-0">
+                <div class="card card-glass h-100 mb-3 mb-md-0">
                   <div class="card-body d-flex flex-column">
                     <div class="plan-header mb-3">
                       <span class="plan-badge">Current</span>
@@ -504,24 +523,24 @@
                       <p class="card-text text-primary fs-4 fw-bold mb-0">$0</p>
                     </div>
                     <div class="plan-divider"></div>
-                    <ul class="list-unstyled my-4 plan-features">
-                      <li class="mb-3">
+                    <ul class="list-unstyled my-4 my-sm-3 plan-features">
+                      <li class="mb-3 mb-sm-2">
                         <i
                           class="bi bi-check-circle-fill text-success me-2"
                         ></i>
                         <span>1 domain</span>
                       </li>
-                      <li class="mb-3">
+                      <li class="mb-3 mb-sm-2">
                         <i
                           class="bi bi-check-circle-fill text-success me-2"
                         ></i>
                         <span>Basic breach alerts</span>
                       </li>
-                      <li class="mb-3">
+                      <li class="mb-3 mb-sm-2">
                         <i class="bi bi-x-circle-fill text-danger me-2"></i>
                         <span class="text-grey-400">No API access</span>
                       </li>
-                      <li class="mb-3">
+                      <li class="mb-3 mb-sm-2">
                         <i class="bi bi-x-circle-fill text-danger me-2"></i>
                         <span class="text-grey-400">No priority support</span>
                       </li>
@@ -537,10 +556,8 @@
               </div>
 
               <!-- Pro Tier -->
-              <div class="col-md-4">
-                <div
-                  class="card card-glass h-100 subscription-card border-primary"
-                >
+              <div class="col-lg-4 col-md-12 mb-md-4 mb-lg-0">
+                <div class="card card-glass h-100 mb-3 mb-md-0 border-primary">
                   <div class="card-body d-flex flex-column">
                     <div class="plan-header mb-3">
                       <span class="plan-badge bg-primary">Popular</span>
@@ -550,26 +567,26 @@
                       </p>
                     </div>
                     <div class="plan-divider"></div>
-                    <ul class="list-unstyled my-4 plan-features">
-                      <li class="mb-3">
+                    <ul class="list-unstyled my-4 my-sm-3 plan-features">
+                      <li class="mb-3 mb-sm-2">
                         <i
                           class="bi bi-check-circle-fill text-success me-2"
                         ></i>
                         <span>Up to 5 domains</span>
                       </li>
-                      <li class="mb-3">
+                      <li class="mb-3 mb-sm-2">
                         <i
                           class="bi bi-check-circle-fill text-success me-2"
                         ></i>
                         <span>Advanced breach alerts</span>
                       </li>
-                      <li class="mb-3">
+                      <li class="mb-3 mb-sm-2">
                         <i
                           class="bi bi-check-circle-fill text-success me-2"
                         ></i>
                         <span>Basic API access</span>
                       </li>
-                      <li class="mb-3">
+                      <li class="mb-3 mb-sm-2">
                         <i class="bi bi-x-circle-fill text-danger me-2"></i>
                         <span class="text-grey-400">No priority support</span>
                       </li>
@@ -582,8 +599,8 @@
               </div>
 
               <!-- Enterprise Tier -->
-              <div class="col-md-4">
-                <div class="card card-glass h-100 subscription-card">
+              <div class="col-lg-4 col-md-12">
+                <div class="card card-glass h-100">
                   <div class="card-body d-flex flex-column">
                     <div class="plan-header mb-3">
                       <h5 class="card-title mb-1">Enterprise</h5>
@@ -592,26 +609,26 @@
                       </p>
                     </div>
                     <div class="plan-divider"></div>
-                    <ul class="list-unstyled my-4 plan-features">
-                      <li class="mb-3">
+                    <ul class="list-unstyled my-4 my-sm-3 plan-features">
+                      <li class="mb-3 mb-sm-2">
                         <i
                           class="bi bi-check-circle-fill text-success me-2"
                         ></i>
                         <span>Unlimited domains</span>
                       </li>
-                      <li class="mb-3">
+                      <li class="mb-3 mb-sm-2">
                         <i
                           class="bi bi-check-circle-fill text-success me-2"
                         ></i>
                         <span>Real-time breach alerts</span>
                       </li>
-                      <li class="mb-3">
+                      <li class="mb-3 mb-sm-2">
                         <i
                           class="bi bi-check-circle-fill text-success me-2"
                         ></i>
                         <span>Full API access</span>
                       </li>
-                      <li class="mb-3">
+                      <li class="mb-3 mb-sm-2">
                         <i
                           class="bi bi-check-circle-fill text-success me-2"
                         ></i>
