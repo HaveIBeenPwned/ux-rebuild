@@ -1,3 +1,12 @@
+/* CSS Variables for Breakpoints */
+:root {
+  --breakpoint-xs: 390px; /* Extra small devices (phones) */
+  --breakpoint-sm: 576px; /* Small devices (landscape phones) */
+  --breakpoint-md: 768px; /* Medium devices (tablets) */
+  --breakpoint-lg: 991px; /* Large devices (desktops) */
+  --breakpoint-xl: 1200px; /* Extra large devices (large desktops) */
+}
+
 /* Navbar Component */
 .navbar {
   padding: 0.75rem 1.5rem;
@@ -28,6 +37,111 @@
 .navbar-nav {
   flex-wrap: nowrap;
   white-space: nowrap;
+}
+
+/* Mobile Navbar Adjustments */
+@media (max-width: var(--breakpoint-lg)) {
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-collapse {
+    margin-top: 1rem;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-link {
+    padding: 0.75rem 0 !important;
+    width: 100%;
+  }
+
+  .navbar-toggler {
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  /* Improved mobile navbar layout */
+  .d-flex.align-items-center.gap-3.d-lg-none {
+    gap: 0.5rem !important;
+  }
+
+  .d-flex.align-items-center.gap-3.d-lg-none .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    height: auto;
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .navbar {
+    margin: 0.5rem auto;
+    width: 92%;
+  }
+
+  /* Further adjustments for very small screens */
+  .navbar .container-fluid {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .navbar-brand img,
+  .navbar a img {
+    height: 24px;
+  }
+
+  .navbar-toggler {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Additional Bootstrap utility extensions for font sizes */
+.fs-7 {
+  font-size: 0.75rem !important;
+}
+
+.fs-8 {
+  font-size: 0.65rem !important;
+}
+
+@media (min-width: 576px) {
+  .fs-sm-7 {
+    font-size: 0.75rem !important;
+  }
+  .fs-sm-8 {
+    font-size: 0.65rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .fs-md-7 {
+    font-size: 0.75rem !important;
+  }
+  .fs-md-8 {
+    font-size: 0.65rem !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .fs-lg-7 {
+    font-size: 0.75rem !important;
+  }
+  .fs-lg-8 {
+    font-size: 0.65rem !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .fs-xl-7 {
+    font-size: 0.75rem !important;
+  }
+  .fs-xl-8 {
+    font-size: 0.65rem !important;
+  }
 }
 
 /* Hero Section Component */
@@ -130,6 +244,14 @@
   opacity: 0.5;
 }
 
+/* Extra Small Button */
+.btn-xs {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
 /* All button states */
 .btn-primary,
 .btn-secondary,
@@ -150,13 +272,6 @@
 .btn-secondary:disabled,
 .btn-secondary-sm:disabled {
   color: var(--white);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero {
-    padding: 4rem 0;
-  }
 }
 
 /* Table Components */
@@ -216,6 +331,50 @@
   width: 100%;
 }
 
+.table-actions {
+  text-align: right;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.table-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Table Adjustments */
+@media (max-width: var(--breakpoint-sm)) {
+  .table > :not(caption) > * > * {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.875rem;
+  }
+
+  /* Fix for table actions alignment on mobile */
+  .table-actions {
+    white-space: nowrap;
+    min-width: 80px;
+  }
+
+  .table-actions .btn {
+    display: inline-flex;
+  }
+
+  .table-responsive {
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    width: calc(100% + 2rem);
+  }
+
+  .btn-xs {
+    padding: 0.2rem 0.4rem;
+  }
+}
+
 /* Form Components */
 .input-group .form-control {
   height: 56px;
@@ -242,7 +401,7 @@
 }
 
 /* Mobile Input Group */
-@media (max-width: 576px) {
+@media (max-width: var(--breakpoint-sm)) {
   .input-group {
     flex-direction: column;
   }
@@ -268,6 +427,23 @@
 .form-control:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(29, 114, 167, 0.1);
+}
+
+/* Form Validation Styles */
+.form-control.is-invalid {
+  border-color: var(--danger);
+  background-image: none;
+}
+
+.invalid-feedback {
+  display: none;
+  color: var(--danger);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.invalid-feedback.show {
+  display: block;
 }
 
 .form-field {
@@ -433,6 +609,28 @@
   border: 1px solid var(--border-color);
 }
 
+.card-glass p,
+.card-glass li,
+.card-glass h1,
+.card-glass h2,
+.card-glass h3,
+.card-glass h4,
+.card-glass h5,
+.card-glass h6 {
+  color: var(--white);
+}
+
+/* Mobile Card Adjustments */
+@media (max-width: var(--breakpoint-sm)) {
+  .card {
+    padding: 20px;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+}
+
 /* Solid Card - with primary color background */
 .card-solid {
   background-color: var(--primary);
@@ -462,6 +660,27 @@
   background-color: var(--grey-600);
 }
 
+/* Table Header Tooltip Icon */
+.table th .tooltip-container i,
+.table th .bi-question-circle {
+  color: var(--white);
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--grey-700);
+  cursor: help;
+}
+
+.table th .tooltip-container:hover i,
+.table th .tooltip-container:hover .bi-question-circle {
+  background-color: var(--grey-600);
+}
+
 /* Tooltip */
 .tooltip-container {
   position: static;
@@ -483,13 +702,23 @@
   background-color: var(--grey-800);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius-sm);
-  color: var(--white);
+  color: var(--grey-300);
   font-size: var(--body-small-size);
   line-height: var(--body-small-line-height);
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease-in-out;
   z-index: 1000;
+}
+
+.tooltip-content h6 {
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.tooltip-content p {
+  color: var(--grey-400);
+  margin-bottom: 8px;
 }
 
 .tooltip-content::after {
@@ -504,20 +733,243 @@
 }
 
 /* Mobile Tooltip Adjustments */
-@media (max-width: 576px) {
+@media (max-width: var(--breakpoint-sm)) {
   .tooltip-content {
     width: calc(100vw - 48px);
-    left: auto;
-    right: 0;
-    transform: translate(0, 10px);
+    max-width: 300px;
+    left: 50%;
+    transform: translate(-50%, 10px);
   }
 
   .tooltip-container:hover .tooltip-content {
-    transform: translate(0, 0);
+    transform: translate(-50%, 0);
   }
 
   .tooltip-content::after {
+    left: 50%;
+  }
+
+  /* For tooltips near the right edge */
+  .tooltip-container.d-inline-block .tooltip-content {
     left: auto;
-    right: 0px;
+    right: -20px;
+    transform: translate(0, 10px);
+  }
+
+  .tooltip-container.d-inline-block:hover .tooltip-content {
+    transform: translate(0, 0);
+  }
+
+  .tooltip-container.d-inline-block .tooltip-content::after {
+    left: auto;
+    right: 20px;
+  }
+
+  /* Smaller font size for mobile tooltips */
+  .tooltip-content h6 {
+    font-size: 0.9rem;
+  }
+
+  .tooltip-content p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}
+
+/* Modal Components */
+.modal-dark {
+  background-color: rgba(3, 3, 4, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+.modal-dark .modal-content {
+  background-color: var(--grey-700);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+}
+
+.modal-dark .modal-header {
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.5rem 1.5rem;
+}
+
+.modal-dark .modal-body {
+  padding: 1.5rem;
+}
+
+.modal-dark .modal-footer {
+  border-top: 1px solid var(--border-color);
+  padding: 1.5rem;
+}
+
+.modal-dark .btn-close {
+  color: var(--white);
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Modal Responsive Adjustments */
+@media (max-width: var(--breakpoint-lg)) and (min-width: var(--breakpoint-md)) {
+  /* Tablet-specific modal adjustments */
+  .border-md-0 {
+    border-right: 0 !important;
+  }
+
+  .border-lg-end {
+    border-right: 1px solid var(--border-color);
+  }
+
+  .pb-md-4 {
+    padding-bottom: 1.5rem !important;
+  }
+
+  .pt-md-4 {
+    padding-top: 1.5rem !important;
+  }
+
+  .ps-md-0 {
+    padding-left: 0 !important;
+  }
+
+  /* Add a horizontal divider for tablet view */
+  .col-md-12.pb-md-4 {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Prompt Component */
+@media (min-width: 576px) {
+  .modal-sm {
+    --bs-modal-width: 450px !important;
+  }
+}
+
+.modal-dialog-centered.modal-sm .modal-content {
+  margin: 0 auto;
+}
+
+.modal-dialog-centered.modal-sm .modal-body {
+  padding: 1.75rem;
+}
+
+.modal-dialog-centered.modal-sm .modal-body h5 {
+  font-weight: var(--font-weight-bold);
+}
+
+.modal-dialog-centered.modal-sm .modal-body p {
+  color: var(--grey-400);
+  font-size: 0.9rem;
+}
+
+.verification-method {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 0.75rem;
+}
+
+.verification-method:hover,
+.verification-method.active {
+  background-color: var(--grey-800);
+}
+
+.verification-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* Modal Responsive Adjustments */
+@media (max-width: var(--breakpoint-md)) {
+  .modal-dark .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .modal-dark .modal-content {
+    max-height: calc(100vh - 1rem);
+    overflow-y: auto;
+  }
+}
+
+/* Enhanced Mobile Modal Adjustments */
+@media (max-width: var(--breakpoint-sm)) {
+  .modal-dark .modal-header,
+  .modal-dark .modal-body,
+  .modal-dark .modal-footer {
+    padding: 1rem;
+  }
+
+  .modal-dark .modal-header h5 {
+    font-size: 1.1rem;
+  }
+
+  .modal-dark .modal-dialog {
+    margin: 0.5rem auto;
+    max-width: 95%;
+  }
+
+  .verification-method-option {
+    padding: 0.75rem;
+  }
+
+  .method-content h6 {
+    font-size: 0.9rem;
+  }
+
+  .method-content p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Alternative Mobile Navigation Suggestion */
+@media (max-width: var(--breakpoint-xs)) {
+  /* Hide the "Notify me" button completely on very small screens */
+  .d-flex.align-items-center.gap-3.d-lg-none .btn-sm {
+    display: none !important;
+  }
+
+  /* Make the navbar more compact */
+  .navbar {
+    padding: 0.4rem 0.75rem;
+  }
+
+  /* Reduce the size of the logo */
+  .navbar-brand img {
+    height: 22px;
+  }
+
+  /* Make the navbar toggler smaller and more compact */
+  .navbar-toggler {
+    padding: 0.15rem 0.3rem;
+    margin-left: auto;
+  }
+
+  /* Add a special style for the mobile menu */
+  .navbar-collapse {
+    background-color: var(--grey-800);
+    border-radius: 8px;
+    margin-top: 0.75rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Make nav links more compact */
+  .nav-link {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.9rem;
+  }
+
+  /* Ensure the navbar container has proper spacing */
+  .navbar .container-fluid {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
   }
 }

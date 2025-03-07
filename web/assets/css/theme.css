@@ -331,6 +331,10 @@ h6,
   background-color: var(--grey-900) !important;
 }
 
+code {
+  color: var(--white);
+}
+
 /* Responsive Typography */
 @media (max-width: 768px) {
   .display-xxxl {

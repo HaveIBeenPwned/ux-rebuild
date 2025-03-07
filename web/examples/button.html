@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button Components - Have I Been Pwned</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/theme.css" rel="stylesheet" />
+    <link href="../assets/css/components.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+  </head>
+  <body class="bg-black">
+    <!-- Navigation Component -->
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="/">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <h1 class="mb-5">Button Components</h1>
+
+      <!-- Primary Buttons -->
+      <div class="card card-glass mb-5">
+        <div class="card-body">
+          <h2 class="h4 mb-4">Primary Buttons</h2>
+          <div class="d-flex flex-wrap gap-3 mb-4">
+            <button class="btn btn-primary">Primary Button</button>
+            <button class="btn btn-primary" disabled>Disabled</button>
+            <button class="btn btn-primary">
+              <i class="bi bi-search me-2"></i>With Icon
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Buttons -->
+      <div class="card card-glass mb-5">
+        <div class="card-body">
+          <h2 class="h4 mb-4">Secondary Buttons</h2>
+          <div class="d-flex flex-wrap gap-3 mb-4">
+            <button class="btn btn-secondary">Secondary Button</button>
+            <button class="btn btn-secondary" disabled>Disabled</button>
+            <button class="btn btn-secondary">
+              <i class="bi bi-gear me-2"></i>With Icon
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Small Secondary Buttons -->
+      <div class="card card-glass mb-5">
+        <div class="card-body">
+          <h2 class="h4 mb-4">Small Secondary Buttons</h2>
+          <div class="d-flex flex-wrap gap-3 mb-4">
+            <button class="btn btn-secondary-sm">Small Button</button>
+            <button class="btn btn-secondary-sm" disabled>Disabled</button>
+            <button class="btn btn-secondary-sm">
+              <i class="bi bi-trash me-2"></i>With Icon
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outline Buttons -->
+      <div class="card card-glass mb-5">
+        <div class="card-body">
+          <h2 class="h4 mb-4">Outline Buttons</h2>
+          <div class="d-flex flex-wrap gap-3 mb-4">
+            <button class="btn btn-outline-primary">Outline Primary</button>
+            <button class="btn btn-outline-secondary">Outline Secondary</button>
+            <button class="btn btn-outline-danger">Outline Danger</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Button Groups -->
+      <div class="card card-glass mb-5">
+        <div class="card-body">
+          <h2 class="h4 mb-4">Button Groups</h2>
+          <div class="mb-4">
+            <div class="btn-group mb-3">
+              <button class="btn btn-primary">Left</button>
+              <button class="btn btn-primary">Middle</button>
+              <button class="btn btn-primary">Right</button>
+            </div>
+            <div class="d-block mb-3"></div>
+            <div class="btn-group mb-3">
+              <button class="btn btn-secondary">Left</button>
+              <button class="btn btn-secondary">Middle</button>
+              <button class="btn btn-secondary">Right</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Table Action Buttons -->
+      <div class="card card-glass mb-5">
+        <div class="card-body">
+          <h2 class="h4 mb-4">Table Action Buttons</h2>
+          <div class="d-flex flex-wrap gap-3 mb-4">
+            <button class="btn btn-sm btn-primary">
+              <i class="bi bi-search me-1"></i> Search
+            </button>
+            <button class="btn btn-sm btn-danger">
+              <i class="bi bi-trash me-1"></i> Remove
+            </button>
+            <button class="btn btn-sm btn-secondary">
+              <i class="bi bi-pencil me-1"></i> Edit
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Extra Small Buttons -->
+      <div class="card card-glass mb-5">
+        <div class="card-body">
+          <h2 class="h4 mb-4">Extra Small Buttons</h2>
+          <div class="d-flex flex-wrap gap-3 mb-4">
+            <button class="btn btn-xs btn-outline-primary">
+              <i class="bi bi-search"></i>
+            </button>
+            <button class="btn btn-xs btn-outline-danger">
+              <i class="bi bi-trash"></i>
+            </button>
+            <button class="btn btn-xs btn-outline-secondary">
+              <i class="bi bi-pencil"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
