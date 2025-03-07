@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "bootstrap": "^5.3.3",
+    "sass": "^1.85.1"
+  },
+  "name": "hibp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass web/assets/scss/main.scss:web/assets/css/main.css --style compressed --load-path=node_modules",
+    "sass:watch": "sass --watch web/assets/scss/main.scss:web/assets/css/main.css --load-path=node_modules",
+    "build": "npm run sass"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,71 @@
+// Table Component Styles
+
+/* Custom Table Components */
+.table .table-row-icon {
+  width: 24px;
+  height: 24px;
+  background: rgba(102, 191, 239, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.table-row-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.table-actions {
+  text-align: right;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.table-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+}
+
+/* Table Header Tooltip Icon */
+.table th .tooltip-container i,
+.table th .bi-question-circle {
+  color: var(--white);
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--grey-700);
+  cursor: help;
+}
+
+.table th .tooltip-container:hover i,
+.table th .tooltip-container:hover .bi-question-circle {
+  background-color: var(--grey-600);
+}
+
+// Table Action Buttons
+.table .table-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+
+  i {
+    font-size: 14px;
+    margin-right: 0;
+  }
+}

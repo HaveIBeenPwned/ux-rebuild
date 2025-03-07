@@ -1,0 +1,34 @@
+// Components Index
+// This file imports all component-specific Sass files
+
+// Base typography styles
+@import "typography";
+
+// Button styles
+@import "button";
+
+// Card styles
+@import "card";
+
+// Input styles
+@import "input";
+
+// Navbar styles
+@import "navbar";
+
+// Modal styles
+@import "modal";
+
+// Hero styles
+@import "hero";
+
+// Table styles
+@import "table";
+
+// Tooltip styles
+@import "tooltip";
+
+// For now, we're just setting up the structure
+// In a full implementation, you would import all component files here
+// @import "cards";
+// etc.

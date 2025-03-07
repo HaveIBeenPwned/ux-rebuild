@@ -1,0 +1,157 @@
+/* 
+ * Bootstrap 5 CSS Variables Override
+ * This file overrides Bootstrap's CSS variables with our custom theme values.
+ * It should be loaded AFTER Bootstrap's CSS but BEFORE our custom theme CSS.
+ */
+
+/* Ensure all elements inherit the font family */
+* {
+  font-family: "Switzer", sans-serif;
+}
+
+:root {
+  /* Font family - explicitly set this first to ensure it's applied */
+  --bs-font-sans-serif: "Switzer", sans-serif;
+  --bs-body-font-family: "Switzer", sans-serif;
+
+  /* Override Bootstrap color system variables */
+  --bs-primary: #1d72a7;
+  --bs-primary-rgb: 29, 114, 167;
+  --bs-secondary: #152b39;
+  --bs-secondary-rgb: 21, 43, 57;
+  --bs-success: #198754;
+  --bs-success-rgb: 25, 135, 84;
+  --bs-info: #0dcaf0;
+  --bs-info-rgb: 13, 202, 240;
+  --bs-warning: #ffc107;
+  --bs-warning-rgb: 255, 193, 7;
+  --bs-danger: #db336e;
+  --bs-danger-rgb: 219, 51, 110;
+  --bs-light: #f6f8fa;
+  --bs-light-rgb: 246, 248, 250;
+  --bs-dark: #030304;
+  --bs-dark-rgb: 3, 3, 4;
+
+  /* Override Bootstrap gray colors */
+  --bs-gray-100: #ecf1f4;
+  --bs-gray-200: #d9e2e8;
+  --bs-gray-300: #c1cfd9;
+  --bs-gray-400: #9cb1c2;
+  --bs-gray-500: #6a8aa4;
+  --bs-gray-600: #4b667b;
+  --bs-gray-700: #374a5a;
+  --bs-gray-800: #1d282f;
+  --bs-gray-900: #131a20;
+
+  /* Override Bootstrap body variables */
+  --bs-body-font-size: 16px;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #f6f8fa;
+  --bs-body-bg: #030304;
+
+  /* Override Bootstrap border variables */
+  --bs-border-color: rgba(255, 255, 255, 0.08);
+  --bs-border-radius: 16px;
+  --bs-border-radius-sm: 8px;
+  --bs-border-radius-lg: 24px;
+  --bs-border-radius-xl: 32px;
+
+  /* Override Bootstrap heading variables */
+  --bs-heading-color: #f6f8fa;
+
+  /* Override Bootstrap link variables */
+  --bs-link-color: #1d72a7;
+  --bs-link-hover-color: #1a669a;
+
+  /* Override Bootstrap component specific variables */
+  --bs-navbar-color: #f6f8fa;
+  --bs-navbar-hover-color: #1d72a7;
+  --bs-navbar-active-color: #1d72a7;
+
+  --bs-card-bg: #1d282f;
+  --bs-card-border-color: rgba(255, 255, 255, 0.08);
+
+  --bs-btn-font-weight: 500;
+
+  /* Navbar border color */
+  --navbar-border-color: rgba(255, 255, 255, 0.1);
+
+  /* Modal Bootstrap variables */
+  --bs-modal-bg: #374a5a;
+  --bs-modal-border-color: rgba(255, 255, 255, 0.1);
+  --bs-modal-header-border-color: rgba(255, 255, 255, 0.1);
+  --bs-modal-footer-border-color: rgba(255, 255, 255, 0.1);
+  --bs-modal-color: var(--bs-light);
+  --bs-modal-border-radius: 16px;
+  --bs-modal-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  --bs-modal-inner-border-radius: 16px;
+
+  --bs-dropdown-bg: #1d282f;
+  --bs-dropdown-border-color: rgba(255, 255, 255, 0.08);
+  --bs-dropdown-link-color: #f6f8fa;
+  --bs-dropdown-link-hover-color: #f6f8fa;
+  --bs-dropdown-link-hover-bg: #374a5a;
+  --bs-dropdown-link-active-color: #f6f8fa;
+  --bs-dropdown-link-active-bg: #1d72a7;
+
+  --bs-table-color: #f6f8fa;
+  --bs-table-bg: transparent;
+  --bs-table-border-color: rgba(255, 255, 255, 0.08);
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.05);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.075);
+
+  /* Component-specific variables to replace !important declarations */
+
+  /* Navbar component variables */
+  --navbar-bg-color: rgba(3, 3, 4, 0.8);
+  --navbar-backdrop-filter: blur(10px);
+  --nav-link-padding: 0.5rem 0.75rem;
+  --nav-link-hover-color: rgba(246, 248, 250, 0.7);
+  --nav-link-active-color: rgba(246, 248, 250, 0.7);
+  --mobile-nav-link-padding: 0.5rem 0.75rem;
+
+  /* Button component variables */
+  --btn-focus-box-shadow: none;
+  --btn-primary-active-bg: var(--bs-gray-900);
+  --btn-primary-active-border: var(--bs-gray-900);
+  --btn-secondary-hover-bg: var(--bs-gray-800);
+  --btn-secondary-hover-border: var(--bs-gray-800);
+  --btn-secondary-active-bg: var(--bs-gray-800);
+  --btn-secondary-active-border: var(--bs-gray-800);
+
+  /* Form component variables */
+  --input-group-form-control-border-radius: 16px;
+  --input-group-btn-margin-left: 0;
+  --input-group-btn-border-radius: 8px;
+
+  /* Utility class variables */
+  --fs-7: 0.75rem;
+  --fs-8: 0.65rem;
+
+  /* Mobile spacing variables */
+  --mobile-gap: 0.5rem;
+
+  /* Modal variables */
+  --modal-sm-width: 450px;
+  --modal-content-bg: #374a5a;
+  --modal-backdrop-bg: rgba(3, 3, 4, 0.6);
+  --modal-backdrop-blur: blur(5px);
+  --modal-content-blur: blur(8px);
+  --modal-border-color: rgba(255, 255, 255, 0.1);
+
+  /* Responsive layout variables */
+  --border-right-none: 0;
+  --padding-bottom-lg: 1.5rem;
+  --padding-top-lg: 1.5rem;
+  --padding-left-none: 0;
+  --display-none-xs: none;
+}
+
+/* Dark mode specific overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bs-body-color: #f6f8fa;
+    --bs-body-bg: #030304;
+  }
+}

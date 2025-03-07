@@ -1,0 +1,172 @@
+// Typography Component
+// This file contains all typography-related styles
+
+// Import variables
+@import "../variables";
+
+// Base Typography
+body {
+  font-family: $font-family-base;
+  font-size: $body-default-size;
+  line-height: $body-default-line-height;
+  font-weight: $font-weight-normal;
+  color: $white;
+  background-color: $black;
+  position: relative;
+  min-height: 100vh;
+}
+
+// Heading Styles
+h1,
+.h1 {
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: $font-weight-medium;
+  color: $white;
+}
+
+h2,
+.h2 {
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: $font-weight-medium;
+  color: $white;
+}
+
+h3,
+.h3 {
+  font-size: 28px;
+  line-height: 37px;
+  font-weight: $font-weight-medium;
+  color: $white;
+}
+
+h4,
+.h4 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: $font-weight-medium;
+  color: $white;
+}
+
+h5,
+.h5 {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: $font-weight-medium;
+  color: $white;
+}
+
+h6,
+.h6 {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: $font-weight-medium;
+  color: $white;
+}
+
+// Special Display Headings
+.display-xxxl {
+  font-size: $display-xxxl-size;
+  line-height: $display-xxxl-line-height;
+  font-weight: $font-weight-bold;
+}
+
+.display-xxl {
+  font-size: $display-xxl-size;
+  line-height: $display-xxl-line-height;
+  font-weight: $font-weight-bold;
+}
+
+.display-xl {
+  font-size: $display-xl-size;
+  line-height: $display-xl-line-height;
+  font-weight: $font-weight-bold;
+}
+
+.display-lg {
+  font-size: $display-lg-size;
+  line-height: $display-lg-line-height;
+  font-weight: $font-weight-bold;
+}
+
+// Body Text Styles
+.body-large {
+  font-size: $body-large-size;
+  line-height: $body-large-line-height;
+  font-weight: $font-weight-normal;
+}
+
+.body-default {
+  font-size: $body-default-size;
+  line-height: $body-default-line-height;
+  font-weight: $font-weight-normal;
+}
+
+.body-small {
+  font-size: $body-small-size;
+  line-height: $body-small-line-height;
+  font-weight: $font-weight-normal;
+}
+
+// Lead Text
+.lead {
+  font-size: $lead-font-size;
+  line-height: $lead-line-height;
+  font-weight: $font-weight-normal;
+}
+
+// Common heading styles
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6,
+.display-xxxl,
+.display-xxl,
+.display-xl,
+.display-lg {
+  letter-spacing: -0.03em;
+}
+
+// Responsive typography
+@media (max-width: $breakpoint-md) {
+  .display-xxxl {
+    font-size: 72px;
+    line-height: 72px;
+  }
+
+  .display-xxl {
+    font-size: 64px;
+    line-height: 64px;
+  }
+
+  .display-xl {
+    font-size: 56px;
+    line-height: 56px;
+  }
+
+  .display-lg {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  h1,
+  .h1 {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  h2,
+  .h2 {
+    font-size: 28px;
+    line-height: 37px;
+  }
+}

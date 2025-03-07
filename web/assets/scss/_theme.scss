@@ -1,0 +1,257 @@
+// Theme Configuration
+// This file defines theme variables and customizes Bootstrap
+
+// First import Bootstrap functions so we can use them
+@import "bootstrap/scss/functions";
+
+// Import our variables
+@import "variables";
+
+// Override Bootstrap's default variables with our own
+// Make sure to use proper units for all measurements
+$font-family-base: $font-family-base;
+$font-family-sans-serif: $font-family-base;
+
+// Colors - make sure these are color values
+$primary: $primary;
+$secondary: $secondary;
+$danger: $danger;
+
+// Button customization - use proper units
+$btn-font-weight: $font-weight-medium;
+$btn-border-radius: 8px;
+$btn-transition: all 0.3s ease;
+$btn-font-size: 16px;
+$btn-line-height: 1.5; // Use unitless value for line-height
+$btn-padding-y: 8px;
+$btn-padding-x: 24px;
+
+// Small button customization
+$btn-padding-y-sm: 4px;
+$btn-padding-x-sm: 16px;
+$btn-font-size-sm: 14px;
+$btn-line-height-sm: 1.5; // Use unitless value for line-height
+
+$modal-content-bg: $grey-700;
+
+// Input/Form customization
+$input-bg: $white;
+$input-color: $grey-900;
+$input-border-color: $grey-700;
+$input-border-width: 1px;
+$input-border-radius: 16px;
+$input-padding-y: 12px;
+$input-padding-x: 16px;
+$input-font-size: 16px;
+$input-line-height: 1.9; // Use unitless value for line-height
+$input-height: 56px;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow: none;
+$input-placeholder-color: $grey-500;
+$form-label-color: $white;
+$form-label-font-weight: $font-weight-medium;
+$form-label-margin-bottom: 8px;
+$form-text-color: $grey-500;
+$form-text-margin-top: 8px;
+$form-check-input-border: 1px solid $grey-700;
+
+// Table customization
+$table-bg: transparent;
+$table-color: $white;
+$table-border-color: $grey-700;
+$table-hover-bg: rgba(255, 255, 255, 0.03);
+$table-hover-color: $white;
+
+// Card customization
+$card-spacer-y: $card-padding-y;
+$card-spacer-x: $card-padding-x;
+
+// Define custom theme colors
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
+);
+
+// Now import Bootstrap variables and the rest of Bootstrap
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+
+// Import the rest of Bootstrap
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/accordion";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/pagination";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/progress";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/toasts";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
+@import "bootstrap/scss/carousel";
+@import "bootstrap/scss/spinners";
+@import "bootstrap/scss/offcanvas";
+@import "bootstrap/scss/placeholders";
+
+// Helpers and utilities
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";
+
+// For now, we'll also create CSS variables that can be used in our CSS
+:root {
+  // Colors
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --white: #{$white};
+  --black: #{$black};
+  --danger: #{$danger};
+
+  // Grey Scale
+  --grey-100: #{$grey-100};
+  --grey-200: #{$grey-200};
+  --grey-300: #{$grey-300};
+  --grey-400: #{$grey-400};
+  --grey-500: #{$grey-500};
+  --grey-600: #{$grey-600};
+  --grey-700: #{$grey-700};
+  --grey-800: #{$grey-800};
+  --grey-900: #{$grey-900};
+
+  // Typography
+  --font-family-base: #{$font-family-base};
+  --font-weight-normal: #{$font-weight-normal};
+  --font-weight-medium: #{$font-weight-medium};
+  --font-weight-bold: #{$font-weight-bold};
+
+  // Body Text Sizes
+  --body-large-size: #{$body-large-size};
+  --body-large-line-height: #{$body-large-line-height};
+  --body-default-size: #{$body-default-size};
+  --body-default-line-height: #{$body-default-line-height};
+  --body-small-size: #{$body-small-size};
+  --body-small-line-height: #{$body-small-line-height};
+
+  // Lead Text
+  --lead-font-size: #{$lead-font-size};
+  --lead-line-height: #{$lead-line-height};
+
+  // Border Radius
+  --border-radius: #{$border-radius};
+  --border-radius-sm: #{$border-radius-sm};
+
+  // Border Colors
+  --border-color: #{$border-color};
+
+  // Breakpoints
+  --breakpoint-xs: #{$breakpoint-xs};
+  --breakpoint-sm: #{$breakpoint-sm};
+  --breakpoint-md: #{$breakpoint-md};
+  --breakpoint-lg: #{$breakpoint-lg};
+  --breakpoint-xl: #{$breakpoint-xl};
+
+  // Modal
+  --modal-content-bg: #{$modal-content-bg};
+
+  // Table
+  --bs-table-color: var(--white);
+  --bs-table-bg: var(--table-bg);
+  --bs-table-border-color: var(--border-color);
+
+  // Table hover state
+  --bs-table-hover-color: var(--white);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.03);
+
+  // Table header
+  --bs-table-th-color: var(--grey-400);
+
+  // Table cell padding
+  --bs-table-cell-padding-y: 1.25rem;
+  --bs-table-cell-padding-x: 1rem;
+
+  // Table cell padding for small tables
+  --bs-table-cell-padding-y-sm: 0.75rem;
+  --bs-table-cell-padding-x-sm: 0.5rem;
+
+  // Navbar
+  --bs-navbar-padding-y: 0.75rem;
+  --bs-navbar-padding-x: 1.5rem;
+
+  // Navbar background and border
+  --bs-navbar-bg: rgba(3, 3, 4, 0.8);
+  --bs-navbar-border-color: rgba(255, 255, 255, 0.1);
+  --bs-navbar-border-width: 1px;
+  --bs-navbar-border-radius: 12px;
+
+  // Navbar links
+  --bs-navbar-color: var(--white);
+  --bs-navbar-hover-color: rgba(255, 255, 255, 0.7);
+  --bs-navbar-active-color: rgba(255, 255, 255, 0.7);
+  --bs-navbar-disabled-color: rgba(255, 255, 255, 0.3);
+
+  // Navbar nav links
+  --bs-navbar-nav-link-padding-x: 0.75rem;
+  --bs-navbar-nav-link-padding-y: 0.5rem;
+
+  // Navbar toggler
+  --bs-navbar-toggler-padding-y: 0.25rem;
+  --bs-navbar-toggler-padding-x: 0.5rem;
+  --bs-navbar-toggler-font-size: 1rem;
+  --bs-navbar-toggler-border-radius: var(--border-radius);
+
+  // Navbar brand
+  --bs-navbar-brand-padding-y: 0;
+  --bs-navbar-brand-margin-end: 1rem;
+}
+
+// Navbar overrides for dark mode
+[data-bs-theme="dark"] {
+  // Navbar padding and appearance
+  --bs-navbar-padding-y: 0.75rem;
+  --bs-navbar-padding-x: 1.5rem;
+
+  // Navbar background and border
+  --bs-navbar-bg: rgba(3, 3, 4, 0.8);
+  --bs-navbar-border-color: rgba(255, 255, 255, 0.1);
+  --bs-navbar-border-width: 1px;
+  --bs-navbar-border-radius: 12px;
+
+  // Navbar links
+  --bs-navbar-color: var(--white);
+  --bs-navbar-hover-color: rgba(255, 255, 255, 0.7);
+  --bs-navbar-active-color: rgba(255, 255, 255, 0.7);
+  --bs-navbar-disabled-color: rgba(255, 255, 255, 0.3);
+
+  // Navbar nav links
+  --bs-navbar-nav-link-padding-x: 0.75rem;
+  --bs-navbar-nav-link-padding-y: 0.5rem;
+
+  // Navbar toggler
+  --bs-navbar-toggler-padding-y: 0.25rem;
+  --bs-navbar-toggler-padding-x: 0.5rem;
+  --bs-navbar-toggler-font-size: 1rem;
+  --bs-navbar-toggler-border-radius: var(--border-radius);
+
+  // Navbar brand
+  --bs-navbar-brand-padding-y: 0;
+  --bs-navbar-brand-margin-end: 1rem;
+}

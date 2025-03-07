@@ -1,0 +1,35 @@
+// Card Components
+
+// Glass Card - transparent with border
+.card-glass {
+  background-color: rgba(3, 3, 4, 0.4);
+}
+
+// Solid Card - with primary color background
+.card-solid {
+  background-color: var(--primary);
+  border: none;
+}
+
+// Card Help Icon
+.card-help {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--grey-700);
+  color: var(--white);
+  font-size: var(--body-small-size);
+  cursor: help;
+  transition: all 0.2s ease-in-out;
+  z-index: 10;
+
+  &:hover {
+    background-color: var(--grey-600);
+  }
+}
