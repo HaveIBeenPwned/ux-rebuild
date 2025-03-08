@@ -142,33 +142,24 @@
           </div>
         </div>
 
-        <!-- Statistics -->
-        <div class="breach-summary mb-5">
-          <div class="breach-summary-header">
-            <h4 class="text-center mb-3">Breach Summary</h4>
-            <div class="breach-summary-divider"></div>
-          </div>
-          <div class="breach-summary-content">
-            <div class="breach-summary-item">
-              <div class="breach-summary-icon">
-                <i class="bi bi-shield-exclamation"></i>
-              </div>
-              <div class="breach-summary-count">3</div>
-              <div class="breach-summary-label">Data Breaches</div>
-              <div class="breach-summary-description">
-                Services that have had their databases compromised, exposing
-                user data
-              </div>
-            </div>
-            <div class="breach-summary-divider-vertical"></div>
-            <div class="breach-summary-item">
-              <div class="breach-summary-icon">
-                <i class="bi bi-clipboard-data"></i>
-              </div>
-              <div class="breach-summary-count">2</div>
-              <div class="breach-summary-label">Pastes</div>
-              <div class="breach-summary-description">
-                Instances where your data was found in text sharing sites
+        <!-- Statistics Row -->
+        <div class="row mb-4">
+          <!-- Breach Summary -->
+          <div class="col-12">
+            <div class="data-summary breach-summary">
+              <div class="data-summary-content">
+                <div class="data-summary-item">
+                  <div class="data-summary-text">
+                    <div class="data-summary-count-wrapper">
+                      <div class="data-summary-count">3</div>
+                      <h3 class="data-summary-label">Data Breaches</h3>
+                    </div>
+                    <div class="data-summary-description">
+                      Services that have had their databases compromised,
+                      exposing your personal information
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -178,15 +169,12 @@
         <div class="row">
           <div class="col-12">
             <div class="section-container">
-              <h3 class="section-heading">
-                <i class="bi bi-shield-exclamation me-2"></i>Data Breaches
-              </h3>
               <div class="timeline-container position-relative">
                 <div class="timeline-items">
                   <!-- LinkedIn Breach -->
                   <div class="timeline-item">
                     <div class="timeline-date">
-                      <span class="timeline-date-text">Jun 5</span>
+                      <span class="timeline-date-text">Jun</span>
                       <span class="timeline-date-text">2012</span>
                     </div>
                     <div class="timeline-content">
@@ -294,7 +282,7 @@
                   <!-- Adobe Breach -->
                   <div class="timeline-item">
                     <div class="timeline-date">
-                      <span class="timeline-date-text">Oct 4</span>
+                      <span class="timeline-date-text">Oct</span>
                       <span class="timeline-date-text">2013</span>
                     </div>
                     <div class="timeline-content">
@@ -401,7 +389,7 @@
                   <!-- Canva Breach -->
                   <div class="timeline-item">
                     <div class="timeline-date">
-                      <span class="timeline-date-text">May 24</span>
+                      <span class="timeline-date-text">May</span>
                       <span class="timeline-date-text">2019</span>
                     </div>
                     <div class="timeline-content">
@@ -511,13 +499,32 @@
           </div>
         </div>
 
+        <!-- Paste Summary -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="data-summary paste-summary">
+              <div class="data-summary-content">
+                <div class="data-summary-item">
+                  <div class="data-summary-text">
+                    <div class="data-summary-count-wrapper">
+                      <div class="data-summary-count">2</div>
+                      <h3 class="data-summary-label">Paste Records</h3>
+                    </div>
+                    <div class="data-summary-description">
+                      Instances where your data was found in text sharing sites
+                      or public data dumps
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Pastes Table -->
-        <div class="row mt-5">
+        <div class="row">
           <div class="col-12">
             <div class="section-container">
-              <h3 class="section-heading">
-                <i class="bi bi-clipboard-data me-2"></i>Paste Records
-              </h3>
               <div class="table-responsive">
                 <table class="table table-custom">
                   <thead>
