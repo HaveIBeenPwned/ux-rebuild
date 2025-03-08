@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typography - Have I Been Pwned</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/main.css" rel="stylesheet" />
+    <!-- custom.css styles have been migrated to main.css -->
+
+    <style>
+      .typography-section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        border-radius: var(--border-radius);
+        background-color: rgba(3, 3, 4, 0.5);
+        border: 1px solid var(--border-color);
+      }
+
+      .typography-example {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border-radius: var(--border-radius-sm);
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+
+      .typography-code {
+        display: block;
+        margin-top: 0.5rem;
+        padding: 0.5rem;
+        background-color: var(--grey-800);
+        border-radius: var(--border-radius-sm);
+        font-family: monospace;
+        font-size: 14px;
+        color: var(--grey-300);
+      }
+
+      .color-swatch {
+        width: 100%;
+        height: 80px;
+        border-radius: var(--border-radius-sm);
+        margin-bottom: 0.5rem;
+      }
+
+      .color-label {
+        font-size: 14px;
+        margin-bottom: 0.25rem;
+      }
+
+      .color-value {
+        font-family: monospace;
+        font-size: 12px;
+        color: var(--grey-400);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+        <div class="d-flex align-items-center gap-3 d-lg-none">
+          <button class="btn btn-secondary">Notify me</button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="button.html">Buttons</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="card.html">Cards</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="input.html">Inputs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="modal.html">Modals</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="table.html">Tables</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="prompt.html">Prompts</a>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-secondary d-none d-lg-inline-flex">
+          Notify me
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <h1 class="mb-4">Typography</h1>
+          <p class="lead mb-5">
+            This page showcases the typography styles defined in our Sass
+            variables and components.
+          </p>
+
+          <!-- Display Headings -->
+          <div class="typography-section">
+            <h2 class="mb-4">Display Headings</h2>
+            <p class="mb-4">
+              Display headings are used for large, impactful text elements like
+              hero sections and major page headers.
+            </p>
+
+            <div class="typography-example">
+              <div class="display-xxxl">Display XXXL</div>
+              <code class="typography-code">
+                .display-xxxl {<br />
+                &nbsp;&nbsp;font-size: $display-xxxl-size; // 104px<br />
+                &nbsp;&nbsp;line-height: $display-xxxl-line-height; // 104px<br />
+                &nbsp;&nbsp;font-weight: $font-weight-bold; // 700<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <div class="display-xxl">Display XXL</div>
+              <code class="typography-code">
+                .display-xxl {<br />
+                &nbsp;&nbsp;font-size: $display-xxl-size; // 88px<br />
+                &nbsp;&nbsp;line-height: $display-xxl-line-height; // 88px<br />
+                &nbsp;&nbsp;font-weight: $font-weight-bold; // 700<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <div class="display-xl">Display XL</div>
+              <code class="typography-code">
+                .display-xl {<br />
+                &nbsp;&nbsp;font-size: $display-xl-size; // 72px<br />
+                &nbsp;&nbsp;line-height: $display-xl-line-height; // 72px<br />
+                &nbsp;&nbsp;font-weight: $font-weight-bold; // 700<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <div class="display-lg">Display LG</div>
+              <code class="typography-code">
+                .display-lg {<br />
+                &nbsp;&nbsp;font-size: $display-lg-size; // 56px<br />
+                &nbsp;&nbsp;line-height: $display-lg-line-height; // 56px<br />
+                &nbsp;&nbsp;font-weight: $font-weight-bold; // 700<br />
+                }
+              </code>
+            </div>
+          </div>
+
+          <!-- Headings -->
+          <div class="typography-section">
+            <h2 class="mb-4">Headings</h2>
+            <p class="mb-4">
+              Standard headings for structuring content hierarchies.
+            </p>
+
+            <div class="typography-example">
+              <h1>Heading 1</h1>
+              <code class="typography-code">
+                h1, .h1 {<br />
+                &nbsp;&nbsp;font-size: 40px;<br />
+                &nbsp;&nbsp;line-height: 52px;<br />
+                &nbsp;&nbsp;font-weight: $font-weight-medium; // 500<br />
+                &nbsp;&nbsp;color: $white;<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <h2>Heading 2</h2>
+              <code class="typography-code">
+                h2, .h2 {<br />
+                &nbsp;&nbsp;font-size: 32px;<br />
+                &nbsp;&nbsp;line-height: 42px;<br />
+                &nbsp;&nbsp;font-weight: $font-weight-medium; // 500<br />
+                &nbsp;&nbsp;color: $white;<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <h3>Heading 3</h3>
+              <code class="typography-code">
+                h3, .h3 {<br />
+                &nbsp;&nbsp;font-size: 28px;<br />
+                &nbsp;&nbsp;line-height: 37px;<br />
+                &nbsp;&nbsp;font-weight: $font-weight-medium; // 500<br />
+                &nbsp;&nbsp;color: $white;<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <h4>Heading 4</h4>
+              <code class="typography-code">
+                h4, .h4 {<br />
+                &nbsp;&nbsp;font-size: 24px;<br />
+                &nbsp;&nbsp;line-height: 32px;<br />
+                &nbsp;&nbsp;font-weight: $font-weight-medium; // 500<br />
+                &nbsp;&nbsp;color: $white;<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <h5>Heading 5</h5>
+              <code class="typography-code">
+                h5, .h5 {<br />
+                &nbsp;&nbsp;font-size: 20px;<br />
+                &nbsp;&nbsp;line-height: 26px;<br />
+                &nbsp;&nbsp;font-weight: $font-weight-medium; // 500<br />
+                &nbsp;&nbsp;color: $white;<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <h6>Heading 6</h6>
+              <code class="typography-code">
+                h6, .h6 {<br />
+                &nbsp;&nbsp;font-size: 16px;<br />
+                &nbsp;&nbsp;line-height: 21px;<br />
+                &nbsp;&nbsp;font-weight: $font-weight-medium; // 500<br />
+                &nbsp;&nbsp;color: $white;<br />
+                }
+              </code>
+            </div>
+          </div>
+
+          <!-- Body Text -->
+          <div class="typography-section">
+            <h2 class="mb-4">Body Text</h2>
+            <p class="mb-4">Body text styles for general content.</p>
+
+            <div class="typography-example">
+              <p class="body-large">
+                This is large body text. Used for important paragraphs or when
+                you need slightly larger text for emphasis.
+              </p>
+              <code class="typography-code">
+                .body-large {<br />
+                &nbsp;&nbsp;font-size: $body-large-size; // 18px<br />
+                &nbsp;&nbsp;line-height: $body-large-line-height; // 27px<br />
+                &nbsp;&nbsp;font-weight: $font-weight-normal; // 400<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <p class="body-default">
+                This is default body text. The standard text size used for most
+                content throughout the application.
+              </p>
+              <code class="typography-code">
+                .body-default {<br />
+                &nbsp;&nbsp;font-size: $body-default-size; // 16px<br />
+                &nbsp;&nbsp;line-height: $body-default-line-height; // 24px<br />
+                &nbsp;&nbsp;font-weight: $font-weight-normal; // 400<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <p class="body-small">
+                This is small body text. Used for less important information,
+                captions, footnotes, etc.
+              </p>
+              <code class="typography-code">
+                .body-small {<br />
+                &nbsp;&nbsp;font-size: $body-small-size; // 14px<br />
+                &nbsp;&nbsp;line-height: $body-small-line-height; // 21px<br />
+                &nbsp;&nbsp;font-weight: $font-weight-normal; // 400<br />
+                }
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <p class="lead">
+                This is lead text. Used for introductory paragraphs or to
+                highlight important information.
+              </p>
+              <code class="typography-code">
+                .lead {<br />
+                &nbsp;&nbsp;font-size: $lead-font-size; // 21px<br />
+                &nbsp;&nbsp;line-height: $lead-line-height; // 32px<br />
+                &nbsp;&nbsp;font-weight: $font-weight-normal; // 400<br />
+                }
+              </code>
+            </div>
+          </div>
+
+          <!-- Font Weights -->
+          <div class="typography-section">
+            <h2 class="mb-4">Font Weights</h2>
+            <p class="mb-4">Available font weights in our design system.</p>
+
+            <div class="typography-example">
+              <p style="font-weight: 400">
+                Regular (400) - Primary text weight
+              </p>
+              <code class="typography-code">
+                font-weight: $font-weight-normal; // 400
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <p style="font-weight: 500">
+                Medium (500) - Headings and emphasis
+              </p>
+              <code class="typography-code">
+                font-weight: $font-weight-medium; // 500
+              </code>
+            </div>
+
+            <div class="typography-example">
+              <p style="font-weight: 700">
+                Bold (700) - Strong emphasis and display text
+              </p>
+              <code class="typography-code">
+                font-weight: $font-weight-bold; // 700
+              </code>
+            </div>
+          </div>
+
+          <!-- Colors -->
+          <div class="typography-section">
+            <h2 class="mb-4">Colors</h2>
+            <p class="mb-4">Primary colors used in our typography.</p>
+
+            <div class="row">
+              <div class="col-md-3 mb-4">
+                <div
+                  class="color-swatch"
+                  style="background-color: var(--white)"
+                ></div>
+                <div class="color-label">White (Primary Text)</div>
+                <div class="color-value">$white: #f6f8fa;</div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div
+                  class="color-swatch"
+                  style="background-color: var(--primary)"
+                ></div>
+                <div class="color-label">Primary</div>
+                <div class="color-value">$primary: #1d72a7;</div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div
+                  class="color-swatch"
+                  style="background-color: var(--secondary)"
+                ></div>
+                <div class="color-label">Secondary</div>
+                <div class="color-value">$secondary: #152b39;</div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div
+                  class="color-swatch"
+                  style="background-color: var(--black)"
+                ></div>
+                <div class="color-label">Black (Background)</div>
+                <div class="color-value">$black: #030304;</div>
+              </div>
+            </div>
+
+            <h3 class="mt-4 mb-3">Grey Scale</h3>
+            <div class="row">
+              <div class="col-md-3 mb-4">
+                <div
+                  class="color-swatch"
+                  style="background-color: var(--grey-100)"
+                ></div>
+                <div class="color-label">Grey 100</div>
+                <div class="color-value">$grey-100: #ecf1f4;</div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div
+                  class="color-swatch"
+                  style="background-color: var(--grey-300)"
+                ></div>
+                <div class="color-label">Grey 300</div>
+                <div class="color-value">$grey-300: #c1cfd9;</div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div
+                  class="color-swatch"
+                  style="background-color: var(--grey-500)"
+                ></div>
+                <div class="color-label">Grey 500</div>
+                <div class="color-value">$grey-500: #6a8aa4;</div>
+              </div>
+              <div class="col-md-3 mb-4">
+                <div
+                  class="color-swatch"
+                  style="background-color: var(--grey-700)"
+                ></div>
+                <div class="color-label">Grey 700</div>
+                <div class="color-value">$grey-700: #374a5a;</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Font Family -->
+          <div class="typography-section">
+            <h2 class="mb-4">Font Family</h2>
+            <p class="mb-4">
+              Our primary font family is Switzer, a modern sans-serif typeface.
+            </p>
+
+            <div class="typography-example">
+              <p style="font-family: 'Switzer', sans-serif">
+                Switzer - A modern sans-serif typeface with clean lines and
+                excellent readability.
+              </p>
+              <code class="typography-code">
+                $font-family-base: "Switzer", sans-serif;
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

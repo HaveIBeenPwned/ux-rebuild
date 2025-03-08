@@ -1,0 +1,95 @@
+// Tooltip Component Styles
+
+/* Tooltip */
+.tooltip-container {
+  position: static;
+}
+
+.tooltip-container:hover .tooltip-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translate(-50%, 10px);
+  width: 300px;
+  padding: 16px;
+  background-color: var(--grey-800);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  color: var(--grey-300);
+  font-size: var(--body-small-size);
+  line-height: var(--body-small-line-height);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  z-index: 1000;
+}
+
+.tooltip-content h6 {
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.tooltip-content p {
+  margin-bottom: 0;
+}
+
+.tooltip-content::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: var(--grey-800) transparent transparent transparent;
+}
+
+/* Mobile Tooltip Adjustments */
+@media (max-width: var(--breakpoint-sm)) {
+  .tooltip-content {
+    width: calc(100vw - 48px);
+    max-width: 300px;
+    left: 50%;
+    transform: translate(-50%, 10px);
+  }
+
+  .tooltip-container:hover .tooltip-content {
+    transform: translate(-50%, 0);
+  }
+
+  .tooltip-content::after {
+    left: 50%;
+  }
+
+  /* For tooltips near the right edge */
+  .tooltip-container.d-inline-block .tooltip-content {
+    left: auto;
+    right: -20px;
+    transform: translate(0, 10px);
+  }
+
+  .tooltip-container.d-inline-block:hover .tooltip-content {
+    transform: translate(0, 0);
+  }
+
+  .tooltip-container.d-inline-block .tooltip-content::after {
+    left: auto;
+    right: 20px;
+  }
+
+  /* Smaller font size for mobile tooltips */
+  .tooltip-content h6 {
+    font-size: 0.9rem;
+  }
+
+  .tooltip-content p {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+}

@@ -1,0 +1,41 @@
+// Form Components
+.input-group {
+  position: relative;
+  .form-control {
+    border-radius: 16px !important;
+
+    + .btn {
+      position: absolute;
+      right: 6px;
+      top: 7px;
+      height: 42px;
+      border-radius: 16px !important;
+    }
+  }
+}
+
+// Input with Icon
+.input-with-icon {
+  position: relative;
+
+  .text-input {
+    padding-right: 48px;
+  }
+}
+
+.input-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--grey-500);
+}
+
+// Error Message
+.input-error-message {
+  color: var(--danger);
+  font-size: var(--body-small-size);
+  margin-top: 8px;
+}

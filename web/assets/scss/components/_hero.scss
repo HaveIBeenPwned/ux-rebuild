@@ -1,0 +1,17 @@
+// Hero Component Styles
+
+/* Hero Section Component */
+.hero {
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.hero-title {
+  background: linear-gradient(to right, #c8e5f8, var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+}

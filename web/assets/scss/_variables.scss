@@ -1,0 +1,66 @@
+// Variables
+// This file contains all the variables used throughout the project
+
+// Colors
+$primary: #1d72a7;
+$secondary: #152b39;
+$white: #f6f8fa;
+$black: #030304;
+$danger: #db336e;
+
+// Grey Scale
+$grey-100: #ecf1f4;
+$grey-200: #d9e2e8;
+$grey-300: #c1cfd9;
+$grey-400: #9cb1c2;
+$grey-500: #6a8aa4;
+$grey-600: #4b667b;
+$grey-700: #374a5a;
+$grey-800: #1d282f;
+$grey-900: #131a20;
+
+// Typography
+$font-family-base: "Switzer", sans-serif;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Display Heading Sizes
+$display-xxxl-size: 104px;
+$display-xxxl-line-height: 104px;
+$display-xxl-size: 88px;
+$display-xxl-line-height: 88px;
+$display-xl-size: 72px;
+$display-xl-line-height: 72px;
+$display-lg-size: 56px;
+$display-lg-line-height: 56px;
+
+// Body Text Sizes
+$body-large-size: 18px;
+$body-large-line-height: 27px;
+$body-default-size: 16px;
+$body-default-line-height: 24px;
+$body-small-size: 14px;
+$body-small-line-height: 21px;
+
+// Lead Text
+$lead-font-size: 21px;
+$lead-line-height: 32px;
+
+// Border Radius
+$border-radius: 16px;
+$border-radius-sm: 8px;
+
+// Border Colors
+$border-color: rgba(255, 255, 255, 0.08);
+
+// Breakpoints
+$breakpoint-xs: 390px; // Extra small devices (phones)
+$breakpoint-sm: 576px; // Small devices (landscape phones)
+$breakpoint-md: 768px; // Medium devices (tablets)
+$breakpoint-lg: 991px; // Large devices (desktops)
+$breakpoint-xl: 1200px; // Extra large devices (large desktops)
+
+// Card Spacing
+$card-padding-y: 24px;
+$card-padding-x: 24px;

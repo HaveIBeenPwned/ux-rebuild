@@ -6,13 +6,65 @@
 .
 ├── index.html              # Main HTML file
 ├── assets/
-│   ├── css/
-│   │   ├── theme.css      # Base theme variables and styles
-│   │   ├── components.css # Reusable component styles
-│   │   └── custom.css     # Client-specific customizations
+│   ├── scss/               # Sass source files
+│   │   ├── main.scss       # Main Sass file that imports all partials
+│   │   ├── _variables.scss # Global variables
+│   │   ├── _theme.scss     # Base theme variables and styles
+│   │   ├── _custom.scss    # Client-specific customizations
+│   │   ├── components/     # Component-specific styles
+│   │   │   ├── _index.scss # Imports all component styles
+│   │   │   ├── _button.scss
+│   │   │   ├── _card.scss
+│   │   │   ├── _input.scss
+│   │   │   ├── _modal.scss
+│   │   │   ├── _navbar.scss
+│   │   │   ├── _radio.scss
+│   │   │   ├── _table.scss
+│   │   │   ├── _tooltip.scss
+│   │   │   └── _typography.scss
+│   │   └── utilities/      # Utility classes
+│   │       └── _index.scss
+│   ├── css/                # Compiled CSS (generated from Sass)
+│   │   └── main.css        # Compiled and minified CSS
 │   └── js/
-│       └── main.js        # Custom JavaScript
+│       └── main.js         # Custom JavaScript
 ```
+
+## Sass Usage
+
+### Getting Started
+
+1. Install dependencies:
+
+   ```
+   npm install
+   ```
+
+2. Compile Sass to CSS:
+
+   ```
+   npm run sass
+   ```
+
+3. Watch for changes during development:
+   ```
+   npm run sass:watch
+   ```
+
+### Sass Structure
+
+- **main.scss**: The entry point that imports all other Sass partials
+- **\_variables.scss**: Global variables for colors, spacing, etc.
+- **\_theme.scss**: Base theme styles and Bootstrap overrides
+- **\_custom.scss**: Client-specific customizations
+- **components/**: Component-specific styles organized in separate files
+- **utilities/**: Utility classes for common styling needs
+
+### Customizing Styles
+
+1. **Global Variables**: Modify `_variables.scss` to change colors, fonts, etc.
+2. **Component Styles**: Edit or add files in the `components/` directory
+3. **Custom Styles**: Add client-specific styles to `_custom.scss`
 
 ## Features
 
@@ -28,7 +80,7 @@
 - Primary: #1D72A7
 - Secondary: #152B39
 - Grey scale range
-- Customizable through CSS variables
+- Customizable through Sass variables
 
 ### Components
 
@@ -148,10 +200,8 @@ All components are built with Bootstrap 5 and enhanced with custom styling:
       rel="stylesheet"
     />
 
-    <!-- Custom CSS -->
-    <link href="assets/css/theme.css" rel="stylesheet" />
-    <link href="assets/css/components.css" rel="stylesheet" />
-    <link href="assets/css/custom.css" rel="stylesheet" />
+    <!-- Custom CSS (compiled from Sass) -->
+    <link href="assets/css/main.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Your content here -->
@@ -166,7 +216,7 @@ All components are built with Bootstrap 5 and enhanced with custom styling:
 
 1. Copy the basic structure above
 2. Use existing components as building blocks
-3. Add custom styles in `custom.css` if needed
+3. Add custom styles in the appropriate Sass files
 
 ## Best Practices
 
@@ -184,6 +234,7 @@ All components are built with Bootstrap 5 and enhanced with custom styling:
 
 3. **Custom Styling**
 
-   - Add new styles to `custom.css`
-   - Use CSS variables for consistency
+   - Add new component styles to the appropriate file in `components/`
+   - Add global variables to `_variables.scss`
+   - Add client-specific styles to `_custom.scss`
    - Follow the established naming conventions

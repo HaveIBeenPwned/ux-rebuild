@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Domain Search - Have I Been Pwned</title>
 
     <!-- Bootstrap 5 CSS -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    <!-- <link
       rel="stylesheet"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    /> -->
     <!-- Bootstrap Icons -->
     <link
       rel="stylesheet"
@@ -22,15 +25,13 @@
     />
 
     <!-- Custom CSS -->
-    <link href="../assets/css/theme.css" rel="stylesheet" />
-    <link href="../assets/css/components.css" rel="stylesheet" />
-    <link href="../assets/css/custom.css" rel="stylesheet" />
+    <link href="../assets/css/main.css" rel="stylesheet" />
   </head>
   <body class="bg-black">
     <!-- Navigation Component -->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a href="../index.html" class="navbar-brand">
+        <a href="/" class="navbar-brand">
           <img
             src="../assets/images/hibp-logo.svg"
             alt="Have I Been Pwned"
@@ -38,9 +39,7 @@
           />
         </a>
         <div class="d-flex align-items-center gap-3 d-lg-none">
-          <button class="btn btn-secondary btn-sm d-none d-sm-inline-flex">
-            Notify me
-          </button>
+          <button class="btn btn-secondary">Notify me</button>
           <button
             class="navbar-toggler"
             type="button"
@@ -53,7 +52,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Domain search</a>
+              <a class="nav-link" href="pages/domain_search.html"
+                >Domain search</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Who's been pwned</a>
@@ -69,9 +70,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Donate</a>
-            </li>
-            <li class="nav-item d-sm-none">
-              <a class="nav-link" href="#">Notify me</a>
             </li>
           </ul>
         </div>
@@ -150,14 +148,14 @@
             <!-- Action Buttons -->
             <div class="d-flex justify-content-end mb-4 mb-sm-3">
               <button
-                class="btn btn-sm fs-7 fs-md-6 btn-outline-primary me-2"
+                class="btn btn-sm fs-7 fs-md-6 btn-primary me-2"
                 data-bs-toggle="modal"
                 data-bs-target="#verificationModal"
               >
                 <i class="bi bi-plus-circle me-1"></i> Verify New Domain
               </button>
               <button
-                class="btn btn-sm fs-7 fs-md-6 btn-outline-secondary"
+                class="btn btn-sm fs-7 fs-md-6 btn-outline-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#subscriptionModal"
               >
@@ -166,92 +164,89 @@
             </div>
 
             <!-- Domains Table -->
-            <div class="card card-glass">
-              <div class="card-body p-0">
-                <div class="table-responsive">
-                  <table class="table table-dark table-hover mb-0">
-                    <thead>
-                      <tr>
-                        <th>Domain</th>
-                        <th>
-                          Addresses
-                          <span class="tooltip-container d-inline-block ms-1">
-                            <i class="bi bi-question"></i>
-                            <div class="tooltip-content">
-                              <h6>Addresses</h6>
-                              <p>
-                                The number of breached addresses on the domain
-                                the last time it was successfully indexed, based
-                                on breaches that are not classified as spam
-                                lists. The domain may be larger when next
-                                indexed if more breaches have impacted it since.
-                              </p>
-                              <p>
-                                This number does not include addresses found in
-                                pastes. A blank value will be shown if the
-                                domain hasn't yet been indexed. Enable debug
-                                mode to see more.
-                              </p>
-                            </div>
-                          </span>
-                        </th>
-                        <th>
-                          Stealer Logs
-                          <span class="tooltip-container d-inline-block ms-1">
-                            <i class="bi bi-question"></i>
-                            <div class="tooltip-content">
-                              <h6>Stealer Logs</h6>
-                              <p>
-                                The stealer log count is the number of email
-                                addresses captured by infostealers when the
-                                victim has been entering their credentials into
-                                a website on this domain. These addresses are
-                                searchable by the API to get all stealer log
-                                email addresses for a website domain.
-                              </p>
-                            </div>
-                          </span>
-                        </th>
-                        <th class="text-end">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody id="domainsTableBody">
-                      <tr>
-                        <td>example.com</td>
-                        <td>1,245</td>
-                        <td>38</td>
-                        <td class="table-actions">
-                          <button class="btn btn-xs btn-outline-primary me-1">
-                            <i class="bi bi-search"></i>
-                          </button>
-                          <button
-                            class="btn btn-xs btn-outline-danger remove-domain"
-                            data-domain="example.com"
-                          >
-                            <i class="bi bi-trash"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>mydomain.org</td>
-                        <td>87</td>
-                        <td>12</td>
-                        <td class="table-actions">
-                          <button class="btn btn-xs btn-outline-primary me-1">
-                            <i class="bi bi-search"></i>
-                          </button>
-                          <button
-                            class="btn btn-xs btn-outline-danger remove-domain"
-                            data-domain="mydomain.org"
-                          >
-                            <i class="bi bi-trash"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>Domain</th>
+                    <th>
+                      Addresses
+                      <span class="tooltip-container d-inline-block ms-1">
+                        <i class="bi bi-question"></i>
+                        <div class="tooltip-content">
+                          <h6>Addresses</h6>
+                          <p>
+                            The number of breached addresses on the domain the
+                            last time it was successfully indexed, based on
+                            breaches that are not classified as spam lists. The
+                            domain may be larger when next indexed if more
+                            breaches have impacted it since.
+                          </p>
+                          <p>
+                            This number does not include addresses found in
+                            pastes. A blank value will be shown if the domain
+                            hasn't yet been indexed. Enable debug mode to see
+                            more.
+                          </p>
+                        </div>
+                      </span>
+                    </th>
+                    <th>
+                      Stealer Logs
+                      <span class="tooltip-container d-inline-block ms-1">
+                        <i class="bi bi-question"></i>
+                        <div class="tooltip-content">
+                          <h6>Stealer Logs</h6>
+                          <p>
+                            The stealer log count is the number of email
+                            addresses captured by infostealers when the victim
+                            has been entering their credentials into a website
+                            on this domain. These addresses are searchable by
+                            the API to get all stealer log email addresses for a
+                            website domain.
+                          </p>
+                        </div>
+                      </span>
+                    </th>
+                    <th class="text-end">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="domainsTableBody">
+                  <tr>
+                    <td>example.com</td>
+                    <td>1,245</td>
+                    <td>38</td>
+                    <td class="table-actions">
+                      <button class="btn btn-xs btn-outline-primary me-1">
+                        <i class="bi bi-search"></i>
+                      </button>
+                      <button
+                        class="btn btn-xs btn-outline-danger remove-domain"
+                        data-domain="example.com"
+                      >
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>mydomain.org</td>
+                    <td>87</td>
+                    <td>12</td>
+                    <td class="table-actions">
+                      <button class="btn btn-xs btn-outline-primary me-1">
+                        <i class="bi bi-search"></i>
+                      </button>
+                      <button
+                        class="btn btn-xs btn-outline-danger remove-domain"
+                        data-domain="mydomain.org"
+                      >
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -260,7 +255,7 @@
 
     <!-- Domain Verification Modal -->
     <div
-      class="modal modal-dark fade"
+      class="modal fade"
       id="verificationModal"
       tabindex="-1"
       aria-labelledby="verificationModalLabel"
@@ -698,8 +693,13 @@
       </div>
     </div>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
     <!-- Custom JS -->
     <script src="../assets/js/custom.js"></script>

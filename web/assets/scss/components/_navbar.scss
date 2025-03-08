@@ -1,0 +1,14 @@
+// Navbar Component Styles
+
+/* Navbar Component */
+.navbar {
+  margin: 1rem auto;
+  max-width: 1140px;
+  width: 95%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.nav-item {
+  font-weight: var(--font-weight-medium);
+}
