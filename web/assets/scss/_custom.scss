@@ -204,3 +204,586 @@ body::before {
 }
 
 /* Add more custom styles below */
+
+/* Timeline Component Styles
+-------------------------------------------------- */
+.timeline {
+  &-container {
+    padding: 2rem 0;
+  }
+
+  &-items {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        rgba($primary, 0.1) 0%,
+        rgba($primary, 0.8) 15%,
+        rgba($primary, 0.8) 85%,
+        rgba($primary, 0.1) 100%
+      );
+      box-shadow: 0 0 8px rgba($primary, 0.4);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+  }
+
+  &-item {
+    position: relative;
+    width: 100%;
+    min-height: 150px;
+    margin-bottom: 12rem;
+    text-align: left;
+
+    // First item on the left, then alternating
+    &:nth-child(odd) {
+      padding-left: calc(50% + 30px);
+
+      .timeline-content {
+        left: 20px;
+      }
+    }
+
+    &:nth-child(even) {
+      padding-right: calc(50% + 30px);
+
+      .timeline-content {
+        right: 20px;
+      }
+    }
+  }
+
+  &-date {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(
+      135deg,
+      $primary 0%,
+      darken($primary, 15%) 100%
+    );
+    border: 2px solid rgba($white, 0.3);
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3; // Increased z-index to ensure it's above content
+    padding: 0.5rem;
+    color: $white;
+    box-shadow: 0 0.25rem 0.5rem rgba($black, 0.2);
+
+    i {
+      font-size: 1rem;
+      margin-bottom: 0.1rem;
+    }
+
+    &-text {
+      font-size: 0.65rem;
+      line-height: 1;
+      font-weight: 500;
+    }
+  }
+
+  &-content {
+    padding: 1.5rem;
+    background: linear-gradient(
+      145deg,
+      rgba($primary, 0.15) 0%,
+      rgba($primary, 0.05) 100%
+    );
+    backdrop-filter: blur(8px);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.5rem rgba($black, 0.15);
+    border: 1px solid rgba($primary, 0.2);
+    transition: all 0.3s ease;
+    position: absolute;
+    width: calc(
+      50% - 60px
+    ); // Further reduced width to add more space from center
+    top: 0;
+    z-index: 2;
+
+    .data-types-preview {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .recommended-actions-preview {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 0.5rem;
+        font-size: 0.875rem;
+
+        i {
+          margin-right: 0.5rem;
+          margin-top: 0.125rem;
+          font-size: 0.875rem;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0.25rem 1rem rgba($primary, 0.2);
+      border-color: rgba($primary, 0.3);
+    }
+  }
+
+  &-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  &-logo {
+    width: 36px;
+    height: 36px;
+    margin-right: 0.75rem;
+    background: linear-gradient(
+      135deg,
+      $primary 0%,
+      darken($primary, 15%) 100%
+    );
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    box-shadow: 0 0.125rem 0.25rem rgba($black, 0.15);
+
+    i {
+      font-size: 1.25rem;
+    }
+  }
+
+  &-badge {
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    border-radius: 0.25rem;
+
+    &-breach {
+      background-color: $danger;
+    }
+
+    &-paste {
+      background-color: $gray-600;
+    }
+  }
+
+  &-details {
+    display: none;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba($primary, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+    max-height: 300px;
+    overflow-y: auto;
+
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba($black, 0.05);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba($primary, 0.3);
+      border-radius: 3px;
+
+      &:hover {
+        background: rgba($primary, 0.5);
+      }
+    }
+
+    &.show {
+      display: block;
+    }
+
+    &-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+      background: rgba($black, 0.05);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-top: 0.5rem;
+
+      li {
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: flex-start;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        i {
+          margin-right: 0.75rem;
+          color: $primary;
+          font-size: 1rem;
+          margin-top: 0.125rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Statistics icon style
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  box-shadow: 0 0.25rem 0.5rem rgba($black, 0.15);
+
+  i {
+    font-size: 1.75rem;
+  }
+}
+
+// Custom card styles for statistics
+.card {
+  &.border-0.shadow-sm {
+    background: linear-gradient(
+      145deg,
+      rgba($white, 0.05) 0%,
+      rgba($primary, 0.05) 100%
+    );
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0.25rem 1rem rgba($black, 0.1) !important;
+    border: 1px solid rgba($primary, 0.1) !important;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1.5rem rgba($primary, 0.15) !important;
+    }
+  }
+}
+
+// Custom table styles
+.table-custom {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+
+  thead th {
+    border: none;
+    background: transparent;
+    color: $gray-500;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1rem;
+  }
+
+  tbody tr {
+    background: linear-gradient(
+      145deg,
+      rgba($white, 0.05) 0%,
+      rgba($primary, 0.05) 100%
+    );
+    box-shadow: 0 0.125rem 0.25rem rgba($black, 0.05);
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0.25rem 0.5rem rgba($primary, 0.1);
+    }
+
+    td {
+      border: none;
+      padding: 1rem;
+      vertical-align: middle;
+
+      &:first-child {
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+      }
+    }
+  }
+}
+
+.table-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+
+  i {
+    font-size: 1rem;
+  }
+}
+
+// Mobile responsive styles
+@include media-breakpoint-down(md) {
+  .timeline {
+    &-items::before {
+      left: 40px;
+    }
+
+    &-item:nth-child(odd),
+    &-item:nth-child(even) {
+      padding-left: 80px;
+      padding-right: 0;
+      text-align: left;
+      min-height: 180px;
+      margin-bottom: 14rem; // Increased spacing on mobile to match desktop
+
+      .timeline-content {
+        left: 90px; // Increased left spacing to avoid overlap with date circle
+        right: auto;
+        width: calc(100% - 110px);
+      }
+    }
+
+    &-date {
+      left: 40px;
+    }
+  }
+}
+
+// Breach Summary Component
+.breach-summary {
+  background: rgba($black, 0.05);
+  border-radius: 1rem;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba($primary, 0.05) 0%,
+      rgba($primary, 0.01) 100%
+    );
+    z-index: 0;
+  }
+
+  &-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1.5rem;
+
+    h4 {
+      font-weight: 600;
+      color: rgba($white, 0.9);
+    }
+  }
+
+  &-divider {
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      rgba($primary, 0) 0%,
+      rgba($primary, 0.5) 50%,
+      rgba($primary, 0) 100%
+    );
+    margin: 0 auto;
+    width: 50%;
+  }
+
+  &-divider-vertical {
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      rgba($primary, 0) 0%,
+      rgba($primary, 0.5) 50%,
+      rgba($primary, 0) 100%
+    );
+    align-self: stretch;
+    margin: 0 2rem;
+  }
+
+  &-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+
+      .breach-summary-divider-vertical {
+        width: 50%;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          rgba($primary, 0) 0%,
+          rgba($primary, 0.5) 50%,
+          rgba($primary, 0) 100%
+        );
+        margin: 2rem 0;
+      }
+    }
+  }
+
+  &-item {
+    text-align: center;
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      $primary 0%,
+      darken($primary, 15%) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba($black, 0.2);
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 50%;
+      background: linear-gradient(
+        135deg,
+        rgba($primary, 0.5) 0%,
+        rgba($primary, 0.1) 100%
+      );
+      z-index: -1;
+      filter: blur(8px);
+    }
+
+    i {
+      font-size: 2.5rem;
+      color: $white;
+    }
+  }
+
+  &-count {
+    font-size: 3rem;
+    font-weight: 700;
+    color: $white;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, $white 0%, rgba($white, 0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &-label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $primary;
+    margin-bottom: 0.75rem;
+  }
+
+  &-description {
+    font-size: 0.875rem;
+    color: rgba($white, 0.7);
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
+
+// Section Headings
+.section-heading {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $white;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  display: inline-block;
+
+  i {
+    color: $primary;
+    font-size: 1.75rem;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    filter: drop-shadow(0 0 5px rgba($primary, 0.5));
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, $primary, rgba($primary, 0.1));
+    border-radius: 3px;
+  }
+
+  // Add a subtle glow effect
+  text-shadow: 0 0 10px rgba($primary, 0.3);
+}
+
+// Section Containers
+.section-container {
+  background: rgba($black, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba($primary, 0.05);
+  position: relative;
+  overflow: hidden;
+}

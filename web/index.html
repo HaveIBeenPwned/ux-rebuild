@@ -30,6 +30,12 @@
       referrerpolicy="no-referrer"
     />
 
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
     <!-- Switzer Font -->
     <link
       href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
@@ -38,6 +44,7 @@
 
     <!-- Custom CSS -->
     <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/custom.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Navigation Component -->
@@ -109,13 +116,476 @@
                 type="email"
                 class="form-control"
                 placeholder="Email address"
+                id="emailInput"
               />
-              <button class="btn btn-primary">Check</button>
+              <button class="btn btn-primary" id="checkButton">Check</button>
             </div>
             <p class="text-muted body-small">
               Using Have I Been Pwned is subject to the
               <a class="text-grey-600" href="#">terms of use</a>
             </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breach Timeline Component (initially hidden) -->
+    <section id="breachTimeline" class="py-5 d-none">
+      <div class="container">
+        <!-- Timeline Header -->
+        <div class="row mb-4">
+          <div class="col-12 text-center">
+            <h2 class="fw-bold">Your Email Breach History</h2>
+            <p class="text-muted">
+              Timeline of data breaches affecting your email address
+            </p>
+          </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="breach-summary mb-5">
+          <div class="breach-summary-header">
+            <h4 class="text-center mb-3">Breach Summary</h4>
+            <div class="breach-summary-divider"></div>
+          </div>
+          <div class="breach-summary-content">
+            <div class="breach-summary-item">
+              <div class="breach-summary-icon">
+                <i class="bi bi-shield-exclamation"></i>
+              </div>
+              <div class="breach-summary-count">3</div>
+              <div class="breach-summary-label">Data Breaches</div>
+              <div class="breach-summary-description">
+                Services that have had their databases compromised, exposing
+                user data
+              </div>
+            </div>
+            <div class="breach-summary-divider-vertical"></div>
+            <div class="breach-summary-item">
+              <div class="breach-summary-icon">
+                <i class="bi bi-clipboard-data"></i>
+              </div>
+              <div class="breach-summary-count">2</div>
+              <div class="breach-summary-label">Pastes</div>
+              <div class="breach-summary-description">
+                Instances where your data was found in text sharing sites
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="row">
+          <div class="col-12">
+            <div class="section-container">
+              <h3 class="section-heading">
+                <i class="bi bi-shield-exclamation me-2"></i>Data Breaches
+              </h3>
+              <div class="timeline-container position-relative">
+                <div class="timeline-items">
+                  <!-- LinkedIn Breach -->
+                  <div class="timeline-item">
+                    <div class="timeline-date">
+                      <span class="timeline-date-text">Jun 5</span>
+                      <span class="timeline-date-text">2012</span>
+                    </div>
+                    <div class="timeline-content">
+                      <div class="timeline-title">
+                        <div class="timeline-logo">
+                          <i class="bi bi-linkedin"></i>
+                        </div>
+                        <h5 class="mb-0 me-auto">LinkedIn</h5>
+                      </div>
+                      <div class="mt-2">
+                        <p class="mb-2">
+                          <strong>Compromised data:</strong><br />
+                          Email addresses, passwords (SHA1 hashes without salt)
+                        </p>
+
+                        <div class="mb-3">
+                          <strong>Recommended actions:</strong>
+                          <ul class="recommended-actions-preview mt-1 mb-0">
+                            <li>
+                              <i
+                                class="bi bi-check-circle-fill text-primary"
+                              ></i>
+                              Change your LinkedIn password immediately
+                            </li>
+                            <li>
+                              <i
+                                class="bi bi-check-circle-fill text-primary"
+                              ></i>
+                              Enable two-factor authentication
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div
+                          class="d-flex justify-content-between align-items-center"
+                        >
+                          <button
+                            class="btn btn-outline-primary toggle-details"
+                            data-breach-id="1"
+                          >
+                            More details
+                          </button>
+                        </div>
+                      </div>
+                      <div class="timeline-details" id="details-1">
+                        <h6 class="mt-3 mb-2">Full Description</h6>
+                        <p>
+                          In 2012, LinkedIn suffered a data breach that exposed
+                          the stored credentials of 164 million users. The
+                          passwords were stored as SHA1 hashes without salt,
+                          making them easily crackable. The data remained out of
+                          sight until being offered for sale on a dark market
+                          site 4 years later.
+                        </p>
+
+                        <h6 class="mt-3 mb-2">Compromised Data Types</h6>
+                        <ul class="timeline-details-list">
+                          <li><i class="bi bi-dot"></i>Email addresses</li>
+                          <li><i class="bi bi-dot"></i>Passwords</li>
+                          <li><i class="bi bi-dot"></i>User names</li>
+                        </ul>
+
+                        <h6 class="mt-3 mb-2">Recommended Actions</h6>
+                        <ul class="timeline-details-list">
+                          <li>
+                            <i class="bi bi-check-circle"></i>Change your
+                            LinkedIn password immediately
+                          </li>
+                          <li>
+                            <i class="bi bi-check-circle"></i>Enable two-factor
+                            authentication
+                          </li>
+                          <li>
+                            <i class="bi bi-check-circle"></i>Don't reuse this
+                            password on other sites
+                          </li>
+                        </ul>
+
+                        <h6 class="mt-3 mb-2">Important Dates</h6>
+                        <ul class="timeline-details-list">
+                          <li>
+                            <i class="bi bi-calendar-event"></i
+                            ><strong>Breach occurred:</strong> 6/5/2012
+                          </li>
+                          <li>
+                            <i class="bi bi-calendar-check"></i
+                            ><strong>Breach discovered:</strong> 5/18/2016
+                          </li>
+                        </ul>
+
+                        <div class="mt-3">
+                          <a
+                            href="https://www.linkedin.com/help/linkedin/answer/a1310/linkedin-account-security-matters"
+                            target="_blank"
+                            class="btn btn-sm btn-primary"
+                          >
+                            Official Information
+                            <i class="bi bi-box-arrow-up-right ms-1"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Adobe Breach -->
+                  <div class="timeline-item">
+                    <div class="timeline-date">
+                      <span class="timeline-date-text">Oct 4</span>
+                      <span class="timeline-date-text">2013</span>
+                    </div>
+                    <div class="timeline-content">
+                      <div class="timeline-title">
+                        <div class="timeline-logo">
+                          <i class="bi bi-strava"></i>
+                        </div>
+                        <h5 class="mb-0 me-auto">Strava</h5>
+                      </div>
+                      <div class="mt-2">
+                        <p class="mb-2">
+                          <strong>Compromised data:</strong><br />
+                          Email addresses, encrypted passwords, customer names
+                        </p>
+
+                        <div class="mb-3">
+                          <strong>Recommended actions:</strong>
+                          <ul class="recommended-actions-preview mt-1 mb-0">
+                            <li>
+                              <i
+                                class="bi bi-check-circle-fill text-primary"
+                              ></i>
+                              Change your Strava password
+                            </li>
+                            <li>
+                              <i
+                                class="bi bi-check-circle-fill text-primary"
+                              ></i>
+                              Monitor your financial statements
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div
+                          class="d-flex justify-content-between align-items-center"
+                        >
+                          <button
+                            class="btn btn-outline-primary toggle-details"
+                            data-breach-id="2"
+                          >
+                            More details
+                          </button>
+                        </div>
+                      </div>
+                      <div class="timeline-details" id="details-2">
+                        <h6 class="mt-3 mb-2">Full Description</h6>
+                        <p>
+                          In October 2013, Strava suffered a security breach
+                          that exposed user account information. The compromised
+                          data included email addresses, encrypted passwords,
+                          customer names, and payment information.
+                        </p>
+
+                        <h6 class="mt-3 mb-2">Compromised Data Types</h6>
+                        <ul class="timeline-details-list">
+                          <li><i class="bi bi-dot"></i>Email addresses</li>
+                          <li><i class="bi bi-dot"></i>Encrypted passwords</li>
+                          <li><i class="bi bi-dot"></i>Customer names</li>
+                          <li><i class="bi bi-dot"></i>Payment information</li>
+                        </ul>
+
+                        <h6 class="mt-3 mb-2">Recommended Actions</h6>
+                        <ul class="timeline-details-list">
+                          <li>
+                            <i class="bi bi-check-circle"></i>Change your Adobe
+                            password
+                          </li>
+                          <li>
+                            <i class="bi bi-check-circle"></i>Monitor your
+                            financial statements
+                          </li>
+                          <li>
+                            <i class="bi bi-check-circle"></i>Be cautious of
+                            phishing attempts
+                          </li>
+                        </ul>
+
+                        <h6 class="mt-3 mb-2">Important Dates</h6>
+                        <ul class="timeline-details-list">
+                          <li>
+                            <i class="bi bi-calendar-event"></i
+                            ><strong>Breach occurred:</strong> 10/4/2013
+                          </li>
+                          <li>
+                            <i class="bi bi-calendar-check"></i
+                            ><strong>Breach discovered:</strong> 10/4/2013
+                          </li>
+                        </ul>
+
+                        <div class="mt-3">
+                          <a
+                            href="https://helpx.adobe.com/security/products/secure-engineering.html"
+                            target="_blank"
+                            class="btn btn-sm btn-primary"
+                          >
+                            Official Information
+                            <i class="bi bi-box-arrow-up-right ms-1"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Canva Breach -->
+                  <div class="timeline-item">
+                    <div class="timeline-date">
+                      <span class="timeline-date-text">May 24</span>
+                      <span class="timeline-date-text">2019</span>
+                    </div>
+                    <div class="timeline-content">
+                      <div class="timeline-title">
+                        <div class="timeline-logo">
+                          <i class="bi bi-slack"></i>
+                        </div>
+                        <h5 class="mb-0 me-auto">Slack</h5>
+                      </div>
+                      <div class="mt-2">
+                        <p class="mb-2">
+                          <strong>Compromised data:</strong><br />
+                          Email addresses, names, usernames, cities, passwords
+                        </p>
+
+                        <div class="mb-3">
+                          <strong>Recommended actions:</strong>
+                          <ul class="recommended-actions-preview mt-1 mb-0">
+                            <li>
+                              <i
+                                class="bi bi-check-circle-fill text-primary"
+                              ></i>
+                              Change your Slack password
+                            </li>
+                            <li>
+                              <i
+                                class="bi bi-check-circle-fill text-primary"
+                              ></i>
+                              Be cautious of targeted phishing attempts
+                            </li>
+                          </ul>
+                        </div>
+
+                        <div
+                          class="d-flex justify-content-between align-items-center"
+                        >
+                          <button
+                            class="btn btn-outline-primary toggle-details"
+                            data-breach-id="4"
+                          >
+                            More details
+                          </button>
+                        </div>
+                      </div>
+                      <div class="timeline-details" id="details-4">
+                        <h6 class="mt-3 mb-2">Full Description</h6>
+                        <p>
+                          In May 2019, the Slack suffered a data breach that
+                          impacted 137 million users. The exposed data included
+                          email addresses, names, usernames, cities, and
+                          passwords stored as bcrypt hashes.
+                        </p>
+
+                        <h6 class="mt-3 mb-2">Compromised Data Types</h6>
+                        <ul class="timeline-details-list">
+                          <li><i class="bi bi-dot"></i>Email addresses</li>
+                          <li><i class="bi bi-dot"></i>Names</li>
+                          <li><i class="bi bi-dot"></i>Usernames</li>
+                          <li><i class="bi bi-dot"></i>Geographic locations</li>
+                          <li><i class="bi bi-dot"></i>Hashed passwords</li>
+                        </ul>
+
+                        <h6 class="mt-3 mb-2">Recommended Actions</h6>
+                        <ul class="timeline-details-list">
+                          <li>
+                            <i class="bi bi-check-circle"></i>Change your Canva
+                            password
+                          </li>
+                          <li>
+                            <i class="bi bi-check-circle"></i>Be cautious of
+                            targeted phishing attempts
+                          </li>
+                          <li>
+                            <i class="bi bi-check-circle"></i>Check for
+                            suspicious activity
+                          </li>
+                        </ul>
+
+                        <h6 class="mt-3 mb-2">Important Dates</h6>
+                        <ul class="timeline-details-list">
+                          <li>
+                            <i class="bi bi-calendar-event"></i
+                            ><strong>Breach occurred:</strong> 5/24/2019
+                          </li>
+                          <li>
+                            <i class="bi bi-calendar-check"></i
+                            ><strong>Breach discovered:</strong> 5/24/2019
+                          </li>
+                        </ul>
+
+                        <div class="mt-3">
+                          <a
+                            href="https://www.canva.com/security/"
+                            target="_blank"
+                            class="btn btn-sm btn-primary"
+                          >
+                            Official Information
+                            <i class="bi bi-box-arrow-up-right ms-1"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pastes Table -->
+        <div class="row mt-5">
+          <div class="col-12">
+            <div class="section-container">
+              <h3 class="section-heading">
+                <i class="bi bi-clipboard-data me-2"></i>Paste Records
+              </h3>
+              <div class="table-responsive">
+                <table class="table table-custom">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Date</th>
+                      <th>Description</th>
+                      <th>Impacted Accounts</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Dropbox Paste -->
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="table-icon me-2">
+                            <i class="bi bi-dropbox"></i>
+                          </div>
+                          Dropbox
+                        </div>
+                      </td>
+                      <td>8/31/2016</td>
+                      <td>Email addresses, passwords</td>
+                      <td>68 million</td>
+                      <td>
+                        <button
+                          class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#pasteDetailsModal"
+                          data-paste-id="3"
+                        >
+                          View Details
+                        </button>
+                      </td>
+                    </tr>
+                    <!-- Marriott Paste -->
+                    <tr>
+                      <td>
+                        <div class="d-flex align-items-center">
+                          <div class="table-icon me-2">
+                            <i class="bi bi-building"></i>
+                          </div>
+                          Marriott
+                        </div>
+                      </td>
+                      <td>3/31/2020</td>
+                      <td>
+                        Names, addresses, phone numbers, email addresses,
+                        loyalty account info
+                      </td>
+                      <td>5.2 million</td>
+
+                      <td>
+                        <button
+                          class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#pasteDetailsModal"
+                          data-paste-id="5"
+                        >
+                          View Details
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -128,6 +598,43 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+    <!-- Paste Details Modal -->
+    <div
+      class="modal fade"
+      id="pasteDetailsModal"
+      tabindex="-1"
+      aria-labelledby="pasteDetailsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pasteDetailsModalLabel">
+              Paste Details
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="pasteDetailsModalBody">
+            <!-- Paste details will be inserted here by JavaScript -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Custom JS -->
     <script src="assets/js/main.js"></script>
