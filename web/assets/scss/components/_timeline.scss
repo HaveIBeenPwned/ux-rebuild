@@ -94,8 +94,8 @@
     padding: 1.5rem;
     background: linear-gradient(
       145deg,
-      rgba($primary, 0.15) 0%,
-      rgba($primary, 0.05) 100%
+      rgba($primary, 0.08) 0%,
+      rgba($primary, 0.03) 100%
     );
     backdrop-filter: blur(8px);
     border-radius: 0.5rem;
@@ -146,24 +146,50 @@
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+
+    h5 {
+      font-weight: 600;
+      color: $white;
+      text-shadow: 0 1px 2px rgba($black, 0.1); // Added subtle text shadow
+    }
   }
 
   &-logo {
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
     margin-right: 1rem;
-    background: linear-gradient(
-      135deg,
-      $primary 0%,
-      darken($primary, 15%) 100%
-    );
+    background: transparent;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: $white;
-    box-shadow: 0 0.25rem 0.5rem rgba($black, 0.2);
+    box-shadow: 0 0.25rem 0.5rem rgba($black, 0.1);
     position: relative;
+    overflow: hidden;
+    border: 1px solid rgba($primary, 0.15);
+
+    // Logo image styling
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      transition: all 0.3s ease;
+      padding: 4px;
+      mix-blend-mode: normal;
+      opacity: 1;
+    }
+
+    // Hover effect for logos
+    &:hover {
+      border-color: rgba($primary, 0.3);
+      box-shadow: 0 0.25rem 0.75rem rgba($primary, 0.15);
+
+      img {
+        transform: scale(1.05);
+      }
+    }
 
     &::after {
       content: "";
@@ -175,8 +201,8 @@
       border-radius: 12px;
       background: linear-gradient(
         135deg,
-        rgba($primary, 0.4) 0%,
-        rgba($primary, 0.1) 100%
+        rgba($primary, 0.2) 0%,
+        rgba($primary, 0.05) 100%
       );
       z-index: -1;
       filter: blur(4px);
@@ -184,6 +210,7 @@
 
     i {
       font-size: 2.25rem;
+      z-index: 2;
     }
   }
 
@@ -287,6 +314,16 @@
 
     &-date {
       left: 40px;
+    }
+
+    // Adjust logo size for mobile
+    &-logo {
+      width: 64px;
+      height: 64px;
+
+      img {
+        padding: 3px;
+      }
     }
   }
 }
