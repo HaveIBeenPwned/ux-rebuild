@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      property="og:title"
+      content="Have I Been Pwned: LinkedIn Data Breach Details"
+    />
+    <meta
+      name="description"
+      content="Detailed information about the LinkedIn data breach that affected millions of users."
+    />
+    <meta
+      property="og:description"
+      content="Detailed information about the LinkedIn data breach that affected millions of users."
+    />
+
+    <title>Have I Been Pwned: LinkedIn Data Breach Details</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/main.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+        <div class="d-flex align-items-center gap-3 d-lg-none">
+          <button class="btn btn-secondary">Notify me</button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="domain_search.html">Domain search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Who's been pwned</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Passwords</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donate</a>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-secondary d-none d-lg-inline-flex">
+          Notify me
+        </button>
+      </div>
+    </nav>
+
+    <!-- Breach Header Section -->
+    <section class="breach-header py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-2 text-center text-md-start mb-4 mb-md-0">
+            <div
+              class="breach-logo mx-auto mx-md-0"
+              style="width: 120px; height: 120px"
+            >
+              <img
+                src="../assets/images/affected-sites/LinkedIn Logo.webp"
+                alt="LinkedIn Logo"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div
+              class="d-flex flex-column flex-md-row align-items-md-center justify-content-between"
+            >
+              <div>
+                <h1 class="mb-2">LinkedIn Data Breach</h1>
+                <div class="d-flex align-items-center mb-3">
+                  <span class="badge bg-danger me-2">Verified Breach</span>
+                  <span class="text-muted">June 2012</span>
+                </div>
+                <p class="lead mb-0">
+                  164 million user accounts were compromised in this major
+                  professional network breach
+                </p>
+              </div>
+              <div class="mt-3 mt-md-0">
+                <a
+                  href="https://www.linkedin.com/help/linkedin/answer/a1310/linkedin-account-security-matters"
+                  class="btn btn-primary"
+                  target="_blank"
+                >
+                  Official Response
+                  <i class="bi bi-box-arrow-up-right ms-1"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breach Details Section -->
+    <section class="breach-details py-5">
+      <div class="container">
+        <div class="row">
+          <!-- Main Content -->
+          <div class="col-lg-8">
+            <div class="card card-glow mb-4">
+              <div class="card-body">
+                <h2 class="card-title mb-4">What Happened</h2>
+                <p>
+                  In June 2012, LinkedIn suffered a major data breach that
+                  exposed the stored credentials of 164 million users. The
+                  passwords were stored as SHA1 hashes without salt, making them
+                  easily crackable. The data remained out of sight until being
+                  offered for sale on a dark market site 4 years later in 2016.
+                </p>
+                <p>
+                  The breach was initially thought to include only 6.5 million
+                  accounts, but the full extent was revealed years later when
+                  the complete dataset appeared for sale on the dark web.
+                  LinkedIn confirmed the additional exposure and forced password
+                  resets for all accounts that hadn't changed their passwords
+                  since 2012.
+                </p>
+                <p>
+                  This breach highlighted the importance of proper password
+                  storage techniques and the need for companies to implement
+                  stronger security measures like salting and using more robust
+                  hashing algorithms.
+                </p>
+              </div>
+            </div>
+
+            <div class="card card-glow mb-4">
+              <div class="card-body">
+                <h2 class="card-title mb-4">Compromised Data</h2>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="data-type-card mb-3 p-4">
+                      <div class="d-flex align-items-center">
+                        <i
+                          class="bi bi-envelope-fill text-danger me-3 fs-4"
+                        ></i>
+                        <div>
+                          <h5 class="mb-1">Email Addresses</h5>
+                          <p class="mb-0 text-muted small">
+                            Primary account identifiers
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="data-type-card mb-3 p-4">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-key-fill text-danger me-3 fs-4"></i>
+                        <div>
+                          <h5 class="mb-1">Passwords</h5>
+                          <p class="mb-0 text-muted small">
+                            SHA1 hashes without salt
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="data-type-card mb-3 p-4">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-person-fill text-danger me-3 fs-4"></i>
+                        <div>
+                          <h5 class="mb-1">User Names</h5>
+                          <p class="mb-0 text-muted small">
+                            Profile display names
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-glow mb-4">
+              <div class="card-body">
+                <h2 class="card-title mb-4">Timeline</h2>
+                <div class="breach-timeline">
+                  <div class="breach-timeline-item">
+                    <div class="breach-timeline-marker"></div>
+                    <div class="breach-timeline-content">
+                      <h5>June 5, 2012</h5>
+                      <p class="text-muted">Breach Occurred</p>
+                      <p>
+                        LinkedIn's user database was compromised by attackers.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="breach-timeline-item">
+                    <div class="breach-timeline-marker"></div>
+                    <div class="breach-timeline-content">
+                      <h5>June 10, 2012</h5>
+                      <p class="text-muted">Initial Discovery</p>
+                      <p>
+                        A file containing 6.5 million hashed passwords appeared
+                        on a Russian hacker forum.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="breach-timeline-item">
+                    <div class="breach-timeline-marker"></div>
+                    <div class="breach-timeline-content">
+                      <h5>May 18, 2016</h5>
+                      <p class="text-muted">Full Breach Discovered</p>
+                      <p>
+                        The complete dataset of 164 million accounts was found
+                        for sale on the dark web.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="breach-timeline-item">
+                    <div class="breach-timeline-marker"></div>
+                    <div class="breach-timeline-content">
+                      <h5>May 25, 2016</h5>
+                      <p class="text-muted">LinkedIn Response</p>
+                      <p>
+                        LinkedIn confirmed the full extent of the breach and
+                        forced password resets for affected accounts.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="col-lg-4">
+            <div class="card card-glow mb-4">
+              <div class="card-body">
+                <h3 class="card-title mb-3">Breach Statistics</h3>
+                <div class="breach-stat-item d-flex align-items-center mb-3">
+                  <div
+                    class="breach-stat-icon bg-danger-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-people-fill text-danger fs-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="mb-0">164 Million</h4>
+                    <p class="text-muted mb-0">Affected Accounts</p>
+                  </div>
+                </div>
+                <div class="breach-stat-item d-flex align-items-center">
+                  <div
+                    class="breach-stat-icon bg-info-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-calendar-event text-info fs-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="mb-0">4 Years</h4>
+                    <p class="text-muted mb-0">Until Full Discovery</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card card-glow mb-4">
+              <div class="card-body">
+                <h3 class="card-title mb-3">Recommended Actions</h3>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item bg-transparent">
+                    <div class="d-flex">
+                      <i
+                        class="bi bi-check-circle-fill text-primary me-3 fs-5"
+                      ></i>
+                      <div>
+                        <h5 class="mb-1">Change Your Password</h5>
+                        <p class="mb-0 text-muted small">
+                          If you haven't changed your LinkedIn password since
+                          2012, do so immediately.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item bg-transparent">
+                    <div class="d-flex">
+                      <i
+                        class="bi bi-check-circle-fill text-primary me-3 fs-5"
+                      ></i>
+                      <div>
+                        <h5 class="mb-1">Enable Two-Factor Authentication</h5>
+                        <p class="mb-0 text-muted small">
+                          Add an extra layer of security to your LinkedIn
+                          account.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item bg-transparent">
+                    <div class="d-flex">
+                      <i
+                        class="bi bi-check-circle-fill text-primary me-3 fs-5"
+                      ></i>
+                      <div>
+                        <h5 class="mb-1">Check Other Accounts</h5>
+                        <p class="mb-0 text-muted small">
+                          If you used the same password elsewhere, change those
+                          too.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item bg-transparent">
+                    <div class="d-flex">
+                      <i
+                        class="bi bi-check-circle-fill text-primary me-3 fs-5"
+                      ></i>
+                      <div>
+                        <h5 class="mb-1">Monitor for Suspicious Activity</h5>
+                        <p class="mb-0 text-muted small">
+                          Watch for unusual login attempts or messages from your
+                          account.
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="card card-glow">
+              <div class="card-body">
+                <h3 class="card-title mb-3">Additional Resources</h3>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item bg-transparent">
+                    <a href="#" class="text-decoration-none">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-link-45deg text-primary me-2 fs-5"></i>
+                        <span>LinkedIn Security Center</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="list-group-item bg-transparent">
+                    <a href="#" class="text-decoration-none">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-link-45deg text-primary me-2 fs-5"></i>
+                        <span>How to Enable 2FA on LinkedIn</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="list-group-item bg-transparent">
+                    <a href="#" class="text-decoration-none">
+                      <div class="d-flex align-items-center">
+                        <i class="bi bi-link-45deg text-primary me-2 fs-5"></i>
+                        <span>Password Security Best Practices</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>

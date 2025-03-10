@@ -1,0 +1,463 @@
+// Timeline Component Styles
+// This file contains all styles related to the timeline component
+
+// Timeline Component
+.timeline {
+  &-container {
+    // Padding is now handled by Bootstrap py-4 class
+  }
+
+  &-items {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        rgba($primary, 0.1) 0%,
+        rgba($primary, 0.8) 15%,
+        rgba($primary, 0.8) 85%,
+        rgba($primary, 0.1) 100%
+      );
+      box-shadow: 0 0 8px rgba($primary, 0.4);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+  }
+
+  &-item {
+    position: relative;
+    width: 100%;
+    display: flex;
+    text-align: left;
+    min-height: 150px;
+    // Padding top is now handled by Bootstrap pt-5 class
+
+    // First item on the left, then alternating
+    &:nth-child(odd) {
+      justify-content: flex-end;
+      padding-right: 50%;
+      padding-left: 0;
+
+      .timeline-content {
+        margin-right: 60px; // Space between content and center line
+      }
+    }
+
+    &:nth-child(even) {
+      justify-content: flex-start;
+      padding-left: 50%;
+      padding-right: 0;
+
+      .timeline-content {
+        margin-left: 60px; // Space between content and center line
+      }
+    }
+  }
+
+  &-date {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(
+      135deg,
+      $primary 0%,
+      darken($primary, 15%) 100%
+    );
+    border: 2px solid rgba($white, 0.3);
+    border-radius: 50%;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    // Display, flex-direction, justify-content, align-items now handled by Bootstrap classes
+    z-index: 3; // Increased z-index to ensure it's above content
+    padding: 0.5rem;
+    // Color is now handled by Bootstrap text-white class
+    box-shadow: 0 0.25rem 0.5rem rgba($black, 0.2);
+
+    i {
+      font-size: 1rem;
+      margin-bottom: 0.1rem;
+    }
+
+    &-text {
+      font-size: 0.9rem;
+      line-height: 1.2;
+      font-weight: 600;
+      // Text-align is now handled by Bootstrap text-center class
+    }
+  }
+
+  &-content {
+    // Padding is now handled by Bootstrap p-4 class
+    background: linear-gradient(
+      145deg,
+      rgba($primary, 0.08) 0%,
+      rgba($primary, 0.03) 100%
+    );
+    backdrop-filter: blur(8px);
+    // Border-radius is now handled by Bootstrap rounded-3 class
+    box-shadow: 0 0.125rem 0.5rem rgba($black, 0.15);
+    border: 1px solid rgba($primary, 0.2);
+    transition: all 0.3s ease;
+    width: calc(100% - 60px); // Adjusted width for better fit
+    // z-index is now handled by Bootstrap z-2 class
+
+    .data-types-preview {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .recommended-actions-preview {
+      // List-style is now handled by Bootstrap list-unstyled class
+      // Padding-left is now handled by Bootstrap p-3 class
+
+      li {
+        // Display and align-items are now handled by Bootstrap d-flex and align-items-start classes
+        // Margin-bottom is now handled by Bootstrap mb-2 class
+        font-size: 0.875rem;
+
+        i {
+          // Margin-right is now handled by Bootstrap me-2 class
+          margin-top: 0.125rem;
+          font-size: 0.875rem;
+        }
+
+        &:last-child {
+          // Margin-bottom is now handled by Bootstrap mb-0 class
+        }
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0.25rem 1rem rgba($primary, 0.2);
+      border-color: rgba($primary, 0.3);
+    }
+  }
+
+  &-title {
+    // Display and align-items are now handled by Bootstrap d-flex and align-items-center classes
+    // Margin-bottom is now handled by Bootstrap mb-3 class
+
+    h5 {
+      // Font-weight is now handled by Bootstrap fw-semibold class
+      // Color is now handled by Bootstrap text-white class
+      text-shadow: 0 1px 2px rgba($black, 0.1); // Added subtle text shadow
+    }
+  }
+
+  &-logo {
+    width: 72px;
+    height: 72px;
+    // Margin-right is now handled by Bootstrap me-3 class
+    background: transparent;
+    // Border-radius is now handled by Bootstrap rounded-2 class
+    // Display, align-items, justify-content are now handled by Bootstrap classes
+    color: $white;
+    box-shadow: 0 0.25rem 0.5rem rgba($black, 0.1);
+    // Position and overflow are now handled by Bootstrap position-relative and overflow-hidden classes
+    border: 1px solid rgba($primary, 0.15);
+
+    // Logo image styling
+    img {
+      // Width, height are now handled by Bootstrap w-100 h-100 classes
+      object-fit: contain;
+      object-position: center;
+      transition: all 0.3s ease;
+      // Padding is now handled by Bootstrap p-1 class
+      mix-blend-mode: normal;
+      opacity: 1;
+    }
+
+    // Hover effect for logos
+    &:hover {
+      border-color: rgba($primary, 0.3);
+      box-shadow: 0 0.25rem 0.75rem rgba($primary, 0.15);
+
+      img {
+        transform: scale(1.05);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: 12px;
+      background: linear-gradient(
+        135deg,
+        rgba($primary, 0.2) 0%,
+        rgba($primary, 0.05) 100%
+      );
+      z-index: -1;
+      filter: blur(4px);
+    }
+
+    i {
+      font-size: 2.25rem;
+      z-index: 2;
+    }
+  }
+
+  &-badge {
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    border-radius: 0.25rem;
+
+    &-breach {
+      background-color: $danger;
+    }
+
+    &-paste {
+      background-color: $gray-600;
+    }
+  }
+
+  &-details {
+    display: none;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba($primary, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+    max-height: 300px;
+    overflow-y: auto;
+
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba($black, 0.05);
+      border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba($primary, 0.3);
+      border-radius: 3px;
+
+      &:hover {
+        background: rgba($primary, 0.5);
+      }
+    }
+
+    &.show {
+      display: block;
+    }
+
+    &-list {
+      // List-style, padding-left, margin-bottom are now handled by Bootstrap classes
+      background: rgba($black, 0.05);
+      // Border-radius and padding are now handled by Bootstrap classes
+      // Margin-top is now handled by Bootstrap mt-2 class
+
+      li {
+        // Margin-bottom, display, align-items are now handled by Bootstrap classes
+
+        &:last-child {
+          // Margin-bottom is now handled by Bootstrap mb-0 class
+        }
+
+        i {
+          // Margin-right is now handled by Bootstrap me-2 class
+          color: $primary;
+          // Font-size is now handled by Bootstrap classes
+          margin-top: 0.125rem;
+        }
+      }
+    }
+  }
+
+  &-details-list {
+    // List-style, padding-left, margin-bottom are now handled by Bootstrap classes
+    // Background is now handled by the bg-dark-subtle-custom class
+    // Border-radius and padding are now handled by Bootstrap classes
+    // Margin-top is now handled by Bootstrap mt-2 class
+
+    li {
+      // Margin-bottom, display, align-items are now handled by Bootstrap classes
+
+      &:last-child {
+        // Margin-bottom is now handled by Bootstrap mb-0 class
+      }
+
+      i {
+        // Margin-right is now handled by Bootstrap me-2 class
+        color: $primary;
+        // Font-size is now handled by Bootstrap classes
+        margin-top: 0.125rem;
+      }
+    }
+  }
+}
+
+// Mobile responsive styles for timeline
+@include media-breakpoint-down(md) {
+  .timeline {
+    &-items::before {
+      left: 40px;
+    }
+
+    &-item {
+      margin-bottom: 5rem;
+
+      &:nth-child(odd),
+      &:nth-child(even) {
+        justify-content: flex-start;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: left;
+
+        .timeline-content {
+          width: calc(100% - 80px);
+          margin-left: 80px;
+          margin-right: 0;
+        }
+      }
+    }
+
+    &-date {
+      left: 40px;
+    }
+
+    // Adjust logo size for mobile
+    &-logo {
+      width: 64px;
+      height: 64px;
+
+      img {
+        padding: 3px;
+      }
+    }
+  }
+}
+
+// Data Summary Component (Compact version)
+.data-summary {
+  // Background is now handled by the bg-dark-subtle-custom class
+  // Border-radius, padding, position, overflow, margin-bottom, and border are now handled by Bootstrap classes
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba($primary, 0.03) 0%,
+      rgba($primary, 0.01) 100%
+    );
+    z-index: 0;
+  }
+
+  &-content {
+    // Display, align-items, position, and z-index are now handled by Bootstrap classes
+  }
+
+  &-item {
+    // Display, justify-content, align-items, and width are now handled by Bootstrap classes
+  }
+
+  &-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(
+      135deg,
+      $primary 0%,
+      darken($primary, 15%) 100%
+    );
+    // Display, align-items, and justify-content are now handled by Bootstrap classes
+    box-shadow: 0 0.125rem 0.375rem rgba($black, 0.2);
+    margin-right: 1rem;
+    flex-shrink: 0;
+
+    i {
+      font-size: 1.5rem;
+      color: $white;
+    }
+  }
+
+  &-count-wrapper {
+    // Display, flex-direction, align-items, and margin-bottom are now handled by Bootstrap classes
+  }
+
+  &-count {
+    // Font-size, font-weight, and line-height are now handled by Bootstrap classes
+    color: $white;
+    background: linear-gradient(135deg, $white 0%, rgba($white, 0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 0.5rem;
+  }
+
+  &-label {
+    // Color is now handled by Bootstrap text-primary class
+  }
+
+  &-description {
+    // Font-size, color, and line-height are now handled by Bootstrap classes
+    max-width: 600px;
+  }
+
+  // Mobile responsive styles
+  @include media-breakpoint-down(md) {
+    &-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &-icon {
+      margin-bottom: 0.75rem;
+    }
+
+    &-text {
+      width: 100%;
+    }
+  }
+}
+
+// For backward compatibility
+.breach-summary {
+  @extend .data-summary;
+}
+
+// Paste summary
+.paste-summary {
+  @extend .data-summary;
+}
+
+// Custom utility classes
+.text-white-70 {
+  color: rgba($white, 0.7);
+}
+
+.border-primary-custom {
+  border-color: rgba($primary, 0.2) !important;
+}
+
+.bg-dark-subtle-custom {
+  background: rgba($black, 0.05);
+}
+
+// Animation for timeline details
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
