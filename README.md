@@ -1,14 +1,12 @@
-# A Decade is a Long Time...
-[Well that escalated quickly]([url](https://twitter.com/haveibeenpwned/status/408153032698785792)). 745 data breaches later and... not much has changed. Same logo. Same layout. Same UX. And for the most part that was fine, but as HIBP has grown, we're increasingly outgrowing that decade-old UX.
+# It's finally time
+[It's only been 11 years!]([url](https://twitter.com/haveibeenpwned/status/408153032698785792)) Same logo. Same layout. Same UX. And for the most part that was fine, but as HIBP has grown, we increasingly outgrew that decade-and-a-bit-old UX. 875 data breaches later, and HIBP has a fresh new look we're making available here as part of a "soft launch", that is we're giving everyone a preview before properly rolling it out.
 
-This repository is intended to seek input from the community on a range of different aspects of the UX update. I'm not sure exactly where this will go, we might crowd-source contributions to the likes of markup and CSS, we might just commercially engage someone / some company or I might just re-engage the left side of my brain and do it all myself. I expect input will be very much "divergent" to begin with and may go in lots of different directions until it converges somewhere logical.
+This repository is intended to seek input from the community on a range of different aspects of the UX update. You'll see lots of discussions dating back more than a year when we first started seeking input, but now you'll also see the new brand, new HTML template and new UX paradigms. We're welcoming people to contribute to all of these in whichever way they see fit.
 
-I'm going to give GitHub Discussions a go just to begin seeking input and then I suspect we'll start collating various assets. I've created a discussion for each discrete component of the UX rebuild and welcome questions, comments and cool ideas from everyone.
+For more, check out [the soft launch blog post](https://www.troyhunt.com/soft-launching-and-open-sourcing-the-have-i-been-pwned-rebrand) and if you just want to jump straight into the code, go to [the /web folder and check out the readme](https://github.com/HaveIBeenPwned/ux-rebuild/tree/main/web). Thank you for reading, and especially for contributing!
 
-Thank you for taking the time to read this, and especially thanks for your contributions 😊
+![](https://www.troyhunt.com/content/images/2025/03/Artboard-1.jpg)
 
-And just for inspiration, some AI generate ideas complete with the inability to spell:
+![](https://www.troyhunt.com/content/images/size/w2400/2025/03/image-7.png)
 
-![ezgif-5-9296c1a1c6](https://github.com/HaveIBeenPwned/ux-rebuild/assets/273244/54e8cf49-c387-4690-a73c-b445e7e23994)
-
-![ezgif-5-8c635a158b](https://github.com/HaveIBeenPwned/ux-rebuild/assets/273244/41062c1a-865f-40eb-9d51-4d89d05bf539)
+![](https://www.troyhunt.com/content/images/2025/03/image-11.png)
