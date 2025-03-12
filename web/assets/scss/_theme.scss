@@ -34,6 +34,39 @@ $btn-line-height-sm: 1.5; // Use unitless value for line-height
 
 $modal-content-bg: $grey-700;
 
+// Accordion customization
+$accordion-padding-y: 0.75rem;
+$accordion-padding-x: 1rem;
+$accordion-color: $white;
+$accordion-bg: transparent;
+$accordion-border-width: 1px;
+$accordion-border-color: $border-color;
+$accordion-border-radius: 8px;
+$accordion-inner-border-radius: subtract(
+  $accordion-border-radius,
+  $accordion-border-width
+);
+
+$accordion-body-padding-y: 1rem;
+$accordion-body-padding-x: 1.25rem;
+
+$accordion-button-padding-y: 0.75rem;
+$accordion-button-padding-x: 1rem;
+$accordion-button-color: $white;
+$accordion-button-bg: transparent;
+$accordion-transition: all 0.3s ease, border-radius 0.15s ease;
+$accordion-button-active-bg: rgba($primary, 0.1);
+$accordion-button-active-color: $primary;
+
+$accordion-button-focus-border-color: $primary;
+$accordion-button-focus-box-shadow: none;
+
+$accordion-icon-width: 1rem;
+$accordion-icon-color: $grey-400;
+$accordion-icon-active-color: $primary;
+$accordion-icon-transition: transform 0.2s ease-in-out;
+$accordion-icon-transform: rotate(-180deg);
+
 // Input/Form customization
 $input-bg: $white;
 $input-color: $grey-900;
@@ -191,6 +224,31 @@ $theme-colors: (
   // Table cell padding for small tables
   --bs-table-cell-padding-y-sm: 0.75rem;
   --bs-table-cell-padding-x-sm: 0.5rem;
+
+  // Accordion
+  --accordion-padding-y: #{$accordion-padding-y};
+  --accordion-padding-x: #{$accordion-padding-x};
+  --accordion-color: #{$accordion-color};
+  --accordion-bg: #{$accordion-bg};
+  --accordion-border-width: #{$accordion-border-width};
+  --accordion-border-color: #{$accordion-border-color};
+  --accordion-border-radius: #{$accordion-border-radius};
+
+  --accordion-body-padding-y: #{$accordion-body-padding-y};
+  --accordion-body-padding-x: #{$accordion-body-padding-x};
+
+  --accordion-button-padding-y: #{$accordion-button-padding-y};
+  --accordion-button-padding-x: #{$accordion-button-padding-x};
+  --accordion-button-color: #{$accordion-button-color};
+  --accordion-button-bg: #{$accordion-button-bg};
+  --accordion-button-active-bg: #{$accordion-button-active-bg};
+  --accordion-button-active-color: #{$accordion-button-active-color};
+
+  --accordion-button-focus-border-color: #{$accordion-button-focus-border-color};
+
+  --accordion-icon-width: #{$accordion-icon-width};
+  --accordion-icon-color: #{$accordion-icon-color};
+  --accordion-icon-active-color: #{$accordion-icon-active-color};
 
   // Navbar
   --bs-navbar-padding-y: 0.75rem;

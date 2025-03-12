@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       property="og:title"
-      content="Have I Been Pwned: LinkedIn Data Breach Details"
+      content="Have I Been Pwned: Color Dating Data Breach Details"
     />
     <meta
       name="description"
-      content="Detailed information about the LinkedIn data breach that affected millions of users."
+      content="Detailed information about the Color Dating data breach that affected over 220,000 users."
     />
     <meta
       property="og:description"
-      content="Detailed information about the LinkedIn data breach that affected millions of users."
+      content="Detailed information about the Color Dating data breach that affected over 220,000 users."
     />
 
-    <title>Have I Been Pwned: LinkedIn Data Breach Details</title>
+    <title>Have I Been Pwned: Color Dating Data Breach Details</title>
 
     <!-- Bootstrap 5 CSS -->
     <link
@@ -103,8 +103,8 @@
               style="width: 120px; height: 120px"
             >
               <img
-                src="../assets/images/affected-sites/LinkedIn Logo.webp"
-                alt="LinkedIn Logo"
+                src="https://haveibeenpwned.com/Content/Images/PwnedLogos/ColorDating.png"
+                alt="Color Dating Logo"
                 class="img-fluid"
               />
             </div>
@@ -114,25 +114,25 @@
               class="d-flex flex-column flex-md-row align-items-md-center justify-content-between"
             >
               <div>
-                <h1 class="mb-2">LinkedIn Data Breach</h1>
-                <div class="d-flex align-items-center mb-3">
-                  <span class="badge bg-danger me-2">Verified Breach</span>
-                  <span class="text-muted">June 2012</span>
+                <h1 class="mb-2">Color Dating Data Breach</h1>
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                  <span class="badge bg-danger me-1">
+                    <i class="bi bi-question-circle me-1"></i>
+                    Unverified Breach
+                  </span>
+                  <span class="badge bg-danger me-1">
+                    <i class="bi bi-archive me-1"></i>
+                    Retired Breach
+                  </span>
+                  <span class="badge bg-danger me-1">
+                    <i class="bi bi-exclamation-triangle me-1"></i>
+                    Fabricated Breach
+                  </span>
+                  <span class="badge bg-danger me-1">
+                    <i class="bi bi-eye-slash me-1"></i>
+                    Sensitive
+                  </span>
                 </div>
-                <p class="lead mb-0">
-                  164 million user accounts were compromised in this major
-                  professional network breach
-                </p>
-              </div>
-              <div class="mt-3 mt-md-0">
-                <a
-                  href="https://www.linkedin.com/help/linkedin/answer/a1310/linkedin-account-security-matters"
-                  class="btn btn-primary"
-                  target="_blank"
-                >
-                  Official Response
-                  <i class="bi bi-box-arrow-up-right ms-1"></i>
-                </a>
               </div>
             </div>
           </div>
@@ -150,25 +150,18 @@
               <div class="card-body">
                 <h2 class="card-title mb-4">What Happened</h2>
                 <p>
-                  In June 2012, LinkedIn suffered a major data breach that
-                  exposed the stored credentials of 164 million users. The
-                  passwords were stored as SHA1 hashes without salt, making them
-                  easily crackable. The data remained out of sight until being
-                  offered for sale on a dark market site 4 years later in 2016.
-                </p>
-                <p>
-                  The breach was initially thought to include only 6.5 million
-                  accounts, but the full extent was revealed years later when
-                  the complete dataset appeared for sale on the dark web.
-                  LinkedIn confirmed the additional exposure and forced password
-                  resets for all accounts that hadn't changed their passwords
-                  since 2012.
-                </p>
-                <p>
-                  This breach highlighted the importance of proper password
-                  storage techniques and the need for companies to implement
-                  stronger security measures like salting and using more robust
-                  hashing algorithms.
+                  In September 2018, the dating app to match people with
+                  different ethnicities Color Dating suffered a data breach
+                  <a
+                    href="https://cybernews.com/security/billions-passwords-credentials-leaked-mother-of-all-breaches/"
+                    target="_blank"
+                    rel="noopener"
+                    >that was later redistributed as part of a larger corpus of
+                    data</a
+                  >. The breach exposed 220k unique email addresses along with
+                  bios, names, profile photos and bcrypt password hashes. The
+                  data was provided to HIBP by a source who requested it be
+                  attributed to "ANK (Veles)".
                 </p>
               </div>
             </div>
@@ -178,45 +171,124 @@
                 <h2 class="card-title mb-4">Compromised Data</h2>
                 <div class="row">
                   <div class="col-md-6">
-                    <div class="data-type-card mb-3 p-4">
-                      <div class="d-flex align-items-center">
-                        <i
-                          class="bi bi-envelope-fill text-danger me-3 fs-4"
-                        ></i>
-                        <div>
-                          <h5 class="mb-1">Email Addresses</h5>
-                          <p class="mb-0 text-muted small">
-                            Primary account identifiers
-                          </p>
+                    <ul class="list-unstyled mb-0">
+                      <li class="d-flex align-items-center mb-3">
+                        <div
+                          class="me-3 d-flex align-items-center justify-content-center"
+                        >
+                          <div
+                            class="rounded-circle"
+                            style="
+                              width: 12px;
+                              height: 12px;
+                              background-color: #dc3545;
+                              box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                            "
+                          ></div>
                         </div>
-                      </div>
-                    </div>
+                        <span>Bios</span>
+                      </li>
+                      <li class="d-flex align-items-center mb-3">
+                        <div
+                          class="me-3 d-flex align-items-center justify-content-center"
+                        >
+                          <div
+                            class="rounded-circle"
+                            style="
+                              width: 12px;
+                              height: 12px;
+                              background-color: #dc3545;
+                              box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                            "
+                          ></div>
+                        </div>
+                        <span>Dates of Birth</span>
+                      </li>
+                      <li class="d-flex align-items-center mb-3">
+                        <div
+                          class="me-3 d-flex align-items-center justify-content-center"
+                        >
+                          <div
+                            class="rounded-circle"
+                            style="
+                              width: 12px;
+                              height: 12px;
+                              background-color: #dc3545;
+                              box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                            "
+                          ></div>
+                        </div>
+                        <span>Email Addresses</span>
+                      </li>
+                      <li class="d-flex align-items-center">
+                        <div
+                          class="me-3 d-flex align-items-center justify-content-center"
+                        >
+                          <div
+                            class="rounded-circle"
+                            style="
+                              width: 12px;
+                              height: 12px;
+                              background-color: #dc3545;
+                              box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                            "
+                          ></div>
+                        </div>
+                        <span>Geographic Locations</span>
+                      </li>
+                    </ul>
                   </div>
                   <div class="col-md-6">
-                    <div class="data-type-card mb-3 p-4">
-                      <div class="d-flex align-items-center">
-                        <i class="bi bi-key-fill text-danger me-3 fs-4"></i>
-                        <div>
-                          <h5 class="mb-1">Passwords</h5>
-                          <p class="mb-0 text-muted small">
-                            SHA1 hashes without salt
-                          </p>
+                    <ul class="list-unstyled mb-0">
+                      <li class="d-flex align-items-center mb-3">
+                        <div
+                          class="me-3 d-flex align-items-center justify-content-center"
+                        >
+                          <div
+                            class="rounded-circle"
+                            style="
+                              width: 12px;
+                              height: 12px;
+                              background-color: #dc3545;
+                              box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                            "
+                          ></div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="data-type-card mb-3 p-4">
-                      <div class="d-flex align-items-center">
-                        <i class="bi bi-person-fill text-danger me-3 fs-4"></i>
-                        <div>
-                          <h5 class="mb-1">User Names</h5>
-                          <p class="mb-0 text-muted small">
-                            Profile display names
-                          </p>
+                        <span>Names</span>
+                      </li>
+                      <li class="d-flex align-items-center mb-3">
+                        <div
+                          class="me-3 d-flex align-items-center justify-content-center"
+                        >
+                          <div
+                            class="rounded-circle"
+                            style="
+                              width: 12px;
+                              height: 12px;
+                              background-color: #dc3545;
+                              box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                            "
+                          ></div>
                         </div>
-                      </div>
-                    </div>
+                        <span>Passwords</span>
+                      </li>
+                      <li class="d-flex align-items-center">
+                        <div
+                          class="me-3 d-flex align-items-center justify-content-center"
+                        >
+                          <div
+                            class="rounded-circle"
+                            style="
+                              width: 12px;
+                              height: 12px;
+                              background-color: #dc3545;
+                              box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                            "
+                          ></div>
+                        </div>
+                        <span>Profile Photos</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -224,49 +296,91 @@
 
             <div class="card card-glow mb-4">
               <div class="card-body">
-                <h2 class="card-title mb-4">Timeline</h2>
-                <div class="breach-timeline">
-                  <div class="breach-timeline-item">
-                    <div class="breach-timeline-marker"></div>
-                    <div class="breach-timeline-content">
-                      <h5>June 5, 2012</h5>
-                      <p class="text-muted">Breach Occurred</p>
-                      <p>
-                        LinkedIn's user database was compromised by attackers.
-                      </p>
+                <h2 class="card-title mb-4">Recommended Actions</h2>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div
+                      class="action-card p-4 h-100 border-start border-4 border-primary"
+                    >
+                      <div class="d-flex">
+                        <div
+                          class="action-icon bg-primary-subtle rounded-circle p-2 me-3 d-flex align-items-center justify-content-center"
+                          style="width: 48px; height: 48px"
+                        >
+                          <i class="bi bi-key-fill text-primary fs-4"></i>
+                        </div>
+                        <div>
+                          <h5 class="mb-1">Change Your Password</h5>
+                          <p class="mb-0 text-muted small">
+                            If you haven't changed your Color Dating password
+                            since 2018, do so immediately.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="breach-timeline-item">
-                    <div class="breach-timeline-marker"></div>
-                    <div class="breach-timeline-content">
-                      <h5>June 10, 2012</h5>
-                      <p class="text-muted">Initial Discovery</p>
-                      <p>
-                        A file containing 6.5 million hashed passwords appeared
-                        on a Russian hacker forum.
-                      </p>
+                  <div class="col-md-6 mb-3">
+                    <div
+                      class="action-card p-4 h-100 border-start border-4 border-primary"
+                    >
+                      <div class="d-flex">
+                        <div
+                          class="action-icon bg-primary-subtle rounded-circle p-2 me-3 d-flex align-items-center justify-content-center"
+                          style="width: 48px; height: 48px"
+                        >
+                          <i
+                            class="bi bi-shield-lock-fill text-primary fs-4"
+                          ></i>
+                        </div>
+                        <div>
+                          <h5 class="mb-1">Enable Two-Factor Authentication</h5>
+                          <p class="mb-0 text-muted small">
+                            Add an extra layer of security to your account.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="breach-timeline-item">
-                    <div class="breach-timeline-marker"></div>
-                    <div class="breach-timeline-content">
-                      <h5>May 18, 2016</h5>
-                      <p class="text-muted">Full Breach Discovered</p>
-                      <p>
-                        The complete dataset of 164 million accounts was found
-                        for sale on the dark web.
-                      </p>
+                  <div class="col-md-6 mb-3">
+                    <div
+                      class="action-card p-4 h-100 border-start border-4 border-primary"
+                    >
+                      <div class="d-flex">
+                        <div
+                          class="action-icon bg-primary-subtle rounded-circle p-2 me-3 d-flex align-items-center justify-content-center"
+                          style="width: 48px; height: 48px"
+                        >
+                          <i class="bi bi-person-lock text-primary fs-4"></i>
+                        </div>
+                        <div>
+                          <h5 class="mb-1">Check Other Accounts</h5>
+                          <p class="mb-0 text-muted small">
+                            If you used the same password elsewhere, change
+                            those too.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="breach-timeline-item">
-                    <div class="breach-timeline-marker"></div>
-                    <div class="breach-timeline-content">
-                      <h5>May 25, 2016</h5>
-                      <p class="text-muted">LinkedIn Response</p>
-                      <p>
-                        LinkedIn confirmed the full extent of the breach and
-                        forced password resets for affected accounts.
-                      </p>
+                  <div class="col-md-6 mb-3">
+                    <div
+                      class="action-card p-4 h-100 border-start border-4 border-primary"
+                    >
+                      <div class="d-flex">
+                        <div
+                          class="action-icon bg-primary-subtle rounded-circle p-2 me-3 d-flex align-items-center justify-content-center"
+                          style="width: 48px; height: 48px"
+                        >
+                          <i class="bi bi-eye-fill text-primary fs-4"></i>
+                        </div>
+                        <div>
+                          <h5 class="mb-1">Monitor for Suspicious Activity</h5>
+                          <p class="mb-0 text-muted small">
+                            Watch for unusual login attempts or messages from
+                            your account.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -278,125 +392,295 @@
           <div class="col-lg-4">
             <div class="card card-glow mb-4">
               <div class="card-body">
-                <h3 class="card-title mb-3">Breach Statistics</h3>
-                <div class="breach-stat-item d-flex align-items-center mb-3">
-                  <div
-                    class="breach-stat-icon bg-danger-subtle rounded-circle p-2 me-3"
+                <h3 class="card-title mb-4">Breach Overview</h3>
+                <ul class="list-group list-group-flush">
+                  <li
+                    class="list-group-item bg-transparent border-bottom border-secondary-subtle py-3"
                   >
-                    <i class="bi bi-people-fill text-danger fs-4"></i>
-                  </div>
-                  <div>
-                    <h4 class="mb-0">164 Million</h4>
-                    <p class="text-muted mb-0">Affected Accounts</p>
-                  </div>
-                </div>
-                <div class="breach-stat-item d-flex align-items-center">
-                  <div
-                    class="breach-stat-icon bg-info-subtle rounded-circle p-2 me-3"
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="me-3 d-flex align-items-center justify-content-center"
+                      >
+                        <div
+                          class="rounded-circle"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #0dcaf0;
+                            box-shadow: 0 0 8px rgba(13, 202, 240, 0.6);
+                          "
+                        ></div>
+                      </div>
+                      <div>
+                        <h5 class="mb-0 fw-bold">
+                          <a
+                            href="https://colordatingapp.com"
+                            target="_blank"
+                            rel="noopener"
+                            class="text-decoration-none"
+                            >Color Dating</a
+                          >
+                        </h5>
+                        <p class="text-muted small mb-0">Website</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="list-group-item bg-transparent border-bottom border-secondary-subtle py-3"
                   >
-                    <i class="bi bi-calendar-event text-info fs-4"></i>
-                  </div>
-                  <div>
-                    <h4 class="mb-0">4 Years</h4>
-                    <p class="text-muted mb-0">Until Full Discovery</p>
-                  </div>
-                </div>
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="me-3 d-flex align-items-center justify-content-center"
+                      >
+                        <div
+                          class="rounded-circle"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #0dcaf0;
+                            box-shadow: 0 0 8px rgba(13, 202, 240, 0.6);
+                          "
+                        ></div>
+                      </div>
+                      <div>
+                        <h5 class="mb-0 fw-bold">220,503</h5>
+                        <p class="text-muted small mb-0">Affected Accounts</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="list-group-item bg-transparent border-bottom border-secondary-subtle py-3"
+                  >
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="me-3 d-flex align-items-center justify-content-center"
+                      >
+                        <div
+                          class="rounded-circle"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #0dcaf0;
+                            box-shadow: 0 0 8px rgba(13, 202, 240, 0.6);
+                          "
+                        ></div>
+                      </div>
+                      <div>
+                        <h5 class="mb-0 fw-bold">6 Years</h5>
+                        <p class="text-muted small mb-0">Until Added to HIBP</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li
+                    class="list-group-item bg-transparent border-bottom border-secondary-subtle py-3"
+                  >
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="me-3 d-flex align-items-center justify-content-center"
+                      >
+                        <div
+                          class="rounded-circle"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #0dcaf0;
+                            box-shadow: 0 0 8px rgba(13, 202, 240, 0.6);
+                          "
+                        ></div>
+                      </div>
+                      <div>
+                        <h5 class="mb-0 fw-bold">September 5, 2018</h5>
+                        <p class="text-muted small mb-0">Breach Occurred</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item bg-transparent py-3">
+                    <div class="d-flex align-items-center">
+                      <div
+                        class="me-3 d-flex align-items-center justify-content-center"
+                      >
+                        <div
+                          class="rounded-circle"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #0dcaf0;
+                            box-shadow: 0 0 8px rgba(13, 202, 240, 0.6);
+                          "
+                        ></div>
+                      </div>
+                      <div>
+                        <h5 class="mb-0 fw-bold">March 3, 2025</h5>
+                        <p class="text-muted small mb-0">Added to HIBP</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
 
             <div class="card card-glow mb-4">
               <div class="card-body">
-                <h3 class="card-title mb-3">Recommended Actions</h3>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item bg-transparent">
-                    <div class="d-flex">
-                      <i
-                        class="bi bi-check-circle-fill text-primary me-3 fs-5"
-                      ></i>
-                      <div>
-                        <h5 class="mb-1">Change Your Password</h5>
-                        <p class="mb-0 text-muted small">
-                          If you haven't changed your LinkedIn password since
-                          2012, do so immediately.
+                <h3 class="card-title mb-4">Breach Classification</h3>
+                <div class="accordion" id="breachClassificationAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#unverifiedAccordion"
+                        aria-expanded="false"
+                        aria-controls="unverifiedAccordion"
+                      >
+                        <i class="bi bi-question-circle me-2 text-danger"></i>
+                        <strong>Unverified Breach</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="unverifiedAccordion"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#breachClassificationAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Some breaches may be flagged as "unverified". In these
+                          cases, whilst there is legitimate data within the
+                          alleged breach, it may not have been possible to
+                          establish legitimacy beyond reasonable doubt.
+                        </p>
+                        <p>
+                          Unverified breaches are still included in the system
+                          because regardless of their legitimacy, they still
+                          contain personal information about individuals who
+                          want to understand their exposure on the web.
                         </p>
                       </div>
                     </div>
-                  </li>
-                  <li class="list-group-item bg-transparent">
-                    <div class="d-flex">
-                      <i
-                        class="bi bi-check-circle-fill text-primary me-3 fs-5"
-                      ></i>
-                      <div>
-                        <h5 class="mb-1">Enable Two-Factor Authentication</h5>
-                        <p class="mb-0 text-muted small">
-                          Add an extra layer of security to your LinkedIn
-                          account.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item bg-transparent">
-                    <div class="d-flex">
-                      <i
-                        class="bi bi-check-circle-fill text-primary me-3 fs-5"
-                      ></i>
-                      <div>
-                        <h5 class="mb-1">Check Other Accounts</h5>
-                        <p class="mb-0 text-muted small">
-                          If you used the same password elsewhere, change those
-                          too.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item bg-transparent">
-                    <div class="d-flex">
-                      <i
-                        class="bi bi-check-circle-fill text-primary me-3 fs-5"
-                      ></i>
-                      <div>
-                        <h5 class="mb-1">Monitor for Suspicious Activity</h5>
-                        <p class="mb-0 text-muted small">
-                          Watch for unusual login attempts or messages from your
-                          account.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+                  </div>
 
-            <div class="card card-glow">
-              <div class="card-body">
-                <h3 class="card-title mb-3">Additional Resources</h3>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item bg-transparent">
-                    <a href="#" class="text-decoration-none">
-                      <div class="d-flex align-items-center">
-                        <i class="bi bi-link-45deg text-primary me-2 fs-5"></i>
-                        <span>LinkedIn Security Center</span>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#fabricatedAccordion"
+                        aria-expanded="false"
+                        aria-controls="fabricatedAccordion"
+                      >
+                        <i
+                          class="bi bi-exclamation-triangle me-2 text-danger"
+                        ></i>
+                        <strong>Fabricated Breach</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="fabricatedAccordion"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#breachClassificationAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Some breaches may be flagged as "fabricated". In these
+                          cases, it is highly unlikely that the breach contains
+                          legitimate data sourced from the alleged site but it
+                          may still be sold or traded under the auspices of
+                          legitimacy.
+                        </p>
+                        <p>
+                          Often these incidents are comprised of data aggregated
+                          from other locations (or may be entirely fabricated),
+                          yet still contain actual email addresses unbeknownst
+                          to the account holder.
+                        </p>
                       </div>
-                    </a>
-                  </li>
-                  <li class="list-group-item bg-transparent">
-                    <a href="#" class="text-decoration-none">
-                      <div class="d-flex align-items-center">
-                        <i class="bi bi-link-45deg text-primary me-2 fs-5"></i>
-                        <span>How to Enable 2FA on LinkedIn</span>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#retiredAccordion"
+                        aria-expanded="false"
+                        aria-controls="retiredAccordion"
+                      >
+                        <i class="bi bi-archive me-2 text-danger"></i>
+                        <strong>Retired Breach</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="retiredAccordion"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#breachClassificationAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          After a security incident which results in the
+                          disclosure of account data, the breach may be loaded
+                          into HIBP where it then sends notifications to
+                          impacted subscribers and becomes searchable. In very
+                          rare circumstances, that breach may later be
+                          permanently remove from HIBP where it is then classed
+                          as a "retired breach".
+                        </p>
+                        <p>
+                          A retired breach is typically one where the data does
+                          not appear in other locations on the web, that is it's
+                          not being traded or redistributed. There are presently
+                          2 retired breaches in the system.
+                        </p>
                       </div>
-                    </a>
-                  </li>
-                  <li class="list-group-item bg-transparent">
-                    <a href="#" class="text-decoration-none">
-                      <div class="d-flex align-items-center">
-                        <i class="bi bi-link-45deg text-primary me-2 fs-5"></i>
-                        <span>Password Security Best Practices</span>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#sensitiveAccordion"
+                        aria-expanded="false"
+                        aria-controls="sensitiveAccordion"
+                      >
+                        <i class="bi bi-eye-slash me-2 text-danger"></i>
+                        <strong>Sensitive Breach</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="sensitiveAccordion"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#breachClassificationAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          HIBP enables you to discover if your account was
+                          exposed in most of the data breaches by directly
+                          searching the system. However, certain breaches are
+                          particularly sensitive in that someone's presence in
+                          the breach may adversely impact them if others are
+                          able to find that they were a member of the site.
+                        </p>
+                        <p>
+                          A sensitive data breach can only be searched by the
+                          verified owner of the email address being searched
+                          for. This is done via the notification system which
+                          involves sending a verification email to the address
+                          with a unique link.
+                        </p>
+                        <p>
+                          There are presently 74 sensitive breaches in the
+                          system including Adult FriendFinder, Ashley Madison,
+                          and others.
+                        </p>
                       </div>
-                    </a>
-                  </li>
-                </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
