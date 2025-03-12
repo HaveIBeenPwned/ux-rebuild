@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      property="og:title"
+      content="Have I Been Pwned: Frequently Asked Questions"
+    />
+    <meta
+      name="description"
+      content="Answers to common questions about Have I Been Pwned and data breaches."
+    />
+    <meta
+      property="og:description"
+      content="Answers to common questions about Have I Been Pwned and data breaches."
+    />
+
+    <title>Have I Been Pwned: Frequently Asked Questions</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/main.css" rel="stylesheet" />
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="/" class="navbar-brand">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+        <div class="d-flex align-items-center gap-3 d-lg-none">
+          <button class="btn btn-secondary">Notify me</button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="domain_search.html">Domain search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Who's been pwned</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Passwords</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="faq.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donate</a>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-secondary d-none d-lg-inline-flex">
+          Notify me
+        </button>
+      </div>
+    </nav>
+
+    <!-- FAQ Header Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center mb-5">
+            <h1 class="display-4 mb-3">Frequently Asked Questions</h1>
+            <p class="lead">
+              Need to know something about Have I Been Pwned (HIBP)? Find
+              answers to common questions below.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Content Section -->
+    <section class="py-3 mb-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="card card-glow mb-4">
+              <div class="card-body">
+                <div class="accordion" id="faqAccordion">
+                  <!-- Question 1 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionOne"
+                        aria-expanded="true"
+                        aria-controls="questionOne"
+                      >
+                        <i class="bi bi-question-circle me-2 text-primary"></i>
+                        <strong>What does "pwned" mean?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionOne"
+                      class="accordion-collapse collapse show"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          The word "pwned" has origins in video game culture and
+                          is a leetspeak derivation of the word "owned", due to
+                          the proximity of the "o" and "p" keys. It's typically
+                          used to imply that someone has been controlled or
+                          compromised, for example "I was pwned in the Adobe
+                          data breach".
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 2 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwo"
+                        aria-expanded="false"
+                        aria-controls="questionTwo"
+                      >
+                        <i
+                          class="bi bi-shield-exclamation me-2 text-primary"
+                        ></i>
+                        <strong
+                          >What is a "breach" and where has the data come
+                          from?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwo"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          A "breach" is an incident where data is inadvertently
+                          exposed in a vulnerable system, usually due to
+                          insufficient access controls or security weaknesses in
+                          the software. HIBP aggregates breaches and enables
+                          people to assess where their personal data has been
+                          exposed.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 3 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionThree"
+                        aria-expanded="false"
+                        aria-controls="questionThree"
+                      >
+                        <i class="bi bi-key me-2 text-primary"></i>
+                        <strong>Are user passwords stored in this site?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionThree"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          When email addresses from a data breach are loaded
+                          into the site, no corresponding passwords are loaded
+                          with them. Separately to the pwned address search
+                          feature, the Pwned Passwords service allows you to
+                          check if an individual password has previously been
+                          seen in a data breach. No password is stored next to
+                          any personally identifiable data (such as an email
+                          address) and every password is SHA-1 hashed.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 4 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionFour"
+                        aria-expanded="false"
+                        aria-controls="questionFour"
+                      >
+                        <i class="bi bi-envelope me-2 text-primary"></i>
+                        <strong
+                          >Can I send users their exposed passwords?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionFour"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          No. Any ability to send passwords to people puts both
+                          them and myself at greater risk. This topic is
+                          discussed at length in the blog post on all the
+                          reasons I don't make passwords available via this
+                          service.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 5 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionFive"
+                        aria-expanded="false"
+                        aria-controls="questionFive"
+                      >
+                        <i class="bi bi-list me-2 text-primary"></i>
+                        <strong
+                          >Is a list of everyone's email address or username
+                          available?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionFive"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          The public search facility cannot return anything
+                          other than the results for a single user-provided
+                          email address or username at a time. Multiple breached
+                          accounts can be retrieved by the domain search feature
+                          but only after successfully verifying that the person
+                          performing the search is authorised to access assets
+                          on the domain.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 6 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionSix"
+                        aria-expanded="false"
+                        aria-controls="questionSix"
+                      >
+                        <i class="bi bi-shield-lock me-2 text-primary"></i>
+                        <strong
+                          >How do I know the site isn't just harvesting searched
+                          email addresses?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionSix"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          You don't, but it's not. The site is simply intended
+                          to be a free service for people to assess risk in
+                          relation to their account being caught up in a breach.
+                          As with any website, if you're concerned about the
+                          intent or security, don't use it.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 7 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionSeven"
+                        aria-expanded="false"
+                        aria-controls="questionSeven"
+                      >
+                        <i class="bi bi-link-45deg me-2 text-primary"></i>
+                        <strong
+                          >Is it possible to "deep link" directly to the search
+                          for an account?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionSeven"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Sure, you can construct a link so that the search for
+                          a particular account happens automatically when it's
+                          loaded, just pass the name after the "account" path.
+                          Here's an example:
+                        </p>
+                        <div class="bg-dark p-2 rounded mb-2">
+                          <code
+                            >https://haveibeenpwned.com/account/test@example.com</code
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 8 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionEight"
+                        aria-expanded="false"
+                        aria-controls="questionEight"
+                      >
+                        <i class="bi bi-upload me-2 text-primary"></i>
+                        <strong>How can I submit a data breach?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionEight"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          If you've come across a data breach which you'd like
+                          to submit, get in touch with me. Check out what's
+                          currently loaded into HIBP on the pwned websites page
+                          first if you're not sure whether the breach is already
+                          in the system.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 9 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionNine"
+                        aria-expanded="false"
+                        aria-controls="questionNine"
+                      >
+                        <i class="bi bi-eye-slash me-2 text-primary"></i>
+                        <strong>What is a "sensitive breach"?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionNine"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          HIBP enables you to discover if your account was
+                          exposed in <em>most</em> of the data breaches by
+                          directly searching the system. However, certain
+                          breaches are particularly sensitive in that someone's
+                          presence in the breach may adversely impact them if
+                          others are able to find that they were a member of the
+                          site. These breaches are classed as "sensitive" and
+                          may not be publicly searched.
+                        </p>
+                        <p>
+                          A sensitive data breach can only be searched by the
+                          <em>verified owner</em> of the email address being
+                          searched for. This is done via the notification system
+                          which involves sending a verification email to the
+                          address with a unique link. When that link is
+                          followed, the owner of the address will see
+                          <em>all</em> data breaches and pastes they appear in,
+                          including the sensitive ones.
+                        </p>
+                        <p>
+                          There are presently 74 sensitive breaches in the
+                          system including Adult FriendFinder (2015), Adult
+                          FriendFinder (2016), Adult-FanFiction.Org, Ashley
+                          Madison, Beautiful People, Bestialitysextaboo,
+                          Brazzers, BudTrader, Carding Mafia (December 2021),
+                          Carding Mafia (March 2021), CityJerks, Cocospy, Color
+                          Dating, CrimeAgency vBulletin Hacks, CTARS,
+                          CyberServe, Date Hot Brunettes, DC Health Link,
+                          Doxbin, Doxbin (TOoDA) and 54 more.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 10 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTen"
+                        aria-expanded="false"
+                        aria-controls="questionTen"
+                      >
+                        <i class="bi bi-archive me-2 text-primary"></i>
+                        <strong>What is a "retired breach"?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTen"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          After a security incident which results in the
+                          disclosure of account data, the breach may be loaded
+                          into HIBP where it then sends notifications to
+                          impacted subscribers and becomes searchable. In very
+                          rare circumstances, that breach may later be
+                          permanently remove from HIBP where it is then classed
+                          as a "retired breach".
+                        </p>
+                        <p>
+                          A retired breach is typically one where the data does
+                          not appear in other locations on the web, that is it's
+                          not being traded or redistributed. Deleting it from
+                          HIBP helps to provide those impacted with some
+                          assurance that their data can no longer be found. For
+                          more background, read Have I Been Pwned, opting out,
+                          VTech and general privacy things.
+                        </p>
+                        <p>
+                          There are presently 2 retired breaches in the system
+                          which are Ticketek and VTech.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 11 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionEleven"
+                        aria-expanded="false"
+                        aria-controls="questionEleven"
+                      >
+                        <i class="bi bi-question-circle me-2 text-primary"></i>
+                        <strong>What is an "unverified" breach?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionEleven"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Some breaches may be flagged as "unverified". In these
+                          cases, whilst there is legitimate data within the
+                          alleged breach, it may not have been possible to
+                          establish legitimacy beyond reasonable doubt.
+                          Unverified breaches are still included in the system
+                          because regardless of their legitimacy, they still
+                          contain personal information about individuals who
+                          want to understand their exposure on the web. Further
+                          background on unverified breaches can be found in the
+                          blog post titled Introducing unverified breaches to
+                          Have I Been Pwned.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 12 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwelve"
+                        aria-expanded="false"
+                        aria-controls="questionTwelve"
+                      >
+                        <i
+                          class="bi bi-exclamation-triangle me-2 text-primary"
+                        ></i>
+                        <strong>What is a "fabricated" breach?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwelve"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Some breaches may be flagged as "fabricated". In these
+                          cases, it is highly unlikely that the breach contains
+                          legitimate data sourced from the alleged site but it
+                          may still be sold or traded under the auspices of
+                          legitimacy. Often these incidents are comprised of
+                          data aggregated from other locations (or may be
+                          entirely fabricated), yet still contain actual email
+                          addresses unbeknownst to the account holder.
+                          Fabricated breaches are still included in the system
+                          because regardless of their legitimacy, they still
+                          contain personal information about individuals who
+                          want to understand their exposure on the web. Further
+                          background on unverified breaches can be found in the
+                          blog post titled Introducing "fabricated" breaches to
+                          Have I Been Pwned.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 13 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionThirteen"
+                        aria-expanded="false"
+                        aria-controls="questionThirteen"
+                      >
+                        <i class="bi bi-tag me-2 text-primary"></i>
+                        <strong>What is a "subscription free" breach?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionThirteen"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Some breaches may be flagged as "subscription free".
+                          When using the domain search feature, larger domains
+                          normally require a subscription in order to see the
+                          search results. Breaches that are flagged as
+                          subscription free are searchable without needing a
+                          subscription, regardless of how large the domain is.
+                          This flag has no impact on searches by email address.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 14 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionFourteen"
+                        aria-expanded="false"
+                        aria-controls="questionFourteen"
+                      >
+                        <i
+                          class="bi bi-envelope-exclamation me-2 text-primary"
+                        ></i>
+                        <strong>What is a "spam list"?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionFourteen"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Occasionally, large volumes of personal data are found
+                          being utilised for the purposes of sending targeted
+                          spam. This often includes many of the same attributes
+                          frequently found in data breaches such as names,
+                          addresses, phones numbers and dates of birth. The
+                          lists are often aggregated from multiple sources,
+                          frequently by eliciting personal information from
+                          people with the promise of a monetary reward. Whilst
+                          the data may not have been sourced from a breached
+                          system, the personal nature of the information and the
+                          fact that it's redistributed in this fashion
+                          unbeknownst to the owners warrants inclusion here.
+                          Read more about spam lists in HIBP.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 15 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionFifteen"
+                        aria-expanded="false"
+                        aria-controls="questionFifteen"
+                      >
+                        <i class="bi bi-bug me-2 text-primary"></i>
+                        <strong>What is a "malware" breach?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionFifteen"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Data breaches in HIBP aren't always the result of a
+                          security compromise of an online service and
+                          occasionally, data obtained by malware campaigns is
+                          also loaded. For example, the US FBI and Dutch NHTCU
+                          provided HIBP with data from the Emotet malware in
+                          April 2021. The risk posed to individuals in these
+                          incidents is different (their personal device may be
+                          compromised) hence the presence of this flag in HIBP.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 16 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionSixteen"
+                        aria-expanded="false"
+                        aria-controls="questionSixteen"
+                      >
+                        <i
+                          class="bi bi-file-earmark-code me-2 text-primary"
+                        ></i>
+                        <strong>What are "stealer logs"?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionSixteen"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Stealer logs are the result of malicious software
+                          running on infected machines that collect email
+                          addresses, passwords and the website they're entered
+                          into at login. HIBP indexes stealer logs and stores
+                          the domain names of the websites they appear against.
+                          This is searchable via the notification service and
+                          via a dedicated API. Read more about stealer logs in
+                          HIBP.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 17 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionSeventeen"
+                        aria-expanded="false"
+                        aria-controls="questionSeventeen"
+                      >
+                        <i class="bi bi-key-fill me-2 text-primary"></i>
+                        <strong
+                          >What does it mean if my password is in Pwned
+                          Passwords?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionSeventeen"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          If a password is found in the Pwned Passwords service,
+                          it means it has previously appeared in a data breach.
+                          HIBP does not store any information about who the
+                          password belonged to, only that it has previously been
+                          exposed publicly and how many times it has been seen.
+                          A Pwned Password should no longer be used as its
+                          exposure puts it at higher risk of being used to login
+                          to accounts using the now-exposed secret.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 18 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionEighteen"
+                        aria-expanded="false"
+                        aria-controls="questionEighteen"
+                      >
+                        <i class="bi bi-shield-x me-2 text-primary"></i>
+                        <strong
+                          >I searched for my email address on HIBP and then I
+                          was hacked, what gives?!</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionEighteen"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          First of all, searches are not logged so there's no
+                          collection of addresses. Any searches that
+                          <em>are</em> performed are done so over an encrypted
+                          connection so nobody has access to the web traffic
+                          other than those hosting the HIBP services. Even if
+                          they did, <em>it's only an email address</em> and not
+                          enough to gain access to someone's online accounts. If
+                          Pwned Passwords has also been used to search for a
+                          password, it's anonymised before being sent to HIBP so
+                          even a search for both email address and password
+                          doesn't provide a usable credential pair. Correlation
+                          does not imply causation; it's a coincidence.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 19 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionNineteen"
+                        aria-expanded="false"
+                        aria-controls="questionNineteen"
+                      >
+                        <i class="bi bi-info-circle me-2 text-primary"></i>
+                        <strong
+                          >It's a bit light on detail here, where can I get more
+                          info?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionNineteen"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          The design and build of this project has been
+                          extensively documented on troyhunt.com under the Have
+                          I Been Pwned tag. These blog posts explain much of the
+                          reasoning behind the various features and how they've
+                          been implemented on Microsoft's Windows Azure cloud
+                          platform.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 20 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwenty"
+                        aria-expanded="false"
+                        aria-controls="questionTwenty"
+                      >
+                        <i
+                          class="bi bi-file-earmark-text me-2 text-primary"
+                        ></i>
+                        <strong
+                          >What about breaches where passwords aren't
+                          leaked?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwenty"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Occasionally, a breach will be added to the system
+                          which doesn't include credentials for an online
+                          service. This may occur when data
+                          <em>about</em> individuals is leaked and it may not
+                          include a username and password. However this data
+                          still has a privacy impact; it is data that those
+                          impacted would not reasonably expect to be publicly
+                          released and as such they have a vested interest in
+                          having the ability to be notified of this.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 21 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwentyOne"
+                        aria-expanded="false"
+                        aria-controls="questionTwentyOne"
+                      >
+                        <i class="bi bi-check-circle me-2 text-primary"></i>
+                        <strong>How is a breach verified as legitimate?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwentyOne"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          There are often "breaches" announced by attackers
+                          which in turn are exposed as hoaxes. There is a
+                          balance between making data searchable early and
+                          performing sufficient due diligence to establish the
+                          legitimacy of the breach. The following activities are
+                          usually performed in order to validate breach
+                          legitimacy:
+                        </p>
+                        <ol>
+                          <li>
+                            Has the impacted service publicly acknowledged the
+                            breach?
+                          </li>
+                          <li>
+                            Does the data in the breach turn up in a Google
+                            search (i.e. it's just copied from another source)?
+                          </li>
+                          <li>
+                            Is the structure of the data consistent with what
+                            you'd expect to see in a breach?
+                          </li>
+                          <li>
+                            Have the attackers provided sufficient evidence to
+                            demonstrate the attack vector?
+                          </li>
+                          <li>
+                            Do the attackers have a track record of either
+                            reliably releasing breaches or falsifying them?
+                          </li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 22 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwentyTwo"
+                        aria-expanded="false"
+                        aria-controls="questionTwentyTwo"
+                      >
+                        <i class="bi bi-clipboard-data me-2 text-primary"></i>
+                        <strong
+                          >What is a "paste" and why include it on this
+                          site?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwentyTwo"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          A "paste" is information that has been "pasted" to a
+                          publicly facing website designed to share content such
+                          as Pastebin. These services are favoured by hackers
+                          due to the ease of anonymously sharing information and
+                          they're frequently the first place a breach appears.
+                        </p>
+                        <p>
+                          HIBP searches through pastes that are broadcast by the
+                          accounts in the Paste Sources Twitter list and
+                          reported as having emails that are a potential
+                          indicator of a breach. Finding an email address in a
+                          paste <em>does not</em> immediately mean it has been
+                          disclosed as the result of a breach. Review the paste
+                          and determine if your account has been compromised
+                          then take appropriate action such as changing
+                          passwords.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 23 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwentyThree"
+                        aria-expanded="false"
+                        aria-controls="questionTwentyThree"
+                      >
+                        <i class="bi bi-clipboard-x me-2 text-primary"></i>
+                        <strong
+                          >My email was reported as appearing in a paste but the
+                          paste now can't be found</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwentyThree"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Pastes are often transient; they appear briefly and
+                          are then removed. HIBP usually indexes a new paste
+                          within 40 seconds of it appearing and stores the email
+                          addresses that appeared in the paste along with some
+                          metadata such as the date, title and author (if they
+                          exist). The paste itself is not stored and cannot be
+                          displayed if it no longer exists at the source.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 24 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwentyFour"
+                        aria-expanded="false"
+                        aria-controls="questionTwentyFour"
+                      >
+                        <i class="bi bi-search me-2 text-primary"></i>
+                        <strong
+                          >My email was not found — does that mean I haven't
+                          been pwned?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwentyFour"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Whilst HIBP is kept up to date with as much data as
+                          possible, it contains but a small subset of all the
+                          records that have been breached over the years. Many
+                          breaches never result in the public release of data
+                          and indeed many breaches even go entirely undetected.
+                          "Absence of evidence is not evidence of absence" or in
+                          other words, just because your email address wasn't
+                          found here doesn't mean that is hasn't been
+                          compromised in another breach. An address that was
+                          previously found in HIBP will no longer appear if it
+                          has been opted-out or the data was retired.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 25 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwentyFive"
+                        aria-expanded="false"
+                        aria-controls="questionTwentyFive"
+                      >
+                        <i class="bi bi-plus-circle me-2 text-primary"></i>
+                        <strong
+                          >How does HIBP handle "plus aliasing" in email
+                          addresses?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwentyFive"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Some people choose to create accounts using a pattern
+                          known as "plus aliasing" in their email addresses.
+                          This allows them to express their email address with
+                          an additional piece of data in the alias, usually
+                          reflecting the site they've signed up to such as
+                          test+netflix@example.com or test+amazon@example.com.
+                          There is presently a UserVoice suggestion requesting
+                          support of this pattern in HIBP. However, as explained
+                          in that suggestion, usage of plus aliasing is
+                          <em>extremely</em> rare, appearing in approximately
+                          only 0.03% of addresses loaded into HIBP. Vote for the
+                          suggestion and follow its progress if this feature is
+                          important to you.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 26 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwentySix"
+                        aria-expanded="false"
+                        aria-controls="questionTwentySix"
+                      >
+                        <i class="bi bi-hdd-stack me-2 text-primary"></i>
+                        <strong>How is the data stored?</strong>
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwentySix"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          The breached accounts sit in Windows Azure table
+                          storage which contains nothing more than the email
+                          address or username and a list of sites it appeared in
+                          breaches on. If you're interested in the details, it's
+                          all described in Working with 154 million records on
+                          Azure Table Storage – the story of Have I Been Pwned.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 27 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwentySeven"
+                        aria-expanded="false"
+                        aria-controls="questionTwentySeven"
+                      >
+                        <i class="bi bi-journal-text me-2 text-primary"></i>
+                        <strong
+                          >Is anything logged when people search for an
+                          account?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwentySeven"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Nothing is explicitly logged by the website. The only
+                          logging of any kind is via Google Analytics,
+                          Application Insights performance monitoring and any
+                          diagnostic data implicitly collected if an exception
+                          occurs in the system.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 28 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwentyEight"
+                        aria-expanded="false"
+                        aria-controls="questionTwentyEight"
+                      >
+                        <i class="bi bi-person-badge me-2 text-primary"></i>
+                        <strong
+                          >Why do I see my username as breached on a service I
+                          never signed up to?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwentyEight"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          When you search for a username that is not an email
+                          address, you may see that name appear against breaches
+                          of sites you never signed up to. Usually this is
+                          simply due to someone else electing to use the same
+                          username as you usually do. Even when your username
+                          appears very unique, the simple fact that there are
+                          several billion internet users worldwide means there's
+                          a strong probability that most usernames have been
+                          used by other individuals at one time or another.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 29 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionTwentyNine"
+                        aria-expanded="false"
+                        aria-controls="questionTwentyNine"
+                      >
+                        <i class="bi bi-envelope-fill me-2 text-primary"></i>
+                        <strong
+                          >Why do I see my email address as breached on a
+                          service I never signed up to?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionTwentyNine"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          When you search for an email address, you may see that
+                          address appear against breaches of sites you don't
+                          recall ever signing up to. There are many possible
+                          reasons for this including your data having been
+                          acquired by another service, the service rebranding
+                          itself as something else or someone else signing you
+                          up. For a more comprehensive overview, see Why am I in
+                          a data breach for a site I never signed up to?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 30 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionThirty"
+                        aria-expanded="false"
+                        aria-controls="questionThirty"
+                      >
+                        <i class="bi bi-bell me-2 text-primary"></i>
+                        <strong
+                          >Can I receive notifications for an email address I
+                          don't have access to?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionThirty"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          No. For privacy reasons, all notifications are sent to
+                          the address being monitored so you can't monitor
+                          someone else's address nor can you monitor an address
+                          you no longer have access to. You can always perform
+                          an on-demand search of an address, but sensitive
+                          breaches and retired breaches will not be returned.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 31 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionThirtyOne"
+                        aria-expanded="false"
+                        aria-controls="questionThirtyOne"
+                      >
+                        <i class="bi bi-database me-2 text-primary"></i>
+                        <strong
+                          >Does the notification service store email
+                          addresses?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionThirtyOne"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          Yes, it has to in order to track who to contact should
+                          they be caught up in a subsequent data breach. Only
+                          the email address, the date they subscribed on and a
+                          random token for verification is stored.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 32 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionThirtyTwo"
+                        aria-expanded="false"
+                        aria-controls="questionThirtyTwo"
+                      >
+                        <i class="bi bi-x-circle me-2 text-primary"></i>
+                        <strong
+                          >Can a breach be removed against my email address
+                          after I've changed the password?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionThirtyTwo"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          HIBP provides a record of which breaches an email
+                          address has appeared in regardless of whether the
+                          password has consequently been changed or not. The
+                          fact the email address was in the breach is an
+                          immutable historic fact; it cannot later be changed.
+                          If you don't want <em>any</em> breach to publicly
+                          appear against the address, use the opt-out feature.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Question 33 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#questionThirtyThree"
+                        aria-expanded="false"
+                        aria-controls="questionThirtyThree"
+                      >
+                        <i class="bi bi-envelope-paper me-2 text-primary"></i>
+                        <strong
+                          >What email address are notifications sent
+                          from?</strong
+                        >
+                      </button>
+                    </h2>
+                    <div
+                      id="questionThirtyThree"
+                      class="accordion-collapse collapse"
+                      data-bs-parent="#faqAccordion"
+                    >
+                      <div class="accordion-body">
+                        <p>
+                          All emails sent by HIBP come from
+                          noreply@haveibeenpwned.com. If you're expecting an
+                          email (for example, the verification email sent when
+                          signing up for notifications) and it doesn't arrive,
+                          try white-listing that address. 99.x% of the time
+                          email doesn't arrive in someone's inbox, it's due to
+                          the destination mail server bouncing it.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>
