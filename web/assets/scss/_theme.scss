@@ -101,6 +101,7 @@ $card-spacer-x: $card-padding-x;
 
 // Navbar customization
 $navbar-light-active-color: $primary;
+$navbar-toggler-font-size: 0.8rem;
 
 // Define custom theme colors
 $theme-colors: (
@@ -276,7 +277,7 @@ $theme-colors: (
   // Navbar toggler
   --bs-navbar-toggler-padding-y: 0.25rem;
   --bs-navbar-toggler-padding-x: 0.5rem;
-  --bs-navbar-toggler-font-size: 1rem;
+  --bs-navbar-toggler-font-size: #{$navbar-toggler-font-size};
   --bs-navbar-toggler-border-radius: var(--border-radius);
 
   // Navbar brand
@@ -309,7 +310,7 @@ $theme-colors: (
   // Navbar toggler
   --bs-navbar-toggler-padding-y: 0.25rem;
   --bs-navbar-toggler-padding-x: 0.5rem;
-  --bs-navbar-toggler-font-size: 1rem;
+  --bs-navbar-toggler-font-size: 0.8rem;
   --bs-navbar-toggler-border-radius: var(--border-radius);
 
   // Navbar brand
