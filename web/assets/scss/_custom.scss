@@ -4,13 +4,90 @@
 // Import variables
 @import "variables";
 
-// For now, we're just setting up the structure
-// In a full implementation, you would add your custom styles here
-
 /* 
  * Custom CSS File
  * This file is intended for specific customizations and overrides. 
  */
+
+/* Navbar Dropdown Styling
+-------------------------------------------------- */
+.dropdown-menu {
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  border: 1px solid rgba($primary, 0.2);
+  background: linear-gradient(
+    145deg,
+    rgba(29, 72, 97, 0.95) 0%,
+    rgba(21, 43, 57, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba($black, 0.2), 0 2px 10px rgba($black, 0.1),
+    0 0 1px rgba($white, 0.1);
+
+  // Remove excessive padding
+  .dropdown-item {
+    padding: 0.6rem 1.2rem;
+    color: $gray-200;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &:focus {
+      background-color: rgba($primary, 0.2);
+      color: $white;
+    }
+
+    &.active {
+      background-color: rgba($primary, 0.3);
+      color: $white;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background-color: $primary;
+      }
+    }
+  }
+
+  // Add subtle divider between items
+  .dropdown-item + .dropdown-item {
+    border-top: 1px solid rgba($white, 0.05);
+  }
+
+  // Add subtle animation
+  animation: dropdownFadeIn 0.2s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Enhance dropdown toggle appearance
+.nav-link.dropdown-toggle {
+  position: relative;
+
+  &::after {
+    margin-left: 0.4em;
+    vertical-align: middle;
+    transition: transform 0.2s ease;
+  }
+
+  &[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+  }
+}
 
 // Background glow effect
 body {
@@ -235,13 +312,13 @@ body {
       rgba($primary, 0.05) 100%
     );
     backdrop-filter: blur(8px);
-    box-shadow: 0 0.25rem 1rem rgba($black, 0.1) !important;
-    border: 1px solid rgba($primary, 0.1) !important;
+    box-shadow: 0 0.25rem 1rem rgba($black, 0.1);
+    border: 1px solid rgba($primary, 0.1);
     transition: all 0.3s ease;
 
     &:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0.5rem 1.5rem rgba($primary, 0.15) !important;
+      box-shadow: 0 0.5rem 1.5rem rgba($primary, 0.15);
     }
   }
 }
@@ -517,5 +594,182 @@ body {
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+/* Terms of Use Page Styles
+-------------------------------------------------- */
+/* Styling for terms list */
+.terms-list {
+  counter-reset: section;
+  list-style-type: none;
+  padding-left: 0;
+
+  > li {
+    counter-increment: section;
+    margin-bottom: 2rem;
+
+    &::before {
+      content: counter(section) ".";
+      font-weight: 500;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+/* First level nested list - numeric */
+.terms-list > li > ol {
+  counter-reset: subsection;
+  list-style-type: none;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+
+  > li {
+    counter-increment: subsection;
+    margin-bottom: 1rem;
+
+    &::before {
+      content: counter(section) "." counter(subsection);
+      font-weight: 500;
+      margin-right: 0.5rem;
+    }
+  }
+}
+
+/* Override for lowerAlpha directly under terms-list */
+.terms-list > li > ol.lowerAlpha {
+  counter-reset: item;
+  list-style-type: none;
+  padding-left: 1.5rem;
+
+  > li {
+    counter-increment: item;
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 1rem;
+
+    &::before {
+      content: "(" counter(item, lower-alpha) ") ";
+      position: absolute;
+      left: 0;
+      font-weight: 500;
+      padding-right: 0.6em;
+    }
+  }
+}
+
+/* Second level nested list - lowercase alphabetic */
+.lowerAlpha {
+  list-style-type: none;
+  padding-left: 1.5rem;
+  margin-top: 0.75rem;
+  counter-reset: item;
+
+  > li {
+    margin-bottom: 0.75rem;
+    counter-increment: item;
+    position: relative;
+    padding-left: 1.75rem;
+
+    &:before {
+      content: "(" counter(item, lower-alpha) ") ";
+      position: absolute;
+      left: 0;
+      font-weight: 500;
+      padding-right: 0.6em;
+    }
+  }
+}
+
+/* Roman numeral list */
+.roman {
+  list-style-type: none;
+  padding-left: 1.5rem;
+  margin-top: 0.75rem;
+  counter-reset: item;
+
+  > li {
+    margin-bottom: 0.75rem;
+    counter-increment: item;
+    position: relative;
+    padding-left: 1.75rem;
+
+    &:before {
+      content: "(" counter(item, lower-roman) ") ";
+      position: absolute;
+      left: 0;
+      font-weight: 500;
+    }
+  }
+}
+
+/* Uppercase alphabetic list */
+.upperAlpha {
+  list-style-type: none;
+  padding-left: 1.5rem;
+  margin-top: 0.75rem;
+  counter-reset: item;
+
+  > li {
+    margin-bottom: 0.75rem;
+    counter-increment: item;
+    position: relative;
+    padding-left: 1.75rem;
+
+    &:before {
+      content: "(" counter(item, upper-alpha) ") ";
+      position: absolute;
+      left: 0;
+      font-weight: 500;
+      padding-right: 0.6em;
+    }
+  }
+}
+
+/* General styling for all list items */
+.section-container li {
+  line-height: 1.6;
+}
+
+/* Add spacing between paragraphs in list items */
+.section-container li p {
+  margin-bottom: 0.75rem;
+}
+
+/* Ensure proper styling for nested lists under lowerAlpha */
+.terms-list > li > ol.lowerAlpha > li > ol {
+  padding-left: 0;
+  margin-top: 0.75rem;
+}
+
+/* Ensure proper styling for lowerAlpha lists under numeric lists */
+.terms-list > li > ol > li > ol.lowerAlpha {
+  counter-reset: item;
+  list-style-type: none;
+  padding-left: 1.5rem;
+
+  > li {
+    counter-increment: item;
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+
+    &::before {
+      content: "(" counter(item, lower-alpha) ") ";
+      position: absolute;
+      left: 0;
+      font-weight: 500;
+      padding-right: 0.6em;
+    }
+  }
+}
+
+/* No bullet list for definitions */
+.noBullet {
+  list-style-type: none;
+  padding-left: 0;
+
+  > li {
+    margin-bottom: 1rem;
   }
 }

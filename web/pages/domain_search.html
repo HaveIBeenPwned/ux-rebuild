@@ -31,7 +31,7 @@
     <!-- Navigation Component -->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <a href="/" class="navbar-brand">
+        <a href="../index.html" class="navbar-brand">
           <img
             src="../assets/images/hibp-logo.svg"
             alt="Have I Been Pwned"
@@ -52,7 +52,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="pages/domain_search.html"
+              <a class="nav-link active" href="pages/domain_search.html"
                 >Domain search</a
               >
             </li>
@@ -65,8 +65,22 @@
             <li class="nav-item">
               <a class="nav-link" href="#">API</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                <li>
+                  <a class="dropdown-item" href="toc.html">Terms of Use</a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Donate</a>

@@ -99,6 +99,9 @@ $table-hover-color: $white;
 $card-spacer-y: $card-padding-y;
 $card-spacer-x: $card-padding-x;
 
+// Navbar customization
+$navbar-light-active-color: $primary;
+
 // Define custom theme colors
 $theme-colors: (
   "primary": $primary,
@@ -253,6 +256,7 @@ $theme-colors: (
   // Navbar
   --bs-navbar-padding-y: 0.75rem;
   --bs-navbar-padding-x: 1.5rem;
+  --bs-nav-link-font-size: 1rem;
 
   // Navbar background and border
   --bs-navbar-bg: rgba(3, 3, 4, 0.8);
@@ -263,7 +267,6 @@ $theme-colors: (
   // Navbar links
   --bs-navbar-color: var(--white);
   --bs-navbar-hover-color: rgba(255, 255, 255, 0.7);
-  --bs-navbar-active-color: rgba(255, 255, 255, 0.7);
   --bs-navbar-disabled-color: rgba(255, 255, 255, 0.3);
 
   // Navbar nav links
@@ -296,7 +299,7 @@ $theme-colors: (
   // Navbar links
   --bs-navbar-color: var(--white);
   --bs-navbar-hover-color: rgba(255, 255, 255, 0.7);
-  --bs-navbar-active-color: rgba(255, 255, 255, 0.7);
+  --bs-navbar-active-color: #{$navbar-light-active-color};
   --bs-navbar-disabled-color: rgba(255, 255, 255, 0.3);
 
   // Navbar nav links
