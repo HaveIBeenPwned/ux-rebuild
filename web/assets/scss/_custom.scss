@@ -91,6 +91,7 @@
 
 // Background glow effect
 body {
+  padding-top: 1rem;
   &::before {
     content: "";
     position: fixed;
