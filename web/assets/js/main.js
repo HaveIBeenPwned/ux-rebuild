@@ -20,7 +20,37 @@ document.addEventListener("DOMContentLoaded", function () {
   ) {
     initBreachTimeline();
   }
+
+  // Initialize navbar menu background toggle
+  initNavbarMenuToggle();
 });
+
+/**
+ * Initialize the navbar menu background toggle functionality
+ */
+function initNavbarMenuToggle() {
+  const navbar = document.querySelector(".navbar");
+  const navbarToggler = document.querySelector(".navbar-toggler");
+  const navbarCollapse = document.getElementById("navbarNav");
+
+  if (navbar && navbarToggler && navbarCollapse) {
+    // Toggle the menu-open class when the menu visibility changes
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.attributeName === "class") {
+          if (navbarCollapse.classList.contains("show")) {
+            navbar.classList.add("menu-open");
+          } else {
+            navbar.classList.remove("menu-open");
+          }
+        }
+      });
+    });
+
+    // Observe the navbar-collapse element for class changes
+    observer.observe(navbarCollapse, { attributes: true });
+  }
+}
 
 // Sample breach data for the timeline (used for the paste details modal)
 const breachData = [
