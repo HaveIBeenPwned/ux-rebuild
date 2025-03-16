@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Have I Been Pwned: Who, What & Why" />
+    <meta
+      name="description"
+      content="Learn about the team behind Have I Been Pwned and why the site was created."
+    />
+    <meta
+      property="og:description"
+      content="Learn about the team behind Have I Been Pwned and why the site was created."
+    />
+
+    <title>Have I Been Pwned: Who, What & Why</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="../assets/css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="../index.html" class="navbar-brand">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+        <div class="d-flex align-items-center justify-content-end gap-2">
+          <button class="btn btn-secondary btn-sm d-lg-none">Notify me</button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="domain_search.html">Domain search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Passwords</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle active"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item active" href="about.html"
+                    >Who, what & why</a
+                  >
+                </li>
+                <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                <li>
+                  <a class="dropdown-item" href="toc.html">Terms of Use</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="privacy.html"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donate</a>
+            </li>
+          </ul>
+        </div>
+        <button class="btn btn-secondary d-none d-lg-inline-flex">
+          Notify me
+        </button>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="py-5 bg-dark-subtle-custom">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h1 class="fw-bold mb-4">Who, What & Why</h1>
+            <p class="lead text-muted mb-0">
+              Meet the team behind Have I Been Pwned and learn about our mission
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="team-image-container text-center">
+              <img
+                src="../assets/images/people/Troy Hunt.webp"
+                alt="Troy Hunt"
+                class="img-fluid rounded-4 team-image card-glow"
+                style="max-width: 100%"
+              />
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card card-glow">
+              <div class="card-body">
+                <h3 class="fw-bold mb-3">Troy Hunt</h3>
+                <p class="mb-3">
+                  I'm Troy Hunt, a
+                  <a
+                    href="https://mvp.microsoft.com/en-US/RD/profile/cfba70c0-3c9a-e411-93f2-9cb65495d3c4"
+                    target="_blank"
+                    >Microsoft Regional Director</a
+                  >
+                  and
+                  <a
+                    href="https://mvp.microsoft.com/en-US/MVP/profile/cfba70c0-3c9a-e411-93f2-9cb65495d3c4"
+                    target="_blank"
+                    >Microsoft Most Valuable Professional</a
+                  >, blogger at
+                  <a href="https://troyhunt.com/" target="_blank"
+                    >troyhunt.com</a
+                  >, international speaker on information security and the
+                  creator of Have I Been Pwned. I've been writing software for
+                  the web since the mid-90s and since since the mid-90s and
+                  since 2013, I've been running this website.
+                </p>
+                <p>
+                  I built HIBP as a free resource for anyone to quickly assess
+                  if they may have been put at risk due to an online account of
+                  theirs having been compromised or "pwned" in a data breach. I
+                  wanted to keep it dead simple to use and easily accessible to
+                  ensure it could be of maximum benefit to the community.
+                </p>
+                <div class="mt-4">
+                  <a
+                    href="https://twitter.com/troyhunt"
+                    target="_blank"
+                    class="btn btn-outline-primary me-2"
+                  >
+                    <i class="bi bi-twitter me-2"></i>Twitter
+                  </a>
+                  <a
+                    href="https://troyhunt.com"
+                    target="_blank"
+                    class="btn btn-outline-primary"
+                  >
+                    <i class="bi bi-globe me-2"></i>Website
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-4 mb-4 mb-lg-0 order-lg-last">
+            <div class="team-image-container text-center">
+              <img
+                src="../assets/images/people/Charlotte Hunt.webp"
+                alt="Charlotte Hunt"
+                class="img-fluid rounded-4 team-image card-glow"
+                style="max-width: 100%"
+              />
+            </div>
+          </div>
+          <div class="col-lg-8 order-lg-first">
+            <div class="card card-glow">
+              <div class="card-body">
+                <h3 class="fw-bold mb-3">Charlotte Hunt</h3>
+                <p class="mb-3">
+                  Charlotte is both my wife and chief of all operational things
+                  at HIBP. She has a background in organising technology
+                  conferences, specifically the NDC "Norwegian Developers
+                  Conference", which she coordinated around the globe from 2013
+                  until 2021 when she joined me at HIBP. She also has
+                  qualifications and experience in public relations and
+                  entrepreneurship studies.
+                </p>
+                <p>
+                  Charlotte manages all the day to day logistics of HIBP,
+                  everything from customer onboarding to legal and finances. She
+                  coordinates all non-technical aspects of the service and is
+                  also regularly the coalface of customer support queries.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-center mb-5">
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="team-image-container text-center">
+              <img
+                src="../assets/images/people/Stefan Jokull Sigurdarson.webp"
+                alt="Stefán Jökull Sigurðsson"
+                class="img-fluid rounded-4 team-image card-glow"
+                style="max-width: 100%"
+              />
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="card card-glow">
+              <div class="card-body">
+                <h3 class="fw-bold mb-3">Stefán Jökull Sigurðsson</h3>
+                <p class="mb-3">
+                  Stefán is a fellow Microsoft Most Valuable Professional,
+                  regular conference speaker and open source software
+                  contributor. He joined HIBP on a part time basis in 2023 after
+                  many years of building integrations with the service and
+                  making community contributions to the open source components
+                  of it.
+                </p>
+                <p>
+                  Today, Stefán helps maintain and optimise the codebase as well
+                  as the cloud infrastructure from his home in Iceland. He plays
+                  an invaluable role in keeping the service fast, reliable and
+                  sustainable and regularly shares those experiences in his
+                  speaking activities.
+                </p>
+                <div class="mt-4">
+                  <a
+                    href="https://twitter.com/stefanjokull"
+                    target="_blank"
+                    class="btn btn-outline-primary me-2"
+                  >
+                    <i class="bi bi-twitter me-2"></i>Twitter
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5 bg-dark-subtle-custom">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <div class="card card-glow h-100">
+              <div class="card-body">
+                <h2 class="fw-bold mb-4">What is the Site All About?</h2>
+                <p class="mb-4">
+                  This site came about after what was, at the time, the largest
+                  ever single breach of customer accounts — Adobe. I often did
+                  post-breach analysis of user credentials and kept finding the
+                  same accounts exposed over and over again, often with the same
+                  passwords which then put the victims at further risk of their
+                  other accounts being compromised.
+                </p>
+                <p>
+                  The <a href="faq.html" class="text-primary">FAQs page</a> goes
+                  into a lot more detail, but all the data on this site comes
+                  from "breaches" where data is exposed to persons that should
+                  not have been able to view it.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card card-glow h-100">
+              <div class="card-body">
+                <h2 class="fw-bold mb-4">Why Build the Site?</h2>
+                <p class="mb-4">
+                  This site serves two primary purposes for me: firstly, it
+                  obviously provides a service to the public. Data breaches are
+                  rampant and many people don't appreciate the scale or
+                  frequency with which they occur. By aggregating the data here
+                  I hope that it not only helps victims learn of compromises of
+                  their accounts, but also highlights the severity of the risks
+                  of online attacks on today's internet.
+                </p>
+                <p>
+                  Secondly, the site provided me with an excellent use case for
+                  putting a number of technologies through their paces and
+                  keeping my hands-on skills somewhat current. Projects like
+                  this are an excellent way of staying relevant as my day job
+                  increasingly focuses more on software management and less on
+                  actually building things (which I happen to love doing!) It's
+                  been an enormously fulfilling journey that I've invited others
+                  to join me on by way of often blogging in depth about the
+                  process, something I intend to keep up as the site inevitably
+                  evolves over time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
