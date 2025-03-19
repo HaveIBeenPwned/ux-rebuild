@@ -98,599 +98,397 @@
       </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container py-5 py-sm-3 py-md-4 py-lg-5">
-      <!-- Header Section -->
-      <div class="row justify-content-center mb-5 mb-sm-3 mb-md-4 mb-lg-5">
-        <div class="col-lg-8 text-center">
-          <h1 class="display-4 fs-2 fs-md-3 fs-lg-4 mb-4 mb-sm-3">
-            Domain Search
-          </h1>
-          <p class="lead fs-6 fs-md-5 text-grey-400 mb-0">
-            Search for pwned accounts across your verified domains
-          </p>
+    <main>
+      <!-- Main Content -->
+      <div class="container py-5 py-sm-3 py-md-4 py-lg-5">
+        <!-- Header Section -->
+        <div class="row justify-content-center mb-5 mb-sm-3 mb-md-4 mb-lg-5">
+          <div class="col-lg-8 text-center">
+            <h1 class="display-4 fs-2 fs-md-3 fs-lg-4 mb-4 mb-sm-3">
+              Domain Search
+            </h1>
+            <p class="lead fs-6 fs-md-5 text-grey-400 mb-0">
+              Search for pwned accounts across your verified domains
+            </p>
+          </div>
         </div>
-      </div>
 
-      <!-- Domain Content Section -->
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <!-- No Domains View (hidden by default) -->
-          <div id="noDomainView" style="display: none">
-            <div class="card card-glass">
-              <div class="tooltip-container">
-                <div class="card-help">
-                  <i class="bi bi-question"></i>
-                  <div class="tooltip-content">
-                    <h6>Domain verification</h6>
-                    <p>
-                      To add a new domain, you need to verify that you control
-                      it first. Begin by entering the domain name then you'll be
-                      given verification options.
-                    </p>
-                    <p>
-                      If you cannot verify that you control the domain, you will
-                      not be able to search for breached email addresses on it.
-                    </p>
+        <!-- Domain Content Section -->
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <!-- No Domains View (hidden by default) -->
+            <div id="noDomainView" style="display: none">
+              <div class="card card-glass">
+                <div class="tooltip-container">
+                  <div class="card-help">
+                    <i class="bi bi-question"></i>
+                    <div class="tooltip-content">
+                      <h6>Domain verification</h6>
+                      <p>
+                        To add a new domain, you need to verify that you control
+                        it first. Begin by entering the domain name then you'll
+                        be given verification options.
+                      </p>
+                      <p>
+                        If you cannot verify that you control the domain, you
+                        will not be able to search for breached email addresses
+                        on it.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Domain Input Form -->
+                <div class="form-field mb-4 mb-sm-3">
+                  <label class="input-label h5 mb-3 mb-sm-2"
+                    >Add a new domain</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="noDomainInput"
+                      placeholder="Enter your domain name"
+                      aria-label="Domain name"
+                    />
+                    <button
+                      class="btn btn-primary"
+                      id="beginVerificationBtn"
+                      data-bs-toggle="modal"
+                      data-bs-target="#verificationModal"
+                    >
+                      Begin domain verification
+                    </button>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!-- Domain Input Form -->
-              <div class="form-field mb-4 mb-sm-3">
-                <label class="input-label h5 mb-3 mb-sm-2"
-                  >Add a new domain</label
+            <!-- Domains Table View (shown by default for demo) -->
+            <div id="domainsTableView">
+              <!-- Action Buttons -->
+              <div class="d-flex justify-content-end mb-4 mb-sm-3">
+                <button
+                  class="btn btn-sm fs-7 fs-md-6 btn-primary me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#verificationModal"
                 >
-                <div class="input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="noDomainInput"
-                    placeholder="Enter your domain name"
-                    aria-label="Domain name"
-                  />
-                  <button
-                    class="btn btn-primary"
-                    id="beginVerificationBtn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#verificationModal"
-                  >
-                    Begin domain verification
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Domains Table View (shown by default for demo) -->
-          <div id="domainsTableView">
-            <!-- Action Buttons -->
-            <div class="d-flex justify-content-end mb-4 mb-sm-3">
-              <button
-                class="btn btn-sm fs-7 fs-md-6 btn-primary me-2"
-                data-bs-toggle="modal"
-                data-bs-target="#verificationModal"
-              >
-                <i class="bi bi-plus-circle me-1"></i> Verify New Domain
-              </button>
-              <button
-                class="btn btn-sm fs-7 fs-md-6 btn-outline-primary"
-                data-bs-toggle="modal"
-                data-bs-target="#subscriptionModal"
-              >
-                <i class="bi bi-gear me-1"></i> Manage Subscription
-              </button>
-            </div>
-
-            <!-- Domains Table -->
-
-            <div class="table-responsive">
-              <table class="table table-hover mb-0">
-                <thead>
-                  <tr>
-                    <th>Domain</th>
-                    <th>
-                      Addresses
-                      <span class="tooltip-container d-inline-block ms-1">
-                        <i class="bi bi-question"></i>
-                        <div class="tooltip-content">
-                          <h6>Addresses</h6>
-                          <p>
-                            The number of breached addresses on the domain the
-                            last time it was successfully indexed, based on
-                            breaches that are not classified as spam lists. The
-                            domain may be larger when next indexed if more
-                            breaches have impacted it since.
-                          </p>
-                          <p>
-                            This number does not include addresses found in
-                            pastes. A blank value will be shown if the domain
-                            hasn't yet been indexed. Enable debug mode to see
-                            more.
-                          </p>
-                        </div>
-                      </span>
-                    </th>
-                    <th>
-                      Stealer Logs
-                      <span class="tooltip-container d-inline-block ms-1">
-                        <i class="bi bi-question"></i>
-                        <div class="tooltip-content">
-                          <h6>Stealer Logs</h6>
-                          <p>
-                            The stealer log count is the number of email
-                            addresses captured by infostealers when the victim
-                            has been entering their credentials into a website
-                            on this domain. These addresses are searchable by
-                            the API to get all stealer log email addresses for a
-                            website domain.
-                          </p>
-                        </div>
-                      </span>
-                    </th>
-                    <th class="text-end">Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="domainsTableBody">
-                  <tr>
-                    <td>example.com</td>
-                    <td>1,245</td>
-                    <td>38</td>
-                    <td class="table-actions">
-                      <button class="btn btn-xs btn-outline-primary me-1">
-                        <i class="bi bi-search"></i>
-                      </button>
-                      <button
-                        class="btn btn-xs btn-outline-danger remove-domain"
-                        data-domain="example.com"
-                      >
-                        <i class="bi bi-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>mydomain.org</td>
-                    <td>87</td>
-                    <td>12</td>
-                    <td class="table-actions">
-                      <button class="btn btn-xs btn-outline-primary me-1">
-                        <i class="bi bi-search"></i>
-                      </button>
-                      <button
-                        class="btn btn-xs btn-outline-danger remove-domain"
-                        data-domain="mydomain.org"
-                      >
-                        <i class="bi bi-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Domain Verification Modal -->
-    <div
-      class="modal fade"
-      id="verificationModal"
-      tabindex="-1"
-      aria-labelledby="verificationModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="verificationModalLabel">
-              Verify Domain Ownership
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <!-- Left Column - Domain Input and Verification Methods -->
-              <div
-                class="col-lg-5 col-md-12 border-end pe-4 pe-sm-3 border-md-0 border-lg-end pb-md-4 pb-lg-0"
-              >
-                <div class="mb-4 mb-sm-3">
-                  <label class="form-label fw-bold mb-3 mb-sm-2"
-                    >1. Enter Domain</label
-                  >
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="domainInput"
-                    placeholder="example.com"
-                  />
-                  <div class="invalid-feedback" id="domainInputError">
-                    Please provide a domain to verify
-                  </div>
-                </div>
-
-                <div class="mt-4 mt-sm-3">
-                  <label class="form-label fw-bold mb-3 mb-sm-2"
-                    >2. Select verification method</label
-                  >
-                  <div class="verification-methods">
-                    <div
-                      class="verification-method-option active p-3 p-sm-2"
-                      data-method="dns"
-                    >
-                      <div class="method-icon">
-                        <i class="bi bi-globe"></i>
-                      </div>
-                      <div class="method-content">
-                        <h6 class="mb-0 fs-6">DNS TXT Record</h6>
-                        <p class="mb-0 text-grey-400 fs-7">
-                          Add a TXT record to your domain's DNS
-                        </p>
-                      </div>
-                      <div class="method-indicator">
-                        <i class="bi bi-check-circle-fill"></i>
-                      </div>
-                    </div>
-                    <div
-                      class="verification-method-option p-3 p-sm-2"
-                      data-method="file"
-                    >
-                      <div class="method-icon">
-                        <i class="bi bi-file-earmark"></i>
-                      </div>
-                      <div class="method-content">
-                        <h6 class="mb-0 fs-6">File Upload</h6>
-                        <p class="mb-0 text-grey-400 fs-7">
-                          Upload a verification file to your website
-                        </p>
-                      </div>
-                      <div class="method-indicator">
-                        <i class="bi bi-check-circle-fill"></i>
-                      </div>
-                    </div>
-                    <div
-                      class="verification-method-option p-3 p-sm-2"
-                      data-method="meta"
-                    >
-                      <div class="method-icon">
-                        <i class="bi bi-code-slash"></i>
-                      </div>
-                      <div class="method-content">
-                        <h6 class="mb-0 fs-6">Meta Tag</h6>
-                        <p class="mb-0 text-grey-400 fs-7">
-                          Add a meta tag to your website's homepage
-                        </p>
-                      </div>
-                      <div class="method-indicator">
-                        <i class="bi bi-check-circle-fill"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  <i class="bi bi-plus-circle me-1"></i> Verify New Domain
+                </button>
+                <button
+                  class="btn btn-sm fs-7 fs-md-6 btn-outline-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#subscriptionModal"
+                >
+                  <i class="bi bi-gear me-1"></i> Manage Subscription
+                </button>
               </div>
 
-              <!-- Right Column - Verification Instructions -->
-              <div class="col-lg-7 col-md-12 ps-lg-4 ps-md-0 pt-md-4 pt-lg-0">
-                <div id="verificationInstructions" class="h-100">
-                  <!-- DNS TXT Record Instructions (default) -->
-                  <div id="dnsInstructions">
-                    <h5 class="mb-3">DNS TXT Record Verification</h5>
-                    <p>
-                      Add the following TXT record to your domain's DNS
-                      settings:
-                    </p>
-                    <div class="card card-glass mb-3">
-                      <div class="card-body">
-                        <code>hibp-verify=abc123def456</code>
-                      </div>
-                    </div>
-                    <p>
-                      DNS changes may take up to 24 hours to propagate. Once
-                      you've added the record, click "Verify Now".
-                    </p>
-                  </div>
+              <!-- Domains Table -->
 
-                  <!-- File Upload Instructions (hidden by default) -->
-                  <div id="fileInstructions" style="display: none">
-                    <h5 class="mb-3">File Upload Verification</h5>
-                    <p>
-                      Upload the following file to your website's root
-                      directory:
-                    </p>
-                    <div class="card card-glass mb-3">
-                      <div class="card-body">
-                        <p class="mb-0">
-                          Filename: <code>hibp-verification.txt</code>
-                        </p>
-                        <p class="mb-0">
-                          Content: <code>hibp-verify=abc123def456</code>
-                        </p>
-                      </div>
-                    </div>
-                    <p>
-                      The file should be accessible at:
-                      <code>https://yourdomain.com/hibp-verification.txt</code>
-                    </p>
-                  </div>
-
-                  <!-- Meta Tag Instructions (hidden by default) -->
-                  <div id="metaInstructions" style="display: none">
-                    <h5 class="mb-3">Meta Tag Verification</h5>
-                    <p>
-                      Add the following meta tag to the
-                      <code>&lt;head&gt;</code> section of your website's
-                      homepage:
-                    </p>
-                    <div class="card card-glass mb-3">
-                      <div class="card-body">
-                        <code
-                          >&lt;meta name="hibp-verification"
-                          content="abc123def456"&gt;</code
+              <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                  <thead>
+                    <tr>
+                      <th>Domain</th>
+                      <th>
+                        Addresses
+                        <span class="tooltip-container d-inline-block ms-1">
+                          <i class="bi bi-question"></i>
+                          <div class="tooltip-content">
+                            <h6>Addresses</h6>
+                            <p>
+                              The number of breached addresses on the domain the
+                              last time it was successfully indexed, based on
+                              breaches that are not classified as spam lists.
+                              The domain may be larger when next indexed if more
+                              breaches have impacted it since.
+                            </p>
+                            <p>
+                              This number does not include addresses found in
+                              pastes. A blank value will be shown if the domain
+                              hasn't yet been indexed. Enable debug mode to see
+                              more.
+                            </p>
+                          </div>
+                        </span>
+                      </th>
+                      <th>
+                        Stealer Logs
+                        <span class="tooltip-container d-inline-block ms-1">
+                          <i class="bi bi-question"></i>
+                          <div class="tooltip-content">
+                            <h6>Stealer Logs</h6>
+                            <p>
+                              The stealer log count is the number of email
+                              addresses captured by infostealers when the victim
+                              has been entering their credentials into a website
+                              on this domain. These addresses are searchable by
+                              the API to get all stealer log email addresses for
+                              a website domain.
+                            </p>
+                          </div>
+                        </span>
+                      </th>
+                      <th class="text-end">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="domainsTableBody">
+                    <tr>
+                      <td>example.com</td>
+                      <td>1,245</td>
+                      <td>38</td>
+                      <td class="table-actions">
+                        <button class="btn btn-xs btn-outline-primary me-1">
+                          <i class="bi bi-search"></i>
+                        </button>
+                        <button
+                          class="btn btn-xs btn-outline-danger remove-domain"
+                          data-domain="example.com"
                         >
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>mydomain.org</td>
+                      <td>87</td>
+                      <td>12</td>
+                      <td class="table-actions">
+                        <button class="btn btn-xs btn-outline-primary me-1">
+                          <i class="bi bi-search"></i>
+                        </button>
+                        <button
+                          class="btn btn-xs btn-outline-danger remove-domain"
+                          data-domain="mydomain.org"
+                        >
+                          <i class="bi bi-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain Verification Modal -->
+      <div
+        class="modal fade"
+        id="verificationModal"
+        tabindex="-1"
+        aria-labelledby="verificationModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="verificationModalLabel">
+                Verify Domain Ownership
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <!-- Left Column - Domain Input and Verification Methods -->
+                <div
+                  class="col-lg-5 col-md-12 border-end pe-4 pe-sm-3 border-md-0 border-lg-end pb-md-4 pb-lg-0"
+                >
+                  <div class="mb-4 mb-sm-3">
+                    <label class="form-label fw-bold mb-3 mb-sm-2"
+                      >1. Enter Domain</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="domainInput"
+                      placeholder="example.com"
+                    />
+                    <div class="invalid-feedback" id="domainInputError">
+                      Please provide a domain to verify
+                    </div>
+                  </div>
+
+                  <div class="mt-4 mt-sm-3">
+                    <label class="form-label fw-bold mb-3 mb-sm-2"
+                      >2. Select verification method</label
+                    >
+                    <div class="verification-methods">
+                      <div
+                        class="verification-method-option active p-3 p-sm-2"
+                        data-method="dns"
+                      >
+                        <div class="method-icon">
+                          <i class="bi bi-globe"></i>
+                        </div>
+                        <div class="method-content">
+                          <h6 class="mb-0 fs-6">DNS TXT Record</h6>
+                          <p class="mb-0 text-grey-400 fs-7">
+                            Add a TXT record to your domain's DNS
+                          </p>
+                        </div>
+                        <div class="method-indicator">
+                          <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                      </div>
+                      <div
+                        class="verification-method-option p-3 p-sm-2"
+                        data-method="file"
+                      >
+                        <div class="method-icon">
+                          <i class="bi bi-file-earmark"></i>
+                        </div>
+                        <div class="method-content">
+                          <h6 class="mb-0 fs-6">File Upload</h6>
+                          <p class="mb-0 text-grey-400 fs-7">
+                            Upload a verification file to your website
+                          </p>
+                        </div>
+                        <div class="method-indicator">
+                          <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                      </div>
+                      <div
+                        class="verification-method-option p-3 p-sm-2"
+                        data-method="meta"
+                      >
+                        <div class="method-icon">
+                          <i class="bi bi-code-slash"></i>
+                        </div>
+                        <div class="method-content">
+                          <h6 class="mb-0 fs-6">Meta Tag</h6>
+                          <p class="mb-0 text-grey-400 fs-7">
+                            Add a meta tag to your website's homepage
+                          </p>
+                        </div>
+                        <div class="method-indicator">
+                          <i class="bi bi-check-circle-fill"></i>
+                        </div>
                       </div>
                     </div>
-                    <p>Once you've added the meta tag, click "Verify Now".</p>
                   </div>
+                </div>
 
-                  <!-- Verification Spinner (hidden by default) -->
-                  <div
-                    id="verificationSpinner"
-                    style="display: none"
-                    class="verification-spinner flex-column justify-content-center align-items-center h-100"
-                  >
-                    <div class="logo-mark-spinner mb-3">
-                      <svg
-                        width="60"
-                        height="40"
-                        viewBox="0 0 400 271"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          class="logo-piece logo-piece-1"
-                          d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
-                          fill="#F6F8FA"
-                        />
-                        <path
-                          class="logo-piece logo-piece-2"
-                          d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
-                          fill="#F6F8FA"
-                        />
-                        <path
-                          class="logo-piece logo-piece-3"
-                          d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
-                          fill="#F6F8FA"
-                        />
-                        <path
-                          class="logo-piece logo-piece-4"
-                          d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
-                          fill="#F6F8FA"
-                        />
-                        <path
-                          class="logo-piece logo-piece-5"
-                          d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
-                          fill="#F6F8FA"
-                        />
-                      </svg>
+                <!-- Right Column - Verification Instructions -->
+                <div class="col-lg-7 col-md-12 ps-lg-4 ps-md-0 pt-md-4 pt-lg-0">
+                  <div id="verificationInstructions" class="h-100">
+                    <!-- DNS TXT Record Instructions (default) -->
+                    <div id="dnsInstructions">
+                      <h5 class="mb-3">DNS TXT Record Verification</h5>
+                      <p>
+                        Add the following TXT record to your domain's DNS
+                        settings:
+                      </p>
+                      <div class="card card-glass mb-3">
+                        <div class="card-body">
+                          <code>hibp-verify=abc123def456</code>
+                        </div>
+                      </div>
+                      <p>
+                        DNS changes may take up to 24 hours to propagate. Once
+                        you've added the record, click "Verify Now".
+                      </p>
                     </div>
-                    <p>Verifying your domain...</p>
+
+                    <!-- File Upload Instructions (hidden by default) -->
+                    <div id="fileInstructions" style="display: none">
+                      <h5 class="mb-3">File Upload Verification</h5>
+                      <p>
+                        Upload the following file to your website's root
+                        directory:
+                      </p>
+                      <div class="card card-glass mb-3">
+                        <div class="card-body">
+                          <p class="mb-0">
+                            Filename: <code>hibp-verification.txt</code>
+                          </p>
+                          <p class="mb-0">
+                            Content: <code>hibp-verify=abc123def456</code>
+                          </p>
+                        </div>
+                      </div>
+                      <p>
+                        The file should be accessible at:
+                        <code
+                          >https://yourdomain.com/hibp-verification.txt</code
+                        >
+                      </p>
+                    </div>
+
+                    <!-- Meta Tag Instructions (hidden by default) -->
+                    <div id="metaInstructions" style="display: none">
+                      <h5 class="mb-3">Meta Tag Verification</h5>
+                      <p>
+                        Add the following meta tag to the
+                        <code>&lt;head&gt;</code> section of your website's
+                        homepage:
+                      </p>
+                      <div class="card card-glass mb-3">
+                        <div class="card-body">
+                          <code
+                            >&lt;meta name="hibp-verification"
+                            content="abc123def456"&gt;</code
+                          >
+                        </div>
+                      </div>
+                      <p>Once you've added the meta tag, click "Verify Now".</p>
+                    </div>
+
+                    <!-- Verification Spinner (hidden by default) -->
+                    <div
+                      id="verificationSpinner"
+                      style="display: none"
+                      class="verification-spinner flex-column justify-content-center align-items-center h-100"
+                    >
+                      <div class="logo-mark-spinner mb-3">
+                        <svg
+                          width="60"
+                          height="40"
+                          viewBox="0 0 400 271"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            class="logo-piece logo-piece-1"
+                            d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                            fill="#F6F8FA"
+                          />
+                          <path
+                            class="logo-piece logo-piece-2"
+                            d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                            fill="#F6F8FA"
+                          />
+                          <path
+                            class="logo-piece logo-piece-3"
+                            d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                            fill="#F6F8FA"
+                          />
+                          <path
+                            class="logo-piece logo-piece-4"
+                            d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                            fill="#F6F8FA"
+                          />
+                          <path
+                            class="logo-piece logo-piece-5"
+                            d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
+                            fill="#F6F8FA"
+                          />
+                        </svg>
+                      </div>
+                      <p>Verifying your domain...</p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Cancel
-            </button>
-            <button type="button" class="btn btn-primary" id="verifyButton">
-              Verify Now
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Subscription Modal -->
-    <div
-      class="modal modal-dark fade"
-      id="subscriptionModal"
-      tabindex="-1"
-      aria-labelledby="subscriptionModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="subscriptionModalLabel">
-              Manage Subscription
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <p class="text-grey-400 mb-4">
-              Choose the plan that best fits your needs. All plans include
-              access to our breach monitoring service.
-            </p>
-            <div class="row g-4 g-sm-3">
-              <!-- Free Tier -->
-              <div class="col-lg-4 col-md-12 mb-md-4 mb-lg-0">
-                <div class="card card-glass h-100 mb-3 mb-md-0">
-                  <div class="card-body d-flex flex-column">
-                    <div class="plan-header mb-3">
-                      <span class="plan-badge">Current</span>
-                      <h5 class="card-title mb-1">Free</h5>
-                      <p class="card-text text-primary fs-4 fw-bold mb-0">$0</p>
-                    </div>
-                    <div class="plan-divider"></div>
-                    <ul class="list-unstyled my-4 my-sm-3 plan-features">
-                      <li class="mb-3 mb-sm-2">
-                        <i
-                          class="bi bi-check-circle-fill text-success me-2"
-                        ></i>
-                        <span>1 domain</span>
-                      </li>
-                      <li class="mb-3 mb-sm-2">
-                        <i
-                          class="bi bi-check-circle-fill text-success me-2"
-                        ></i>
-                        <span>Basic breach alerts</span>
-                      </li>
-                      <li class="mb-3 mb-sm-2">
-                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                        <span class="text-grey-400">No API access</span>
-                      </li>
-                      <li class="mb-3 mb-sm-2">
-                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                        <span class="text-grey-400">No priority support</span>
-                      </li>
-                    </ul>
-                    <button
-                      class="btn btn-sm btn-outline-primary mt-auto w-100"
-                      disabled
-                    >
-                      Current Plan
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Pro Tier -->
-              <div class="col-lg-4 col-md-12 mb-md-4 mb-lg-0">
-                <div class="card card-glass h-100 mb-3 mb-md-0 border-primary">
-                  <div class="card-body d-flex flex-column">
-                    <div class="plan-header mb-3">
-                      <span class="plan-badge bg-primary">Popular</span>
-                      <h5 class="card-title mb-1">Pro</h5>
-                      <p class="card-text text-primary fs-4 fw-bold mb-0">
-                        $29<span class="fs-6">/month</span>
-                      </p>
-                    </div>
-                    <div class="plan-divider"></div>
-                    <ul class="list-unstyled my-4 my-sm-3 plan-features">
-                      <li class="mb-3 mb-sm-2">
-                        <i
-                          class="bi bi-check-circle-fill text-success me-2"
-                        ></i>
-                        <span>Up to 5 domains</span>
-                      </li>
-                      <li class="mb-3 mb-sm-2">
-                        <i
-                          class="bi bi-check-circle-fill text-success me-2"
-                        ></i>
-                        <span>Advanced breach alerts</span>
-                      </li>
-                      <li class="mb-3 mb-sm-2">
-                        <i
-                          class="bi bi-check-circle-fill text-success me-2"
-                        ></i>
-                        <span>Basic API access</span>
-                      </li>
-                      <li class="mb-3 mb-sm-2">
-                        <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                        <span class="text-grey-400">No priority support</span>
-                      </li>
-                    </ul>
-                    <button
-                      class="btn btn-sm btn-outline-primary mt-auto w-100"
-                    >
-                      Upgrade to Pro
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Enterprise Tier -->
-              <div class="col-lg-4 col-md-12">
-                <div class="card card-glass h-100">
-                  <div class="card-body d-flex flex-column">
-                    <div class="plan-header mb-3">
-                      <h5 class="card-title mb-1">Enterprise</h5>
-                      <p class="card-text text-primary fs-4 fw-bold mb-0">
-                        $99<span class="fs-6">/month</span>
-                      </p>
-                    </div>
-                    <div class="plan-divider"></div>
-                    <ul class="list-unstyled my-4 my-sm-3 plan-features">
-                      <li class="mb-3 mb-sm-2">
-                        <i
-                          class="bi bi-check-circle-fill text-success me-2"
-                        ></i>
-                        <span>Unlimited domains</span>
-                      </li>
-                      <li class="mb-3 mb-sm-2">
-                        <i
-                          class="bi bi-check-circle-fill text-success me-2"
-                        ></i>
-                        <span>Real-time breach alerts</span>
-                      </li>
-                      <li class="mb-3 mb-sm-2">
-                        <i
-                          class="bi bi-check-circle-fill text-success me-2"
-                        ></i>
-                        <span>Full API access</span>
-                      </li>
-                      <li class="mb-3 mb-sm-2">
-                        <i
-                          class="bi bi-check-circle-fill text-success me-2"
-                        ></i>
-                        <span>Priority support</span>
-                      </li>
-                    </ul>
-                    <button
-                      class="btn btn-sm btn-outline-primary mt-auto w-100"
-                    >
-                      Contact Sales
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-sm btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Domain Removal Prompt -->
-    <div
-      class="modal modal-dark fade"
-      id="domainRemovalPrompt"
-      tabindex="-1"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-sm">
-        <div class="modal-content">
-          <div class="modal-body text-center p-4">
-            <h5 class="mb-3">Remove the domain?</h5>
-            <p class="mb-4">
-              Removing this domain will delete it from your account. You will no
-              longer be able to search for breached email addresses on this
-              domain unless you verify it again.
-            </p>
-            <div class="d-flex justify-content-center gap-3">
+            <div class="modal-footer">
               <button
                 type="button"
                 class="btn btn-secondary"
@@ -698,19 +496,413 @@
               >
                 Cancel
               </button>
-              <button
-                type="button"
-                class="btn btn-danger"
-                id="confirmDomainRemoval"
-                data-bs-dismiss="modal"
-              >
-                Remove
+              <button type="button" class="btn btn-primary" id="verifyButton">
+                Verify Now
               </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- Subscription Modal -->
+      <div
+        class="modal modal-dark fade"
+        id="subscriptionModal"
+        tabindex="-1"
+        aria-labelledby="subscriptionModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="subscriptionModalLabel">
+                Manage Subscription
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p class="text-grey-400 mb-4">
+                Choose the plan that best fits your needs. All plans include
+                access to our breach monitoring service.
+              </p>
+              <div class="row g-4 g-sm-3">
+                <!-- Free Tier -->
+                <div class="col-lg-4 col-md-12 mb-md-4 mb-lg-0">
+                  <div class="card card-glass h-100 mb-3 mb-md-0">
+                    <div class="card-body d-flex flex-column">
+                      <div class="plan-header mb-3">
+                        <span class="plan-badge">Current</span>
+                        <h5 class="card-title mb-1">Free</h5>
+                        <p class="card-text text-primary fs-4 fw-bold mb-0">
+                          $0
+                        </p>
+                      </div>
+                      <div class="plan-divider"></div>
+                      <ul class="list-unstyled my-4 my-sm-3 plan-features">
+                        <li class="mb-3 mb-sm-2">
+                          <i
+                            class="bi bi-check-circle-fill text-success me-2"
+                          ></i>
+                          <span>1 domain</span>
+                        </li>
+                        <li class="mb-3 mb-sm-2">
+                          <i
+                            class="bi bi-check-circle-fill text-success me-2"
+                          ></i>
+                          <span>Basic breach alerts</span>
+                        </li>
+                        <li class="mb-3 mb-sm-2">
+                          <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                          <span class="text-grey-400">No API access</span>
+                        </li>
+                        <li class="mb-3 mb-sm-2">
+                          <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                          <span class="text-grey-400">No priority support</span>
+                        </li>
+                      </ul>
+                      <button
+                        class="btn btn-sm btn-outline-primary mt-auto w-100"
+                        disabled
+                      >
+                        Current Plan
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pro Tier -->
+                <div class="col-lg-4 col-md-12 mb-md-4 mb-lg-0">
+                  <div
+                    class="card card-glass h-100 mb-3 mb-md-0 border-primary"
+                  >
+                    <div class="card-body d-flex flex-column">
+                      <div class="plan-header mb-3">
+                        <span class="plan-badge bg-primary">Popular</span>
+                        <h5 class="card-title mb-1">Pro</h5>
+                        <p class="card-text text-primary fs-4 fw-bold mb-0">
+                          $29<span class="fs-6">/month</span>
+                        </p>
+                      </div>
+                      <div class="plan-divider"></div>
+                      <ul class="list-unstyled my-4 my-sm-3 plan-features">
+                        <li class="mb-3 mb-sm-2">
+                          <i
+                            class="bi bi-check-circle-fill text-success me-2"
+                          ></i>
+                          <span>Up to 5 domains</span>
+                        </li>
+                        <li class="mb-3 mb-sm-2">
+                          <i
+                            class="bi bi-check-circle-fill text-success me-2"
+                          ></i>
+                          <span>Advanced breach alerts</span>
+                        </li>
+                        <li class="mb-3 mb-sm-2">
+                          <i
+                            class="bi bi-check-circle-fill text-success me-2"
+                          ></i>
+                          <span>Basic API access</span>
+                        </li>
+                        <li class="mb-3 mb-sm-2">
+                          <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                          <span class="text-grey-400">No priority support</span>
+                        </li>
+                      </ul>
+                      <button
+                        class="btn btn-sm btn-outline-primary mt-auto w-100"
+                      >
+                        Upgrade to Pro
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Enterprise Tier -->
+                <div class="col-lg-4 col-md-12">
+                  <div class="card card-glass h-100">
+                    <div class="card-body d-flex flex-column">
+                      <div class="plan-header mb-3">
+                        <h5 class="card-title mb-1">Enterprise</h5>
+                        <p class="card-text text-primary fs-4 fw-bold mb-0">
+                          $99<span class="fs-6">/month</span>
+                        </p>
+                      </div>
+                      <div class="plan-divider"></div>
+                      <ul class="list-unstyled my-4 my-sm-3 plan-features">
+                        <li class="mb-3 mb-sm-2">
+                          <i
+                            class="bi bi-check-circle-fill text-success me-2"
+                          ></i>
+                          <span>Unlimited domains</span>
+                        </li>
+                        <li class="mb-3 mb-sm-2">
+                          <i
+                            class="bi bi-check-circle-fill text-success me-2"
+                          ></i>
+                          <span>Real-time breach alerts</span>
+                        </li>
+                        <li class="mb-3 mb-sm-2">
+                          <i
+                            class="bi bi-check-circle-fill text-success me-2"
+                          ></i>
+                          <span>Full API access</span>
+                        </li>
+                        <li class="mb-3 mb-sm-2">
+                          <i
+                            class="bi bi-check-circle-fill text-success me-2"
+                          ></i>
+                          <span>Priority support</span>
+                        </li>
+                      </ul>
+                      <button
+                        class="btn btn-sm btn-outline-primary mt-auto w-100"
+                      >
+                        Contact Sales
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-sm btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain Removal Prompt -->
+      <div
+        class="modal modal-dark fade"
+        id="domainRemovalPrompt"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+          <div class="modal-content">
+            <div class="modal-body text-center p-4">
+              <h5 class="mb-3">Remove the domain?</h5>
+              <p class="mb-4">
+                Removing this domain will delete it from your account. You will
+                no longer be able to search for breached email addresses on this
+                domain unless you verify it again.
+              </p>
+              <div class="d-flex justify-content-center gap-3">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  id="confirmDomainRemoval"
+                  data-bs-dismiss="modal"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark-subtle-custom">
+      <div class="container">
+        <div
+          class="footer-wrapper rounded-3 border border-primary-custom bg-dark-subtle-custom"
+        >
+          <div class="row g-0">
+            <!-- Logo and Tagline -->
+            <div class="col-lg-4 p-4 border-end border-primary-custom">
+              <div class="footer-logo mb-3">
+                <a
+                  href="../index.html"
+                  class="text-white text-decoration-none fw-bold fs-4"
+                >
+                  Have I Been Pwned
+                </a>
+              </div>
+              <p class="text-muted mb-4">
+                Check if your email has been compromised
+              </p>
+              <a href="../index.html" class="btn btn-outline-primary">
+                <i class="bi bi-search me-2"></i>Check my email
+              </a>
+            </div>
+
+            <!-- Sitemap -->
+            <div class="col-lg-5 p-4 border-end border-primary-custom">
+              <div class="row g-4">
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Services</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a
+                        href="../index.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Email Search</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="domain_search.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Domain Search</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >Passwords</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >API</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >Notify Me</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Information</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a
+                        href="about.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >About Us</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="faq.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >FAQ</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="privacy.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Privacy Policy</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="toc.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Terms of Use</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >Donate</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-lg-3 p-4">
+              <h5 class="fw-bold mb-3">Connect With Us</h5>
+              <div class="d-flex gap-3">
+                <a
+                  href="https://twitter.com/haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-twitter"></i>
+                </a>
+                <a
+                  href="https://facebook.com/haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/haveibeenpwned/"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                <a
+                  href="https://github.com/HaveIBeenPwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-github"></i>
+                </a>
+                <a
+                  href="https://bsky.app/profile/haveibeenpwned.com"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="10 10 568 501"
+                    width="20"
+                    height="20"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://infosec.exchange/@haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-mastodon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copyright -->
+          <div class="border-top border-primary-custom">
+            <div class="p-3 text-center">
+              <p class="text-muted mb-0">
+                &copy; 2025 Have I Been Pwned. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script

@@ -119,403 +119,592 @@
       </div>
     </nav>
 
-    <!-- Hero Section Component -->
-    <section class="hero">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-8">
-            <img
-              src="assets/images/hero.svg"
-              alt="Have I Been Pwned"
-              class="hero-logo img-fluid mb-4"
-            />
-            <p class="lead text-muted mb-5">
-              Check if your email address is in a data breach
-            </p>
-            <div class="row justify-content-center">
-              <div class="col-12 col-md-8">
-                <div class="input-group-custom mb-4">
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Email address"
-                    id="emailInput"
-                  />
-                  <div class="btn-container">
-                    <button class="btn btn-primary" id="checkButton">
-                      Check
-                    </button>
+    <main>
+      <!-- Hero Section Component -->
+      <section class="hero">
+        <div class="container">
+          <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+              <img
+                src="assets/images/hero.svg"
+                alt="Have I Been Pwned"
+                class="hero-logo img-fluid mb-4"
+              />
+              <p class="lead text-muted mb-5">
+                Check if your email address is in a data breach
+              </p>
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                  <div class="input-group-custom mb-4">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email address"
+                      id="emailInput"
+                    />
+                    <div class="btn-container">
+                      <button class="btn btn-primary" id="checkButton">
+                        Check
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="text-muted body-small">
+                Using Have I Been Pwned is subject to the
+                <a class="text-grey-600" href="#">terms of use</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Breach Timeline Component (initially hidden) -->
+      <section id="breachTimeline" class="py-3 d-none">
+        <div class="container">
+          <!-- Timeline Header -->
+          <div class="row mb-4">
+            <div class="col-12 text-center">
+              <h2 class="fw-bold">Your Email Breach History</h2>
+              <p class="text-muted">
+                Timeline of data breaches affecting your email address
+              </p>
+            </div>
+          </div>
+
+          <!-- Statistics Row -->
+          <div class="row mb-4">
+            <!-- Breach Summary -->
+            <div class="col-12">
+              <div
+                class="data-summary breach-summary position-relative overflow-hidden rounded-4 p-3 border border-primary-custom mb-4 bg-dark-subtle-custom"
+              >
+                <div
+                  class="data-summary-content d-flex align-items-center position-relative z-1"
+                >
+                  <div
+                    class="data-summary-item d-flex justify-content-evenly align-items-center w-100"
+                  >
+                    <div class="data-summary-text">
+                      <div
+                        class="data-summary-count-wrapper d-flex flex-column align-items-center mb-1"
+                      >
+                        <div class="data-summary-count fs-1 fw-bold lh-1">
+                          3
+                        </div>
+                        <h3 class="data-summary-label text-primary">
+                          Data Breaches
+                        </h3>
+                      </div>
+                      <div
+                        class="data-summary-description text-white-70 fs-6 lh-sm"
+                      >
+                        Services that have had their databases compromised,
+                        exposing your personal information
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <p class="text-muted body-small">
-              Using Have I Been Pwned is subject to the
-              <a class="text-grey-600" href="#">terms of use</a>
-            </p>
+          </div>
+
+          <!-- Timeline -->
+          <div class="row">
+            <div class="col-12">
+              <div class="section-container">
+                <div class="timeline-container py-4">
+                  <div class="timeline-items">
+                    <!-- LinkedIn Breach -->
+                    <div class="timeline-item pt-5">
+                      <div
+                        class="timeline-date d-flex flex-column justify-content-center align-items-center text-white"
+                      >
+                        <span class="timeline-date-text">Jun</span>
+                        <span class="timeline-date-text">2012</span>
+                      </div>
+                      <div class="timeline-content p-4 rounded-3 z-2">
+                        <div
+                          class="timeline-title d-flex align-items-center mb-3"
+                        >
+                          <div
+                            class="timeline-logo me-3 rounded-2 d-flex align-items-center justify-content-center overflow-hidden position-relative"
+                          >
+                            <img
+                              src="assets/images/affected-sites/LinkedIn Logo.webp"
+                              alt="LinkedIn Logo"
+                              class="w-100 h-100 p-1"
+                            />
+                          </div>
+                          <h5 class="mb-0 me-auto fw-semibold text-white">
+                            LinkedIn
+                          </h5>
+                        </div>
+                        <div class="mt-2">
+                          <p class="mb-2">
+                            LinkedIn suffered a data breach exposing 164 million
+                            user accounts. Passwords were stored as SHA1 hashes
+                            without salt, making them easily crackable.
+                          </p>
+
+                          <div class="mb-3">
+                            <strong>Compromised data:</strong>
+                            <ul
+                              class="timeline-details-list mt-2 list-unstyled mb-0 p-3 rounded-3 bg-dark-subtle-custom"
+                            >
+                              <li class="d-flex align-items-start mb-2">
+                                <i class="bi bi-dot me-2 text-primary"></i>Email
+                                addresses
+                              </li>
+                              <li class="d-flex align-items-start mb-2">
+                                <i class="bi bi-dot me-2 text-primary"></i
+                                >Passwords
+                              </li>
+                              <li class="d-flex align-items-start mb-0">
+                                <i class="bi bi-dot me-2 text-primary"></i>User
+                                names
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <a
+                              href="pages/breach.html"
+                              class="btn btn-outline-primary"
+                            >
+                              View Details
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Paddy Power Breach -->
+                    <div class="timeline-item pt-5">
+                      <div
+                        class="timeline-date d-flex flex-column justify-content-center align-items-center text-white"
+                      >
+                        <span class="timeline-date-text">Oct</span>
+                        <span class="timeline-date-text">2013</span>
+                      </div>
+                      <div class="timeline-content p-4 rounded-3 z-2">
+                        <div
+                          class="timeline-title d-flex align-items-center mb-3"
+                        >
+                          <div
+                            class="timeline-logo me-3 rounded-2 d-flex align-items-center justify-content-center overflow-hidden position-relative"
+                          >
+                            <img
+                              src="assets/images/affected-sites/Paddy Power Logo.webp"
+                              alt="Paddy Power Logo"
+                              class="w-100 h-100 p-1"
+                            />
+                          </div>
+                          <h5 class="mb-0 me-auto fw-semibold text-white">
+                            Paddy Power
+                          </h5>
+                        </div>
+                        <div class="mt-2">
+                          <p class="mb-2">
+                            Paddy Power experienced a security breach that
+                            exposed user account information including personal
+                            and payment details.
+                          </p>
+
+                          <div class="mb-3">
+                            <strong>Compromised data:</strong>
+                            <ul
+                              class="timeline-details-list mt-2 list-unstyled mb-0 p-3 rounded-3 bg-dark-subtle-custom"
+                            >
+                              <li class="d-flex align-items-start mb-2">
+                                <i class="bi bi-dot me-2 text-primary"></i>Email
+                                addresses
+                              </li>
+                              <li class="d-flex align-items-start mb-2">
+                                <i class="bi bi-dot me-2 text-primary"></i
+                                >Encrypted passwords
+                              </li>
+                              <li class="d-flex align-items-start mb-2">
+                                <i class="bi bi-dot me-2 text-primary"></i
+                                >Customer names
+                              </li>
+                              <li class="d-flex align-items-start mb-0">
+                                <i class="bi bi-dot me-2 text-primary"></i
+                                >Payment information
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <a
+                              href="pages/breach.html"
+                              class="btn btn-outline-primary"
+                            >
+                              View Details
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Plex Breach -->
+                    <div class="timeline-item pt-5">
+                      <div
+                        class="timeline-date d-flex flex-column justify-content-center align-items-center text-white"
+                      >
+                        <span class="timeline-date-text">May</span>
+                        <span class="timeline-date-text">2019</span>
+                      </div>
+                      <div class="timeline-content p-4 rounded-3 z-2">
+                        <div
+                          class="timeline-title d-flex align-items-center mb-3"
+                        >
+                          <div
+                            class="timeline-logo me-3 rounded-2 d-flex align-items-center justify-content-center overflow-hidden position-relative"
+                          >
+                            <img
+                              src="assets/images/affected-sites/Plex Logo.webp"
+                              alt="Plex Logo"
+                              class="w-100 h-100 p-1"
+                            />
+                          </div>
+                          <h5 class="mb-0 me-auto fw-semibold text-white">
+                            Plex
+                          </h5>
+                        </div>
+                        <div class="mt-2">
+                          <p class="mb-2">
+                            Plex suffered a data breach affecting 137 million
+                            users, exposing personal information and bcrypt
+                            hashed passwords.
+                          </p>
+
+                          <div class="mb-3">
+                            <strong>Compromised data:</strong>
+                            <ul
+                              class="timeline-details-list mt-2 list-unstyled mb-0 p-3 rounded-3 bg-dark-subtle-custom"
+                            >
+                              <li class="d-flex align-items-start mb-2">
+                                <i class="bi bi-dot me-2 text-primary"></i>Email
+                                addresses
+                              </li>
+                              <li class="d-flex align-items-start mb-2">
+                                <i class="bi bi-dot me-2 text-primary"></i>Names
+                              </li>
+                              <li class="d-flex align-items-start mb-2">
+                                <i class="bi bi-dot me-2 text-primary"></i
+                                >Usernames
+                              </li>
+                              <li class="d-flex align-items-start mb-2">
+                                <i class="bi bi-dot me-2 text-primary"></i
+                                >Geographic locations
+                              </li>
+                              <li class="d-flex align-items-start mb-0">
+                                <i class="bi bi-dot me-2 text-primary"></i
+                                >Hashed passwords
+                              </li>
+                            </ul>
+                          </div>
+
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <a
+                              href="pages/breach.html"
+                              class="btn btn-outline-primary"
+                            >
+                              View Details
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End of timeline-items -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add a clear separation between sections -->
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-5"></div>
+            </div>
+          </div>
+
+          <!-- Paste Summary -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div
+                class="data-summary paste-summary position-relative overflow-hidden rounded-4 p-3 border border-primary-custom mb-4 bg-dark-subtle-custom"
+              >
+                <div
+                  class="data-summary-content d-flex align-items-center position-relative z-1"
+                >
+                  <div
+                    class="data-summary-item d-flex justify-content-evenly align-items-center w-100"
+                  >
+                    <div class="data-summary-text">
+                      <div
+                        class="data-summary-count-wrapper d-flex flex-column align-items-center mb-1"
+                      >
+                        <div class="data-summary-count fs-1 fw-bold lh-1">
+                          2
+                        </div>
+                        <h3 class="data-summary-label text-primary">
+                          Paste Records
+                        </h3>
+                      </div>
+                      <div
+                        class="data-summary-description text-white-70 fs-6 lh-sm"
+                      >
+                        Instances where your data was found in text sharing
+                        sites or public data dumps
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pastes Table -->
+          <div class="row">
+            <div class="col-12">
+              <div class="section-container">
+                <div class="table-responsive">
+                  <table class="table table-hover mb-0">
+                    <thead>
+                      <tr>
+                        <th>Paste Title</th>
+                        <th>Date</th>
+                        <th>Emails</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Pastebin Dump -->
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="table-row-icon me-3">
+                              <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <div>Pastebin Credential Dump</div>
+                          </div>
+                        </td>
+                        <td>9/14/2022</td>
+                        <td>3</td>
+                      </tr>
+                      <!-- GitHub Gist -->
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="table-row-icon me-3">
+                              <i class="bi bi-github"></i>
+                            </div>
+                            <div>GitHub Gist Leak</div>
+                          </div>
+                        </td>
+                        <td>5/22/2023</td>
+                        <td>1</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark-subtle-custom">
+      <div class="container">
+        <div
+          class="footer-wrapper rounded-3 border border-primary-custom bg-dark-subtle-custom"
+        >
+          <div class="row g-0">
+            <!-- Logo and Tagline -->
+            <div class="col-lg-4 p-4 border-end border-primary-custom">
+              <div class="footer-logo mb-3">
+                <a
+                  href="/"
+                  class="text-white text-decoration-none fw-bold fs-4"
+                >
+                  Have I Been Pwned
+                </a>
+              </div>
+              <p class="text-muted mb-4">
+                Check if your email has been compromised in a data breach
+              </p>
+              <a href="/" class="btn btn-outline-primary">
+                <i class="bi bi-search me-2"></i>Check my email
+              </a>
+            </div>
+
+            <!-- Sitemap -->
+            <div class="col-lg-5 p-4 border-end border-primary-custom">
+              <div class="row g-4">
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Services</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a
+                        href="/"
+                        class="text-decoration-none text-muted hover-white"
+                        >Email Search</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="pages/domain_search.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Domain Search</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >Passwords</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >API</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >Notify Me</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Information</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a
+                        href="pages/about.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >About Us</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="pages/faq.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >FAQ</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="pages/privacy.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Privacy Policy</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="pages/toc.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Terms of Use</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >Donate</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-lg-3 p-4">
+              <h5 class="fw-bold mb-3">Connect With Us</h5>
+              <div class="d-flex gap-3">
+                <a
+                  href="https://twitter.com/haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-twitter"></i>
+                </a>
+                <a
+                  href="https://facebook.com/haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/haveibeenpwned/"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                <a
+                  href="https://github.com/HaveIBeenPwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-github"></i>
+                </a>
+                <a
+                  href="https://bsky.app/profile/haveibeenpwned.com"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="10 10 568 501"
+                    width="20"
+                    height="20"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://infosec.exchange/@haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-mastodon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copyright -->
+          <div class="border-top border-primary-custom">
+            <div class="p-3 text-center">
+              <p class="text-muted mb-0">
+                &copy; 2025 Have I Been Pwned. All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Breach Timeline Component (initially hidden) -->
-    <section id="breachTimeline" class="py-3 d-none">
-      <div class="container">
-        <!-- Timeline Header -->
-        <div class="row mb-4">
-          <div class="col-12 text-center">
-            <h2 class="fw-bold">Your Email Breach History</h2>
-            <p class="text-muted">
-              Timeline of data breaches affecting your email address
-            </p>
-          </div>
-        </div>
-
-        <!-- Statistics Row -->
-        <div class="row mb-4">
-          <!-- Breach Summary -->
-          <div class="col-12">
-            <div
-              class="data-summary breach-summary position-relative overflow-hidden rounded-4 p-3 border border-primary-custom mb-4 bg-dark-subtle-custom"
-            >
-              <div
-                class="data-summary-content d-flex align-items-center position-relative z-1"
-              >
-                <div
-                  class="data-summary-item d-flex justify-content-evenly align-items-center w-100"
-                >
-                  <div class="data-summary-text">
-                    <div
-                      class="data-summary-count-wrapper d-flex flex-column align-items-center mb-1"
-                    >
-                      <div class="data-summary-count fs-1 fw-bold lh-1">3</div>
-                      <h3 class="data-summary-label text-primary">
-                        Data Breaches
-                      </h3>
-                    </div>
-                    <div
-                      class="data-summary-description text-white-70 fs-6 lh-sm"
-                    >
-                      Services that have had their databases compromised,
-                      exposing your personal information
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Timeline -->
-        <div class="row">
-          <div class="col-12">
-            <div class="section-container">
-              <div class="timeline-container py-4">
-                <div class="timeline-items">
-                  <!-- LinkedIn Breach -->
-                  <div class="timeline-item pt-5">
-                    <div
-                      class="timeline-date d-flex flex-column justify-content-center align-items-center text-white"
-                    >
-                      <span class="timeline-date-text">Jun</span>
-                      <span class="timeline-date-text">2012</span>
-                    </div>
-                    <div class="timeline-content p-4 rounded-3 z-2">
-                      <div
-                        class="timeline-title d-flex align-items-center mb-3"
-                      >
-                        <div
-                          class="timeline-logo me-3 rounded-2 d-flex align-items-center justify-content-center overflow-hidden position-relative"
-                        >
-                          <img
-                            src="assets/images/affected-sites/LinkedIn Logo.webp"
-                            alt="LinkedIn Logo"
-                            class="w-100 h-100 p-1"
-                          />
-                        </div>
-                        <h5 class="mb-0 me-auto fw-semibold text-white">
-                          LinkedIn
-                        </h5>
-                      </div>
-                      <div class="mt-2">
-                        <p class="mb-2">
-                          LinkedIn suffered a data breach exposing 164 million
-                          user accounts. Passwords were stored as SHA1 hashes
-                          without salt, making them easily crackable.
-                        </p>
-
-                        <div class="mb-3">
-                          <strong>Compromised data:</strong>
-                          <ul
-                            class="timeline-details-list mt-2 list-unstyled mb-0 p-3 rounded-3 bg-dark-subtle-custom"
-                          >
-                            <li class="d-flex align-items-start mb-2">
-                              <i class="bi bi-dot me-2 text-primary"></i>Email
-                              addresses
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                              <i class="bi bi-dot me-2 text-primary"></i
-                              >Passwords
-                            </li>
-                            <li class="d-flex align-items-start mb-0">
-                              <i class="bi bi-dot me-2 text-primary"></i>User
-                              names
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div
-                          class="d-flex justify-content-between align-items-center"
-                        >
-                          <a
-                            href="pages/breach.html"
-                            class="btn btn-outline-primary"
-                          >
-                            View Details
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Paddy Power Breach -->
-                  <div class="timeline-item pt-5">
-                    <div
-                      class="timeline-date d-flex flex-column justify-content-center align-items-center text-white"
-                    >
-                      <span class="timeline-date-text">Oct</span>
-                      <span class="timeline-date-text">2013</span>
-                    </div>
-                    <div class="timeline-content p-4 rounded-3 z-2">
-                      <div
-                        class="timeline-title d-flex align-items-center mb-3"
-                      >
-                        <div
-                          class="timeline-logo me-3 rounded-2 d-flex align-items-center justify-content-center overflow-hidden position-relative"
-                        >
-                          <img
-                            src="assets/images/affected-sites/Paddy Power Logo.webp"
-                            alt="Paddy Power Logo"
-                            class="w-100 h-100 p-1"
-                          />
-                        </div>
-                        <h5 class="mb-0 me-auto fw-semibold text-white">
-                          Paddy Power
-                        </h5>
-                      </div>
-                      <div class="mt-2">
-                        <p class="mb-2">
-                          Paddy Power experienced a security breach that exposed
-                          user account information including personal and
-                          payment details.
-                        </p>
-
-                        <div class="mb-3">
-                          <strong>Compromised data:</strong>
-                          <ul
-                            class="timeline-details-list mt-2 list-unstyled mb-0 p-3 rounded-3 bg-dark-subtle-custom"
-                          >
-                            <li class="d-flex align-items-start mb-2">
-                              <i class="bi bi-dot me-2 text-primary"></i>Email
-                              addresses
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                              <i class="bi bi-dot me-2 text-primary"></i
-                              >Encrypted passwords
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                              <i class="bi bi-dot me-2 text-primary"></i
-                              >Customer names
-                            </li>
-                            <li class="d-flex align-items-start mb-0">
-                              <i class="bi bi-dot me-2 text-primary"></i>Payment
-                              information
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div
-                          class="d-flex justify-content-between align-items-center"
-                        >
-                          <a
-                            href="pages/breach.html"
-                            class="btn btn-outline-primary"
-                          >
-                            View Details
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Plex Breach -->
-                  <div class="timeline-item pt-5">
-                    <div
-                      class="timeline-date d-flex flex-column justify-content-center align-items-center text-white"
-                    >
-                      <span class="timeline-date-text">May</span>
-                      <span class="timeline-date-text">2019</span>
-                    </div>
-                    <div class="timeline-content p-4 rounded-3 z-2">
-                      <div
-                        class="timeline-title d-flex align-items-center mb-3"
-                      >
-                        <div
-                          class="timeline-logo me-3 rounded-2 d-flex align-items-center justify-content-center overflow-hidden position-relative"
-                        >
-                          <img
-                            src="assets/images/affected-sites/Plex Logo.webp"
-                            alt="Plex Logo"
-                            class="w-100 h-100 p-1"
-                          />
-                        </div>
-                        <h5 class="mb-0 me-auto fw-semibold text-white">
-                          Plex
-                        </h5>
-                      </div>
-                      <div class="mt-2">
-                        <p class="mb-2">
-                          Plex suffered a data breach affecting 137 million
-                          users, exposing personal information and bcrypt hashed
-                          passwords.
-                        </p>
-
-                        <div class="mb-3">
-                          <strong>Compromised data:</strong>
-                          <ul
-                            class="timeline-details-list mt-2 list-unstyled mb-0 p-3 rounded-3 bg-dark-subtle-custom"
-                          >
-                            <li class="d-flex align-items-start mb-2">
-                              <i class="bi bi-dot me-2 text-primary"></i>Email
-                              addresses
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                              <i class="bi bi-dot me-2 text-primary"></i>Names
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                              <i class="bi bi-dot me-2 text-primary"></i
-                              >Usernames
-                            </li>
-                            <li class="d-flex align-items-start mb-2">
-                              <i class="bi bi-dot me-2 text-primary"></i
-                              >Geographic locations
-                            </li>
-                            <li class="d-flex align-items-start mb-0">
-                              <i class="bi bi-dot me-2 text-primary"></i>Hashed
-                              passwords
-                            </li>
-                          </ul>
-                        </div>
-
-                        <div
-                          class="d-flex justify-content-between align-items-center"
-                        >
-                          <a
-                            href="pages/breach.html"
-                            class="btn btn-outline-primary"
-                          >
-                            View Details
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End of timeline-items -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Add a clear separation between sections -->
-        <div class="row">
-          <div class="col-12">
-            <div class="mb-5"></div>
-          </div>
-        </div>
-
-        <!-- Paste Summary -->
-        <div class="row mb-4">
-          <div class="col-12">
-            <div
-              class="data-summary paste-summary position-relative overflow-hidden rounded-4 p-3 border border-primary-custom mb-4 bg-dark-subtle-custom"
-            >
-              <div
-                class="data-summary-content d-flex align-items-center position-relative z-1"
-              >
-                <div
-                  class="data-summary-item d-flex justify-content-evenly align-items-center w-100"
-                >
-                  <div class="data-summary-text">
-                    <div
-                      class="data-summary-count-wrapper d-flex flex-column align-items-center mb-1"
-                    >
-                      <div class="data-summary-count fs-1 fw-bold lh-1">2</div>
-                      <h3 class="data-summary-label text-primary">
-                        Paste Records
-                      </h3>
-                    </div>
-                    <div
-                      class="data-summary-description text-white-70 fs-6 lh-sm"
-                    >
-                      Instances where your data was found in text sharing sites
-                      or public data dumps
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pastes Table -->
-        <div class="row">
-          <div class="col-12">
-            <div class="section-container">
-              <div class="table-responsive">
-                <table class="table table-hover mb-0">
-                  <thead>
-                    <tr>
-                      <th>Paste Title</th>
-                      <th>Date</th>
-                      <th>Emails</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Pastebin Dump -->
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="table-row-icon me-3">
-                            <i class="bi bi-file-earmark-text"></i>
-                          </div>
-                          <div>Pastebin Credential Dump</div>
-                        </div>
-                      </td>
-                      <td>9/14/2022</td>
-                      <td>3</td>
-                    </tr>
-                    <!-- GitHub Gist -->
-                    <tr>
-                      <td>
-                        <div class="d-flex align-items-center">
-                          <div class="table-row-icon me-3">
-                            <i class="bi bi-github"></i>
-                          </div>
-                          <div>GitHub Gist Leak</div>
-                        </div>
-                      </td>
-                      <td>5/22/2023</td>
-                      <td>1</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    </footer>
 
     <!-- Bootstrap JS Bundle with Popper -->
     <script
