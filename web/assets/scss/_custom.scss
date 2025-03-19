@@ -798,6 +798,8 @@ body {
     border-bottom-right-radius: var(--border-radius);
     border: 1px solid var(--bs-border-color);
     border-left: none;
+    position: relative;
+    left: -1px;
   }
 
   .btn {
