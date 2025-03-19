@@ -92,6 +92,9 @@
 // Background glow effect
 body {
   padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   &::before {
     content: "";
     position: fixed;
@@ -109,6 +112,10 @@ body {
     filter: blur(100px);
     z-index: -1;
   }
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 /* Domain Search Page Styles
