@@ -43,4 +43,44 @@ When implementing this template, replace these placeholders with actual data:
 | `##BREACH_DESCRIPTION##` | Description of the breach                                  |
 | `##BREACH_NAME_SLUG##`   | URL-friendly version of the breach name for links          |
 
+## Email Address Formatting for Gmail
+
+### Why USER_EMAIL_DISPLAY is Important
+
+The `##USER_EMAIL_DISPLAY##` placeholder serves a special purpose in the email template:
+
+1. **Problem**: Gmail automatically converts email addresses to clickable blue links
+
+   - This disrupts the design and makes email addresses stand out with blue color
+   - It creates inconsistency with the rest of the white text in the email
+   - It can draw attention away from more important action items
+
+2. **Solution**: The `USER_EMAIL_DISPLAY` uses HTML formatting to prevent automatic linking
+   - It splits the email address and uses HTML entities to break the pattern
+   - It maintains the visual appearance of a standard email address
+   - The email displays consistently with the intended styling (white text)
+
+### How It Works
+
+The `test_template.js` script includes a function that formats email addresses:
+
+```javascript
+function formatEmailForDisplay(email) {
+  // Split the email address with spans to prevent Gmail auto-detection
+  const [username, domain] = email.split("@");
+  return `<span>${username}</span>&#64;<span>${domain}</span>`;
+}
+```
+
+This transforms `user@example.com` into `<span>user</span>&#64;<span>example.com</span>`, which:
+
+- Looks identical to the original email address when rendered
+- Prevents Gmail from automatically styling it as a link
+- Maintains consistent text appearance throughout the email
+
+When implementing this template in your system, ensure that both placeholders are handled appropriately:
+
+- `##USER_EMAIL##` - Use the original email for backend processing (hidden in the template)
+- `##USER_EMAIL_DISPLAY##` - Use the formatted version for visible display to users
+
 The template is optimized for both desktop and mobile clients
