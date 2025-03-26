@@ -1,0 +1,817 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You have been pwned!</title>
+    <style type="text/css">
+      /* Base styles - these provide fallbacks */
+      body {
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        background-color: #212529;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #f6f8fa;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      table {
+        border-spacing: 0;
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+
+      img {
+        -ms-interpolation-mode: bicubic;
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+
+      /* Gmail specific overrides */
+      .user-email a {
+        color: #f6f8fa !important;
+        text-decoration: none !important;
+      }
+
+      /* This helps override Gmail's link styling */
+      span.prevent-link {
+        color: #f6f8fa !important;
+        text-decoration: none !important;
+      }
+
+      /* Target Gmail's automatic link formatting */
+      u + #body a {
+        color: #f6f8fa !important;
+        text-decoration: none !important;
+      }
+
+      /* Modern styling enhancements */
+      .rounded-corners {
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .shadow-effect {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .highlight-border {
+        border-left: 4px solid #1d72a7;
+      }
+
+      .top-border {
+        border-top: 3px solid #1d72a7;
+      }
+
+      /* Responsive styles */
+      @media only screen and (max-width: 600px) {
+        .email-container {
+          width: 100% !important;
+          max-width: 100% !important;
+        }
+
+        .mobile-padding {
+          padding-left: 15px !important;
+          padding-right: 15px !important;
+        }
+
+        .mobile-stack {
+          display: block !important;
+          width: 100% !important;
+        }
+
+        /* Mobile optimized detail items */
+        .detail-label {
+          display: block !important;
+          width: 100% !important;
+          padding-right: 0 !important;
+          margin-bottom: 5px !important;
+        }
+
+        .detail-value {
+          display: block !important;
+          width: 100% !important;
+        }
+
+        .detail-item {
+          margin-bottom: 15px !important;
+          padding-bottom: 15px !important;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .detail-item:last-child {
+          border-bottom: none !important;
+          margin-bottom: 0 !important;
+          padding-bottom: 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body id="body">
+    <!-- Preheader text (invisible but picked up by email clients) -->
+    <div style="display: none; max-height: 0; overflow: hidden">
+      Security alert: Your email address was found in the ##BREACH_NAME## data
+      breach. Details inside.
+    </div>
+
+    <!-- Full-width wrapper table -->
+    <table
+      width="100%"
+      bgcolor="#212529"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+    >
+      <tr>
+        <td style="padding: 20px 0">
+          <!-- Main email container -->
+          <table
+            role="presentation"
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+            align="center"
+            width="600"
+            style="
+              margin: auto;
+              background-color: #374a5a;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            "
+            class="email-container rounded-corners shadow-effect"
+          >
+            <!-- Email header -->
+            <tr>
+              <td
+                style="
+                  padding: 25px 30px;
+                  text-align: center;
+                  background-color: #212529;
+                  background-image: linear-gradient(
+                    to bottom,
+                    #2c3036,
+                    #212529
+                  );
+                "
+                align="center"
+              >
+                <div style="text-align: center; display: block">
+                  <img
+                    src="https://preview.haveibeenpwned.com/assets/images/logo_with_url.png"
+                    width="250"
+                    height="68"
+                    alt="Have I Been Pwned"
+                    style="
+                      display: block;
+                      border: 0;
+                      height: auto;
+                      max-width: 100%;
+                      margin: 0 auto;
+                    "
+                    align="center"
+                  />
+                </div>
+              </td>
+            </tr>
+
+            <!-- Hero section -->
+            <tr>
+              <td
+                style="
+                  background-color: #374a5a;
+                  background-image: linear-gradient(
+                    to bottom,
+                    #415569,
+                    #374a5a
+                  );
+                  padding: 35px 30px;
+                  text-align: center;
+                  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                "
+                class="top-border"
+              >
+                <h1
+                  style="
+                    margin: 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 28px;
+                    line-height: 36px;
+                    color: #f6f8fa;
+                    font-weight: bold;
+                  "
+                >
+                  You have been pwned!
+                </h1>
+                <p
+                  style="
+                    margin: 15px 0 0 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 16px;
+                    line-height: 24px;
+                    color: #f6f8fa;
+                  "
+                >
+                  You signed up for notifications when your account was pwned in
+                  a data breach and unfortunately, it's happened. Here's what's
+                  known about the breach.
+                </p>
+              </td>
+            </tr>
+
+            <!-- Breach details section -->
+            <tr>
+              <td
+                style="padding: 30px 30px 20px 30px; background-color: #374a5a"
+              >
+                <table
+                  role="presentation"
+                  cellspacing="0"
+                  cellpadding="0"
+                  border="0"
+                  width="100%"
+                  style="border-collapse: separate; border-spacing: 0 10px"
+                >
+                  <!-- Email found -->
+                  <tr class="detail-item">
+                    <td style="padding: 0 0 10px 0">
+                      <table
+                        role="presentation"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                      >
+                        <tr>
+                          <td
+                            width="150"
+                            style="
+                              vertical-align: top;
+                              padding-right: 15px;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #9cb1c2;
+                              font-weight: bold;
+                            "
+                            class="detail-label"
+                          >
+                            Email found:
+                          </td>
+                          <td
+                            style="
+                              vertical-align: top;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #f6f8fa;
+                            "
+                            class="detail-value user-email"
+                          >
+                            <!-- Original placeholder for backend systems (hidden) -->
+                            <div style="display: none">##USER_EMAIL##</div>
+                            <!-- Formatted email to prevent Gmail styling -->
+                            <span
+                              id="user-email"
+                              class="prevent-link"
+                              style="
+                                color: #f6f8fa !important;
+                                text-decoration: none !important;
+                              "
+                              >##USER_EMAIL_DISPLAY##</span
+                            >
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <!-- Breach name -->
+                  <tr class="detail-item">
+                    <td style="padding: 0 0 10px 0">
+                      <table
+                        role="presentation"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                      >
+                        <tr>
+                          <td
+                            width="150"
+                            style="
+                              vertical-align: top;
+                              padding-right: 15px;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #9cb1c2;
+                              font-weight: bold;
+                            "
+                            class="detail-label"
+                          >
+                            Breach:
+                          </td>
+                          <td
+                            style="
+                              vertical-align: top;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #f6f8fa;
+                              font-weight: bold;
+                            "
+                            class="detail-value"
+                          >
+                            ##BREACH_NAME##
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <!-- Date of breach -->
+                  <tr class="detail-item">
+                    <td style="padding: 0 0 10px 0">
+                      <table
+                        role="presentation"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                      >
+                        <tr>
+                          <td
+                            width="150"
+                            style="
+                              vertical-align: top;
+                              padding-right: 15px;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #9cb1c2;
+                              font-weight: bold;
+                            "
+                            class="detail-label"
+                          >
+                            Date of Breach:
+                          </td>
+                          <td
+                            style="
+                              vertical-align: top;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #f6f8fa;
+                            "
+                            class="detail-value"
+                          >
+                            ##BREACH_DATE##
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <!-- Number of accounts -->
+                  <tr class="detail-item">
+                    <td style="padding: 0 0 10px 0">
+                      <table
+                        role="presentation"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                      >
+                        <tr>
+                          <td
+                            width="150"
+                            style="
+                              vertical-align: top;
+                              padding-right: 15px;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #9cb1c2;
+                              font-weight: bold;
+                            "
+                            class="detail-label"
+                          >
+                            Number of Accounts:
+                          </td>
+                          <td
+                            style="
+                              vertical-align: top;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #f6f8fa;
+                            "
+                            class="detail-value"
+                          >
+                            ##BREACH_ACCOUNTS##
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <!-- Compromised data -->
+                  <tr class="detail-item">
+                    <td style="padding: 0 0 10px 0">
+                      <table
+                        role="presentation"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                      >
+                        <tr>
+                          <td
+                            width="150"
+                            style="
+                              vertical-align: top;
+                              padding-right: 15px;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #9cb1c2;
+                              font-weight: bold;
+                            "
+                            class="detail-label"
+                          >
+                            Compromised data:
+                          </td>
+                          <td
+                            style="
+                              vertical-align: top;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #f6f8fa;
+                            "
+                            class="detail-value"
+                          >
+                            ##COMPROMISED_DATA##
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <!-- Description -->
+                  <tr class="detail-item">
+                    <td style="padding: 0">
+                      <table
+                        role="presentation"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                      >
+                        <tr>
+                          <td
+                            width="150"
+                            style="
+                              vertical-align: top;
+                              padding-right: 15px;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #9cb1c2;
+                              font-weight: bold;
+                            "
+                            class="detail-label"
+                          >
+                            Description:
+                          </td>
+                          <td
+                            style="
+                              vertical-align: top;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #f6f8fa;
+                            "
+                            class="detail-value"
+                          >
+                            ##BREACH_DESCRIPTION##
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- What to do next section -->
+            <tr>
+              <td style="background-color: #374a5a; padding: 30px">
+                <table
+                  role="presentation"
+                  cellspacing="0"
+                  cellpadding="0"
+                  border="0"
+                  width="100%"
+                  style="
+                    background-color: rgba(255, 255, 255, 0.03);
+                    border-radius: 8px;
+                    overflow: hidden;
+                  "
+                >
+                  <tr>
+                    <td
+                      style="
+                        text-align: center;
+                        padding: 25px 20px 20px 20px;
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                      "
+                    >
+                      <h2
+                        style="
+                          margin: 0;
+                          font-family: Arial, Helvetica, sans-serif;
+                          font-size: 20px;
+                          line-height: 28px;
+                          color: #f6f8fa;
+                          font-weight: bold;
+                        "
+                      >
+                        What should you do now?
+                      </h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 20px 25px">
+                      <table
+                        role="presentation"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                      >
+                        <tr>
+                          <td
+                            style="
+                              padding: 10px 0;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #f6f8fa;
+                            "
+                          >
+                            <table
+                              cellpadding="0"
+                              cellspacing="0"
+                              border="0"
+                              width="100%"
+                            >
+                              <tr>
+                                <td width="18" valign="top">
+                                  <span
+                                    style="
+                                      display: inline-block;
+                                      width: 8px;
+                                      height: 8px;
+                                      border-radius: 4px;
+                                      background-color: #1d72a7;
+                                      margin-right: 10px;
+                                      box-shadow: 0 0 4px
+                                        rgba(29, 114, 167, 0.7);
+                                    "
+                                  ></span>
+                                </td>
+                                <td valign="top">
+                                  Change your password for this service
+                                  immediately
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              padding: 10px 0;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #f6f8fa;
+                            "
+                          >
+                            <table
+                              cellpadding="0"
+                              cellspacing="0"
+                              border="0"
+                              width="100%"
+                            >
+                              <tr>
+                                <td width="18" valign="top">
+                                  <span
+                                    style="
+                                      display: inline-block;
+                                      width: 8px;
+                                      height: 8px;
+                                      border-radius: 4px;
+                                      background-color: #1d72a7;
+                                      margin-right: 10px;
+                                    "
+                                  ></span>
+                                </td>
+                                <td valign="top">
+                                  If you've used this password elsewhere, change
+                                  those too
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td
+                            style="
+                              padding: 10px 0;
+                              font-family: Arial, Helvetica, sans-serif;
+                              font-size: 14px;
+                              line-height: 20px;
+                              color: #f6f8fa;
+                            "
+                          >
+                            <table
+                              cellpadding="0"
+                              cellspacing="0"
+                              border="0"
+                              width="100%"
+                            >
+                              <tr>
+                                <td width="18" valign="top">
+                                  <span
+                                    style="
+                                      display: inline-block;
+                                      width: 8px;
+                                      height: 8px;
+                                      border-radius: 4px;
+                                      background-color: #1d72a7;
+                                      margin-right: 10px;
+                                    "
+                                  ></span>
+                                </td>
+                                <td valign="top">
+                                  Enable two-factor authentication where
+                                  available
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- CTA Button -->
+            <tr>
+              <td
+                style="
+                  background-color: #374a5a;
+                  padding: 30px 30px 40px 30px;
+                  text-align: center;
+                "
+              >
+                <table
+                  role="presentation"
+                  cellspacing="0"
+                  cellpadding="0"
+                  border="0"
+                  style="margin: auto"
+                >
+                  <tr>
+                    <td
+                      style="
+                        background-color: #1d72a7;
+                        background-image: linear-gradient(
+                          to bottom,
+                          #2986c7,
+                          #1d72a7
+                        );
+                        border-radius: 8px;
+                        text-align: center;
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                      "
+                    >
+                      <a
+                        href="https://haveibeenpwned.com/breach/##BREACH_NAME_SLUG##"
+                        target="_blank"
+                        style="
+                          display: inline-block;
+                          padding: 14px 30px;
+                          font-family: Arial, Helvetica, sans-serif;
+                          font-size: 16px;
+                          color: #f6f8fa;
+                          text-decoration: none;
+                          font-weight: bold;
+                        "
+                        >View Full Breach Details</a
+                      >
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Footer section -->
+            <tr>
+              <td
+                style="
+                  background-color: #131a20;
+                  background-image: linear-gradient(
+                    to bottom,
+                    #1e2730,
+                    #131a20
+                  );
+                  padding: 30px 20px;
+                  text-align: center;
+                  border-top: 1px solid rgba(255, 255, 255, 0.05);
+                  border-radius: 0 0 12px 12px;
+                "
+              >
+                <p
+                  style="
+                    margin: 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 13px;
+                    line-height: 20px;
+                    color: #9cb1c2;
+                  "
+                >
+                  This email was sent by Have I Been Pwned as part of the breach
+                  monitoring service you signed up for.
+                </p>
+                <div
+                  style="
+                    height: 1px;
+                    background: linear-gradient(
+                      to right,
+                      rgba(156, 177, 194, 0),
+                      rgba(156, 177, 194, 0.3),
+                      rgba(156, 177, 194, 0)
+                    );
+                    margin: 18px auto;
+                    width: 80%;
+                  "
+                ></div>
+                <p
+                  style="
+                    margin: 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 13px;
+                    line-height: 20px;
+                    color: #9cb1c2;
+                  "
+                >
+                  <a
+                    href="https://haveibeenpwned.com/unsubscribe"
+                    target="_blank"
+                    style="
+                      color: #1d72a7;
+                      text-decoration: none;
+                      font-weight: bold;
+                      padding: 0 8px;
+                    "
+                    >Unsubscribe</a
+                  >
+                  |
+                  <a
+                    href="https://haveibeenpwned.com/privacy"
+                    target="_blank"
+                    style="
+                      color: #1d72a7;
+                      text-decoration: none;
+                      font-weight: bold;
+                      padding: 0 8px;
+                    "
+                    >Privacy Policy</a
+                  >
+                </p>
+                <p
+                  style="
+                    margin: 18px 0 0 0;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 12px;
+                    line-height: 18px;
+                    color: #768a9a;
+                  "
+                >
+                  &copy; 2025 Have I Been Pwned
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

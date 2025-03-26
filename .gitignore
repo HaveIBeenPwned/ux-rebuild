@@ -2,3 +2,4 @@
 node_modules
 *.css.map
 main.css
+email_templates/output.html
