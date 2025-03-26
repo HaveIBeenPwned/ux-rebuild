@@ -186,127 +186,132 @@
 
               <div class="card card-glow mb-4">
                 <div class="card-body">
-                  <h2 class="card-title mb-4">Compromised Data</h2>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-center mb-3">
-                          <div
-                            class="me-3 d-flex align-items-center justify-content-center"
-                          >
-                            <div
-                              class="rounded-circle"
-                              style="
-                                width: 12px;
-                                height: 12px;
-                                background-color: #dc3545;
-                                box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
-                              "
-                            ></div>
-                          </div>
-                          <span>Bios</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                          <div
-                            class="me-3 d-flex align-items-center justify-content-center"
-                          >
-                            <div
-                              class="rounded-circle"
-                              style="
-                                width: 12px;
-                                height: 12px;
-                                background-color: #dc3545;
-                                box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
-                              "
-                            ></div>
-                          </div>
-                          <span>Dates of Birth</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                          <div
-                            class="me-3 d-flex align-items-center justify-content-center"
-                          >
-                            <div
-                              class="rounded-circle"
-                              style="
-                                width: 12px;
-                                height: 12px;
-                                background-color: #dc3545;
-                                box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
-                              "
-                            ></div>
-                          </div>
-                          <span>Email Addresses</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                          <div
-                            class="me-3 d-flex align-items-center justify-content-center"
-                          >
-                            <div
-                              class="rounded-circle"
-                              style="
-                                width: 12px;
-                                height: 12px;
-                                background-color: #dc3545;
-                                box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
-                              "
-                            ></div>
-                          </div>
-                          <span>Geographic Locations</span>
-                        </li>
-                      </ul>
+                  <h2 class="card-title mb-4" id="compromised-data-heading">
+                    Compromised Data
+                  </h2>
+
+                  <div
+                    class="row row-cols-2 g-4"
+                    role="list"
+                    aria-labelledby="compromised-data-heading"
+                  >
+                    <!-- Bios -->
+                    <div class="col" role="listitem">
+                      <div class="d-flex align-items-center h-100">
+                        <div
+                          class="rounded-circle me-3 flex-shrink-0"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #dc3545;
+                            box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                          "
+                          aria-hidden="true"
+                        ></div>
+                        <span>Bios</span>
+                      </div>
                     </div>
-                    <div class="col-md-6">
-                      <ul class="list-unstyled mb-0">
-                        <li class="d-flex align-items-center mb-3">
-                          <div
-                            class="me-3 d-flex align-items-center justify-content-center"
-                          >
-                            <div
-                              class="rounded-circle"
-                              style="
-                                width: 12px;
-                                height: 12px;
-                                background-color: #dc3545;
-                                box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
-                              "
-                            ></div>
-                          </div>
-                          <span>Names</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                          <div
-                            class="me-3 d-flex align-items-center justify-content-center"
-                          >
-                            <div
-                              class="rounded-circle"
-                              style="
-                                width: 12px;
-                                height: 12px;
-                                background-color: #dc3545;
-                                box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
-                              "
-                            ></div>
-                          </div>
-                          <span>Passwords</span>
-                        </li>
-                        <li class="d-flex align-items-center">
-                          <div
-                            class="me-3 d-flex align-items-center justify-content-center"
-                          >
-                            <div
-                              class="rounded-circle"
-                              style="
-                                width: 12px;
-                                height: 12px;
-                                background-color: #dc3545;
-                                box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
-                              "
-                            ></div>
-                          </div>
-                          <span>Profile Photos</span>
-                        </li>
-                      </ul>
+
+                    <!-- Dates of Birth -->
+                    <div class="col" role="listitem">
+                      <div class="d-flex align-items-center h-100">
+                        <div
+                          class="rounded-circle me-3 flex-shrink-0"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #dc3545;
+                            box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                          "
+                          aria-hidden="true"
+                        ></div>
+                        <span>Dates of Birth</span>
+                      </div>
+                    </div>
+
+                    <!-- Email Addresses -->
+                    <div class="col" role="listitem">
+                      <div class="d-flex align-items-center h-100">
+                        <div
+                          class="rounded-circle me-3 flex-shrink-0"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #dc3545;
+                            box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                          "
+                          aria-hidden="true"
+                        ></div>
+                        <span>Email Addresses</span>
+                      </div>
+                    </div>
+
+                    <!-- Geographic Locations -->
+                    <div class="col" role="listitem">
+                      <div class="d-flex align-items-center h-100">
+                        <div
+                          class="rounded-circle me-3 flex-shrink-0"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #dc3545;
+                            box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                          "
+                          aria-hidden="true"
+                        ></div>
+                        <span>Geographic Locations</span>
+                      </div>
+                    </div>
+
+                    <!-- Names -->
+                    <div class="col" role="listitem">
+                      <div class="d-flex align-items-center h-100">
+                        <div
+                          class="rounded-circle me-3 flex-shrink-0"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #dc3545;
+                            box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                          "
+                          aria-hidden="true"
+                        ></div>
+                        <span>Names</span>
+                      </div>
+                    </div>
+
+                    <!-- Passwords -->
+                    <div class="col" role="listitem">
+                      <div class="d-flex align-items-center h-100">
+                        <div
+                          class="rounded-circle me-3 flex-shrink-0"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #dc3545;
+                            box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                          "
+                          aria-hidden="true"
+                        ></div>
+                        <span>Passwords</span>
+                      </div>
+                    </div>
+
+                    <!-- Profile Photos -->
+                    <div class="col" role="listitem">
+                      <div class="d-flex align-items-center h-100">
+                        <div
+                          class="rounded-circle me-3 flex-shrink-0"
+                          style="
+                            width: 12px;
+                            height: 12px;
+                            background-color: #dc3545;
+                            box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+                          "
+                          aria-hidden="true"
+                        ></div>
+                        <span>Profile Photos</span>
+                      </div>
                     </div>
                   </div>
                 </div>
