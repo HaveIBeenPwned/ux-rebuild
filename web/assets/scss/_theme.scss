@@ -16,7 +16,7 @@ $font-family-sans-serif: $font-family-base;
 $primary: $primary;
 $secondary: $secondary;
 $danger: $danger;
-
+$success: $success;
 // Button customization - use proper units
 $btn-font-weight: $font-weight-medium;
 $btn-border-radius: 12px;
@@ -108,6 +108,7 @@ $theme-colors: (
   "primary": $primary,
   "secondary": $secondary,
   "danger": $danger,
+  "success": $success,
 );
 
 // Now import Bootstrap variables and the rest of Bootstrap
@@ -285,7 +286,7 @@ $theme-colors: (
   --bs-navbar-brand-margin-end: 1rem;
 }
 
-// Navbar overrides for dark mode
+// Navbar and general dark mode overrides
 [data-bs-theme="dark"] {
   // Navbar padding and appearance
   --bs-navbar-padding-y: 0.75rem;
