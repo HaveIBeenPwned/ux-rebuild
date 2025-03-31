@@ -39,7 +39,12 @@
           />
         </a>
         <div class="d-flex align-items-center justify-content-end gap-2">
-          <button class="btn btn-secondary btn-sm d-lg-none">Notify me</button>
+          <a
+            href="dashboard.html"
+            class="btn btn-secondary btn-sm d-lg-none"
+            role="button"
+            >Dashboard</a
+          >
           <button
             class="navbar-toggler"
             type="button"
@@ -92,9 +97,13 @@
             </li>
           </ul>
         </div>
-        <button class="btn btn-secondary d-none d-lg-inline-flex">
-          Notify me
-        </button>
+        <a
+          href="dashboard.html"
+          class="btn btn-secondary d-none d-lg-inline-flex"
+          role="button"
+        >
+          Dashboard
+        </a>
       </div>
     </nav>
 
@@ -118,47 +127,49 @@
           <div class="col-lg-10">
             <!-- No Domains View (hidden by default) -->
             <div id="noDomainView" style="display: none">
-              <div class="card card-glass">
-                <div class="tooltip-container">
-                  <div class="card-help">
-                    <i class="bi bi-question"></i>
-                    <div class="tooltip-content">
-                      <h6>Domain verification</h6>
-                      <p>
-                        To add a new domain, you need to verify that you control
-                        it first. Begin by entering the domain name then you'll
-                        be given verification options.
-                      </p>
-                      <p>
-                        If you cannot verify that you control the domain, you
-                        will not be able to search for breached email addresses
-                        on it.
-                      </p>
+              <div class="card card-glow">
+                <div class="card-body">
+                  <div class="tooltip-container">
+                    <div class="card-help">
+                      <i class="bi bi-question"></i>
+                      <div class="tooltip-content">
+                        <h6>Domain verification</h6>
+                        <p>
+                          To add a new domain, you need to verify that you
+                          control it first. Begin by entering the domain name
+                          then you'll be given verification options.
+                        </p>
+                        <p>
+                          If you cannot verify that you control the domain, you
+                          will not be able to search for breached email
+                          addresses on it.
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- Domain Input Form -->
-                <div class="form-field mb-4 mb-sm-3">
-                  <label class="input-label h5 mb-3 mb-sm-2"
-                    >Add a new domain</label
-                  >
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="noDomainInput"
-                      placeholder="Enter your domain name"
-                      aria-label="Domain name"
-                    />
-                    <button
-                      class="btn btn-primary"
-                      id="beginVerificationBtn"
-                      data-bs-toggle="modal"
-                      data-bs-target="#verificationModal"
+                  <!-- Domain Input Form -->
+                  <div class="form-field mb-4 mb-sm-3">
+                    <label class="input-label h5 mb-3 mb-sm-2"
+                      >Add a new domain</label
                     >
-                      Begin domain verification
-                    </button>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="noDomainInput"
+                        placeholder="Enter your domain name"
+                        aria-label="Domain name"
+                      />
+                      <button
+                        class="btn btn-primary"
+                        id="beginVerificationBtn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#verificationModal"
+                      >
+                        Begin domain verification
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -782,9 +793,9 @@
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="dashboard.html"
                         class="text-decoration-none text-muted hover-white"
-                        >Notify Me</a
+                        >Dashboard</a
                       >
                     </li>
                   </ul>
