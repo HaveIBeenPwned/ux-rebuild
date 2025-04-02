@@ -1651,32 +1651,5 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-
-    <!-- Minor fix for accordion button accessibility -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Add tabindex="0" to all accordion buttons
-        const accordionButtons = document.querySelectorAll(".accordion-button");
-
-        accordionButtons.forEach((button) => {
-          button.setAttribute("tabindex", "0");
-
-          // Set decorative icons as aria-hidden
-          const iconElement = button.querySelector(".bi");
-          if (iconElement) {
-            iconElement.setAttribute("aria-hidden", "true");
-          }
-
-          // Add keyboard event handlers
-          button.addEventListener("keydown", function (event) {
-            // Handle Enter or Space key press
-            if (event.key === "Enter" || event.key === " ") {
-              event.preventDefault();
-              button.click(); // Simulate a click to toggle the accordion
-            }
-          });
-        });
-      });
-    </script>
   </body>
 </html>
