@@ -40,3 +40,11 @@
   font-size: var(--body-small-size);
   margin-top: 8px;
 }
+
+input:disabled {
+  cursor: not-allowed;
+
+  &::placeholder {
+    color: #ebebeb;
+  }
+}
