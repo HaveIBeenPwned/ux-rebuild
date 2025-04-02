@@ -142,7 +142,7 @@
             <div class="col-lg-8">
               <div class="card card-glow mb-4">
                 <div class="card-body">
-                  <div class="accordion" id="faqAccordion">
+                  <div class="accordion" id="faqAccordion" role="tablist">
                     <!-- Question 1 -->
                     <div class="accordion-item">
                       <h2 class="accordion-header">
@@ -156,6 +156,7 @@
                         >
                           <i
                             class="bi bi-question-circle me-2 text-primary"
+                            aria-hidden="true"
                           ></i>
                           <strong>What does "pwned" mean?</strong>
                         </button>
@@ -168,7 +169,7 @@
                         <div class="accordion-body">
                           <p>
                             The word "pwned" has origins in video game culture
-                            and is a <a href="https://en.wikipedia.org/wiki/Leet">leetspeak</a> derivation of the word "owned",
+                            and is a leetspeak derivation of the word "owned",
                             due to the proximity of the "o" and "p" keys. It's
                             typically used to imply that someone has been
                             controlled or compromised, for example "I was pwned
@@ -1650,5 +1651,32 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+    <!-- Minor fix for accordion button accessibility -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add tabindex="0" to all accordion buttons
+        const accordionButtons = document.querySelectorAll(".accordion-button");
+
+        accordionButtons.forEach((button) => {
+          button.setAttribute("tabindex", "0");
+
+          // Set decorative icons as aria-hidden
+          const iconElement = button.querySelector(".bi");
+          if (iconElement) {
+            iconElement.setAttribute("aria-hidden", "true");
+          }
+
+          // Add keyboard event handlers
+          button.addEventListener("keydown", function (event) {
+            // Handle Enter or Space key press
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              button.click(); // Simulate a click to toggle the accordion
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>

@@ -7,3 +7,11 @@
   line-height: 1.5;
   border-radius: 0.2rem;
 }
+
+.btn-primary:focus-visible {
+  box-shadow: 0 0 0 3px $secondary;
+}
+
+.btn-secondary:focus-visible {
+  box-shadow: 0 0 0 3px $focus-ring-color;
+}

@@ -284,6 +284,8 @@ $theme-colors: (
   // Navbar brand
   --bs-navbar-brand-padding-y: 0;
   --bs-navbar-brand-margin-end: 1rem;
+
+  --bs-focus-ring-color: #{$focus-ring-color};
 }
 
 // Navbar and general dark mode overrides

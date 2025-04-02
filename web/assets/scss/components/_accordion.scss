@@ -1,0 +1,4 @@
+.accordion-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px $focus-ring-color;
+}
