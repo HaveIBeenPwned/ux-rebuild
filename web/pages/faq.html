@@ -142,6 +142,33 @@
             <div class="col-lg-8">
               <div class="card card-glow mb-4">
                 <div class="card-body">
+                  <div class="search-container mb-4">
+                    <div class="position-relative mx-auto">
+                      <input
+                        type="text"
+                        id="faqSearch"
+                        class="form-control form-control-sm form-control-minimal"
+                        placeholder="Search FAQ..."
+                      />
+                      <i
+                        class="bi bi-search position-absolute"
+                        style="
+                          right: 10px;
+                          top: 50%;
+                          transform: translateY(-50%);
+                          font-size: 0.9rem;
+                          color: #6c757d;
+                        "
+                      ></i>
+                    </div>
+                    <div
+                      id="searchFeedback"
+                      class="text-center mt-2 text-danger small"
+                      style="display: none"
+                    >
+                      No matches found. Try a different search term.
+                    </div>
+                  </div>
                   <div class="accordion" id="faqAccordion" role="tablist">
                     <!-- Question 1 -->
                     <div class="accordion-item">
@@ -866,10 +893,10 @@
                           aria-expanded="false"
                           aria-controls="questionNineteen"
                         >
-                          <i class="bi bi-info-circle me-2 text-primary"></i>
+                          <i class="bi bi-shield-check me-2 text-primary"></i>
                           <strong
-                            >It's a bit light on detail here, where can I get
-                            more info?</strong
+                            >How can I protect myself from being in a data
+                            breach?</strong
                           >
                         </button>
                       </h2>
@@ -880,12 +907,43 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            The design and build of this project has been
-                            extensively documented on troyhunt.com under the
-                            Have I Been Pwned tag. These blog posts explain much
-                            of the reasoning behind the various features and how
-                            they've been implemented on Microsoft's Windows
-                            Azure cloud platform.
+                            The reality is that in today's age, there's not a
+                            lot that can be done to entirely prevent being in a
+                            data breach. However, there are steps that can be
+                            taken to minimise the impact:
+                          </p>
+                          <ul>
+                            <li>
+                              Use a
+                              <a
+                                href="https://www.troyhunt.com/password-managers-dont-have-to-be-perfect-they-just-have-to-be-better-than-not-having-one/"
+                                >password manager</a
+                              >
+                              and create strong, unique passwords for every
+                              account
+                            </li>
+                            <li>
+                              Enable
+                              <a
+                                href="https://www.troyhunt.com/beyond-passwords-2fa-u2f-and-google-advanced-protection/"
+                                >2-factor authentication</a
+                              >
+                              on accounts wherever possible
+                            </li>
+                            <li>
+                              Be cautious of what data is provided to which
+                              services (is it necessary to provide your real
+                              date of birth?)
+                            </li>
+                            <li>
+                              Monitor breach notification services such as HIBP
+                              (both the notification service and the Pwned
+                              Passwords feature)
+                            </li>
+                          </ul>
+                          <p>
+                            These measures won't prevent a breach, but they'll
+                            help minimise the impact when it does happen.
                           </p>
                         </div>
                       </div>
@@ -902,12 +960,10 @@
                           aria-expanded="false"
                           aria-controls="questionTwenty"
                         >
-                          <i
-                            class="bi bi-file-earmark-text me-2 text-primary"
-                          ></i>
+                          <i class="bi bi-bell me-2 text-primary"></i>
                           <strong
-                            >What about breaches where passwords aren't
-                            leaked?</strong
+                            >How can I get notified when my data is
+                            breached?</strong
                           >
                         </button>
                       </h2>
@@ -918,15 +974,12 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            Occasionally, a breach will be added to the system
-                            which doesn't include credentials for an online
-                            service. This may occur when data
-                            <em>about</em> individuals is leaked and it may not
-                            include a username and password. However this data
-                            still has a privacy impact; it is data that those
-                            impacted would not reasonably expect to be publicly
-                            released and as such they have a vested interest in
-                            having the ability to be notified of this.
+                            HIBP has a free notification service that can alert
+                            you when your email address is found in a data
+                            breach. You can also monitor domains you own to be
+                            notified when email addresses on those domains are
+                            found in breaches. Read more about the notification
+                            service.
                           </p>
                         </div>
                       </div>
@@ -943,9 +996,10 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyOne"
                         >
-                          <i class="bi bi-check-circle me-2 text-primary"></i>
+                          <i class="bi bi-person-check me-2 text-primary"></i>
                           <strong
-                            >How is a breach verified as legitimate?</strong
+                            >How do I know the notification service is
+                            legitimate?</strong
                           >
                         </button>
                       </h2>
@@ -956,37 +1010,18 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            There are often "breaches" announced by attackers
-                            which in turn are exposed as hoaxes. There is a
-                            balance between making data searchable early and
-                            performing sufficient due diligence to establish the
-                            legitimacy of the breach. The following activities
-                            are usually performed in order to validate breach
-                            legitimacy:
+                            The notification service requires verification of
+                            email address ownership before notifications will be
+                            sent. This means that even if someone attempts to
+                            subscribe your address to the service, they won't
+                            receive any notifications unless they also have
+                            access to your email account (in which case you
+                            probably have much bigger problems!) The
+                            verification process also ensures that should you
+                            wish to unsubscribe from notifications, you can do
+                            so by following the link at the bottom of any
+                            notification email.
                           </p>
-                          <ol>
-                            <li>
-                              Has the impacted service publicly acknowledged the
-                              breach?
-                            </li>
-                            <li>
-                              Does the data in the breach turn up in a Google
-                              search (i.e. it's just copied from another
-                              source)?
-                            </li>
-                            <li>
-                              Is the structure of the data consistent with what
-                              you'd expect to see in a breach?
-                            </li>
-                            <li>
-                              Have the attackers provided sufficient evidence to
-                              demonstrate the attack vector?
-                            </li>
-                            <li>
-                              Do the attackers have a track record of either
-                              reliably releasing breaches or falsifying them?
-                            </li>
-                          </ol>
                         </div>
                       </div>
                     </div>
@@ -1002,10 +1037,10 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyTwo"
                         >
-                          <i class="bi bi-clipboard-data me-2 text-primary"></i>
+                          <i class="bi bi-envelope me-2 text-primary"></i>
                           <strong
-                            >What is a "paste" and why include it on this
-                            site?</strong
+                            >I'm not receiving verification emails, what's
+                            wrong?</strong
                           >
                         </button>
                       </h2>
@@ -1016,23 +1051,12 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            A "paste" is information that has been "pasted" to a
-                            publicly facing website designed to share content
-                            such as Pastebin. These services are favoured by
-                            hackers due to the ease of anonymously sharing
-                            information and they're frequently the first place a
-                            breach appears.
-                          </p>
-                          <p>
-                            HIBP searches through pastes that are broadcast by
-                            the accounts in the Paste Sources Twitter list and
-                            reported as having emails that are a potential
-                            indicator of a breach. Finding an email address in a
-                            paste <em>does not</em> immediately mean it has been
-                            disclosed as the result of a breach. Review the
-                            paste and determine if your account has been
-                            compromised then take appropriate action such as
-                            changing passwords.
+                            The most common reason for not receiving
+                            verification emails is that they're being caught by
+                            spam filters. Check your spam folder and ensure
+                            haveibeenpwned.com is whitelisted. If you still
+                            don't receive the verification email, try
+                            subscribing again or contact support.
                           </p>
                         </div>
                       </div>
@@ -1049,10 +1073,9 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyThree"
                         >
-                          <i class="bi bi-clipboard-x me-2 text-primary"></i>
+                          <i class="bi bi-globe me-2 text-primary"></i>
                           <strong
-                            >My email was reported as appearing in a paste but
-                            the paste now can't be found</strong
+                            >How can I monitor my domain for breaches?</strong
                           >
                         </button>
                       </h2>
@@ -1063,14 +1086,10 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            Pastes are often transient; they appear briefly and
-                            are then removed. HIBP usually indexes a new paste
-                            within 40 seconds of it appearing and stores the
-                            email addresses that appeared in the paste along
-                            with some metadata such as the date, title and
-                            author (if they exist). The paste itself is not
-                            stored and cannot be displayed if it no longer
-                            exists at the source.
+                            HIBP has a domain search feature that allows you to
+                            search for all email addresses belonging to a domain
+                            you own. This requires a subscription and domain
+                            verification. Read more about domain searching.
                           </p>
                         </div>
                       </div>
@@ -1087,10 +1106,10 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyFour"
                         >
-                          <i class="bi bi-search me-2 text-primary"></i>
+                          <i class="bi bi-building me-2 text-primary"></i>
                           <strong
-                            >My email was not found — does that mean I haven't
-                            been pwned?</strong
+                            >How can I get access to the full breach data for my
+                            organisation?</strong
                           >
                         </button>
                       </h2>
@@ -1101,18 +1120,11 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            Whilst HIBP is kept up to date with as much data as
-                            possible, it contains but a small subset of all the
-                            records that have been breached over the years. Many
-                            breaches never result in the public release of data
-                            and indeed many breaches even go entirely
-                            undetected. "Absence of evidence is not evidence of
-                            absence" or in other words, just because your email
-                            address wasn't found here doesn't mean that is
-                            hasn't been compromised in another breach. An
-                            address that was previously found in HIBP will no
-                            longer appear if it has been opted-out or the data
-                            was retired.
+                            HIBP does not distribute breach data. The service is
+                            designed to help people identify if they've been
+                            impacted by a breach, not to redistribute the data
+                            itself. This position is taken to ensure the service
+                            isn't used to further harm victims of data breaches.
                           </p>
                         </div>
                       </div>
@@ -1129,11 +1141,8 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyFive"
                         >
-                          <i class="bi bi-plus-circle me-2 text-primary"></i>
-                          <strong
-                            >How does HIBP handle "plus aliasing" in email
-                            addresses?</strong
-                          >
+                          <i class="bi bi-code-slash me-2 text-primary"></i>
+                          <strong>Can I use the HIBP API?</strong>
                         </button>
                       </h2>
                       <div
@@ -1143,20 +1152,9 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            Some people choose to create accounts using a
-                            pattern known as "plus aliasing" in their email
-                            addresses. This allows them to express their email
-                            address with an additional piece of data in the
-                            alias, usually reflecting the site they've signed up
-                            to such as test+netflix@example.com or
-                            test+amazon@example.com. There is presently a
-                            UserVoice suggestion requesting support of this
-                            pattern in HIBP. However, as explained in that
-                            suggestion, usage of plus aliasing is
-                            <em>extremely</em> rare, appearing in approximately
-                            only 0.03% of addresses loaded into HIBP. Vote for
-                            the suggestion and follow its progress if this
-                            feature is important to you.
+                            Yes! HIBP has a fully documented API available at
+                            haveibeenpwned.com/API/v3. The API requires a key
+                            which can be purchased from the API key page.
                           </p>
                         </div>
                       </div>
@@ -1173,8 +1171,8 @@
                           aria-expanded="false"
                           aria-controls="questionTwentySix"
                         >
-                          <i class="bi bi-hdd-stack me-2 text-primary"></i>
-                          <strong>How is the data stored?</strong>
+                          <i class="bi bi-key me-2 text-primary"></i>
+                          <strong>How much does an API key cost?</strong>
                         </button>
                       </h2>
                       <div
@@ -1184,13 +1182,9 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            The breached accounts sit in Windows Azure table
-                            storage which contains nothing more than the email
-                            address or username and a list of sites it appeared
-                            in breaches on. If you're interested in the details,
-                            it's all described in Working with 154 million
-                            records on Azure Table Storage – the story of Have I
-                            Been Pwned.
+                            API keys are priced at US$3.50 per month with
+                            discounts available for annual purchases. Keys can
+                            be purchased from the API key page.
                           </p>
                         </div>
                       </div>
@@ -1207,10 +1201,11 @@
                           aria-expanded="false"
                           aria-controls="questionTwentySeven"
                         >
-                          <i class="bi bi-journal-text me-2 text-primary"></i>
+                          <i
+                            class="bi bi-currency-dollar me-2 text-primary"
+                          ></i>
                           <strong
-                            >Is anything logged when people search for an
-                            account?</strong
+                            >How much does a domain subscription cost?</strong
                           >
                         </button>
                       </h2>
@@ -1221,11 +1216,13 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            Nothing is explicitly logged by the website. The
-                            only logging of any kind is via Google Analytics,
-                            Application Insights performance monitoring and any
-                            diagnostic data implicitly collected if an exception
-                            occurs in the system.
+                            Domain subscriptions are priced based on the number
+                            of unique email addresses found in breaches for that
+                            domain. The price ranges from US$3.50 per month for
+                            domains with up to 1k addresses through to US$500
+                            per month for domains with up to 100k addresses.
+                            Larger domains can be accommodated via custom
+                            pricing.
                           </p>
                         </div>
                       </div>
@@ -1242,11 +1239,8 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyEight"
                         >
-                          <i class="bi bi-person-badge me-2 text-primary"></i>
-                          <strong
-                            >Why do I see my username as breached on a service I
-                            never signed up to?</strong
-                          >
+                          <i class="bi bi-credit-card me-2 text-primary"></i>
+                          <strong>What payment methods are accepted?</strong>
                         </button>
                       </h2>
                       <div
@@ -1256,16 +1250,9 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            When you search for a username that is not an email
-                            address, you may see that name appear against
-                            breaches of sites you never signed up to. Usually
-                            this is simply due to someone else electing to use
-                            the same username as you usually do. Even when your
-                            username appears very unique, the simple fact that
-                            there are several billion internet users worldwide
-                            means there's a strong probability that most
-                            usernames have been used by other individuals at one
-                            time or another.
+                            HIBP accepts credit card payments via Stripe.
+                            Payment can be made with Visa, Mastercard or
+                            American Express.
                           </p>
                         </div>
                       </div>
@@ -1282,11 +1269,8 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyNine"
                         >
-                          <i class="bi bi-envelope-fill me-2 text-primary"></i>
-                          <strong
-                            >Why do I see my email address as breached on a
-                            service I never signed up to?</strong
-                          >
+                          <i class="bi bi-receipt me-2 text-primary"></i>
+                          <strong>Can I get a tax invoice?</strong>
                         </button>
                       </h2>
                       <div
@@ -1296,15 +1280,9 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            When you search for an email address, you may see
-                            that address appear against breaches of sites you
-                            don't recall ever signing up to. There are many
-                            possible reasons for this including your data having
-                            been acquired by another service, the service
-                            rebranding itself as something else or someone else
-                            signing you up. For a more comprehensive overview,
-                            see Why am I in a data breach for a site I never
-                            signed up to?
+                            Yes, tax invoices are available for all purchases.
+                            They can be downloaded from the subscription
+                            management page after purchase.
                           </p>
                         </div>
                       </div>
@@ -1321,10 +1299,11 @@
                           aria-expanded="false"
                           aria-controls="questionThirty"
                         >
-                          <i class="bi bi-bell me-2 text-primary"></i>
+                          <i
+                            class="bi bi-question-circle me-2 text-primary"
+                          ></i>
                           <strong
-                            >Can I receive notifications for an email address I
-                            don't have access to?</strong
+                            >I have another question not answered here</strong
                           >
                         </button>
                       </h2>
@@ -1335,13 +1314,10 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            No. For privacy reasons, all notifications are sent
-                            to the address being monitored so you can't monitor
-                            someone else's address nor can you monitor an
-                            address you no longer have access to. You can always
-                            perform an on-demand search of an address, but
-                            sensitive breaches and retired breaches will not be
-                            returned.
+                            Please check the blog posts tagged with "Have I Been
+                            Pwned" on troyhunt.com for more information. If you
+                            still can't find an answer to your question, you can
+                            contact support.
                           </p>
                         </div>
                       </div>
@@ -1654,5 +1630,219 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+    <!-- Find-in-page search handling -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get all accordion items
+        const accordionItems = document.querySelectorAll(".accordion-item");
+        const accordionButtons = document.querySelectorAll(".accordion-button");
+
+        // Get search input (already in the HTML)
+        const searchInput = document.getElementById("faqSearch");
+
+        // Function to perform search
+        function performSearch() {
+          const searchTerm = searchInput.value.toLowerCase().trim();
+
+          // Reset all accordion items
+          accordionItems.forEach((item) => {
+            // Get the collapse element
+            const collapseEl = item.querySelector(".accordion-collapse");
+            const bsCollapse = bootstrap.Collapse.getInstance(collapseEl);
+
+            // If it's open, close it
+            if (collapseEl.classList.contains("show") && bsCollapse) {
+              bsCollapse.hide();
+            }
+
+            // Remove any previous highlighting
+            const content = item.querySelector(".accordion-body");
+            content.innerHTML = content.innerHTML.replace(
+              /<mark class="search-highlight">(.*?)<\/mark>/g,
+              "$1"
+            );
+          });
+
+          // Hide the feedback message
+          const searchFeedback = document.getElementById("searchFeedback");
+          searchFeedback.style.display = "none";
+
+          // If search term is empty, just reset
+          if (!searchTerm) return;
+
+          let foundMatch = false;
+          let firstMatchItem = null;
+          let firstMatchElement = null;
+
+          // Look through each accordion item for matches
+          accordionItems.forEach((item) => {
+            // Get the text content and normalize it: lowercase, replace newlines with spaces, normalize whitespace
+            const heading = item
+              .querySelector(".accordion-header")
+              .textContent.toLowerCase();
+
+            // For content, need to preserve original HTML for highlighting but get normalized text for searching
+            const bodyElement = item.querySelector(".accordion-body");
+            const content = bodyElement.textContent
+              .toLowerCase()
+              .replace(/\s+/g, " ") // Replace all whitespace (including newlines) with a single space
+              .trim();
+
+            // Create a normalized version of the search term
+            const normalizedSearchTerm = searchTerm.replace(/\s+/g, " ").trim();
+
+            // Check if search term exists in heading or content
+            if (
+              heading.includes(normalizedSearchTerm) ||
+              content.includes(normalizedSearchTerm)
+            ) {
+              // Track the first matched item if we haven't found one yet
+              if (!foundMatch) {
+                foundMatch = true;
+                firstMatchItem = item;
+              }
+
+              // Get the collapse element and expand it
+              const collapseEl = item.querySelector(".accordion-collapse");
+              const button = item.querySelector(".accordion-button");
+
+              // Force open using Bootstrap API
+              const bsCollapse = new bootstrap.Collapse(collapseEl, {
+                toggle: false,
+              });
+              bsCollapse.show();
+
+              // Highlight the search term in the content - need to handle possible newlines in HTML
+              const bodyContent = item.querySelector(".accordion-body");
+
+              // Clone the content to work with
+              const tempDiv = document.createElement("div");
+              tempDiv.innerHTML = bodyContent.innerHTML;
+
+              // Process text nodes to highlight matches while preserving HTML structure
+              highlightTextNodes(tempDiv, normalizedSearchTerm);
+
+              // Update the content with highlighted version
+              bodyContent.innerHTML = tempDiv.innerHTML;
+
+              // Track the first highlight element in this item
+              if (!firstMatchElement) {
+                const highlightElements = item.querySelectorAll(
+                  "mark.search-highlight"
+                );
+                if (highlightElements.length > 0) {
+                  firstMatchElement = highlightElements[0];
+                }
+              }
+            }
+          });
+
+          // Scroll to the first match
+          if (foundMatch && firstMatchItem) {
+            setTimeout(() => {
+              if (firstMatchElement) {
+                firstMatchElement.scrollIntoView({
+                  behavior: "smooth",
+                  block: "center",
+                });
+              } else {
+                // Fallback to scrolling to the accordion item
+                firstMatchItem.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            }, 350); // Wait for animation to complete
+          }
+
+          // Show message if no results found
+          if (!foundMatch) {
+            const searchFeedback = document.getElementById("searchFeedback");
+            searchFeedback.style.display = "block";
+          }
+        }
+
+        // Function to escape special characters for regex safety
+        function escapeRegExp(string) {
+          return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        }
+
+        // Function to highlight text nodes without affecting HTML structure
+        function highlightTextNodes(element, searchTerm) {
+          // Skip if this is a script, style, or already highlighted element
+          if (
+            element.tagName === "SCRIPT" ||
+            element.tagName === "STYLE" ||
+            element.tagName === "MARK"
+          ) {
+            return;
+          }
+
+          // Process child nodes
+          for (let i = 0; i < element.childNodes.length; i++) {
+            const node = element.childNodes[i];
+
+            if (node.nodeType === Node.TEXT_NODE) {
+              // This is a text node, check for matches
+              const text = node.textContent;
+              const normalizedText = text.replace(/\s+/g, " ");
+
+              // Create regex with word boundary for better matches
+              const escapedSearchTerm = escapeRegExp(searchTerm);
+              const regex = new RegExp(escapedSearchTerm, "gi");
+
+              if (regex.test(normalizedText)) {
+                // Found a match, replace with highlighted version
+                const highlightedText = normalizedText.replace(
+                  regex,
+                  (match) => `<mark class="search-highlight">${match}</mark>`
+                );
+
+                // Create a new element with the highlighted content
+                const span = document.createElement("span");
+                span.innerHTML = highlightedText;
+
+                // Replace the text node with our new span
+                element.replaceChild(span, node);
+
+                // Skip ahead since we've replaced this node
+                i += span.childNodes.length - 1;
+              }
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+              // This is an element node, recursively process it
+              highlightTextNodes(node, searchTerm);
+            }
+          }
+        }
+
+        // Attach event listener
+        searchInput.addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            performSearch();
+            e.preventDefault();
+          }
+        });
+
+        // Also trigger search when input changes after a short delay (for live search)
+        let searchTimeout;
+        searchInput.addEventListener("input", function () {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(performSearch, 500);
+        });
+
+        // Add some basic styles for the search highlights
+        const style = document.createElement("style");
+        style.textContent = `
+          .search-highlight {
+            background-color: #ffeb3b;
+            color: #000;
+            padding: 0 2px;
+            border-radius: 2px;
+          }
+        `;
+        document.head.appendChild(style);
+      });
+    </script>
   </body>
 </html>
