@@ -118,6 +118,11 @@ main {
   flex: 1 0 auto;
 }
 
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px $focus-ring-color;
+}
+
 /* Domain Search Page Styles
 -------------------------------------------------- */
 /* Verification Methods */
