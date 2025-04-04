@@ -893,10 +893,10 @@
                           aria-expanded="false"
                           aria-controls="questionNineteen"
                         >
-                          <i class="bi bi-shield-check me-2 text-primary"></i>
+                          <i class="bi bi-info-circle me-2 text-primary"></i>
                           <strong
-                            >How can I protect myself from being in a data
-                            breach?</strong
+                            >It's a bit light on detail here, where can I get
+                            more info?</strong
                           >
                         </button>
                       </h2>
@@ -907,43 +907,12 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            The reality is that in today's age, there's not a
-                            lot that can be done to entirely prevent being in a
-                            data breach. However, there are steps that can be
-                            taken to minimise the impact:
-                          </p>
-                          <ul>
-                            <li>
-                              Use a
-                              <a
-                                href="https://www.troyhunt.com/password-managers-dont-have-to-be-perfect-they-just-have-to-be-better-than-not-having-one/"
-                                >password manager</a
-                              >
-                              and create strong, unique passwords for every
-                              account
-                            </li>
-                            <li>
-                              Enable
-                              <a
-                                href="https://www.troyhunt.com/beyond-passwords-2fa-u2f-and-google-advanced-protection/"
-                                >2-factor authentication</a
-                              >
-                              on accounts wherever possible
-                            </li>
-                            <li>
-                              Be cautious of what data is provided to which
-                              services (is it necessary to provide your real
-                              date of birth?)
-                            </li>
-                            <li>
-                              Monitor breach notification services such as HIBP
-                              (both the notification service and the Pwned
-                              Passwords feature)
-                            </li>
-                          </ul>
-                          <p>
-                            These measures won't prevent a breach, but they'll
-                            help minimise the impact when it does happen.
+                            The design and build of this project has been
+                            extensively documented on troyhunt.com under the
+                            Have I Been Pwned tag. These blog posts explain much
+                            of the reasoning behind the various features and how
+                            they've been implemented on Microsoft's Windows
+                            Azure cloud platform.
                           </p>
                         </div>
                       </div>
@@ -960,10 +929,12 @@
                           aria-expanded="false"
                           aria-controls="questionTwenty"
                         >
-                          <i class="bi bi-bell me-2 text-primary"></i>
+                          <i
+                            class="bi bi-file-earmark-text me-2 text-primary"
+                          ></i>
                           <strong
-                            >How can I get notified when my data is
-                            breached?</strong
+                            >What about breaches where passwords aren't
+                            leaked?</strong
                           >
                         </button>
                       </h2>
@@ -974,12 +945,15 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            HIBP has a free notification service that can alert
-                            you when your email address is found in a data
-                            breach. You can also monitor domains you own to be
-                            notified when email addresses on those domains are
-                            found in breaches. Read more about the notification
-                            service.
+                            Occasionally, a breach will be added to the system
+                            which doesn't include credentials for an online
+                            service. This may occur when data
+                            <em>about</em> individuals is leaked and it may not
+                            include a username and password. However this data
+                            still has a privacy impact; it is data that those
+                            impacted would not reasonably expect to be publicly
+                            released and as such they have a vested interest in
+                            having the ability to be notified of this.
                           </p>
                         </div>
                       </div>
@@ -996,10 +970,9 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyOne"
                         >
-                          <i class="bi bi-person-check me-2 text-primary"></i>
+                          <i class="bi bi-check-circle me-2 text-primary"></i>
                           <strong
-                            >How do I know the notification service is
-                            legitimate?</strong
+                            >How is a breach verified as legitimate?</strong
                           >
                         </button>
                       </h2>
@@ -1010,18 +983,37 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            The notification service requires verification of
-                            email address ownership before notifications will be
-                            sent. This means that even if someone attempts to
-                            subscribe your address to the service, they won't
-                            receive any notifications unless they also have
-                            access to your email account (in which case you
-                            probably have much bigger problems!) The
-                            verification process also ensures that should you
-                            wish to unsubscribe from notifications, you can do
-                            so by following the link at the bottom of any
-                            notification email.
+                            There are often "breaches" announced by attackers
+                            which in turn are exposed as hoaxes. There is a
+                            balance between making data searchable early and
+                            performing sufficient due diligence to establish the
+                            legitimacy of the breach. The following activities
+                            are usually performed in order to validate breach
+                            legitimacy:
                           </p>
+                          <ol>
+                            <li>
+                              Has the impacted service publicly acknowledged the
+                              breach?
+                            </li>
+                            <li>
+                              Does the data in the breach turn up in a Google
+                              search (i.e. it's just copied from another
+                              source)?
+                            </li>
+                            <li>
+                              Is the structure of the data consistent with what
+                              you'd expect to see in a breach?
+                            </li>
+                            <li>
+                              Have the attackers provided sufficient evidence to
+                              demonstrate the attack vector?
+                            </li>
+                            <li>
+                              Do the attackers have a track record of either
+                              reliably releasing breaches or falsifying them?
+                            </li>
+                          </ol>
                         </div>
                       </div>
                     </div>
@@ -1037,10 +1029,10 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyTwo"
                         >
-                          <i class="bi bi-envelope me-2 text-primary"></i>
+                          <i class="bi bi-clipboard-data me-2 text-primary"></i>
                           <strong
-                            >I'm not receiving verification emails, what's
-                            wrong?</strong
+                            >What is a "paste" and why include it on this
+                            site?</strong
                           >
                         </button>
                       </h2>
@@ -1051,12 +1043,23 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            The most common reason for not receiving
-                            verification emails is that they're being caught by
-                            spam filters. Check your spam folder and ensure
-                            haveibeenpwned.com is whitelisted. If you still
-                            don't receive the verification email, try
-                            subscribing again or contact support.
+                            A "paste" is information that has been "pasted" to a
+                            publicly facing website designed to share content
+                            such as Pastebin. These services are favoured by
+                            hackers due to the ease of anonymously sharing
+                            information and they're frequently the first place a
+                            breach appears.
+                          </p>
+                          <p>
+                            HIBP searches through pastes that are broadcast by
+                            the accounts in the Paste Sources Twitter list and
+                            reported as having emails that are a potential
+                            indicator of a breach. Finding an email address in a
+                            paste <em>does not</em> immediately mean it has been
+                            disclosed as the result of a breach. Review the
+                            paste and determine if your account has been
+                            compromised then take appropriate action such as
+                            changing passwords.
                           </p>
                         </div>
                       </div>
@@ -1073,9 +1076,10 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyThree"
                         >
-                          <i class="bi bi-globe me-2 text-primary"></i>
+                          <i class="bi bi-clipboard-x me-2 text-primary"></i>
                           <strong
-                            >How can I monitor my domain for breaches?</strong
+                            >My email was reported as appearing in a paste but
+                            the paste now can't be found</strong
                           >
                         </button>
                       </h2>
@@ -1086,10 +1090,14 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            HIBP has a domain search feature that allows you to
-                            search for all email addresses belonging to a domain
-                            you own. This requires a subscription and domain
-                            verification. Read more about domain searching.
+                            Pastes are often transient; they appear briefly and
+                            are then removed. HIBP usually indexes a new paste
+                            within 40 seconds of it appearing and stores the
+                            email addresses that appeared in the paste along
+                            with some metadata such as the date, title and
+                            author (if they exist). The paste itself is not
+                            stored and cannot be displayed if it no longer
+                            exists at the source.
                           </p>
                         </div>
                       </div>
@@ -1106,10 +1114,10 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyFour"
                         >
-                          <i class="bi bi-building me-2 text-primary"></i>
+                          <i class="bi bi-search me-2 text-primary"></i>
                           <strong
-                            >How can I get access to the full breach data for my
-                            organisation?</strong
+                            >My email was not found — does that mean I haven't
+                            been pwned?</strong
                           >
                         </button>
                       </h2>
@@ -1120,11 +1128,18 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            HIBP does not distribute breach data. The service is
-                            designed to help people identify if they've been
-                            impacted by a breach, not to redistribute the data
-                            itself. This position is taken to ensure the service
-                            isn't used to further harm victims of data breaches.
+                            Whilst HIBP is kept up to date with as much data as
+                            possible, it contains but a small subset of all the
+                            records that have been breached over the years. Many
+                            breaches never result in the public release of data
+                            and indeed many breaches even go entirely
+                            undetected. "Absence of evidence is not evidence of
+                            absence" or in other words, just because your email
+                            address wasn't found here doesn't mean that is
+                            hasn't been compromised in another breach. An
+                            address that was previously found in HIBP will no
+                            longer appear if it has been opted-out or the data
+                            was retired.
                           </p>
                         </div>
                       </div>
@@ -1141,8 +1156,11 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyFive"
                         >
-                          <i class="bi bi-code-slash me-2 text-primary"></i>
-                          <strong>Can I use the HIBP API?</strong>
+                          <i class="bi bi-plus-circle me-2 text-primary"></i>
+                          <strong
+                            >How does HIBP handle "plus aliasing" in email
+                            addresses?</strong
+                          >
                         </button>
                       </h2>
                       <div
@@ -1152,9 +1170,20 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            Yes! HIBP has a fully documented API available at
-                            haveibeenpwned.com/API/v3. The API requires a key
-                            which can be purchased from the API key page.
+                            Some people choose to create accounts using a
+                            pattern known as "plus aliasing" in their email
+                            addresses. This allows them to express their email
+                            address with an additional piece of data in the
+                            alias, usually reflecting the site they've signed up
+                            to such as test+netflix@example.com or
+                            test+amazon@example.com. There is presently a
+                            UserVoice suggestion requesting support of this
+                            pattern in HIBP. However, as explained in that
+                            suggestion, usage of plus aliasing is
+                            <em>extremely</em> rare, appearing in approximately
+                            only 0.03% of addresses loaded into HIBP. Vote for
+                            the suggestion and follow its progress if this
+                            feature is important to you.
                           </p>
                         </div>
                       </div>
@@ -1171,8 +1200,8 @@
                           aria-expanded="false"
                           aria-controls="questionTwentySix"
                         >
-                          <i class="bi bi-key me-2 text-primary"></i>
-                          <strong>How much does an API key cost?</strong>
+                          <i class="bi bi-hdd-stack me-2 text-primary"></i>
+                          <strong>How is the data stored?</strong>
                         </button>
                       </h2>
                       <div
@@ -1182,9 +1211,13 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            API keys are priced at US$3.50 per month with
-                            discounts available for annual purchases. Keys can
-                            be purchased from the API key page.
+                            The breached accounts sit in Windows Azure table
+                            storage which contains nothing more than the email
+                            address or username and a list of sites it appeared
+                            in breaches on. If you're interested in the details,
+                            it's all described in Working with 154 million
+                            records on Azure Table Storage – the story of Have I
+                            Been Pwned.
                           </p>
                         </div>
                       </div>
@@ -1201,11 +1234,10 @@
                           aria-expanded="false"
                           aria-controls="questionTwentySeven"
                         >
-                          <i
-                            class="bi bi-currency-dollar me-2 text-primary"
-                          ></i>
+                          <i class="bi bi-journal-text me-2 text-primary"></i>
                           <strong
-                            >How much does a domain subscription cost?</strong
+                            >Is anything logged when people search for an
+                            account?</strong
                           >
                         </button>
                       </h2>
@@ -1216,13 +1248,11 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            Domain subscriptions are priced based on the number
-                            of unique email addresses found in breaches for that
-                            domain. The price ranges from US$3.50 per month for
-                            domains with up to 1k addresses through to US$500
-                            per month for domains with up to 100k addresses.
-                            Larger domains can be accommodated via custom
-                            pricing.
+                            Nothing is explicitly logged by the website. The
+                            only logging of any kind is via Google Analytics,
+                            Application Insights performance monitoring and any
+                            diagnostic data implicitly collected if an exception
+                            occurs in the system.
                           </p>
                         </div>
                       </div>
@@ -1239,8 +1269,11 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyEight"
                         >
-                          <i class="bi bi-credit-card me-2 text-primary"></i>
-                          <strong>What payment methods are accepted?</strong>
+                          <i class="bi bi-person-badge me-2 text-primary"></i>
+                          <strong
+                            >Why do I see my username as breached on a service I
+                            never signed up to?</strong
+                          >
                         </button>
                       </h2>
                       <div
@@ -1250,9 +1283,16 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            HIBP accepts credit card payments via Stripe.
-                            Payment can be made with Visa, Mastercard or
-                            American Express.
+                            When you search for a username that is not an email
+                            address, you may see that name appear against
+                            breaches of sites you never signed up to. Usually
+                            this is simply due to someone else electing to use
+                            the same username as you usually do. Even when your
+                            username appears very unique, the simple fact that
+                            there are several billion internet users worldwide
+                            means there's a strong probability that most
+                            usernames have been used by other individuals at one
+                            time or another.
                           </p>
                         </div>
                       </div>
@@ -1269,8 +1309,11 @@
                           aria-expanded="false"
                           aria-controls="questionTwentyNine"
                         >
-                          <i class="bi bi-receipt me-2 text-primary"></i>
-                          <strong>Can I get a tax invoice?</strong>
+                          <i class="bi bi-envelope-fill me-2 text-primary"></i>
+                          <strong
+                            >Why do I see my email address as breached on a
+                            service I never signed up to?</strong
+                          >
                         </button>
                       </h2>
                       <div
@@ -1280,9 +1323,15 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            Yes, tax invoices are available for all purchases.
-                            They can be downloaded from the subscription
-                            management page after purchase.
+                            When you search for an email address, you may see
+                            that address appear against breaches of sites you
+                            don't recall ever signing up to. There are many
+                            possible reasons for this including your data having
+                            been acquired by another service, the service
+                            rebranding itself as something else or someone else
+                            signing you up. For a more comprehensive overview,
+                            see Why am I in a data breach for a site I never
+                            signed up to?
                           </p>
                         </div>
                       </div>
@@ -1299,11 +1348,10 @@
                           aria-expanded="false"
                           aria-controls="questionThirty"
                         >
-                          <i
-                            class="bi bi-question-circle me-2 text-primary"
-                          ></i>
+                          <i class="bi bi-bell me-2 text-primary"></i>
                           <strong
-                            >I have another question not answered here</strong
+                            >Can I receive notifications for an email address I
+                            don't have access to?</strong
                           >
                         </button>
                       </h2>
@@ -1314,10 +1362,13 @@
                       >
                         <div class="accordion-body">
                           <p>
-                            Please check the blog posts tagged with "Have I Been
-                            Pwned" on troyhunt.com for more information. If you
-                            still can't find an answer to your question, you can
-                            contact support.
+                            No. For privacy reasons, all notifications are sent
+                            to the address being monitored so you can't monitor
+                            someone else's address nor can you monitor an
+                            address you no longer have access to. You can always
+                            perform an on-demand search of an address, but
+                            sensitive breaches and retired breaches will not be
+                            returned.
                           </p>
                         </div>
                       </div>
