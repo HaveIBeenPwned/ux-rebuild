@@ -40,3 +40,17 @@
   font-size: var(--body-small-size);
   margin-top: 8px;
 }
+
+.form-control {
+  &-minimal {
+    color: var(--white);
+    background-color: var(--grey-900);
+    &::placeholder {
+      color: var(--grey-400);
+    }
+    &:focus {
+      background-color: var(--grey-900);
+      color: var(--white);
+    }
+  }
+}
