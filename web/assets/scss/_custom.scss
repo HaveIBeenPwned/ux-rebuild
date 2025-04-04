@@ -815,3 +815,126 @@ a:focus-visible {
     margin: 6px;
   }
 }
+
+/* Pricing Page Styles
+-------------------------------------------------- */
+// Pricing toggle switch
+.pricing-toggle {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.pricing-toggle input {
+  display: none;
+}
+
+.pricing-toggle-label {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.pricing-toggle-label.monthly {
+  left: 0;
+}
+
+.pricing-toggle-label.yearly {
+  right: 0;
+}
+
+.pricing-toggle-slider {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: var(--primary);
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+}
+
+#pricingToggle:checked ~ .pricing-toggle-slider {
+  transform: translateX(100%);
+}
+
+#pricingToggle:checked ~ .pricing-toggle-label.monthly {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+#pricingToggle:not(:checked) ~ .pricing-toggle-label.yearly {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+// Popular badge for pricing cards
+.popular-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--primary);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 0 16px 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+// Color variants for pricing card headers
+.pricing-card-1 .card-header {
+  background-color: rgba(41, 128, 185, 0.2);
+}
+
+.pricing-card-2 .card-header {
+  background-color: rgba(0, 184, 148, 0.2);
+}
+
+.pricing-card-3 .card-header {
+  background-color: rgba(155, 89, 182, 0.2);
+}
+
+.pricing-card-4 .card-header {
+  background-color: rgba(214, 48, 49, 0.2);
+}
+
+.pricing-card-5 .card-header {
+  background-color: rgba(9, 132, 227, 0.2);
+}
+
+.pricing-card-6 .card-header {
+  background-color: rgba(45, 52, 54, 0.2);
+}
+
+.enterprise-card {
+  background: linear-gradient(
+    145deg,
+    rgba(45, 55, 72, 0.3),
+    rgba(17, 24, 39, 0.3)
+  );
+}
+
+// Transition effects for pricing cards
+.transition {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transition:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+// Feature container for consistent height
+.feature-container {
+  min-height: 120px;
+}

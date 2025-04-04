@@ -67,6 +67,9 @@
             <li class="nav-item">
               <a class="nav-link" href="#">API</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pricing.html">Pricing</a>
+            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -527,7 +530,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="subscriptionModalLabel">
-                Manage Subscription
+                Your Subscription
               </h5>
               <button
                 type="button"
@@ -537,145 +540,53 @@
               ></button>
             </div>
             <div class="modal-body">
-              <p class="text-grey-400 mb-4">
-                Choose the plan that best fits your needs. All plans include
-                access to our breach monitoring service.
-              </p>
-              <div class="row g-4 g-sm-3">
-                <!-- Free Tier -->
-                <div class="col-lg-4 col-md-12 mb-md-4 mb-lg-0">
-                  <div class="card card-glass h-100 mb-3 mb-md-0">
-                    <div class="card-body d-flex flex-column">
-                      <div class="plan-header mb-3">
-                        <span class="plan-badge">Current</span>
-                        <h5 class="card-title mb-1">Free</h5>
-                        <p class="card-text text-primary fs-4 fw-bold mb-0">
-                          $0
-                        </p>
-                      </div>
-                      <div class="plan-divider"></div>
-                      <ul class="list-unstyled my-4 my-sm-3 plan-features">
-                        <li class="mb-3 mb-sm-2">
-                          <i
-                            class="bi bi-check-circle-fill text-success me-2"
-                          ></i>
-                          <span>1 domain</span>
-                        </li>
-                        <li class="mb-3 mb-sm-2">
-                          <i
-                            class="bi bi-check-circle-fill text-success me-2"
-                          ></i>
-                          <span>Basic breach alerts</span>
-                        </li>
-                        <li class="mb-3 mb-sm-2">
-                          <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                          <span class="text-grey-400">No API access</span>
-                        </li>
-                        <li class="mb-3 mb-sm-2">
-                          <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                          <span class="text-grey-400">No priority support</span>
-                        </li>
-                      </ul>
-                      <button
-                        class="btn btn-sm btn-outline-primary mt-auto w-100"
-                        disabled
-                      >
-                        Current Plan
-                      </button>
-                    </div>
-                  </div>
+              <div class="d-flex align-items-center mb-4">
+                <span class="badge bg-success me-3 px-3 py-2">Active</span>
+                <h4 class="mb-0">Free Plan</h4>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                  <h6 class="fw-bold text-grey-400 mb-3">Plan Features</h6>
+                  <ul class="list-unstyled plan-features">
+                    <li class="mb-3">
+                      <i class="bi bi-check-circle-fill text-success me-2"></i>
+                      <span>1 domain monitoring</span>
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-check-circle-fill text-success me-2"></i>
+                      <span>Basic breach alerts</span>
+                    </li>
+                    <li class="mb-3">
+                      <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                      <span class="text-grey-400">No API access</span>
+                    </li>
+                  </ul>
                 </div>
 
-                <!-- Pro Tier -->
-                <div class="col-lg-4 col-md-12 mb-md-4 mb-lg-0">
-                  <div
-                    class="card card-glass h-100 mb-3 mb-md-0 border-primary"
-                  >
-                    <div class="card-body d-flex flex-column">
-                      <div class="plan-header mb-3">
-                        <span class="plan-badge bg-primary">Popular</span>
-                        <h5 class="card-title mb-1">Pro</h5>
-                        <p class="card-text text-primary fs-4 fw-bold mb-0">
-                          $29<span class="fs-6">/month</span>
-                        </p>
-                      </div>
-                      <div class="plan-divider"></div>
-                      <ul class="list-unstyled my-4 my-sm-3 plan-features">
-                        <li class="mb-3 mb-sm-2">
-                          <i
-                            class="bi bi-check-circle-fill text-success me-2"
-                          ></i>
-                          <span>Up to 5 domains</span>
-                        </li>
-                        <li class="mb-3 mb-sm-2">
-                          <i
-                            class="bi bi-check-circle-fill text-success me-2"
-                          ></i>
-                          <span>Advanced breach alerts</span>
-                        </li>
-                        <li class="mb-3 mb-sm-2">
-                          <i
-                            class="bi bi-check-circle-fill text-success me-2"
-                          ></i>
-                          <span>Basic API access</span>
-                        </li>
-                        <li class="mb-3 mb-sm-2">
-                          <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                          <span class="text-grey-400">No priority support</span>
-                        </li>
-                      </ul>
-                      <button
-                        class="btn btn-sm btn-outline-primary mt-auto w-100"
-                      >
-                        Upgrade to Pro
-                      </button>
+                <div class="col-md-6">
+                  <h6 class="fw-bold text-grey-400 mb-3">Current Usage</h6>
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span>Domains</span>
+                      <span>1 of 1</span>
+                    </div>
+                    <div class="progress" style="height: 6px">
+                      <div
+                        class="progress-bar bg-primary"
+                        role="progressbar"
+                        style="width: 100%"
+                        aria-valuenow="100"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                      ></div>
                     </div>
                   </div>
-                </div>
-
-                <!-- Enterprise Tier -->
-                <div class="col-lg-4 col-md-12">
-                  <div class="card card-glass h-100">
-                    <div class="card-body d-flex flex-column">
-                      <div class="plan-header mb-3">
-                        <h5 class="card-title mb-1">Enterprise</h5>
-                        <p class="card-text text-primary fs-4 fw-bold mb-0">
-                          $99<span class="fs-6">/month</span>
-                        </p>
-                      </div>
-                      <div class="plan-divider"></div>
-                      <ul class="list-unstyled my-4 my-sm-3 plan-features">
-                        <li class="mb-3 mb-sm-2">
-                          <i
-                            class="bi bi-check-circle-fill text-success me-2"
-                          ></i>
-                          <span>Unlimited domains</span>
-                        </li>
-                        <li class="mb-3 mb-sm-2">
-                          <i
-                            class="bi bi-check-circle-fill text-success me-2"
-                          ></i>
-                          <span>Real-time breach alerts</span>
-                        </li>
-                        <li class="mb-3 mb-sm-2">
-                          <i
-                            class="bi bi-check-circle-fill text-success me-2"
-                          ></i>
-                          <span>Full API access</span>
-                        </li>
-                        <li class="mb-3 mb-sm-2">
-                          <i
-                            class="bi bi-check-circle-fill text-success me-2"
-                          ></i>
-                          <span>Priority support</span>
-                        </li>
-                      </ul>
-                      <button
-                        class="btn btn-sm btn-outline-primary mt-auto w-100"
-                      >
-                        Contact Sales
-                      </button>
-                    </div>
+                  <div class="mt-4">
+                    <p class="mb-1">Need more features or higher limits?</p>
+                    <a href="pricing.html" class="text-white fw-bold">
+                      Change subscription
+                    </a>
                   </div>
                 </div>
               </div>
@@ -789,6 +700,13 @@
                         href="#"
                         class="text-decoration-none text-muted hover-white"
                         >API</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="pricing.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Pricing</a
                       >
                     </li>
                     <li>
