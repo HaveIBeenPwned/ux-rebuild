@@ -4,6 +4,10 @@
   .form-control {
     border-radius: 16px !important;
 
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+
     + .btn {
       position: absolute;
       right: 6px;
@@ -11,6 +15,13 @@
       height: 42px;
       border-radius: 16px !important;
       z-index: 6;
+
+      @media (max-width: 576px) {
+        position: relative;
+        margin-top: 8px;
+        margin-left: 8px !important;
+        width: 100%;
+      }
     }
   }
 }
