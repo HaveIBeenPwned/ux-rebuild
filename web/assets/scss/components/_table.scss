@@ -59,6 +59,20 @@
   }
 }
 
+th.sortable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba($primary, 0.1);
+  }
+
+  i {
+    color: #6c757d; /* Bootstrap's text-muted color */
+    opacity: 0.75;
+  }
+}
+
 .table-row-link {
   text-decoration: none;
   color: inherit;

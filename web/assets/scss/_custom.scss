@@ -938,3 +938,67 @@ a:focus-visible {
 .feature-container {
   min-height: 120px;
 }
+
+/* Pwned Websites Page Styles
+-------------------------------------------------- */
+#pwned-websites {
+  /* RSS Button custom color */
+  .btn-rss {
+    background-color: #f26522;
+    border-color: #f26522;
+    color: white;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+    flex-shrink: 0;
+    padding: 0;
+    aspect-ratio: 1/1;
+
+    &:hover {
+      background-color: #e54b00;
+      border-color: #e54b00;
+      color: white;
+    }
+  }
+
+  /* API button sizing - using primary button color */
+  .btn.btn-primary.rounded-circle {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+    flex-shrink: 0;
+    padding: 0;
+    aspect-ratio: 1/1;
+  }
+
+  /* Feature item hover effects */
+  .feature-item-hover {
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba($primary, 0.2);
+      border-color: rgba($primary, 0.3);
+      background-color: rgba($primary, 0.05);
+    }
+  }
+
+  /* Dropdown rotation animation */
+  .chevron-icon {
+    transition: transform 0.2s ease;
+  }
+
+  [aria-expanded="true"] {
+    .chevron-icon {
+      transform: rotate(180deg);
+    }
+
+    &.feature-item-hover {
+      background-color: rgba($primary, 0.08);
+      border-color: rgba($primary, 0.3);
+    }
+  }
+}
