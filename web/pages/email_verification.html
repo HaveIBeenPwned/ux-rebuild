@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      property="og:title"
+      content="Have I Been Pwned: Domain Verification"
+    />
+    <meta
+      name="description"
+      content="Verify your domain ownership via email verification link."
+    />
+    <meta
+      property="og:description"
+      content="Verify your domain ownership via email verification link."
+    />
+
+    <title>Domain Verification - Have I Been Pwned</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/main.css" rel="stylesheet" />
+  </head>
+  <body class="bg-black">
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="../index.html" class="navbar-brand">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+        <div class="d-flex align-items-center justify-content-end gap-2">
+          <a
+            href="dashboard.html"
+            class="btn btn-secondary btn-sm d-lg-none"
+            role="button"
+            >Dashboard</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="domain_search.html">Domain search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Passwords</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="about.html">Who, what & why</a>
+                </li>
+                <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                <li>
+                  <a class="dropdown-item" href="toc.html">Terms of Use</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="privacy.html"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donate</a>
+            </li>
+          </ul>
+        </div>
+        <a
+          href="dashboard.html"
+          class="btn btn-secondary d-none d-lg-inline-flex"
+          role="button"
+        >
+          Dashboard
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Main Content -->
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center mb-5">
+            <h1 class="display-4 fs-2 fs-md-3 fs-lg-4 mb-4">
+              Domain Verification
+            </h1>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <!-- Success State (shown by default for demo) -->
+            <div id="verificationSuccess" class="card card-glass">
+              <div class="card-body text-center p-5">
+                <div class="verification-icon mb-4">
+                  <i class="bi bi-check-circle-fill text-success fs-1"></i>
+                </div>
+                <h2 class="fs-4 mb-3">Verification Successful!</h2>
+                <p class="mb-4">
+                  Your domain <strong id="domainName">example.com</strong> has
+                  been successfully verified and added to your account.
+                </p>
+                <div class="mt-4">
+                  <a href="domain_search.html" class="btn btn-primary">
+                    Go to Domain Search
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Processing State (hidden by default) -->
+            <div
+              id="verificationProcessing"
+              class="card card-glass"
+              style="display: none"
+            >
+              <div class="card-body text-center p-5">
+                <div class="verification-spinner mb-4">
+                  <div class="logo-mark-spinner mb-3">
+                    <svg
+                      width="60"
+                      height="40"
+                      viewBox="0 0 400 271"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        class="logo-piece logo-piece-1"
+                        d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                        fill="#F6F8FA"
+                      />
+                      <path
+                        class="logo-piece logo-piece-2"
+                        d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                        fill="#F6F8FA"
+                      />
+                      <path
+                        class="logo-piece logo-piece-3"
+                        d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                        fill="#F6F8FA"
+                      />
+                      <path
+                        class="logo-piece logo-piece-4"
+                        d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                        fill="#F6F8FA"
+                      />
+                      <path
+                        class="logo-piece logo-piece-5"
+                        d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
+                        fill="#F6F8FA"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <h2 class="fs-4 mb-3">Verifying Your Domain</h2>
+                <p class="mb-4">
+                  Please wait while we verify your domain ownership. This
+                  process should only take a few seconds.
+                </p>
+              </div>
+            </div>
+
+            <!-- Error State (hidden by default) -->
+            <div
+              id="verificationError"
+              class="card card-glass"
+              style="display: none"
+            >
+              <div class="card-body text-center p-5">
+                <div class="verification-icon mb-4">
+                  <i class="bi bi-x-circle-fill text-danger fs-1"></i>
+                </div>
+                <h2 class="fs-4 mb-3">Verification Failed</h2>
+                <p class="mb-4">
+                  We couldn't verify your domain. This could be because:
+                </p>
+                <ul class="text-start mb-4">
+                  <li>The verification link has expired</li>
+                  <li>The verification link was already used</li>
+                  <li>There was a problem with the verification process</li>
+                </ul>
+                <div class="mt-4">
+                  <a href="domain_search.html" class="btn btn-primary">
+                    Try Again
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Invalid Token State (hidden by default) -->
+            <div
+              id="invalidToken"
+              class="card card-glass"
+              style="display: none"
+            >
+              <div class="card-body text-center p-5">
+                <div class="verification-icon mb-4">
+                  <i
+                    class="bi bi-exclamation-triangle-fill text-warning fs-1"
+                  ></i>
+                </div>
+                <h2 class="fs-4 mb-3">Invalid Verification Link</h2>
+                <p class="mb-4">
+                  The verification link you clicked appears to be invalid or
+                  malformed.
+                </p>
+                <div class="mt-4">
+                  <a href="domain_search.html" class="btn btn-primary">
+                    Go to Domain Search
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark-subtle-custom mt-auto">
+      <div class="container">
+        <div
+          class="footer-wrapper rounded-3 border border-primary-custom bg-dark-subtle-custom"
+        >
+          <div class="row g-0">
+            <!-- Logo and Tagline -->
+            <div class="col-lg-4 p-4 border-end border-primary-custom">
+              <div class="footer-logo mb-3">
+                <a
+                  href="../index.html"
+                  class="text-white text-decoration-none fw-bold fs-4"
+                >
+                  Have I Been Pwned
+                </a>
+              </div>
+              <p class="text-muted mb-4">
+                Check if your email has been compromised
+              </p>
+              <a href="../index.html" class="btn btn-outline-primary">
+                <i class="bi bi-search me-2"></i>Check my email
+              </a>
+            </div>
+
+            <!-- Sitemap -->
+            <div class="col-lg-5 p-4 border-end border-primary-custom">
+              <div class="row g-4">
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Services</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a
+                        href="../index.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Email Search</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="domain_search.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Domain Search</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >Passwords</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >API</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="pricing.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Pricing</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="dashboard.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Dashboard</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Information</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a
+                        href="about.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >About Us</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="faq.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >FAQ</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="privacy.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Privacy Policy</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="toc.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Terms of Use</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >Donate</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-lg-3 p-4">
+              <h5 class="fw-bold mb-3">Connect With Us</h5>
+              <div class="d-flex gap-3">
+                <a
+                  href="https://x.com/haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+                <a
+                  href="https://facebook.com/haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/haveibeenpwned/"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                <a
+                  href="https://github.com/HaveIBeenPwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-github"></i>
+                </a>
+                <a
+                  href="https://bsky.app/profile/haveibeenpwned.com"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="10 10 568 501"
+                    width="20"
+                    height="20"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://infosec.exchange/@haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-mastodon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copyright -->
+          <div class="border-top border-primary-custom">
+            <div class="p-3 text-center">
+              <p class="text-muted mb-0">
+                &copy; 2025 Have I Been Pwned. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+
+    <!-- Email Verification JS -->
+    <script src="../assets/js/email_verification.js"></script>
+  </body>
+</html>

@@ -414,6 +414,7 @@ function initDomainSearchPage() {
   const dnsInstructions = document.getElementById("dnsInstructions");
   const fileInstructions = document.getElementById("fileInstructions");
   const metaInstructions = document.getElementById("metaInstructions");
+  const emailInstructions = document.getElementById("emailInstructions");
   const verificationSpinner = document.getElementById("verificationSpinner");
   const verifyButton = document.getElementById("verifyButton");
 
@@ -432,6 +433,7 @@ function initDomainSearchPage() {
       if (fileInstructions) fileInstructions.style.display = "none";
       if (metaInstructions) metaInstructions.style.display = "none";
       if (verificationSpinner) verificationSpinner.style.display = "none";
+      if (emailInstructions) emailInstructions.style.display = "none";
 
       // Show the appropriate instruction div
       const methodType = this.getAttribute("data-method");
@@ -441,6 +443,8 @@ function initDomainSearchPage() {
         fileInstructions.style.display = "block";
       } else if (methodType === "meta" && metaInstructions) {
         metaInstructions.style.display = "block";
+      } else if (methodType === "email" && emailInstructions) {
+        emailInstructions.style.display = "block";
       }
     });
   });
@@ -466,7 +470,7 @@ function initDomainSearchPage() {
       if (dnsInstructions) dnsInstructions.style.display = "none";
       if (fileInstructions) fileInstructions.style.display = "none";
       if (metaInstructions) metaInstructions.style.display = "none";
-
+      if (emailInstructions) emailInstructions.style.display = "none";
       // Show spinner
       if (verificationSpinner) verificationSpinner.style.display = "flex";
 

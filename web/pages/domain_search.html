@@ -393,6 +393,23 @@
                           <i class="bi bi-check-circle-fill"></i>
                         </div>
                       </div>
+                      <div
+                        class="verification-method-option p-3 p-sm-2"
+                        data-method="email"
+                      >
+                        <div class="method-icon">
+                          <i class="bi bi-envelope"></i>
+                        </div>
+                        <div class="method-content">
+                          <h6 class="mb-0 fs-6">Verify by email</h6>
+                          <p class="mb-0 text-grey-400 fs-7">
+                            Send a verification email to your domain
+                          </p>
+                        </div>
+                        <div class="method-indicator">
+                          <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -460,6 +477,90 @@
                         </div>
                       </div>
                       <p>Once you've added the meta tag, click "Verify Now".</p>
+                    </div>
+                    <!-- File Upload Instructions (hidden by default) -->
+                    <div id="emailInstructions" style="display: none">
+                      <h5 class="mb-3">Email Verification</h5>
+                      <p>
+                        Select an email address to receive the verification
+                        link:
+                      </p>
+                      <div class="form-check-list mb-3">
+                        <div class="form-check mb-2">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="verificationEmail"
+                            id="emailAdmin"
+                            value="admin@yourdomain.com"
+                            checked
+                          />
+                          <label class="form-check-label" for="emailAdmin">
+                            admin@yourdomain.com
+                          </label>
+                        </div>
+                        <div class="form-check mb-2">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="verificationEmail"
+                            id="emailWebmaster"
+                            value="webmaster@yourdomain.com"
+                          />
+                          <label class="form-check-label" for="emailWebmaster">
+                            webmaster@yourdomain.com
+                          </label>
+                        </div>
+                        <div class="form-check mb-2">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="verificationEmail"
+                            id="emailInfo"
+                            value="info@yourdomain.com"
+                          />
+                          <label class="form-check-label" for="emailInfo">
+                            info@yourdomain.com
+                          </label>
+                        </div>
+                        <div class="form-check mb-2">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="verificationEmail"
+                            id="emailHostmaster"
+                            value="hostmaster@yourdomain.com"
+                          />
+                          <label class="form-check-label" for="emailHostmaster">
+                            hostmaster@yourdomain.com
+                          </label>
+                        </div>
+                        <div class="form-check mb-2">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="verificationEmail"
+                            id="emailSecurity"
+                            value="security@yourdomain.com"
+                          />
+                          <label class="form-check-label" for="emailSecurity">
+                            security@yourdomain.com
+                          </label>
+                        </div>
+                      </div>
+                      <div class="card card-glass mb-3">
+                        <div class="card-body">
+                          <p class="mb-0">
+                            A verification email will be sent containing a
+                            unique link that you must click to verify ownership
+                            of your domain.
+                          </p>
+                        </div>
+                      </div>
+                      <p class="text-grey-400 fs-7">
+                        The verification email will expire after 24 hours. Make
+                        sure to check your spam folder if you don't receive it.
+                      </p>
                     </div>
 
                     <!-- Verification Spinner (hidden by default) -->
