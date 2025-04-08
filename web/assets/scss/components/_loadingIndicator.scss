@@ -1,0 +1,253 @@
+// Loading Indicator Component
+// This component provides different styled loading indicators using the HIBP logo
+
+@import "../variables";
+
+@keyframes pulseFade {
+  0% {
+    opacity: 0.3;
+    fill: #f6f8fa;
+  }
+  50% {
+    opacity: 1;
+    fill: var(--primary);
+  }
+  100% {
+    opacity: 0.3;
+    fill: #f6f8fa;
+  }
+}
+
+@keyframes pulseFadeLight {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+// Button loading animation
+@keyframes buttonLoadingTextFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes buttonLoadingIndicatorFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Base Loading Indicator Container
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  // Size variations
+  &-sm {
+    width: 40px;
+    height: 30px;
+  }
+
+  &-md {
+    width: 60px;
+    height: 40px;
+  }
+
+  &-lg {
+    width: 80px;
+    height: 50px;
+  }
+
+  // High-contrast variant for use on colored backgrounds (buttons, etc.)
+  &-light {
+    .logo-piece {
+      fill: #ffffff !important;
+      animation-name: pulseFadeLight;
+    }
+  }
+
+  // Logo pieces animation
+  .logo-piece {
+    opacity: 0.3;
+    transition: opacity 0.2s ease;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-name: pulseFade;
+    animation-timing-function: ease-in-out;
+    transform-origin: center;
+
+    &-1 {
+      animation-delay: 0s;
+    }
+
+    &-2 {
+      animation-delay: 0.3s;
+    }
+
+    &-3 {
+      animation-delay: 0.6s;
+    }
+
+    &-4 {
+      animation-delay: 0.9s;
+    }
+
+    &-5 {
+      animation-delay: 1.2s;
+    }
+  }
+
+  // Centered loading indicator with text
+  &-with-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .loading-text {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--grey-400);
+    }
+  }
+
+  // Inline loading indicator
+  &-inline {
+    display: inline-flex;
+    vertical-align: middle;
+    margin: 0 0.5rem;
+  }
+}
+
+// Button loading state - completely revamped approach
+.btn {
+  // Make all buttons flex containers by default to support centering
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease;
+  box-sizing: border-box;
+
+  // Ensure all content inside buttons is properly aligned
+  .btn-text,
+  .loading-indicator {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  // Add responsive padding to loading indicator to prevent it from touching the button edges
+  .loading-indicator {
+    padding: 8px; // Default padding
+
+    // Ensure spinner is properly contained within the padded area
+    .spinner-border {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  // Size-specific padding adjustments
+  &.btn-sm .loading-indicator {
+    padding: 6px;
+  }
+
+  &.btn-lg .loading-indicator {
+    padding: 10px;
+  }
+
+  // Special case for icon-only buttons (square buttons)
+  &[style*="--btn-min-width: --btn-min-height"] .loading-indicator,
+  &[style*="aspect-ratio: 1"] .loading-indicator {
+    padding: 8px;
+  }
+
+  // Apply min-width and min-height to all buttons with loading indicators
+  // not just demo buttons
+  &.is-loading,
+  &:has(.loading-indicator) {
+    min-width: var(--btn-min-width, auto);
+    min-height: var(--btn-min-height, auto);
+
+    // Calculate and store dimensions once on initial render
+    &:not([style*="--btn-min-width"]) {
+      --btn-min-width: var(--explicit-width, attr(offsetWidth px));
+      --btn-min-height: var(--explicit-height, attr(offsetHeight px));
+    }
+  }
+
+  // Ensure the button maintains consistent dimensions during state transitions
+  &.animated-loading-demo {
+    min-width: var(--btn-min-width, 120px);
+    min-height: var(--btn-min-height, 38px);
+  }
+
+  // Animated loading state
+  &.is-loading {
+    pointer-events: none;
+
+    // Hide button text
+    .btn-text {
+      visibility: hidden;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.2s ease, transform 0.2s ease,
+        visibility 0s linear 0.2s;
+    }
+
+    // Show loading indicator
+    .loading-indicator {
+      opacity: 1;
+      visibility: visible;
+      animation: buttonLoadingIndicatorFadeIn 0.3s ease forwards;
+    }
+  }
+
+  // Normal state
+  &:not(.is-loading) {
+    .btn-text {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .loading-indicator {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+    }
+  }
+}
