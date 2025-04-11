@@ -1,61 +1,57 @@
 /**
- * Loading Button Plugin for Bootstrap 5
- * Enables smooth transitions between normal and loading states for buttons
+ * Simplified Loading Button for Bootstrap 5
+ * A lightweight solution for adding loading states to buttons
  */
 
 (function () {
   "use strict";
 
-  // The plugin constructor
-  const LoadingButton = function (element, options) {
-    this._element = element;
-    this._options = {
-      ...LoadingButton.Default,
-      ...options,
-    };
-    this._isLoading = false;
+  // Simple LoadingButton class
+  class LoadingButton {
+    constructor(element, options = {}) {
+      this.element = element;
+      this.options = {
+        loadingClass: "is-loading",
+        resetAfter: 0,
+        disableButton: true,
+        ...options,
+      };
+      this.isLoading = false;
+      this.timeout = null;
 
-    // Store the instance on the element for future access
-    element.loadingButton = this;
-  };
+      // Store instance on element for future reference
+      element.loadingButton = this;
 
-  // Default options
-  LoadingButton.Default = {
-    loadingClass: "is-loading",
-    resetAfter: 0, // 0 means no auto-reset, time in milliseconds
-    disableButton: true,
-  };
-
-  // Plugin methods
-  LoadingButton.prototype = {
-    toggle: function () {
-      if (this._isLoading) {
-        this.stop();
-      } else {
-        this.start();
+      // Add click handler directly to the button if it's not a form submit
+      if (!(element.form && element.type === "submit")) {
+        element.addEventListener("click", (e) => {
+          if (!this.isLoading && !element.disabled) {
+            e.preventDefault();
+            this.start();
+          }
+        });
       }
-      return this;
-    },
+    }
 
-    start: function () {
-      if (this._isLoading) return;
+    start() {
+      if (this.isLoading) return this;
 
-      this._isLoading = true;
-      this._element.classList.add(this._options.loadingClass);
+      this.isLoading = true;
+      this.element.classList.add(this.options.loadingClass);
 
-      if (this._options.disableButton) {
-        this._element.setAttribute("disabled", "disabled");
+      if (this.options.disableButton) {
+        this.element.setAttribute("disabled", "disabled");
       }
 
-      // Auto reset after specified time if option is set
-      if (this._options.resetAfter > 0) {
-        this._timeout = setTimeout(() => {
+      // Auto reset if specified
+      if (this.options.resetAfter > 0) {
+        this.timeout = setTimeout(() => {
           this.stop();
-        }, this._options.resetAfter);
+        }, this.options.resetAfter);
       }
 
-      // Trigger custom event
-      this._element.dispatchEvent(
+      // Dispatch event for hooks
+      this.element.dispatchEvent(
         new CustomEvent("loading.bs.button", {
           bubbles: true,
           detail: { isLoading: true },
@@ -63,26 +59,25 @@
       );
 
       return this;
-    },
+    }
 
-    stop: function () {
-      if (!this._isLoading) return;
+    stop() {
+      if (!this.isLoading) return this;
 
-      this._isLoading = false;
-      this._element.classList.remove(this._options.loadingClass);
+      this.isLoading = false;
+      this.element.classList.remove(this.options.loadingClass);
 
-      if (this._options.disableButton) {
-        this._element.removeAttribute("disabled");
+      if (this.options.disableButton) {
+        this.element.removeAttribute("disabled");
       }
 
-      // Clear timeout if it exists
-      if (this._timeout) {
-        clearTimeout(this._timeout);
-        this._timeout = null;
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+        this.timeout = null;
       }
 
-      // Trigger custom event
-      this._element.dispatchEvent(
+      // Dispatch event for hooks
+      this.element.dispatchEvent(
         new CustomEvent("loaded.bs.button", {
           bubbles: true,
           detail: { isLoading: false },
@@ -90,51 +85,15 @@
       );
 
       return this;
-    },
-
-    dispose: function () {
-      if (this._timeout) {
-        clearTimeout(this._timeout);
-      }
-
-      this.stop();
-
-      delete this._element.loadingButton;
-      this._element = null;
-      this._options = null;
-      this._isLoading = null;
-      this._timeout = null;
-    },
-
-    isLoading: function () {
-      return this._isLoading;
-    },
-  };
-
-  // Static methods
-  LoadingButton.getInstance = function (element) {
-    return element.loadingButton;
-  };
-
-  // Get or create an instance
-  LoadingButton.getOrCreateInstance = function (element, options = {}) {
-    if (!element.loadingButton) {
-      return new LoadingButton(element, options);
     }
 
-    // If we have an existing instance but new options are provided, update them
-    if (Object.keys(options).length > 0) {
-      element.loadingButton._options = {
-        ...element.loadingButton._options,
-        ...options,
-      };
+    toggle() {
+      return this.isLoading ? this.stop() : this.start();
     }
+  }
 
-    return element.loadingButton;
-  };
-
-  // Parse options from data attributes
-  function parseOptions(element) {
+  // Parse data attributes to options
+  function parseDataAttributes(element) {
     const options = {};
 
     if (element.dataset.bsResetAfter) {
@@ -152,56 +111,55 @@
     return options;
   }
 
-  // Data API implementation
-  function initializeDataAPI() {
-    const loadingButtons = document.querySelectorAll(
-      '[data-bs-toggle="loading-button"]'
-    );
+  // Initialize all loading buttons on page
+  function initializeLoadingButtons() {
+    document
+      .querySelectorAll('[data-bs-toggle="loading-button"]')
+      .forEach((button) => {
+        if (!button.loadingButton) {
+          new LoadingButton(button, parseDataAttributes(button));
+        }
+      });
+  }
 
-    loadingButtons.forEach((button) => {
-      if (!button.loadingButton) {
-        const options = parseOptions(button);
-        new LoadingButton(button, options);
+  // Handle form submissions with loading buttons
+  function setupFormHandlers() {
+    document.addEventListener("submit", function (e) {
+      const submitButton = e.target.querySelector(
+        '[data-bs-toggle="loading-button"][type="submit"]'
+      );
+      if (submitButton && !submitButton.disabled) {
+        const instance =
+          submitButton.loadingButton ||
+          new LoadingButton(submitButton, parseDataAttributes(submitButton));
+        instance.start();
       }
     });
   }
 
-  // Clear existing click handler to avoid multiple handlers
-  document.removeEventListener("click", handleButtonClick);
-
-  // Handle clicks on buttons with the data-bs-toggle="loading-button" attribute
-  function handleButtonClick(event) {
-    // Only handle if the form isn't handling the submission
-    if (event.target.form && event.target.type === "submit") {
-      return;
-    }
-
-    const button = event.target.closest('[data-bs-toggle="loading-button"]');
-    if (button && !button.disabled) {
-      event.preventDefault();
-      const action = button.dataset.bsAction || "toggle";
-
-      // Get or create the loading button instance
-      const instance = LoadingButton.getOrCreateInstance(
-        button,
-        parseOptions(button)
-      );
-
-      if (typeof instance[action] === "function") {
-        instance[action]();
-      }
-    }
-  }
-
-  document.addEventListener("click", handleButtonClick);
-
-  // Initialize when DOM is fully loaded
+  // Initialize when DOM is loaded
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initializeDataAPI);
+    document.addEventListener("DOMContentLoaded", function () {
+      initializeLoadingButtons();
+      setupFormHandlers();
+    });
   } else {
-    initializeDataAPI();
+    initializeLoadingButtons();
+    setupFormHandlers();
   }
 
-  // Export to global
+  // Static utility methods for programmatic access
+  LoadingButton.getInstance = function (element) {
+    return element.loadingButton;
+  };
+
+  LoadingButton.getOrCreateInstance = function (element, options = {}) {
+    if (!element.loadingButton) {
+      return new LoadingButton(element, options);
+    }
+    return element.loadingButton;
+  };
+
+  // Export to global scope
   window.LoadingButton = LoadingButton;
 })();
