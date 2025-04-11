@@ -14,6 +14,9 @@
       ...options,
     };
     this._isLoading = false;
+
+    // Store the instance on the element for future access
+    element.loadingButton = this;
   };
 
   // Default options
@@ -96,10 +99,15 @@
 
       this.stop();
 
+      delete this._element.loadingButton;
       this._element = null;
       this._options = null;
       this._isLoading = null;
       this._timeout = null;
+    },
+
+    isLoading: function () {
+      return this._isLoading;
     },
   };
 
@@ -107,6 +115,42 @@
   LoadingButton.getInstance = function (element) {
     return element.loadingButton;
   };
+
+  // Get or create an instance
+  LoadingButton.getOrCreateInstance = function (element, options = {}) {
+    if (!element.loadingButton) {
+      return new LoadingButton(element, options);
+    }
+
+    // If we have an existing instance but new options are provided, update them
+    if (Object.keys(options).length > 0) {
+      element.loadingButton._options = {
+        ...element.loadingButton._options,
+        ...options,
+      };
+    }
+
+    return element.loadingButton;
+  };
+
+  // Parse options from data attributes
+  function parseOptions(element) {
+    const options = {};
+
+    if (element.dataset.bsResetAfter) {
+      options.resetAfter = parseInt(element.dataset.bsResetAfter, 10);
+    }
+
+    if (element.dataset.bsDisableButton === "false") {
+      options.disableButton = false;
+    }
+
+    if (element.dataset.bsLoadingClass) {
+      options.loadingClass = element.dataset.bsLoadingClass;
+    }
+
+    return options;
+  }
 
   // Data API implementation
   function initializeDataAPI() {
@@ -116,56 +160,40 @@
 
     loadingButtons.forEach((button) => {
       if (!button.loadingButton) {
-        // Parse options from data attributes
-        const options = {};
-
-        if (button.dataset.bsResetAfter) {
-          options.resetAfter = parseInt(button.dataset.bsResetAfter, 10);
-        }
-
-        if (button.dataset.bsDisableButton === "false") {
-          options.disableButton = false;
-        }
-
-        if (button.dataset.bsLoadingClass) {
-          options.loadingClass = button.dataset.bsLoadingClass;
-        }
-
-        button.loadingButton = new LoadingButton(button, options);
+        const options = parseOptions(button);
+        new LoadingButton(button, options);
       }
     });
   }
 
+  // Clear existing click handler to avoid multiple handlers
+  document.removeEventListener("click", handleButtonClick);
+
   // Handle clicks on buttons with the data-bs-toggle="loading-button" attribute
-  document.addEventListener("click", (event) => {
+  function handleButtonClick(event) {
+    // Only handle if the form isn't handling the submission
+    if (event.target.form && event.target.type === "submit") {
+      return;
+    }
+
     const button = event.target.closest('[data-bs-toggle="loading-button"]');
     if (button && !button.disabled) {
+      event.preventDefault();
       const action = button.dataset.bsAction || "toggle";
 
-      if (!button.loadingButton) {
-        // Initialize on first click if not already initialized
-        const options = {};
+      // Get or create the loading button instance
+      const instance = LoadingButton.getOrCreateInstance(
+        button,
+        parseOptions(button)
+      );
 
-        if (button.dataset.bsResetAfter) {
-          options.resetAfter = parseInt(button.dataset.bsResetAfter, 10);
-        }
-
-        if (button.dataset.bsDisableButton === "false") {
-          options.disableButton = false;
-        }
-
-        if (button.dataset.bsLoadingClass) {
-          options.loadingClass = button.dataset.bsLoadingClass;
-        }
-
-        button.loadingButton = new LoadingButton(button, options);
-      }
-
-      if (typeof button.loadingButton[action] === "function") {
-        button.loadingButton[action]();
+      if (typeof instance[action] === "function") {
+        instance[action]();
       }
     }
-  });
+  }
+
+  document.addEventListener("click", handleButtonClick);
 
   // Initialize when DOM is fully loaded
   if (document.readyState === "loading") {
