@@ -134,7 +134,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <!-- No Domains View (hidden by default) -->
-            <div id="noDomainView" style="display: none">
+            <div id="noDomainView" class="hidden">
               <div class="card card-glow">
                 <div class="card-body">
                   <div class="tooltip-container">
@@ -436,7 +436,7 @@
                     </div>
 
                     <!-- File Upload Instructions (hidden by default) -->
-                    <div id="fileInstructions" style="display: none">
+                    <div id="fileInstructions" class="hidden">
                       <h5 class="mb-3">File Upload Verification</h5>
                       <p>
                         Upload the following file to your website's root
@@ -461,7 +461,7 @@
                     </div>
 
                     <!-- Meta Tag Instructions (hidden by default) -->
-                    <div id="metaInstructions" style="display: none">
+                    <div id="metaInstructions" class="hidden">
                       <h5 class="mb-3">Meta Tag Verification</h5>
                       <p>
                         Add the following meta tag to the
@@ -479,7 +479,7 @@
                       <p>Once you've added the meta tag, click "Verify Now".</p>
                     </div>
                     <!-- File Upload Instructions (hidden by default) -->
-                    <div id="emailInstructions" style="display: none">
+                    <div id="emailInstructions" class="hidden">
                       <h5 class="mb-3">Email Verification</h5>
                       <p>
                         Select an email address to receive the verification
@@ -566,8 +566,7 @@
                     <!-- Verification Spinner (hidden by default) -->
                     <div
                       id="verificationSpinner"
-                      style="display: none"
-                      class="verification-spinner flex-column justify-content-center align-items-center h-100"
+                      class="verification-spinner flex-column justify-content-center align-items-center h-100 hidden"
                     >
                       <div class="logo-mark-spinner mb-3">
                         <svg
@@ -679,15 +678,8 @@
                       <span>Domains</span>
                       <span>1 of 1</span>
                     </div>
-                    <div class="progress" style="height: 6px">
-                      <div
-                        class="progress-bar bg-primary"
-                        role="progressbar"
-                        style="width: 100%"
-                        aria-valuenow="100"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
+                    <div class="progress progress-thin">
+                      <div class="progress-bar progress-full-width"></div>
                     </div>
                   </div>
                   <div class="mt-4">
