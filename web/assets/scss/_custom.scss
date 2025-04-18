@@ -1035,8 +1035,9 @@ a:focus-visible {
 }
 
 // Max width constraints
-.img-max-width-100 {
-  max-width: 100%;
+.min-w-240 {
+  margin-top: 0;
+  min-width: 240px;
 }
 
 // Progress bar sizing
@@ -1044,19 +1045,9 @@ a:focus-visible {
   height: 6px;
 }
 
-.progress-full-width {
-  width: 100%;
-}
-
 // Container sizing
 .min-height-300 {
   min-height: 300px;
-}
-
-// Button sizing for consistent width
-.btn-min-width-240 {
-  margin-top: 0;
-  min-width: 240px;
 }
 
 // Search icon positioning
