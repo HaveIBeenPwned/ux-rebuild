@@ -1003,20 +1003,9 @@ a:focus-visible {
   }
 }
 
-/* 
- * Fixed Dimensions and Sizing Classes
- * These replace inline styles with proper CSS classes
- */
-
-// Buttons with fixed dimensions
 #passwordForm .btn-fixed-size {
   min-width: 120px;
   min-height: 38px;
-}
-
-// Display utility classes
-.hidden {
-  display: none;
 }
 
 // Fixed width elements
