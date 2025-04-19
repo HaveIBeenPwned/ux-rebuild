@@ -1002,3 +1002,87 @@ a:focus-visible {
     }
   }
 }
+
+#passwordForm .btn-fixed-size {
+  min-width: 120px;
+  min-height: 38px;
+}
+
+// Fixed width elements
+.table-col-narrow {
+  width: 80px;
+}
+
+// Image sizing utilities
+.img-square-120 {
+  width: 120px;
+  height: 120px;
+}
+
+.img-square-48 {
+  width: 48px;
+  height: 48px;
+}
+
+.img-height-40 {
+  height: 40px;
+  width: auto;
+}
+
+.img-height-30 {
+  height: 30px;
+  width: auto;
+}
+
+// Max width constraints
+.min-w-240 {
+  margin-top: 0;
+  min-width: 240px;
+}
+
+// Progress bar sizing
+.progress-thin {
+  height: 6px;
+}
+
+// Container sizing
+.min-height-300 {
+  min-height: 300px;
+}
+
+// Search icon positioning
+.search-icon {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+// Breach data indicator
+.data-indicator {
+  width: 12px;
+  height: 12px;
+  background-color: #dc3545;
+  box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+}
+
+// Breach logo container sizing
+.breach-logo-container {
+  width: 120px;
+  height: 120px;
+}
+
+// Action icon sizing
+.action-icon {
+  width: 48px;
+  height: 48px;
+}
+
+// Info indicator
+.info-indicator {
+  width: 12px;
+  height: 12px;
+  background-color: #0dcaf0;
+  box-shadow: 0 0 8px rgba(13, 202, 240, 0.6);
+}

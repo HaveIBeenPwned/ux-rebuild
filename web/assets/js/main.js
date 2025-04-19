@@ -340,11 +340,15 @@ function initDomainSearchPage() {
     const domainsTableView = document.getElementById("domainsTableView");
 
     if (mockDomains.length === 0) {
-      noDomainView.style.display = "block";
-      domainsTableView.style.display = "none";
+      noDomainView.classList.remove("d-none");
+      noDomainView.classList.add("d-block");
+      domainsTableView.classList.add("d-none");
+      domainsTableView.classList.remove("d-block");
     } else {
-      noDomainView.style.display = "none";
-      domainsTableView.style.display = "block";
+      noDomainView.classList.add("d-none");
+      noDomainView.classList.remove("d-block");
+      domainsTableView.classList.remove("d-none");
+      domainsTableView.classList.add("d-block");
     }
   }
 
@@ -429,22 +433,41 @@ function initDomainSearchPage() {
       this.classList.add("active");
 
       // Hide all instruction divs
-      if (dnsInstructions) dnsInstructions.style.display = "none";
-      if (fileInstructions) fileInstructions.style.display = "none";
-      if (metaInstructions) metaInstructions.style.display = "none";
-      if (verificationSpinner) verificationSpinner.style.display = "none";
-      if (emailInstructions) emailInstructions.style.display = "none";
+      if (dnsInstructions) {
+        dnsInstructions.classList.add("d-none");
+        dnsInstructions.classList.remove("d-block");
+      }
+      if (fileInstructions) {
+        fileInstructions.classList.add("d-none");
+        fileInstructions.classList.remove("d-block");
+      }
+      if (metaInstructions) {
+        metaInstructions.classList.add("d-none");
+        metaInstructions.classList.remove("d-block");
+      }
+      if (emailInstructions) {
+        emailInstructions.classList.add("d-none");
+        emailInstructions.classList.remove("d-block");
+      }
+      if (verificationSpinner) {
+        verificationSpinner.classList.add("d-none");
+        verificationSpinner.classList.remove("d-block");
+      }
 
       // Show the appropriate instruction div
       const methodType = this.getAttribute("data-method");
       if (methodType === "dns" && dnsInstructions) {
-        dnsInstructions.style.display = "block";
+        dnsInstructions.classList.remove("d-none");
+        dnsInstructions.classList.add("d-block");
       } else if (methodType === "file" && fileInstructions) {
-        fileInstructions.style.display = "block";
+        fileInstructions.classList.remove("d-none");
+        fileInstructions.classList.add("d-block");
       } else if (methodType === "meta" && metaInstructions) {
-        metaInstructions.style.display = "block";
+        metaInstructions.classList.remove("d-none");
+        metaInstructions.classList.add("d-block");
       } else if (methodType === "email" && emailInstructions) {
-        emailInstructions.style.display = "block";
+        emailInstructions.classList.remove("d-none");
+        emailInstructions.classList.add("d-block");
       }
     });
   });
@@ -467,12 +490,32 @@ function initDomainSearchPage() {
       domainInputError.classList.remove("show");
 
       // Hide all instruction divs
-      if (dnsInstructions) dnsInstructions.style.display = "none";
-      if (fileInstructions) fileInstructions.style.display = "none";
-      if (metaInstructions) metaInstructions.style.display = "none";
-      if (emailInstructions) emailInstructions.style.display = "none";
+      if (dnsInstructions) {
+        dnsInstructions.classList.add("d-none");
+        dnsInstructions.classList.remove("d-block");
+      }
+      if (fileInstructions) {
+        fileInstructions.classList.add("d-none");
+        fileInstructions.classList.remove("d-block");
+      }
+      if (metaInstructions) {
+        metaInstructions.classList.add("d-none");
+        metaInstructions.classList.remove("d-block");
+      }
+      if (emailInstructions) {
+        emailInstructions.classList.add("d-none");
+        emailInstructions.classList.remove("d-block");
+      }
+      if (verificationSpinner) {
+        verificationSpinner.classList.add("d-none");
+        verificationSpinner.classList.remove("d-block");
+      }
+
       // Show spinner
-      if (verificationSpinner) verificationSpinner.style.display = "flex";
+      if (verificationSpinner) {
+        verificationSpinner.classList.remove("d-none");
+        verificationSpinner.classList.add("d-flex");
+      }
 
       // Simulate verification process (6 seconds)
       setTimeout(function () {
@@ -519,8 +562,14 @@ function initDomainSearchPage() {
         setTimeout(function () {
           domainInput.value = "";
           if (noDomainInput) noDomainInput.value = "";
-          if (dnsInstructions) dnsInstructions.style.display = "block";
-          if (verificationSpinner) verificationSpinner.style.display = "none";
+          if (dnsInstructions) {
+            dnsInstructions.classList.remove("d-none");
+            dnsInstructions.classList.add("d-block");
+          }
+          if (verificationSpinner) {
+            verificationSpinner.classList.add("d-none");
+            verificationSpinner.classList.remove("d-flex");
+          }
 
           // Reset verification method buttons
           verificationMethods.forEach((m) => {
