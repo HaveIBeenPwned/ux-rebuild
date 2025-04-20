@@ -18,29 +18,10 @@
 .breach-logo {
   width: 70px;
   height: 70px;
-  border-radius: 12px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f6f8fa;
-}
-
-.data-types-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.data-type-item {
-  background-color: rgba(29, 114, 167, 0.15);
-  color: #f6f8fa;
-  border-radius: 4px;
-  padding: 4px 10px;
-  font-size: 14px;
 }
 
 .hibp-logo {
@@ -52,49 +33,15 @@
 }
 
 .breach-info-label {
-  font-size: 13px;
+  font-size: 18px;
   margin-bottom: 2px;
   color: #9cb1c2;
 }
 
 .breach-info-value {
-  font-size: 15px;
+  font-size: 18px;
   margin-bottom: 12px;
   font-weight: 500;
-}
-
-/* Variant with background logo */
-.social-card-variant-bg {
-  position: relative;
-  background: linear-gradient(to bottom, #131a20 0%, #1d3c55 120%);
-  overflow: hidden;
-}
-
-.social-card-variant-bg .social-card-header {
-  background-color: rgba(0, 0, 0, 0.5);
-  position: relative;
-  z-index: 2;
-}
-
-.social-card-variant-bg::before {
-  content: "";
-  position: absolute;
-  top: 20%;
-  left: 11%;
-  right: 22%;
-  bottom: 6%;
-  background-image: url("../assets/images/logo-mark.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  opacity: 0.06;
-  background-size: 92%;
-  z-index: 1;
-  filter: brightness(0.4);
-}
-
-.social-card-variant-bg .card-content {
-  position: relative;
-  z-index: 2;
 }
 
 /* Gradient variant */
@@ -104,13 +51,4 @@
 
 .social-card-variant-gradient .social-card-header {
   background-color: rgba(0, 0, 0, 0.2);
-}
-
-/* Dark variant */
-.social-card-variant-dark {
-  background-color: #131a20;
-}
-
-.social-card-variant-dark .social-card-header {
-  background-color: #030304;
 }
