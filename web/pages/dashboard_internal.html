@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Have I Been Pwned: Dashboard" />
+    <meta
+      name="description"
+      content="Access your personalized dashboard to view sensitive breach information, manage domains, and handle API subscriptions."
+    />
+    <meta
+      property="og:description"
+      content="Access your personalized dashboard to view sensitive breach information, manage domains, and handle API subscriptions."
+    />
+
+    <title>Have I Been Pwned: Dashboard</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Switzer Font -->
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="../assets/css/main.css" rel="stylesheet" />
+    <link
+      href="../assets/scss/pages/dashboard_internal.scss"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="../index.html" class="navbar-brand">
+          <img
+            src="../assets/images/hibp-logo.svg"
+            alt="Have I Been Pwned"
+            height="30"
+          />
+        </a>
+        <div class="d-flex align-items-center justify-content-end gap-2">
+          <a
+            href="dashboard.html"
+            class="btn btn-secondary btn-sm d-lg-none active"
+            role="button"
+            >Dashboard</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="pwned_websites.html"
+                >Who's been pwned</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="passwords.html">Passwords</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="about.html">Who, what & why</a>
+                </li>
+                <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                <li>
+                  <a class="dropdown-item" href="toc.html">Terms of Use</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="privacy.html"
+                    >Privacy Policy</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donate</a>
+            </li>
+          </ul>
+        </div>
+        <a
+          href="dashboard.html"
+          class="btn btn-secondary d-none d-lg-inline-flex"
+          role="button"
+        >
+          Dashboard
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="py-5">
+        <div class="container">
+          <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 mb-4">
+              <div class="card card-glow mb-4">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center mb-4">
+                    <div class="avatar-circle me-3 bg-primary" id="userInitial">
+                      <!-- Will be filled by JS -->
+                    </div>
+                    <div>
+                      <div class="text-truncate" id="userEmail">
+                        <!-- Will be filled by JS -->
+                      </div>
+                      <div class="text-muted small">Free Account</div>
+                    </div>
+                  </div>
+                  <div class="list-group list-group-flush nav-pills">
+                    <!-- Personal Section -->
+                    <div class="sidebar-section mb-3">
+                      <div
+                        class="sidebar-heading small text-uppercase text-muted mb-2 ps-3"
+                      >
+                        Personal
+                      </div>
+                      <a
+                        href="#overview"
+                        class="list-group-item list-group-item-action active"
+                        data-bs-toggle="pill"
+                      >
+                        <i class="bi bi-speedometer2 me-2"></i> Overview
+                      </a>
+                      <a
+                        href="#breaches"
+                        class="list-group-item list-group-item-action"
+                        data-bs-toggle="pill"
+                      >
+                        <i class="bi bi-shield-exclamation me-2"></i> Breaches
+                      </a>
+                      <a
+                        href="#stealer-logs"
+                        class="list-group-item list-group-item-action"
+                        data-bs-toggle="pill"
+                      >
+                        <i class="bi bi-file-earmark-lock me-2"></i> Stealer
+                        Logs
+                      </a>
+                      <a
+                        href="#notifications"
+                        class="list-group-item list-group-item-action"
+                        data-bs-toggle="pill"
+                      >
+                        <i class="bi bi-bell me-2"></i> Notifications
+                        <span class="badge bg-danger rounded-pill ms-2"
+                          >Off</span
+                        >
+                      </a>
+                    </div>
+
+                    <!-- Business Section -->
+                    <div class="sidebar-section">
+                      <div
+                        class="sidebar-heading small text-uppercase text-muted mb-2 ps-3"
+                      >
+                        Business
+                      </div>
+                      <a
+                        href="#domains"
+                        class="list-group-item list-group-item-action"
+                        data-bs-toggle="pill"
+                      >
+                        <i class="bi bi-globe me-2"></i> Domains
+                      </a>
+                      <a
+                        href="#api-keys"
+                        class="list-group-item list-group-item-action"
+                        data-bs-toggle="pill"
+                      >
+                        <i class="bi bi-key me-2"></i> API Keys
+                      </a>
+                      <a
+                        href="#subscription"
+                        class="list-group-item list-group-item-action"
+                        data-bs-toggle="pill"
+                      >
+                        <i class="bi bi-credit-card me-2"></i> Subscription
+                      </a>
+                    </div>
+                  </div>
+                  <button
+                    id="logoutButton"
+                    class="btn btn-outline-danger w-100 mt-4"
+                  >
+                    <i class="bi bi-box-arrow-right me-2"></i> Log Out
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+              <div class="tab-content">
+                <!-- Overview Tab -->
+                <div class="tab-pane fade show active" id="overview">
+                  <!-- Return notification placeholder -->
+                  <div id="returnNotificationPlaceholder"></div>
+
+                  <!-- Breach Summary Card -->
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                      >
+                        <h3 class="fw-bold mb-0">Breach Summary</h3>
+                        <a
+                          href="#"
+                          id="runFullScanButton"
+                          class="btn btn-primary"
+                        >
+                          <i class="bi bi-shield-check me-2"></i>Run Full Scan
+                        </a>
+                      </div>
+
+                      <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                          <div
+                            class="dashboard-stat-card p-3 border border-primary-custom rounded-3 position-relative"
+                          >
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="dashboard-stat-icon bg-primary-transparent rounded-circle me-3"
+                              >
+                                <i
+                                  class="bi bi-shield-fill-exclamation text-primary"
+                                ></i>
+                              </div>
+                              <div>
+                                <h4 class="mb-0 fs-5">3</h4>
+                                <p class="text-muted mb-0">Data Breaches</p>
+                              </div>
+                            </div>
+                            <a
+                              href="javascript:void(0)"
+                              class="text-primary position-absolute top-0 end-0 mt-2 me-2"
+                              data-bs-toggle="popover"
+                              data-bs-html="true"
+                              data-bs-placement="top"
+                              data-bs-trigger="focus"
+                              data-bs-content="Sites where your data was exposed in security breaches. <a href='faq.html#data-breaches'>Learn more in our FAQ</a>"
+                              tabindex="0"
+                            >
+                              <i class="bi bi-info-circle-fill small"></i>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div
+                            class="dashboard-stat-card p-3 border border-primary-custom rounded-3 position-relative"
+                          >
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="dashboard-stat-icon bg-primary-transparent rounded-circle me-3"
+                              >
+                                <i
+                                  class="bi bi-file-earmark-text text-primary"
+                                ></i>
+                              </div>
+                              <div>
+                                <h4 class="mb-0 fs-5">2</h4>
+                                <p class="text-muted mb-0">Paste References</p>
+                              </div>
+                            </div>
+                            <a
+                              href="javascript:void(0)"
+                              class="text-primary position-absolute top-0 end-0 mt-2 me-2"
+                              data-bs-toggle="popover"
+                              data-bs-html="true"
+                              data-bs-placement="top"
+                              data-bs-trigger="focus"
+                              data-bs-content="Your information found in pastes from paste sites like Pastebin. <a href='faq.html#paste-references'>Learn more in our FAQ</a>"
+                              tabindex="0"
+                            >
+                              <i class="bi bi-info-circle-fill small"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Exposed Data Classes -->
+                      <h4 class="fw-bold mb-3">Exposed Data Classes</h4>
+                      <div class="row g-3 mb-4">
+                        <div class="col-md-6 col-lg-4">
+                          <div
+                            class="data-class-card p-3 border border-primary-custom rounded-3"
+                          >
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="d-flex justify-content-between align-items-center w-100"
+                              >
+                                <h5 class="mb-0 fs-6">Email Addresses</h5>
+                                <span class="text-primary fw-bold">347</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div
+                            class="data-class-card p-3 border border-primary-custom rounded-3"
+                          >
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="d-flex justify-content-between align-items-center w-100"
+                              >
+                                <h5 class="mb-0 fs-6">Passwords</h5>
+                                <span class="text-primary fw-bold">285</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div
+                            class="data-class-card p-3 border border-primary-custom rounded-3"
+                          >
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="d-flex justify-content-between align-items-center w-100"
+                              >
+                                <h5 class="mb-0 fs-6">Names</h5>
+                                <span class="text-primary fw-bold">219</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div
+                            class="data-class-card p-3 border border-primary-custom rounded-3"
+                          >
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="d-flex justify-content-between align-items-center w-100"
+                              >
+                                <h5 class="mb-0 fs-6">Dates of Birth</h5>
+                                <span class="text-primary fw-bold">156</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div
+                            class="data-class-card p-3 border border-primary-custom rounded-3"
+                          >
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="d-flex justify-content-between align-items-center w-100"
+                              >
+                                <h5 class="mb-0 fs-6">Geographic Locations</h5>
+                                <span class="text-primary fw-bold">112</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div
+                            class="data-class-card p-3 border border-primary-custom rounded-3"
+                          >
+                            <div class="d-flex align-items-center">
+                              <div
+                                class="d-flex justify-content-between align-items-center w-100"
+                              >
+                                <h5 class="mb-0 fs-6">Genders</h5>
+                                <span class="text-primary fw-bold">98</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Recommended Actions Card -->
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <h3 class="fw-bold mb-4">Recommended Actions</h3>
+
+                      <div
+                        class="recommended-action-item mb-4 p-3 border border-primary-custom rounded-3"
+                      >
+                        <div class="d-flex align-items-start">
+                          <div
+                            class="recommended-action-icon bg-primary-transparent rounded-circle p-2 me-3"
+                          >
+                            <i class="bi bi-key-fill text-primary fs-5"></i>
+                          </div>
+                          <div class="flex-grow-1">
+                            <h4 class="fs-5 fw-bold mb-2">
+                              Use a password manager
+                            </h4>
+                            <p class="mb-3">
+                              Your passwords have been exposed in 3 breaches.
+                              Using a password manager helps you create and
+                              store strong, unique passwords for every site.
+                            </p>
+
+                            <!-- Partner Placement with 1Password logo -->
+                            <div
+                              class="partner-recommendation mb-3 p-3 rounded-3"
+                            >
+                              <div class="sponsored-text mb-2">
+                                <span class="text-primary">Sponsored</span>
+                              </div>
+                              <div class="d-flex align-items-center mb-3">
+                                <div class="partner-logo-wrapper me-3">
+                                  <img
+                                    src="../assets/images/logos/1Password-Logo-Light.svg"
+                                    alt="1Password"
+                                    class="partner-logo-wide"
+                                    width="120"
+                                    height="25"
+                                  />
+                                </div>
+                                <div class="flex-grow-1">
+                                  <p class="mb-0 small">
+                                    Secure password management with end-to-end
+                                    encryption and seamless experience across
+                                    all devices.
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="d-flex justify-content-end">
+                                <a
+                                  href="https://1password.com"
+                                  target="_blank"
+                                  class="btn btn-sm btn-outline-primary partner-btn"
+                                  >Get Started</a
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        class="recommended-action-item mb-4 p-3 border border-primary-custom rounded-3"
+                      >
+                        <div class="d-flex align-items-start">
+                          <div
+                            class="recommended-action-icon bg-primary-transparent rounded-circle p-2 me-3"
+                          >
+                            <i
+                              class="bi bi-shield-lock-fill text-primary fs-5"
+                            ></i>
+                          </div>
+                          <div class="flex-grow-1">
+                            <h4 class="fs-5 fw-bold mb-2">
+                              Enable two-factor authentication
+                            </h4>
+                            <p class="mb-3">
+                              Add an extra layer of security to your accounts by
+                              enabling two-factor authentication where
+                              available.
+                            </p>
+
+                            <!-- Partner Placement -->
+                            <div
+                              class="partner-recommendation mb-3 p-3 rounded-3"
+                            >
+                              <div class="sponsored-text mb-2">
+                                <span class="text-primary">Sponsored</span>
+                              </div>
+                              <div class="d-flex align-items-center mb-3">
+                                <img
+                                  src="../assets/images/logos/Authy Logo.svg"
+                                  alt="Authy"
+                                  class="partner-logo me-3"
+                                  width="40"
+                                  height="40"
+                                />
+                                <div class="flex-grow-1">
+                                  <h5 class="fs-6 mb-1">Authy</h5>
+                                  <p class="mb-0 small">
+                                    Secure two-factor authentication app with
+                                    cloud backup and multi-device support.
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="d-flex justify-content-end">
+                                <a
+                                  href="https://authy.com"
+                                  target="_blank"
+                                  class="btn btn-sm btn-outline-primary partner-btn"
+                                  >Get Started</a
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        class="recommended-action-item p-3 border border-primary-custom rounded-3"
+                      >
+                        <div class="d-flex align-items-start">
+                          <div
+                            class="recommended-action-icon bg-primary-transparent rounded-circle p-2 me-3"
+                          >
+                            <i
+                              class="bi bi-person-badge-fill text-primary fs-5"
+                            ></i>
+                          </div>
+                          <div class="flex-grow-1">
+                            <h4 class="fs-5 fw-bold mb-2">
+                              Change your security questions
+                            </h4>
+                            <p class="mb-3">
+                              Your personal information has been exposed in data
+                              breaches. Update your security questions to
+                              information that cannot be easily found online.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Breaches Tab (Hidden by default) -->
+                <div class="tab-pane fade" id="breaches">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <h3 class="fw-bold mb-4">Your Breach History</h3>
+
+                      <div class="breach-table-container mb-3">
+                        <div class="table-responsive">
+                          <table class="table table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Breach</th>
+                                <th>Date</th>
+                                <th>Compromised Data</th>
+                                <th class="text-end">Action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>LinkedIn</div>
+                                  </div>
+                                </td>
+                                <td>Jun 2012</td>
+                                <td>Emails, Passwords, Names</td>
+                                <td class="text-end">
+                                  <a
+                                    href="breach.html"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Paddy Power</div>
+                                  </div>
+                                </td>
+                                <td>Oct 2013</td>
+                                <td>Emails, Names, Addresses, Phone Numbers</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Plex</div>
+                                  </div>
+                                </td>
+                                <td>May 2019</td>
+                                <td>Emails, Passwords, IP Addresses</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Adobe</div>
+                                  </div>
+                                </td>
+                                <td>Oct 2013</td>
+                                <td>
+                                  Emails, Passwords, Credit Cards, Phone
+                                  Numbers, Addresses, Names, Security Questions,
+                                  IP Addresses, Dates of Birth, Genders,
+                                  Geographic Locations, Usernames, Phone
+                                  Numbers, Loan information, Login histories,
+                                  Loyalty program details, MAC addresses,
+                                  Marital statuses, Military service, Mnemonic
+                                  phrases, Mothers maiden names, Names,
+                                  Nationalities, Net worths, Nicknames,
+                                  Occupations, Parenting plans, Partial credit
+                                  card data, Partial dates of birth, Partial
+                                  phone numbers, Passport numbers, Password
+                                  hints, Password strengths, Passwords, Payment
+                                  histories
+                                </td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Dropbox</div>
+                                  </div>
+                                </td>
+                                <td>Aug 2016</td>
+                                <td>Emails, Passwords</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>MyFitnessPal</div>
+                                  </div>
+                                </td>
+                                <td>Feb 2018</td>
+                                <td>Emails, Passwords, Usernames</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Snapchat</div>
+                                  </div>
+                                </td>
+                                <td>Dec 2013</td>
+                                <td>Usernames, Phone Numbers</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Canva</div>
+                                  </div>
+                                </td>
+                                <td>May 2019</td>
+                                <td>Emails, Passwords, Names, Countries</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Tumblr</div>
+                                  </div>
+                                </td>
+                                <td>Feb 2013</td>
+                                <td>Emails, Passwords</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Marriott</div>
+                                  </div>
+                                </td>
+                                <td>Nov 2018</td>
+                                <td>
+                                  Names, Addresses, Passport Numbers, Credit
+                                  Cards
+                                </td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Yahoo</div>
+                                  </div>
+                                </td>
+                                <td>Aug 2013</td>
+                                <td>Emails, Passwords, Security Questions</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Zynga</div>
+                                  </div>
+                                </td>
+                                <td>Sep 2019</td>
+                                <td>Emails, Passwords, Phone Numbers</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Quora</div>
+                                  </div>
+                                </td>
+                                <td>Dec 2018</td>
+                                <td>Emails, Passwords, Profile Data</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Evernote</div>
+                                  </div>
+                                </td>
+                                <td>Mar 2013</td>
+                                <td>Emails, Passwords</td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>eBay</div>
+                                  </div>
+                                </td>
+                                <td>May 2014</td>
+                                <td>
+                                  Emails, Passwords, Addresses, Phone Numbers
+                                </td>
+                                <td class="text-end">
+                                  <a
+                                    href="#"
+                                    class="btn btn-sm btn-outline-primary"
+                                    >Details</a
+                                  >
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Stealer Logs Tab (Hidden by default) -->
+                <div class="tab-pane fade" id="stealer-logs">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <h3 class="fw-bold mb-4">Stealer Logs</h3>
+                      <p class="mb-4">
+                        View information about your data that has been found in
+                        malware stealer logs.
+                      </p>
+
+                      <div class="alert alert-warning mb-4" role="alert">
+                        <div class="d-flex">
+                          <i
+                            class="bi bi-exclamation-triangle-fill me-2 fs-5"
+                          ></i>
+                          <div>
+                            <strong>What are stealer logs?</strong> Stealer logs
+                            are collections of data extracted by malware from
+                            infected computers. These logs often contain
+                            passwords, cookies, and other sensitive information.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="stealer-log-table-container mb-3">
+                        <div class="table-responsive">
+                          <table class="table table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Source</th>
+                                <th>Date Discovered</th>
+                                <th>Compromised Data</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>RedLine Stealer</div>
+                                  </div>
+                                </td>
+                                <td>Aug 2023</td>
+                                <td>Passwords, Cookies, Browser Data</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <div class="d-flex align-items-center">
+                                    <div>Raccoon Stealer</div>
+                                  </div>
+                                </td>
+                                <td>Jan 2023</td>
+                                <td>Passwords, Cryptocurrency Wallets</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div class="alert alert-primary mb-4" role="alert">
+                        <div class="d-flex">
+                          <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+                          <div>
+                            <strong>Recommended action:</strong> If your data
+                            appears in stealer logs, you should change your
+                            passwords immediately and scan your devices for
+                            malware.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Notifications Tab (Hidden by default) -->
+                <div class="tab-pane fade" id="notifications">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <div
+                        class="d-flex justify-content-between align-items-center mb-4"
+                      >
+                        <h3 class="fw-bold mb-0">Email Notifications</h3>
+                        <!-- Toggle Switch for Notifications -->
+                        <div class="form-check form-switch">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            id="notificationsSwitch"
+                          />
+                          <label
+                            class="form-check-label"
+                            for="notificationsSwitch"
+                          >
+                            <span
+                              id="notificationStatus"
+                              class="ms-2 text-danger"
+                              >Off</span
+                            >
+                          </label>
+                        </div>
+                      </div>
+
+                      <p class="mb-4">
+                        Get notified when your personal information appears in
+                        data breaches or when we discover sensitive information
+                        about you elsewhere online.
+                      </p>
+
+                      <!-- Notification Types -->
+                      <div class="notification-options mb-4">
+                        <h5 class="fw-bold mb-3">What you'll receive:</h5>
+
+                        <ul class="list-unstyled mb-0">
+                          <li class="mb-2">
+                            <i
+                              class="bi bi-shield-exclamation text-primary me-2"
+                            ></i>
+                            <strong>Breach Alerts</strong> - Receive an email
+                            when your data appears in new breaches
+                          </li>
+                          <li class="mb-2">
+                            <i
+                              class="bi bi-file-earmark-text text-primary me-2"
+                            ></i>
+                            <strong>Paste Alerts</strong> - Get notified when
+                            your information appears in pastes
+                          </li>
+                          <li>
+                            <i class="bi bi-laptop text-primary me-2"></i>
+                            <strong>Stealer Log Alerts</strong> - Be alerted
+                            when credentials appear in malware logs
+                          </li>
+                        </ul>
+                      </div>
+
+                      <!-- Email Preferences -->
+                      <div class="email-preferences">
+                        <div class="mb-3">
+                          <label for="notificationEmail" class="form-label"
+                            >Notification Email</label
+                          >
+                          <input
+                            type="email"
+                            class="form-control"
+                            id="notificationEmail"
+                            value="user@example.com"
+                          />
+                          <div class="form-text">
+                            This is the email address where you'll receive
+                            notifications.
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Save Preferences Button -->
+                      <button
+                        class="btn btn-primary"
+                        id="saveNotificationPreferences"
+                      >
+                        <i class="bi bi-check-circle me-2"></i>Save Preferences
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Domains Tab (Hidden by default) -->
+                <div class="tab-pane fade" id="domains">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <h3 class="fw-bold mb-4">Your Domains</h3>
+                      <p class="mb-4">
+                        Monitor your owned domains for email addresses that
+                        appear in data breaches.
+                      </p>
+
+                      <!-- Empty state view (shown when no domains are added) -->
+                      <div id="noDomainView">
+                        <div class="alert alert-info mb-4" role="alert">
+                          <div class="d-flex">
+                            <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+                            <div>
+                              You haven't added any domains yet. Add a domain to
+                              start monitoring.
+                            </div>
+                          </div>
+                        </div>
+
+                        <button
+                          class="btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#verificationModal"
+                        >
+                          <i class="bi bi-plus-circle me-2"></i>Add Domain
+                        </button>
+                      </div>
+
+                      <!-- Domains Table View (hidden by default) -->
+                      <div id="domainsTableView" class="d-none">
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-end mb-4 mb-sm-3">
+                          <button
+                            class="btn btn-sm fs-7 fs-md-6 btn-primary me-2"
+                            data-bs-toggle="modal"
+                            data-bs-target="#verificationModal"
+                          >
+                            <i class="bi bi-plus-circle me-1"></i> Verify New
+                            Domain
+                          </button>
+                        </div>
+
+                        <!-- Domains Table -->
+                        <div class="table-responsive">
+                          <table class="table table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Domain</th>
+                                <th>
+                                  Addresses
+                                  <span
+                                    class="tooltip-container d-inline-block ms-1"
+                                  >
+                                    <i class="bi bi-question"></i>
+                                    <div class="tooltip-content">
+                                      <h6>Addresses</h6>
+                                      <p>
+                                        The number of breached addresses on the
+                                        domain the last time it was successfully
+                                        indexed, based on breaches that are not
+                                        classified as spam lists. The domain may
+                                        be larger when next indexed if more
+                                        breaches have impacted it since.
+                                      </p>
+                                      <p>
+                                        This number does not include addresses
+                                        found in pastes. A blank value will be
+                                        shown if the domain hasn't yet been
+                                        indexed. Enable debug mode to see more.
+                                      </p>
+                                    </div>
+                                  </span>
+                                </th>
+                                <th>
+                                  Stealer Logs
+                                  <span
+                                    class="tooltip-container d-inline-block ms-1"
+                                  >
+                                    <i class="bi bi-question"></i>
+                                    <div class="tooltip-content">
+                                      <h6>Stealer Logs</h6>
+                                      <p>
+                                        The stealer log count is the number of
+                                        email addresses captured by infostealers
+                                        when the victim has been entering their
+                                        credentials into a website on this
+                                        domain. These addresses are searchable
+                                        by the API to get all stealer log email
+                                        addresses for a website domain.
+                                      </p>
+                                    </div>
+                                  </span>
+                                </th>
+                                <th class="text-end">Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody id="domainsTableBody">
+                              <tr>
+                                <td>example.com</td>
+                                <td>1,245</td>
+                                <td>38</td>
+                                <td class="table-actions">
+                                  <button
+                                    class="btn btn-xs btn-outline-primary me-1"
+                                  >
+                                    <i class="bi bi-search"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-xs btn-outline-danger remove-domain"
+                                    data-domain="example.com"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#domainRemovalPrompt"
+                                  >
+                                    <i class="bi bi-trash"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>mydomain.org</td>
+                                <td>87</td>
+                                <td>12</td>
+                                <td class="table-actions">
+                                  <button
+                                    class="btn btn-xs btn-outline-primary me-1"
+                                  >
+                                    <i class="bi bi-search"></i>
+                                  </button>
+                                  <button
+                                    class="btn btn-xs btn-outline-danger remove-domain"
+                                    data-domain="mydomain.org"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#domainRemovalPrompt"
+                                  >
+                                    <i class="bi bi-trash"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- API Keys Tab -->
+                <div class="tab-pane fade" id="api-keys">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <h3 class="fw-bold mb-4">API Keys</h3>
+                      <p class="mb-4">
+                        Manage your API access keys for programmatic access to
+                        HIBP data.
+                      </p>
+
+                      <div class="alert alert-primary mb-4" role="alert">
+                        <div class="d-flex">
+                          <i class="bi bi-lightbulb-fill me-2 fs-5"></i>
+                          <div>
+                            You need an active subscription to access the API.
+                            Upgrade to get started.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row mb-4">
+                        <div class="col-md-6">
+                          <div
+                            class="api-doc-card p-3 border border-primary-custom rounded-3"
+                          >
+                            <h5 class="mb-2">
+                              <i class="bi bi-book me-2"></i>API Documentation
+                            </h5>
+                            <p class="mb-3 small">
+                              Learn how to use our API endpoints and integrate
+                              with your systems.
+                            </p>
+                            <a href="#" class="btn btn-sm btn-outline-primary"
+                              >View Documentation</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="pricing.html" class="btn btn-primary">
+                        <i class="bi bi-arrow-up-circle me-2"></i>Upgrade to
+                        Access API
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Subscription Tab -->
+                <div class="tab-pane fade" id="subscription">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <h3 class="fw-bold mb-4">Your Subscription</h3>
+                      <p class="mb-4">
+                        Manage your subscription and billing information.
+                      </p>
+
+                      <div
+                        class="recommended-action-item mb-4 p-3 border border-primary-custom rounded-3"
+                      >
+                        <div class="d-flex align-items-start">
+                          <div
+                            class="recommended-action-icon bg-primary-transparent rounded-circle p-2 me-3"
+                          >
+                            <i class="bi bi-person-fill text-primary fs-5"></i>
+                          </div>
+                          <div class="flex-grow-1">
+                            <h4 class="fs-5 fw-bold mb-2">Free Account</h4>
+                            <p class="mb-3">
+                              Basic access to breach information with limited
+                              features.
+                            </p>
+
+                            <div class="subscription-features mb-3">
+                              <div class="d-flex align-items-center mb-2">
+                                <i
+                                  class="bi bi-check-circle-fill text-success me-2"
+                                ></i>
+                                <span>Email breach monitoring</span>
+                              </div>
+                              <div class="d-flex align-items-center mb-2">
+                                <i
+                                  class="bi bi-check-circle-fill text-success me-2"
+                                ></i>
+                                <span>Public breach data access</span>
+                              </div>
+                              <div class="d-flex align-items-center mb-2">
+                                <i
+                                  class="bi bi-x-circle-fill text-danger me-2"
+                                ></i>
+                                <span class="text-muted"
+                                  >Domain monitoring</span
+                                >
+                              </div>
+                              <div class="d-flex align-items-center mb-2">
+                                <i
+                                  class="bi bi-x-circle-fill text-danger me-2"
+                                ></i>
+                                <span class="text-muted">API access</span>
+                              </div>
+                              <div class="d-flex align-items-center">
+                                <i
+                                  class="bi bi-x-circle-fill text-danger me-2"
+                                ></i>
+                                <span class="text-muted"
+                                  >Sensitive breach data</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <a href="pricing.html" class="btn btn-primary">
+                        <i class="bi bi-arrow-up-circle me-2"></i>Upgrade Your
+                        Account
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Domain Verification Modal -->
+    <div
+      class="modal fade"
+      id="verificationModal"
+      tabindex="-1"
+      aria-labelledby="verificationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="verificationModalLabel">
+              Verify Domain Ownership
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <!-- Left Column - Domain Input and Verification Methods -->
+              <div
+                class="col-lg-5 col-md-12 border-end pe-4 pe-sm-3 border-md-0 border-lg-end pb-md-4 pb-lg-0"
+              >
+                <div class="mb-4 mb-sm-3">
+                  <label class="form-label fw-bold mb-3 mb-sm-2"
+                    >1. Enter Domain</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="domainInput"
+                    placeholder="example.com"
+                    autocapitalize="off"
+                  />
+                  <div class="invalid-feedback" id="domainInputError">
+                    Please provide a domain to verify
+                  </div>
+                </div>
+
+                <div class="mt-4 mt-sm-3">
+                  <label class="form-label fw-bold mb-3 mb-sm-2"
+                    >2. Select verification method</label
+                  >
+                  <div class="verification-methods">
+                    <div
+                      class="verification-method-option active p-3 p-sm-2"
+                      data-method="dns"
+                    >
+                      <div class="method-icon">
+                        <i class="bi bi-globe"></i>
+                      </div>
+                      <div class="method-content">
+                        <h6 class="mb-0 fs-6">DNS TXT Record</h6>
+                        <p class="mb-0 text-grey-400 fs-7">
+                          Add a TXT record to your domain's DNS
+                        </p>
+                      </div>
+                      <div class="method-indicator">
+                        <i class="bi bi-check-circle-fill"></i>
+                      </div>
+                    </div>
+                    <div
+                      class="verification-method-option p-3 p-sm-2"
+                      data-method="file"
+                    >
+                      <div class="method-icon">
+                        <i class="bi bi-file-earmark"></i>
+                      </div>
+                      <div class="method-content">
+                        <h6 class="mb-0 fs-6">File Upload</h6>
+                        <p class="mb-0 text-grey-400 fs-7">
+                          Upload a verification file to your website
+                        </p>
+                      </div>
+                      <div class="method-indicator">
+                        <i class="bi bi-check-circle-fill"></i>
+                      </div>
+                    </div>
+                    <div
+                      class="verification-method-option p-3 p-sm-2"
+                      data-method="meta"
+                    >
+                      <div class="method-icon">
+                        <i class="bi bi-code-slash"></i>
+                      </div>
+                      <div class="method-content">
+                        <h6 class="mb-0 fs-6">Meta Tag</h6>
+                        <p class="mb-0 text-grey-400 fs-7">
+                          Add a meta tag to your website's homepage
+                        </p>
+                      </div>
+                      <div class="method-indicator">
+                        <i class="bi bi-check-circle-fill"></i>
+                      </div>
+                    </div>
+                    <div
+                      class="verification-method-option p-3 p-sm-2"
+                      data-method="email"
+                    >
+                      <div class="method-icon">
+                        <i class="bi bi-envelope"></i>
+                      </div>
+                      <div class="method-content">
+                        <h6 class="mb-0 fs-6">Verify by email</h6>
+                        <p class="mb-0 text-grey-400 fs-7">
+                          Send a verification email to your domain
+                        </p>
+                      </div>
+                      <div class="method-indicator">
+                        <i class="bi bi-check-circle-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column - Verification Instructions -->
+              <div class="col-lg-7 col-md-12 ps-lg-4 ps-md-0 pt-md-4 pt-lg-0">
+                <div id="verificationInstructions" class="h-100">
+                  <!-- DNS TXT Record Instructions (default) -->
+                  <div id="dnsInstructions">
+                    <h5 class="mb-3">DNS TXT Record Verification</h5>
+                    <p>
+                      Add the following TXT record to your domain's DNS
+                      settings:
+                    </p>
+                    <div class="card card-glass mb-3">
+                      <div class="card-body">
+                        <code>hibp-verify=abc123def456</code>
+                      </div>
+                    </div>
+                    <p>
+                      DNS changes may take up to 24 hours to propagate. Once
+                      you've added the record, click "Verify Now".
+                    </p>
+                  </div>
+
+                  <!-- File Upload Instructions (hidden by default) -->
+                  <div id="fileInstructions" class="d-none">
+                    <h5 class="mb-3">File Upload Verification</h5>
+                    <p>
+                      Upload the following file to your website's root
+                      directory:
+                    </p>
+                    <div class="card card-glass mb-3">
+                      <div class="card-body">
+                        <p class="mb-0">
+                          Filename: <code>hibp-verification.txt</code>
+                        </p>
+                        <p class="mb-0">
+                          Content: <code>hibp-verify=abc123def456</code>
+                        </p>
+                      </div>
+                    </div>
+                    <p>
+                      The file should be accessible at:
+                      <code>https://yourdomain.com/hibp-verification.txt</code>
+                    </p>
+                  </div>
+
+                  <!-- Meta Tag Instructions (hidden by default) -->
+                  <div id="metaInstructions" class="d-none">
+                    <h5 class="mb-3">Meta Tag Verification</h5>
+                    <p>
+                      Add the following meta tag to the
+                      <code>&lt;head&gt;</code> section of your website's
+                      homepage:
+                    </p>
+                    <div class="card card-glass mb-3">
+                      <div class="card-body">
+                        <code
+                          >&lt;meta name="hibp-verification"
+                          content="abc123def456"&gt;</code
+                        >
+                      </div>
+                    </div>
+                    <p>Once you've added the meta tag, click "Verify Now".</p>
+                  </div>
+                  <!-- Email Verification Instructions (hidden by default) -->
+                  <div id="emailInstructions" class="d-none">
+                    <h5 class="mb-3">Email Verification</h5>
+                    <p>
+                      Select an email address to receive the verification link:
+                    </p>
+                    <div class="form-check-list mb-3">
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="verificationEmail"
+                          id="emailAdmin"
+                          value="admin@yourdomain.com"
+                          checked
+                        />
+                        <label class="form-check-label" for="emailAdmin">
+                          admin@yourdomain.com
+                        </label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="verificationEmail"
+                          id="emailWebmaster"
+                          value="webmaster@yourdomain.com"
+                        />
+                        <label class="form-check-label" for="emailWebmaster">
+                          webmaster@yourdomain.com
+                        </label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="verificationEmail"
+                          id="emailInfo"
+                          value="info@yourdomain.com"
+                        />
+                        <label class="form-check-label" for="emailInfo">
+                          info@yourdomain.com
+                        </label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="verificationEmail"
+                          id="emailHostmaster"
+                          value="hostmaster@yourdomain.com"
+                        />
+                        <label class="form-check-label" for="emailHostmaster">
+                          hostmaster@yourdomain.com
+                        </label>
+                      </div>
+                      <div class="form-check mb-2">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          name="verificationEmail"
+                          id="emailSecurity"
+                          value="security@yourdomain.com"
+                        />
+                        <label class="form-check-label" for="emailSecurity">
+                          security@yourdomain.com
+                        </label>
+                      </div>
+                    </div>
+                    <div class="card card-glass mb-3">
+                      <div class="card-body">
+                        <p class="mb-0">
+                          A verification email will be sent containing a unique
+                          link that you must click to verify ownership of your
+                          domain.
+                        </p>
+                      </div>
+                    </div>
+                    <p class="text-grey-400 fs-7">
+                      The verification email will expire after 24 hours. Make
+                      sure to check your spam folder if you don't receive it.
+                    </p>
+                  </div>
+
+                  <!-- Verification Spinner (hidden by default) -->
+                  <div
+                    id="verificationSpinner"
+                    class="verification-spinner flex-column justify-content-center align-items-center h-100 d-none"
+                  >
+                    <div class="logo-mark-spinner mb-3">
+                      <svg
+                        width="60"
+                        height="40"
+                        viewBox="0 0 400 271"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          class="logo-piece logo-piece-1"
+                          d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                          fill="#F6F8FA"
+                        />
+                        <path
+                          class="logo-piece logo-piece-2"
+                          d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                          fill="#F6F8FA"
+                        />
+                        <path
+                          class="logo-piece logo-piece-3"
+                          d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                          fill="#F6F8FA"
+                        />
+                        <path
+                          class="logo-piece logo-piece-4"
+                          d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                          fill="#F6F8FA"
+                        />
+                        <path
+                          class="logo-piece logo-piece-5"
+                          d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
+                          fill="#F6F8FA"
+                        />
+                      </svg>
+                    </div>
+                    <p>Verifying your domain...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary" id="verifyButton">
+              Verify Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscription Modal -->
+    <div
+      class="modal fade"
+      id="subscriptionModal"
+      tabindex="-1"
+      aria-labelledby="subscriptionModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="subscriptionModalLabel">
+              Your Subscription
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="d-flex align-items-center mb-4">
+              <span class="badge bg-success me-3 px-3 py-2">Active</span>
+              <h4 class="mb-0">Free Plan</h4>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <h6 class="fw-bold text-grey-400 mb-3">Plan Features</h6>
+                <ul class="list-unstyled plan-features">
+                  <li class="mb-3">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>1 domain monitoring</span>
+                  </li>
+                  <li class="mb-3">
+                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                    <span>Basic breach alerts</span>
+                  </li>
+                  <li class="mb-3">
+                    <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                    <span class="text-grey-400">No API access</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-md-6">
+                <h6 class="fw-bold text-grey-400 mb-3">Current Usage</h6>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between mb-2">
+                    <span>Domains</span>
+                    <span>1 of 1</span>
+                  </div>
+                  <div class="progress progress-thin">
+                    <div class="progress-bar w-100"></div>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p class="mb-1">Need more features or higher limits?</p>
+                  <a href="pricing.html" class="text-white fw-bold">
+                    Change subscription
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-sm btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Domain Removal Prompt -->
+    <div
+      class="modal fade"
+      id="domainRemovalPrompt"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+          <div class="modal-body text-center p-4">
+            <h5 class="mb-3">Remove the domain?</h5>
+            <p class="mb-4">
+              Removing this domain will delete it from your account. You will no
+              longer be able to search for breached email addresses on this
+              domain unless you verify it again.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                id="confirmDomainRemoval"
+                data-bs-dismiss="modal"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-5">
+      <div class="container">
+        <div class="footer-wrapper rounded-3 border border-primary-custom">
+          <div class="row g-0">
+            <!-- Logo and Tagline -->
+            <div class="col-lg-4 p-4 border-end border-primary-custom">
+              <div class="footer-logo mb-3">
+                <a
+                  href="../index.html"
+                  class="text-white text-decoration-none fw-bold fs-4"
+                >
+                  Have I Been Pwned
+                </a>
+              </div>
+              <p class="text-muted mb-4">
+                Check if your email has been compromised in a data breach
+              </p>
+              <a href="../index.html" class="btn btn-outline-primary">
+                <i class="bi bi-search me-2"></i>Check my email
+              </a>
+            </div>
+
+            <!-- Sitemap -->
+            <div class="col-lg-5 p-4 border-end border-primary-custom">
+              <div class="row g-4">
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Services</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a
+                        href="../index.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Email Search</a
+                      >
+                    </li>
+
+                    <li class="mb-2">
+                      <a
+                        href="pwned_websites.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Who's been pwned</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="passwords.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Passwords</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >API</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="pricing.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Pricing</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="dashboard.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Dashboard</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Information</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a
+                        href="about.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >About Us</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="faq.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >FAQ</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="privacy.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Privacy Policy</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a
+                        href="toc.html"
+                        class="text-decoration-none text-muted hover-white"
+                        >Terms of Use</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-decoration-none text-muted hover-white"
+                        >Donate</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="col-lg-3 p-4">
+              <h5 class="fw-bold mb-3">Connect With Us</h5>
+              <div class="d-flex gap-3">
+                <a
+                  href="https://x.com/haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+                <a
+                  href="https://facebook.com/haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/haveibeenpwned/"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                <a
+                  href="https://github.com/HaveIBeenPwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-github"></i>
+                </a>
+                <a
+                  href="https://bsky.app/profile/haveibeenpwned.com"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="10 10 568 501"
+                    width="20"
+                    height="20"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"
+                    />
+                  </svg>
+                </a>
+                <a
+                  href="https://infosec.exchange/@haveibeenpwned"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-mastodon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copyright -->
+          <div class="border-top border-primary-custom">
+            <div class="p-3 text-center">
+              <p class="text-muted mb-0">
+                &copy; 2025 Have I Been Pwned. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/dashboard-internal.js"></script>
+  </body>
+</html>

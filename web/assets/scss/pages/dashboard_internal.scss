@@ -1,0 +1,217 @@
+// Import variables if needed
+@import "../variables";
+
+// Dashboard Card Styling
+.card-glow {
+  box-shadow: 0 0 0 1px rgba(var(--bs-primary-rgb), 0.1),
+    0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 0 1px rgba(var(--bs-primary-rgb), 0.2),
+      0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Avatar Circle
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+}
+
+// Sidebar Styling
+.sidebar-section {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-heading {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+// Dashboard Statistics
+.dashboard-stat-card {
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+  }
+}
+
+.dashboard-stat-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-primary-transparent {
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+}
+
+// Data Class Cards
+.data-class-card {
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+  }
+}
+
+// Recommended Actions
+.recommended-action-item {
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+  }
+}
+
+.recommended-action-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Partner recommendation styles */
+.partner-recommendation {
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(var(--bs-dark-rgb), 0.2);
+  }
+}
+
+.partner-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.partner-logo-wide {
+  height: 25px;
+  object-fit: contain;
+}
+
+.sponsored-text {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+// Border Primary Custom
+.border-primary-custom {
+  border-color: rgba(var(--bs-primary-rgb), 0.2) !important;
+}
+
+// Notification Components
+.notification-option {
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+  }
+}
+
+.notification-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Form Switch Styling
+.form-switch {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+
+  .form-check-input {
+    width: 3em;
+    height: 1.5em;
+    cursor: pointer;
+  }
+}
+
+// Subscription Status Card
+.subscription-status-card {
+  border-left: 4px solid var(--bs-primary);
+}
+
+.subscription-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// API Doc Cards
+.api-doc-card {
+  height: 100%;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+  }
+}
+
+// Return notification styling
+#returnNotificationPlaceholder {
+  position: relative;
+  z-index: 1000;
+}
+
+// Hover links
+.hover-white {
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: white !important;
+  }
+}
+
+.list-group.list-group-flush.nav-pills {
+  overflow: hidden;
+
+  .list-group-item {
+    background-color: transparent;
+    border-color: rgba(var(--bs-primary-rgb), 0.1);
+    color: var(--bs-body-color);
+    transition: all 0.2s ease;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.25rem;
+    border-radius: var(--bs-border-radius-sm) !important;
+    border: 1px solid transparent;
+
+    &:hover:not(.active) {
+      background-color: rgba(var(--bs-primary-rgb), 0.05);
+      color: var(--bs-primary);
+    }
+
+    &.active {
+      background-color: rgba(var(--bs-primary-rgb), 0.1);
+      color: var(--bs-primary);
+      border-color: rgba(var(--bs-primary-rgb), 0.2);
+      font-weight: 500;
+      box-shadow: 0 0 0 1px rgba(var(--bs-primary-rgb), 0.2);
+    }
+
+    i {
+      width: 20px;
+      text-align: center;
+      margin-right: 0.5rem;
+    }
+  }
+}
