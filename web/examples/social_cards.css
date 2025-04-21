@@ -1,0 +1,54 @@
+/* Social Card Styles */
+.social-card {
+  max-width: 650px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #374a5a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  margin: 0 auto 2rem;
+}
+
+.social-card-header {
+  background-color: #1d282f;
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.breach-logo {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hibp-logo {
+  height: 24px;
+}
+
+.card-content {
+  padding: 16px 20px;
+}
+
+.breach-info-label {
+  font-size: 18px;
+  margin-bottom: 2px;
+  color: #9cb1c2;
+}
+
+.breach-info-value {
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+/* Gradient variant */
+.social-card-variant-gradient {
+  background: linear-gradient(135deg, #152b39 0%, #1d72a7 100%);
+}
+
+.social-card-variant-gradient .social-card-header {
+  background-color: rgba(0, 0, 0, 0.2);
+}
