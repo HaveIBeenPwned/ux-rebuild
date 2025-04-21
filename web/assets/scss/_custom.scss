@@ -1003,6 +1003,22 @@ a:focus-visible {
   }
 }
 
+.logo-1password {
+  height: 30px;
+  width: auto;
+  display: inline-block;
+}
+
+// When logo is used in an action card
+.action-card .logo-1password {
+  height: 24px;
+  margin-top: 12px;
+}
+
+.sponsor-label {
+  margin-left: 54px;
+}
+
 #passwordForm .btn-fixed-size {
   min-width: 120px;
   min-height: 38px;
