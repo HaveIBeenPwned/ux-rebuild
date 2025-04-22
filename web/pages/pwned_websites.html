@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
@@ -25,16 +25,10 @@
     />
 
     <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
     <!-- Switzer Font -->
-    <link
-      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap" rel="stylesheet" />
 
     <link href="../assets/css/main.css" rel="stylesheet" />
   </head>
@@ -43,34 +37,18 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a href="../index.html" class="navbar-brand">
-          <img
-            src="../assets/images/hibp-logo.svg"
-            alt="Have I Been Pwned"
-            height="30"
-          />
+          <img src="../assets/images/hibp-logo.svg" alt="Have I Been Pwned" height="30" />
         </a>
         <div class="d-flex align-items-center justify-content-end gap-2">
-          <a
-            href="dashboard.html"
-            class="btn btn-secondary btn-sm d-lg-none"
-            role="button"
-            >Dashboard</a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
+          <a href="dashboard.html" class="btn btn-secondary btn-sm d-lg-none" role="button">Dashboard</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="pwned_websites.html"
-                >Who's been pwned</a
-              >
+              <a class="nav-link active" href="pwned_websites.html">Who's been pwned</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="passwords.html">Passwords</a>
@@ -100,9 +78,7 @@
                   <a class="dropdown-item" href="toc.html">Terms of Use</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="privacy.html"
-                    >Privacy Policy</a
-                  >
+                  <a class="dropdown-item" href="privacy.html">Privacy Policy</a>
                 </li>
               </ul>
             </li>
@@ -111,13 +87,7 @@
             </li>
           </ul>
         </div>
-        <a
-          href="dashboard.html"
-          class="btn btn-secondary d-none d-lg-inline-flex"
-          role="button"
-        >
-          Dashboard
-        </a>
+        <a href="dashboard.html" class="btn btn-secondary d-none d-lg-inline-flex" role="button"> Dashboard </a>
       </div>
     </nav>
 
@@ -128,9 +98,7 @@
           <div class="row justify-content-center">
             <div class="col-lg-10 text-center">
               <h1 class="mb-3">Pwned websites</h1>
-              <p class="lead text-muted mb-4">
-                Breached websites that have been loaded into Have I Been Pwned
-              </p>
+              <p class="lead text-muted mb-4">Breached websites that have been loaded into Have I Been Pwned</p>
             </div>
           </div>
         </div>
@@ -145,9 +113,7 @@
               <div class="row">
                 <div class="col-md-6 mb-4 mb-md-0">
                   <div class="card card-glow h-100">
-                    <div
-                      class="card-body d-flex flex-column align-items-center justify-content-center p-4"
-                    >
+                    <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
                       <div class="display-4 fw-bold text-primary mb-2">643</div>
                       <p class="lead text-center mb-0">Total Breaches</p>
                     </div>
@@ -155,12 +121,8 @@
                 </div>
                 <div class="col-md-6">
                   <div class="card card-glow h-100">
-                    <div
-                      class="card-body d-flex flex-column align-items-center justify-content-center p-4"
-                    >
-                      <div class="display-4 fw-bold text-primary mb-2">
-                        11.8B+
-                      </div>
+                    <div class="card-body d-flex flex-column align-items-center justify-content-center p-4">
+                      <div class="display-4 fw-bold text-primary mb-2">11.8B+</div>
                       <p class="lead text-center mb-0">Pwned Accounts</p>
                     </div>
                   </div>
@@ -176,17 +138,14 @@
                   <div class="row align-items-start">
                     <div class="col-lg-8">
                       <p>
-                        A "breach" is an incident where a site's data has been
-                        illegally accessed by hackers and then released
-                        publicly. Review these breaches to see what personal
-                        information was compromised and take appropriate action,
-                        such as changing passwords.
+                        A "breach" is an incident where a site's data has been illegally accessed by hackers and then
+                        released publicly. Review these breaches to see what personal information was compromised and
+                        take appropriate action, such as changing passwords.
                       </p>
                       <p class="mb-0">
-                        Data breaches are presented in order of date added to
-                        HIBP by default. You can sort the table by breach name,
-                        pwn count (number of accounts affected), or date added
-                        by clicking on the column headers.
+                        Data breaches are presented in order of date added to HIBP by default. You can sort the table by
+                        breach name, pwn count (number of accounts affected), or date added by clicking on the column
+                        headers.
                       </p>
                     </div>
                     <div class="col-lg-4 mt-3 mt-lg-0">
@@ -197,9 +156,7 @@
                           class="d-flex align-items-center justify-content-between text-decoration-none p-2 rounded feature-item-hover"
                         >
                           <div class="d-flex align-items-center">
-                            <div
-                              class="btn-rss d-flex align-items-center justify-content-center rounded-circle me-3"
-                            >
+                            <div class="btn-rss d-flex align-items-center justify-content-center rounded-circle me-3">
                               <i class="bi bi-rss"></i>
                             </div>
                             <div class="small text-white">
@@ -207,9 +164,7 @@
                               <strong>RSS</strong>
                             </div>
                           </div>
-                          <i
-                            class="bi bi-box-arrow-up-right text-primary small me-1"
-                          ></i>
+                          <i class="bi bi-box-arrow-up-right text-primary small me-1"></i>
                         </a>
 
                         <!-- API Dropdown -->
@@ -233,38 +188,23 @@
                               >
                                 <i class="bi bi-code-slash"></i>
                               </div>
-                              <div class="text-gray-300 small">
-                                Access breach data via <strong>API</strong>
-                              </div>
+                              <div class="text-gray-300 small">Access breach data via <strong>API</strong></div>
                             </div>
-                            <i
-                              class="bi bi-chevron-down chevron-icon text-primary small me-1"
-                            ></i>
+                            <i class="bi bi-chevron-down chevron-icon text-primary small me-1"></i>
                           </div>
-                          <ul
-                            class="dropdown-menu shadow-sm dropdown-menu-end min-w-240"
-                            aria-labelledby="apiDropdown"
-                          >
+                          <ul class="dropdown-menu shadow-sm dropdown-menu-end min-w-240" aria-labelledby="apiDropdown">
                             <li>
-                              <a
-                                class="dropdown-item my-1"
-                                href="https://haveibeenpwned.com/API/v3#AllBreaches"
-                                ><i class="bi bi-list-ul me-2"></i>All Breaches
-                                Endpoint</a
+                              <a class="dropdown-item my-1" href="https://haveibeenpwned.com/API/v3#AllBreaches"
+                                ><i class="bi bi-list-ul me-2"></i>All Breaches Endpoint</a
                               >
                             </li>
                             <li>
-                              <a
-                                class="dropdown-item my-1"
-                                href="https://haveibeenpwned.com/API/v3"
-                                ><i class="bi bi-file-earmark-text me-2"></i>API
-                                Documentation</a
+                              <a class="dropdown-item my-1" href="https://haveibeenpwned.com/API/v3"
+                                ><i class="bi bi-file-earmark-text me-2"></i>API Documentation</a
                               >
                             </li>
                             <li>
-                              <a
-                                class="dropdown-item my-1"
-                                href="https://haveibeenpwned.com/API/Key"
+                              <a class="dropdown-item my-1" href="https://haveibeenpwned.com/API/Key"
                                 ><i class="bi bi-key me-2"></i>Get API Key</a
                               >
                             </li>
@@ -290,26 +230,14 @@
                 <table class="table" id="breachesTable">
                   <thead>
                     <tr>
-                      <th
-                        scope="col"
-                        class="sortable rounded-top"
-                        data-sort="name"
-                      >
+                      <th scope="col" class="sortable rounded-top" data-sort="name">
                         Breach Name
                         <i class="bi bi-arrow-down-up ms-2 small"></i>
                       </th>
-                      <th
-                        scope="col"
-                        class="sortable rounded-top"
-                        data-sort="count"
-                      >
+                      <th scope="col" class="sortable rounded-top" data-sort="count">
                         Pwn Count <i class="bi bi-arrow-down-up ms-2 small"></i>
                       </th>
-                      <th
-                        scope="col"
-                        class="sortable rounded-top"
-                        data-sort="date"
-                      >
+                      <th scope="col" class="sortable rounded-top" data-sort="date">
                         Date Added
                         <i class="bi bi-sort-down ms-2 small"></i>
                       </th>
@@ -652,23 +580,14 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark-subtle-custom">
       <div class="container">
-        <div
-          class="footer-wrapper rounded-3 border border-primary-custom bg-dark-subtle-custom"
-        >
+        <div class="footer-wrapper rounded-3 border border-primary-custom bg-dark-subtle-custom">
           <div class="row g-0">
             <!-- Logo and Tagline -->
             <div class="col-lg-4 p-4 border-end border-primary-custom">
               <div class="footer-logo mb-3">
-                <a
-                  href="../index.html"
-                  class="text-white text-decoration-none fw-bold fs-4"
-                >
-                  Have I Been Pwned
-                </a>
+                <a href="../index.html" class="text-white text-decoration-none fw-bold fs-4"> Have I Been Pwned </a>
               </div>
-              <p class="text-muted mb-4">
-                Check if your email has been compromised in a data breach
-              </p>
+              <p class="text-muted mb-4">Check if your email has been compromised in a data breach</p>
               <a href="../index.html" class="btn btn-outline-primary">
                 <i class="bi bi-search me-2"></i>Check my email
               </a>
@@ -681,40 +600,22 @@
                   <h5 class="fw-bold mb-3">Services</h5>
                   <ul class="list-unstyled mb-0">
                     <li class="mb-2">
-                      <a
-                        href="../index.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Email Search</a
-                      >
+                      <a href="../index.html" class="text-decoration-none text-muted hover-white">Email Search</a>
                     </li>
 
                     <li class="mb-2">
-                      <a
-                        href="pwned_websites.html"
-                        class="text-decoration-none text-muted hover-white"
+                      <a href="pwned_websites.html" class="text-decoration-none text-muted hover-white"
                         >Who's been pwned</a
                       >
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="passwords.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Passwords</a
-                      >
+                      <a href="passwords.html" class="text-decoration-none text-muted hover-white">Passwords</a>
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="#"
-                        class="text-decoration-none text-muted hover-white"
-                        >API</a
-                      >
+                      <a href="#" class="text-decoration-none text-muted hover-white">API</a>
                     </li>
                     <li>
-                      <a
-                        href="dashboard.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Dashboard</a
-                      >
+                      <a href="dashboard.html" class="text-decoration-none text-muted hover-white">Dashboard</a>
                     </li>
                   </ul>
                 </div>
@@ -722,39 +623,19 @@
                   <h5 class="fw-bold mb-3">Information</h5>
                   <ul class="list-unstyled mb-0">
                     <li class="mb-2">
-                      <a
-                        href="about.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >About Us</a
-                      >
+                      <a href="about.html" class="text-decoration-none text-muted hover-white">About Us</a>
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="faq.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >FAQ</a
-                      >
+                      <a href="faq.html" class="text-decoration-none text-muted hover-white">FAQ</a>
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="privacy.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Privacy Policy</a
-                      >
+                      <a href="privacy.html" class="text-decoration-none text-muted hover-white">Privacy Policy</a>
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="toc.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Terms of Use</a
-                      >
+                      <a href="toc.html" class="text-decoration-none text-muted hover-white">Terms of Use</a>
                     </li>
                     <li>
-                      <a
-                        href="#"
-                        class="text-decoration-none text-muted hover-white"
-                        >Donate</a
-                      >
+                      <a href="#" class="text-decoration-none text-muted hover-white">Donate</a>
                     </li>
                   </ul>
                 </div>
@@ -765,18 +646,10 @@
             <div class="col-lg-3 p-4">
               <h5 class="fw-bold mb-3">Connect With Us</h5>
               <div class="d-flex gap-3">
-                <a
-                  href="https://x.com/haveibeenpwned"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://x.com/haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-twitter-x"></i>
                 </a>
-                <a
-                  href="https://facebook.com/haveibeenpwned"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://facebook.com/haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-facebook"></i>
                 </a>
                 <a
@@ -786,11 +659,7 @@
                 >
                   <i class="bi bi-linkedin"></i>
                 </a>
-                <a
-                  href="https://github.com/HaveIBeenPwned"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://github.com/HaveIBeenPwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-github"></i>
                 </a>
                 <a
@@ -798,23 +667,14 @@
                   target="_blank"
                   class="text-muted hover-white fs-5"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="10 10 568 501"
-                    width="20"
-                    height="20"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 568 501" width="20" height="20">
                     <path
                       fill="currentColor"
                       d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"
                     />
                   </svg>
                 </a>
-                <a
-                  href="https://infosec.exchange/@haveibeenpwned"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://infosec.exchange/@haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-mastodon"></i>
                 </a>
               </div>
@@ -824,9 +684,7 @@
           <!-- Copyright -->
           <div class="border-top border-primary-custom">
             <div class="p-3 text-center">
-              <p class="text-muted mb-0">
-                &copy; 2025 Have I Been Pwned. All rights reserved.
-              </p>
+              <p class="text-muted mb-0">&copy; 2025 Have I Been Pwned. All rights reserved.</p>
             </div>
           </div>
         </div>
