@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
@@ -19,10 +19,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
     />
     <!-- Switzer Font -->
-    <link
-      href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap" rel="stylesheet" />
 
     <!-- Custom CSS -->
     <link href="../assets/css/main.css" rel="stylesheet" />
@@ -32,39 +29,21 @@
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a href="../index.html" class="navbar-brand">
-          <img
-            src="../assets/images/hibp-logo.svg"
-            alt="Have I Been Pwned"
-            height="30"
-          />
+          <img src="../assets/images/hibp-logo.svg" alt="Have I Been Pwned" height="30" />
         </a>
         <div class="d-flex align-items-center justify-content-end gap-2">
-          <a
-            href="dashboard.html"
-            class="btn btn-secondary btn-sm d-lg-none"
-            role="button"
-            >Dashboard</a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
+          <a href="dashboard.html" class="btn btn-secondary btn-sm d-lg-none" role="button">Dashboard</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
           </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="domain_search.html"
-                >Domain search</a
-              >
+              <a class="nav-link active" href="domain_search.html">Domain search</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pwned_websites.html"
-                >Who's been pwned</a
-              >
+              <a class="nav-link" href="pwned_websites.html">Who's been pwned</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="passwords.html">Passwords</a>
@@ -94,9 +73,7 @@
                   <a class="dropdown-item" href="toc.html">Terms of Use</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="privacy.html"
-                    >Privacy Policy</a
-                  >
+                  <a class="dropdown-item" href="privacy.html">Privacy Policy</a>
                 </li>
               </ul>
             </li>
@@ -105,13 +82,7 @@
             </li>
           </ul>
         </div>
-        <a
-          href="dashboard.html"
-          class="btn btn-secondary d-none d-lg-inline-flex"
-          role="button"
-        >
-          Dashboard
-        </a>
+        <a href="dashboard.html" class="btn btn-secondary d-none d-lg-inline-flex" role="button"> Dashboard </a>
       </div>
     </nav>
 
@@ -121,12 +92,8 @@
         <!-- Header Section -->
         <div class="row justify-content-center mb-5 mb-sm-3 mb-md-4 mb-lg-5">
           <div class="col-lg-8 text-center">
-            <h1 class="display-4 fs-2 fs-md-3 fs-lg-4 mb-4 mb-sm-3">
-              Domain Search
-            </h1>
-            <p class="lead fs-6 fs-md-5 text-grey-400 mb-0">
-              Search for pwned accounts across your verified domains
-            </p>
+            <h1 class="display-4 fs-2 fs-md-3 fs-lg-4 mb-4 mb-sm-3">Domain Search</h1>
+            <p class="lead fs-6 fs-md-5 text-grey-400 mb-0">Search for pwned accounts across your verified domains</p>
           </div>
         </div>
 
@@ -143,14 +110,12 @@
                       <div class="tooltip-content">
                         <h6>Domain verification</h6>
                         <p>
-                          To add a new domain, you need to verify that you
-                          control it first. Begin by entering the domain name
-                          then you'll be given verification options.
+                          To add a new domain, you need to verify that you control it first. Begin by entering the
+                          domain name then you'll be given verification options.
                         </p>
                         <p>
-                          If you cannot verify that you control the domain, you
-                          will not be able to search for breached email
-                          addresses on it.
+                          If you cannot verify that you control the domain, you will not be able to search for breached
+                          email addresses on it.
                         </p>
                       </div>
                     </div>
@@ -158,9 +123,7 @@
 
                   <!-- Domain Input Form -->
                   <div class="form-field mb-4 mb-sm-3">
-                    <label class="input-label h5 mb-3 mb-sm-2"
-                      >Add a new domain</label
-                    >
+                    <label class="input-label h5 mb-3 mb-sm-2">Add a new domain</label>
                     <div class="input-group flex-column flex-sm-row">
                       <input
                         type="text"
@@ -218,17 +181,13 @@
                           <div class="tooltip-content">
                             <h6>Addresses</h6>
                             <p>
-                              The number of breached addresses on the domain the
-                              last time it was successfully indexed, based on
-                              breaches that are not classified as spam lists.
-                              The domain may be larger when next indexed if more
-                              breaches have impacted it since.
+                              The number of breached addresses on the domain the last time it was successfully indexed,
+                              based on breaches that are not classified as spam lists. The domain may be larger when
+                              next indexed if more breaches have impacted it since.
                             </p>
                             <p>
-                              This number does not include addresses found in
-                              pastes. A blank value will be shown if the domain
-                              hasn't yet been indexed. Enable debug mode to see
-                              more.
+                              This number does not include addresses found in pastes. A blank value will be shown if the
+                              domain hasn't yet been indexed. Enable debug mode to see more.
                             </p>
                           </div>
                         </span>
@@ -240,12 +199,9 @@
                           <div class="tooltip-content">
                             <h6>Stealer Logs</h6>
                             <p>
-                              The stealer log count is the number of email
-                              addresses captured by infostealers when the victim
-                              has been entering their credentials into a website
-                              on this domain. These addresses are searchable by
-                              the API to get all stealer log email addresses for
-                              a website domain.
+                              The stealer log count is the number of email addresses captured by infostealers when the
+                              victim has been entering their credentials into a website on this domain. These addresses
+                              are searchable by the API to get all stealer log email addresses for a website domain.
                             </p>
                           </div>
                         </span>
@@ -262,10 +218,7 @@
                         <button class="btn btn-xs btn-outline-primary me-1">
                           <i class="bi bi-search"></i>
                         </button>
-                        <button
-                          class="btn btn-xs btn-outline-danger remove-domain"
-                          data-domain="example.com"
-                        >
+                        <button class="btn btn-xs btn-outline-danger remove-domain" data-domain="example.com">
                           <i class="bi bi-trash"></i>
                         </button>
                       </td>
@@ -278,10 +231,7 @@
                         <button class="btn btn-xs btn-outline-primary me-1">
                           <i class="bi bi-search"></i>
                         </button>
-                        <button
-                          class="btn btn-xs btn-outline-danger remove-domain"
-                          data-domain="mydomain.org"
-                        >
+                        <button class="btn btn-xs btn-outline-danger remove-domain" data-domain="mydomain.org">
                           <i class="bi bi-trash"></i>
                         </button>
                       </td>
@@ -305,26 +255,15 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="verificationModalLabel">
-                Verify Domain Ownership
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <h5 class="modal-title" id="verificationModalLabel">Verify Domain Ownership</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div class="row">
                 <!-- Left Column - Domain Input and Verification Methods -->
-                <div
-                  class="col-lg-5 col-md-12 border-end pe-4 pe-sm-3 border-md-0 border-lg-end pb-md-4 pb-lg-0"
-                >
+                <div class="col-lg-5 col-md-12 border-end pe-4 pe-sm-3 border-md-0 border-lg-end pb-md-4 pb-lg-0">
                   <div class="mb-4 mb-sm-3">
-                    <label class="form-label fw-bold mb-3 mb-sm-2"
-                      >1. Enter Domain</label
-                    >
+                    <label class="form-label fw-bold mb-3 mb-sm-2">1. Enter Domain</label>
                     <input
                       type="text"
                       class="form-control"
@@ -332,79 +271,55 @@
                       placeholder="example.com"
                       autocapitalize="off"
                     />
-                    <div class="invalid-feedback" id="domainInputError">
-                      Please provide a domain to verify
-                    </div>
+                    <div class="invalid-feedback" id="domainInputError">Please provide a domain to verify</div>
                   </div>
 
                   <div class="mt-4 mt-sm-3">
-                    <label class="form-label fw-bold mb-3 mb-sm-2"
-                      >2. Select verification method</label
-                    >
+                    <label class="form-label fw-bold mb-3 mb-sm-2">2. Select verification method</label>
                     <div class="verification-methods">
-                      <div
-                        class="verification-method-option active p-3 p-sm-2"
-                        data-method="dns"
-                      >
+                      <div class="verification-method-option active p-3 p-sm-2" data-method="dns">
                         <div class="method-icon">
                           <i class="bi bi-globe"></i>
                         </div>
                         <div class="method-content">
                           <h6 class="mb-0 fs-6">DNS TXT Record</h6>
-                          <p class="mb-0 text-grey-400 fs-7">
-                            Add a TXT record to your domain's DNS
-                          </p>
+                          <p class="mb-0 text-grey-400 fs-7">Add a TXT record to your domain's DNS</p>
                         </div>
                         <div class="method-indicator">
                           <i class="bi bi-check-circle-fill"></i>
                         </div>
                       </div>
-                      <div
-                        class="verification-method-option p-3 p-sm-2"
-                        data-method="file"
-                      >
+                      <div class="verification-method-option p-3 p-sm-2" data-method="file">
                         <div class="method-icon">
                           <i class="bi bi-file-earmark"></i>
                         </div>
                         <div class="method-content">
                           <h6 class="mb-0 fs-6">File Upload</h6>
-                          <p class="mb-0 text-grey-400 fs-7">
-                            Upload a verification file to your website
-                          </p>
+                          <p class="mb-0 text-grey-400 fs-7">Upload a verification file to your website</p>
                         </div>
                         <div class="method-indicator">
                           <i class="bi bi-check-circle-fill"></i>
                         </div>
                       </div>
-                      <div
-                        class="verification-method-option p-3 p-sm-2"
-                        data-method="meta"
-                      >
+                      <div class="verification-method-option p-3 p-sm-2" data-method="meta">
                         <div class="method-icon">
                           <i class="bi bi-code-slash"></i>
                         </div>
                         <div class="method-content">
                           <h6 class="mb-0 fs-6">Meta Tag</h6>
-                          <p class="mb-0 text-grey-400 fs-7">
-                            Add a meta tag to your website's homepage
-                          </p>
+                          <p class="mb-0 text-grey-400 fs-7">Add a meta tag to your website's homepage</p>
                         </div>
                         <div class="method-indicator">
                           <i class="bi bi-check-circle-fill"></i>
                         </div>
                       </div>
-                      <div
-                        class="verification-method-option p-3 p-sm-2"
-                        data-method="email"
-                      >
+                      <div class="verification-method-option p-3 p-sm-2" data-method="email">
                         <div class="method-icon">
                           <i class="bi bi-envelope"></i>
                         </div>
                         <div class="method-content">
                           <h6 class="mb-0 fs-6">Verify by email</h6>
-                          <p class="mb-0 text-grey-400 fs-7">
-                            Send a verification email to your domain
-                          </p>
+                          <p class="mb-0 text-grey-400 fs-7">Send a verification email to your domain</p>
                         </div>
                         <div class="method-indicator">
                           <i class="bi bi-check-circle-fill"></i>
@@ -420,43 +335,31 @@
                     <!-- DNS TXT Record Instructions (default) -->
                     <div id="dnsInstructions">
                       <h5 class="mb-3">DNS TXT Record Verification</h5>
-                      <p>
-                        Add the following TXT record to your domain's DNS
-                        settings:
-                      </p>
+                      <p>Add the following TXT record to your domain's DNS settings:</p>
                       <div class="card card-glass mb-3">
                         <div class="card-body">
                           <code>hibp-verify=abc123def456</code>
                         </div>
                       </div>
                       <p>
-                        DNS changes may take up to 24 hours to propagate. Once
-                        you've added the record, click "Verify Now".
+                        DNS changes may take up to 24 hours to propagate. Once you've added the record, click "Verify
+                        Now".
                       </p>
                     </div>
 
                     <!-- File Upload Instructions (hidden by default) -->
                     <div id="fileInstructions" class="d-none">
                       <h5 class="mb-3">File Upload Verification</h5>
-                      <p>
-                        Upload the following file to your website's root
-                        directory:
-                      </p>
+                      <p>Upload the following file to your website's root directory:</p>
                       <div class="card card-glass mb-3">
                         <div class="card-body">
-                          <p class="mb-0">
-                            Filename: <code>hibp-verification.txt</code>
-                          </p>
-                          <p class="mb-0">
-                            Content: <code>hibp-verify=abc123def456</code>
-                          </p>
+                          <p class="mb-0">Filename: <code>hibp-verification.txt</code></p>
+                          <p class="mb-0">Content: <code>hibp-verify=abc123def456</code></p>
                         </div>
                       </div>
                       <p>
                         The file should be accessible at:
-                        <code
-                          >https://yourdomain.com/hibp-verification.txt</code
-                        >
+                        <code>https://yourdomain.com/hibp-verification.txt</code>
                       </p>
                     </div>
 
@@ -465,15 +368,11 @@
                       <h5 class="mb-3">Meta Tag Verification</h5>
                       <p>
                         Add the following meta tag to the
-                        <code>&lt;head&gt;</code> section of your website's
-                        homepage:
+                        <code>&lt;head&gt;</code> section of your website's homepage:
                       </p>
                       <div class="card card-glass mb-3">
                         <div class="card-body">
-                          <code
-                            >&lt;meta name="hibp-verification"
-                            content="abc123def456"&gt;</code
-                          >
+                          <code>&lt;meta name="hibp-verification" content="abc123def456"&gt;</code>
                         </div>
                       </div>
                       <p>Once you've added the meta tag, click "Verify Now".</p>
@@ -481,10 +380,7 @@
                     <!-- File Upload Instructions (hidden by default) -->
                     <div id="emailInstructions" class="d-none">
                       <h5 class="mb-3">Email Verification</h5>
-                      <p>
-                        Select an email address to receive the verification
-                        link:
-                      </p>
+                      <p>Select an email address to receive the verification link:</p>
                       <div class="form-check-list mb-3">
                         <div class="form-check mb-2">
                           <input
@@ -495,9 +391,7 @@
                             value="admin@yourdomain.com"
                             checked
                           />
-                          <label class="form-check-label" for="emailAdmin">
-                            admin@yourdomain.com
-                          </label>
+                          <label class="form-check-label" for="emailAdmin"> admin@yourdomain.com </label>
                         </div>
                         <div class="form-check mb-2">
                           <input
@@ -507,9 +401,7 @@
                             id="emailWebmaster"
                             value="webmaster@yourdomain.com"
                           />
-                          <label class="form-check-label" for="emailWebmaster">
-                            webmaster@yourdomain.com
-                          </label>
+                          <label class="form-check-label" for="emailWebmaster"> webmaster@yourdomain.com </label>
                         </div>
                         <div class="form-check mb-2">
                           <input
@@ -519,9 +411,7 @@
                             id="emailInfo"
                             value="info@yourdomain.com"
                           />
-                          <label class="form-check-label" for="emailInfo">
-                            info@yourdomain.com
-                          </label>
+                          <label class="form-check-label" for="emailInfo"> info@yourdomain.com </label>
                         </div>
                         <div class="form-check mb-2">
                           <input
@@ -531,9 +421,7 @@
                             id="emailHostmaster"
                             value="hostmaster@yourdomain.com"
                           />
-                          <label class="form-check-label" for="emailHostmaster">
-                            hostmaster@yourdomain.com
-                          </label>
+                          <label class="form-check-label" for="emailHostmaster"> hostmaster@yourdomain.com </label>
                         </div>
                         <div class="form-check mb-2">
                           <input
@@ -543,23 +431,20 @@
                             id="emailSecurity"
                             value="security@yourdomain.com"
                           />
-                          <label class="form-check-label" for="emailSecurity">
-                            security@yourdomain.com
-                          </label>
+                          <label class="form-check-label" for="emailSecurity"> security@yourdomain.com </label>
                         </div>
                       </div>
                       <div class="card card-glass mb-3">
                         <div class="card-body">
                           <p class="mb-0">
-                            A verification email will be sent containing a
-                            unique link that you must click to verify ownership
-                            of your domain.
+                            A verification email will be sent containing a unique link that you must click to verify
+                            ownership of your domain.
                           </p>
                         </div>
                       </div>
                       <p class="text-grey-400 fs-7">
-                        The verification email will expire after 24 hours. Make
-                        sure to check your spam folder if you don't receive it.
+                        The verification email will expire after 24 hours. Make sure to check your spam folder if you
+                        don't receive it.
                       </p>
                     </div>
 
@@ -610,16 +495,8 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Cancel
-              </button>
-              <button type="button" class="btn btn-primary" id="verifyButton">
-                Verify Now
-              </button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" id="verifyButton">Verify Now</button>
             </div>
           </div>
         </div>
@@ -636,15 +513,8 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="subscriptionModalLabel">
-                Your Subscription
-              </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <h5 class="modal-title" id="subscriptionModalLabel">Your Subscription</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div class="d-flex align-items-center mb-4">
@@ -684,56 +554,31 @@
                   </div>
                   <div class="mt-4">
                     <p class="mb-1">Need more features or higher limits?</p>
-                    <a href="pricing.html" class="text-white fw-bold">
-                      Change subscription
-                    </a>
+                    <a href="pricing.html" class="text-white fw-bold"> Change subscription </a>
                   </div>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-sm btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
+              <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Domain Removal Prompt -->
-      <div
-        class="modal modal-dark fade"
-        id="domainRemovalPrompt"
-        tabindex="-1"
-        aria-hidden="true"
-      >
+      <div class="modal modal-dark fade" id="domainRemovalPrompt" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-sm">
           <div class="modal-content">
             <div class="modal-body text-center p-4">
               <h5 class="mb-3">Remove the domain?</h5>
               <p class="mb-4">
-                Removing this domain will delete it from your account. You will
-                no longer be able to search for breached email addresses on this
-                domain unless you verify it again.
+                Removing this domain will delete it from your account. You will no longer be able to search for breached
+                email addresses on this domain unless you verify it again.
               </p>
               <div class="d-flex justify-content-center gap-3">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  id="confirmDomainRemoval"
-                  data-bs-dismiss="modal"
-                >
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDomainRemoval" data-bs-dismiss="modal">
                   Remove
                 </button>
               </div>
@@ -746,23 +591,14 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark-subtle-custom">
       <div class="container">
-        <div
-          class="footer-wrapper rounded-3 border border-primary-custom bg-dark-subtle-custom"
-        >
+        <div class="footer-wrapper rounded-3 border border-primary-custom bg-dark-subtle-custom">
           <div class="row g-0">
             <!-- Logo and Tagline -->
             <div class="col-lg-4 p-4 border-end border-primary-custom">
               <div class="footer-logo mb-3">
-                <a
-                  href="../index.html"
-                  class="text-white text-decoration-none fw-bold fs-4"
-                >
-                  Have I Been Pwned
-                </a>
+                <a href="../index.html" class="text-white text-decoration-none fw-bold fs-4"> Have I Been Pwned </a>
               </div>
-              <p class="text-muted mb-4">
-                Check if your email has been compromised
-              </p>
+              <p class="text-muted mb-4">Check if your email has been compromised</p>
               <a href="../index.html" class="btn btn-outline-primary">
                 <i class="bi bi-search me-2"></i>Check my email
               </a>
@@ -775,47 +611,25 @@
                   <h5 class="fw-bold mb-3">Services</h5>
                   <ul class="list-unstyled mb-0">
                     <li class="mb-2">
-                      <a
-                        href="../index.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Email Search</a
-                      >
+                      <a href="../index.html" class="text-decoration-none text-muted hover-white">Email Search</a>
                     </li>
 
                     <li class="mb-2">
-                      <a
-                        href="pwned_websites.html"
-                        class="text-decoration-none text-muted hover-white"
+                      <a href="pwned_websites.html" class="text-decoration-none text-muted hover-white"
                         >Who's been pwned</a
                       >
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="passwords.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Passwords</a
-                      >
+                      <a href="passwords.html" class="text-decoration-none text-muted hover-white">Passwords</a>
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="#"
-                        class="text-decoration-none text-muted hover-white"
-                        >API</a
-                      >
+                      <a href="#" class="text-decoration-none text-muted hover-white">API</a>
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="pricing.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Pricing</a
-                      >
+                      <a href="pricing.html" class="text-decoration-none text-muted hover-white">Pricing</a>
                     </li>
                     <li>
-                      <a
-                        href="dashboard.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Dashboard</a
-                      >
+                      <a href="dashboard.html" class="text-decoration-none text-muted hover-white">Dashboard</a>
                     </li>
                   </ul>
                 </div>
@@ -823,39 +637,19 @@
                   <h5 class="fw-bold mb-3">Information</h5>
                   <ul class="list-unstyled mb-0">
                     <li class="mb-2">
-                      <a
-                        href="about.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >About Us</a
-                      >
+                      <a href="about.html" class="text-decoration-none text-muted hover-white">About Us</a>
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="faq.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >FAQ</a
-                      >
+                      <a href="faq.html" class="text-decoration-none text-muted hover-white">FAQ</a>
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="privacy.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Privacy Policy</a
-                      >
+                      <a href="privacy.html" class="text-decoration-none text-muted hover-white">Privacy Policy</a>
                     </li>
                     <li class="mb-2">
-                      <a
-                        href="toc.html"
-                        class="text-decoration-none text-muted hover-white"
-                        >Terms of Use</a
-                      >
+                      <a href="toc.html" class="text-decoration-none text-muted hover-white">Terms of Use</a>
                     </li>
                     <li>
-                      <a
-                        href="#"
-                        class="text-decoration-none text-muted hover-white"
-                        >Donate</a
-                      >
+                      <a href="#" class="text-decoration-none text-muted hover-white">Donate</a>
                     </li>
                   </ul>
                 </div>
@@ -866,18 +660,10 @@
             <div class="col-lg-3 p-4">
               <h5 class="fw-bold mb-3">Connect With Us</h5>
               <div class="d-flex gap-3">
-                <a
-                  href="https://x.com/haveibeenpwned"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://x.com/haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-twitter-x"></i>
                 </a>
-                <a
-                  href="https://facebook.com/haveibeenpwned"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://facebook.com/haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-facebook"></i>
                 </a>
                 <a
@@ -887,11 +673,7 @@
                 >
                   <i class="bi bi-linkedin"></i>
                 </a>
-                <a
-                  href="https://github.com/HaveIBeenPwned"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://github.com/HaveIBeenPwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-github"></i>
                 </a>
                 <a
@@ -899,23 +681,14 @@
                   target="_blank"
                   class="text-muted hover-white fs-5"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="10 10 568 501"
-                    width="20"
-                    height="20"
-                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 568 501" width="20" height="20">
                     <path
                       fill="currentColor"
                       d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"
                     />
                   </svg>
                 </a>
-                <a
-                  href="https://infosec.exchange/@haveibeenpwned"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://infosec.exchange/@haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-mastodon"></i>
                 </a>
               </div>
@@ -925,9 +698,7 @@
           <!-- Copyright -->
           <div class="border-top border-primary-custom">
             <div class="p-3 text-center">
-              <p class="text-muted mb-0">
-                &copy; 2025 Have I Been Pwned. All rights reserved.
-              </p>
+              <p class="text-muted mb-0">&copy; 2025 Have I Been Pwned. All rights reserved.</p>
             </div>
           </div>
         </div>
