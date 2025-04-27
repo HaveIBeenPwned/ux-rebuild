@@ -148,6 +148,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize domain management
   setupDomainManagement();
+
+  // Setup file upload functionality
+  setupFileUpload();
 });
 
 function setUserInfo() {
@@ -403,6 +406,9 @@ function setupDomainManagement() {
     }
   }
 
+  // Set up domain search functionality
+  setupDomainSearch();
+
   // Set up verification method selection
   setupVerificationMethodSelection();
 
@@ -415,6 +421,299 @@ function setupDomainManagement() {
   // Add global modal cleanup handler
   // TODO: Need to investigate why this is needed
   setupModalCleanup();
+}
+
+// Handle domain search functionality with slide animation
+function setupDomainSearch() {
+  const searchButtons = document.querySelectorAll('.domain-search-btn');
+  const domainListView = document.getElementById('domainListView');
+  const domainSearchView = document.getElementById('domainSearchView');
+  const searchDomainTitle = document.getElementById('searchDomainTitle');
+  const domainSearchBackBtn = document.getElementById('domainSearchBackBtn');
+  const domainSearchResults = document.getElementById('domainSearchResults');
+  const searchFilter = document.getElementById('domainSearchFilter');
+  const searchSort = document.getElementById('domainSearchSort');
+  const domainSearchExcelBtn = document.getElementById('domainSearchExcelBtn');
+  const domainSearchJsonBtn = document.getElementById('domainSearchJsonBtn');
+  
+  // Initialize tooltips for export buttons
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+  
+  if (!searchButtons.length || !domainListView || !domainSearchView) {
+    return; // Required elements not found
+  }
+  
+  // Add event listeners to search buttons
+  searchButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const domain = this.getAttribute('data-domain');
+      showDomainSearchResults(domain);
+    });
+  });
+  
+  // Back button functionality
+  if (domainSearchBackBtn) {
+    domainSearchBackBtn.addEventListener('click', hideDomainSearchResults);
+  }
+  
+  // Excel button functionality
+  if (domainSearchExcelBtn) {
+    domainSearchExcelBtn.addEventListener('click', function() {
+      // Get current domain
+      const domain = searchDomainTitle ? searchDomainTitle.textContent : '';
+      
+      // Show the file upload modal with Excel format selected
+      showFileUploadModal('excel', domain);
+    });
+  }
+  
+  // JSON button functionality
+  if (domainSearchJsonBtn) {
+    domainSearchJsonBtn.addEventListener('click', function() {
+      // Get current domain
+      const domain = searchDomainTitle ? searchDomainTitle.textContent : '';
+      
+      // Show the file upload modal with JSON format selected
+      showFileUploadModal('json', domain);
+    });
+  }
+  
+  // Filter functionality
+  if (searchFilter) {
+    searchFilter.addEventListener('input', function() {
+      filterDomainSearchResults(this.value);
+    });
+  }
+  
+  // Sort functionality
+  if (searchSort) {
+    searchSort.addEventListener('change', function() {
+      sortDomainSearchResults(this.value);
+    });
+  }
+  
+  // Function to show domain search results with animation
+  function showDomainSearchResults(domain) {
+    // Update the domain title
+    if (searchDomainTitle) {
+      searchDomainTitle.textContent = domain;
+    }
+    
+    // Clear previous results
+    if (domainSearchResults) {
+      domainSearchResults.innerHTML = '';
+    }
+    
+    // Load mock data for demo
+    loadMockDomainSearchResults(domain);
+    
+    // First fade out domain list view
+    domainListView.style.opacity = '0';
+    
+    // After short delay, hide domain list and show search view
+    setTimeout(() => {
+      // Hide domain list and show search view
+      domainListView.classList.add('slide-left');
+      domainSearchView.classList.add('slide-left');
+      
+      // Fade in search view
+      setTimeout(() => {
+        domainSearchView.style.opacity = '1';
+      }, 50);
+    }, 300);
+  }
+  
+  // Function to hide domain search results with animation
+  function hideDomainSearchResults() {
+    // First fade out search view
+    domainSearchView.style.opacity = '0';
+    
+    // After short delay, hide search view and show domain list
+    setTimeout(() => {
+      // Hide search view and show domain list
+      domainListView.classList.remove('slide-left');
+      domainSearchView.classList.remove('slide-left');
+      
+      // Fade in domain list
+      setTimeout(() => {
+        domainListView.style.opacity = '1';
+      }, 50);
+    }, 300);
+  }
+  
+  // Global variables to store the full dataset and current view state
+  let allEmailData = [];
+  let filteredEmailData = [];
+  let currentPage = 1;
+  let itemsPerPage = 10;
+  let currentFilter = '';
+  let currentSortBy = 'recent';
+  
+  // Function to load mock search results
+  function loadMockDomainSearchResults(domain) {
+    // Generate more mock email addresses for the domain (3 pages worth)
+    allEmailData = [
+      // Page 1
+      { email: `admin@${domain}`, breaches: 3, pwnedSites: 'LinkedIn, Adobe, Dropbox' },
+      { email: `info@${domain}`, breaches: 2, pwnedSites: 'Yahoo, Canva' },
+      { email: `sales@${domain}`, breaches: 5, pwnedSites: 'LinkedIn, Adobe, Dropbox, MyFitnessPal, Zynga' },
+      { email: `support@${domain}`, breaches: 1, pwnedSites: 'LinkedIn' },
+      { email: `marketing@${domain}`, breaches: 4, pwnedSites: 'Adobe, Dropbox, Canva, Tumblr' },
+      { email: `contact@${domain}`, breaches: 2, pwnedSites: 'Yahoo, Marriott' },
+      { email: `help@${domain}`, breaches: 3, pwnedSites: 'LinkedIn, Snapchat, Quora' },
+      { email: `service@${domain}`, breaches: 6, pwnedSites: 'LinkedIn, Adobe, Dropbox, Snapchat, eBay, Zynga' },
+      { email: `webmaster@${domain}`, breaches: 4, pwnedSites: 'Adobe, Dropbox, Canva, eBay' },
+      { email: `jobs@${domain}`, breaches: 1, pwnedSites: 'Evernote' },
+      // Page 2
+      { email: `ceo@${domain}`, breaches: 7, pwnedSites: 'LinkedIn, Adobe, Dropbox, Yahoo, Canva, Marriott, Quora' },
+      { email: `cto@${domain}`, breaches: 4, pwnedSites: 'LinkedIn, Snapchat, eBay, Tumblr' },
+      { email: `cfo@${domain}`, breaches: 3, pwnedSites: 'Adobe, Canva, MyFitnessPal' },
+      { email: `hr@${domain}`, breaches: 5, pwnedSites: 'LinkedIn, Adobe, Snapchat, Canva, Quora' },
+      { email: `legal@${domain}`, breaches: 2, pwnedSites: 'Dropbox, Evernote' },
+      { email: `security@${domain}`, breaches: 8, pwnedSites: 'LinkedIn, Adobe, Dropbox, Yahoo, Canva, Marriott, Quora, Snapchat' },
+      { email: `billing@${domain}`, breaches: 3, pwnedSites: 'Adobe, Dropbox, eBay' },
+      { email: `feedback@${domain}`, breaches: 2, pwnedSites: 'LinkedIn, Evernote' },
+      { email: `press@${domain}`, breaches: 4, pwnedSites: 'Adobe, Tumblr, Yahoo, Zynga' },
+      { email: `partners@${domain}`, breaches: 3, pwnedSites: 'LinkedIn, Canva, MyFitnessPal' },
+      // Page 3
+      { email: `accounts@${domain}`, breaches: 5, pwnedSites: 'LinkedIn, Adobe, Dropbox, Marriott, Zynga' },
+      { email: `newsletter@${domain}`, breaches: 2, pwnedSites: 'Yahoo, Tumblr' },
+      { email: `developers@${domain}`, breaches: 6, pwnedSites: 'LinkedIn, Adobe, Dropbox, GitHub, Canva, MyFitnessPal' },
+      { email: `media@${domain}`, breaches: 3, pwnedSites: 'Snapchat, Adobe, Canva' },
+      { email: `editor@${domain}`, breaches: 4, pwnedSites: 'Adobe, Dropbox, LinkedIn, Quora' },
+      { email: `subscriptions@${domain}`, breaches: 2, pwnedSites: 'Adobe, Canva' },
+      { email: `abuse@${domain}`, breaches: 1, pwnedSites: 'Dropbox' },
+      { email: `no-reply@${domain}`, breaches: 3, pwnedSites: 'LinkedIn, Tumblr, Zynga' },
+      { email: `payments@${domain}`, breaches: 5, pwnedSites: 'Adobe, LinkedIn, Dropbox, Marriott, eBay' },
+      { email: `privacy@${domain}`, breaches: 4, pwnedSites: 'Adobe, LinkedIn, Yahoo, Evernote' }
+    ];
+    
+    // Initialize with all data
+    filteredEmailData = [...allEmailData];
+    
+    // Apply initial sort
+    applySorting(currentSortBy);
+    
+    // Display the first page
+    displayPage(1);
+  }
+  
+  // Function to display a specific page
+  function displayPage(page) {
+    // Update current page
+    currentPage = page;
+    
+    // Clear previous results
+    if (domainSearchResults) {
+      domainSearchResults.innerHTML = '';
+    }
+    
+    // Calculate start and end indices
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, filteredEmailData.length);
+    
+    // Display the data for this page
+    for (let i = startIndex; i < endIndex; i++) {
+      const item = filteredEmailData[i];
+      const row = document.createElement('tr');
+      row.className = 'domain-search-result-item';
+      row.innerHTML = `
+        <td>${item.email}</td>
+        <td>${item.breaches}</td>
+        <td>${item.pwnedSites}</td>
+      `;
+      domainSearchResults.appendChild(row);
+    }
+    
+    // Update pagination
+    updatePagination(page);
+  }
+  
+  // Function to update pagination controls
+  function updatePagination(currentPage) {
+    const pagination = document.getElementById('domainSearchPagination');
+    if (pagination) {
+      const totalPages = Math.ceil(filteredEmailData.length / itemsPerPage);
+      
+      let paginationHTML = `
+        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
+          <a class="page-link" href="#" data-page="${currentPage - 1}" tabindex="-1" ${currentPage === 1 ? 'aria-disabled="true"' : ''}>Previous</a>
+        </li>
+      `;
+      
+      for (let i = 1; i <= totalPages; i++) {
+        paginationHTML += `
+          <li class="page-item ${currentPage === i ? 'active' : ''}">
+            <a class="page-link" href="#" data-page="${i}">${i}</a>
+          </li>
+        `;
+      }
+      
+      paginationHTML += `
+        <li class="page-item ${currentPage === totalPages || totalPages === 0 ? 'disabled' : ''}">
+          <a class="page-link" href="#" data-page="${currentPage + 1}" ${currentPage === totalPages || totalPages === 0 ? 'aria-disabled="true"' : ''}>Next</a>
+        </li>
+      `;
+      
+      pagination.innerHTML = paginationHTML;
+      
+      // Add event listeners to pagination controls
+      const pageLinks = pagination.querySelectorAll('.page-link');
+      pageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          if (this.parentElement.classList.contains('disabled')) {
+            return;
+          }
+          
+          const page = parseInt(this.getAttribute('data-page'), 10);
+          displayPage(page);
+        });
+      });
+    }
+  }
+  
+  // Function to filter search results across all pages
+  function filterDomainSearchResults(query) {
+    currentFilter = query.toLowerCase();
+    
+    // Filter the full dataset
+    if (currentFilter === '') {
+      filteredEmailData = [...allEmailData]; // Reset to all data if filter is empty
+    } else {
+      filteredEmailData = allEmailData.filter(item => {
+        const emailMatch = item.email.toLowerCase().includes(currentFilter);
+        const sitesMatch = item.pwnedSites.toLowerCase().includes(currentFilter);
+        return emailMatch || sitesMatch;
+      });
+    }
+    
+    // Re-apply current sort
+    applySorting(currentSortBy);
+    
+    // Show first page of results
+    displayPage(1);
+  }
+  
+  // Function to sort search results across all pages
+  function sortDomainSearchResults(sortBy) {
+    currentSortBy = sortBy;
+    applySorting(sortBy);
+    displayPage(currentPage);
+  }
+  
+  // Helper function to apply sorting
+  function applySorting(sortBy) {
+    if (sortBy === 'alphabetical') {
+      filteredEmailData.sort((a, b) => a.email.localeCompare(b.email));
+    } else if (sortBy === 'breaches') {
+      filteredEmailData.sort((a, b) => b.breaches - a.breaches);
+    } else { // recent - now sorting by breach count
+      filteredEmailData.sort((a, b) => b.breaches - a.breaches);
+    }
+  }
 }
 
 function setupVerificationMethodSelection() {
@@ -596,4 +895,109 @@ function setupModalCleanup() {
       document.body.style.paddingRight = "";
     }
   });
+}
+
+/**
+ * Setup file upload functionality for domain data
+ */
+function setupFileUpload() {
+  // Event listener for file input change
+  const fileInput = document.getElementById('fileUploadInput');
+  if (fileInput) {
+    fileInput.addEventListener('change', function() {
+      // Enable the upload button if a file is selected
+      const uploadButton = document.getElementById('uploadFileButton');
+      if (uploadButton) {
+        uploadButton.disabled = !this.files.length;
+        
+        // Update the file name display if we have one
+        const fileNameDisplay = document.getElementById('selectedFileName');
+        if (fileNameDisplay && this.files.length) {
+          fileNameDisplay.textContent = this.files[0].name;
+          fileNameDisplay.parentElement.classList.remove('d-none');
+        } else if (fileNameDisplay) {
+          fileNameDisplay.parentElement.classList.add('d-none');
+        }
+      }
+    });
+  }
+  
+  // Event listener for upload button click
+  const uploadButton = document.getElementById('uploadFileButton');
+  if (uploadButton) {
+    uploadButton.addEventListener('click', function() {
+      // Get the file input
+      const fileInput = document.getElementById('fileUploadInput');
+      if (!fileInput || !fileInput.files.length) {
+        return;
+      }
+      
+      // In a real app, you would process the file here
+      // For this demo, we'll just show a success message
+      
+      // Get the file format and domain from the modal
+      const format = document.getElementById('fileUploadModal').getAttribute('data-format');
+      const domain = document.getElementById('fileUploadModal').getAttribute('data-domain');
+      
+      // Close the modal
+      const modal = bootstrap.Modal.getInstance(document.getElementById('fileUploadModal'));
+      if (modal) {
+        modal.hide();
+      }
+      
+      // Reset the file input
+      fileInput.value = '';
+      
+      // Show success message
+      showReturnNotification(
+        'success',
+        `File "${fileInput.files[0].name}" uploaded successfully for domain ${domain} in ${format.toUpperCase()} format.`
+      );
+    });
+  }
+}
+
+/**
+ * Show the file upload modal
+ * @param {string} format - The file format ('excel' or 'json')
+ * @param {string} domain - The domain name
+ */
+function showFileUploadModal(format, domain) {
+  // Get the modal
+  const modal = document.getElementById('fileUploadModal');
+  if (!modal) {
+    return;
+  }
+  
+  // Set the modal title based on format
+  const modalTitle = modal.querySelector('.modal-title');
+  if (modalTitle) {
+    modalTitle.textContent = `Upload ${format.toUpperCase()} File for ${domain}`;
+  }
+  
+  // Store the format and domain on the modal element for later use
+  modal.setAttribute('data-format', format);
+  modal.setAttribute('data-domain', domain);
+  
+  // Clear any previously selected file
+  const fileInput = document.getElementById('fileUploadInput');
+  if (fileInput) {
+    fileInput.value = '';
+  }
+  
+  // Hide the file name display
+  const fileNameDisplay = document.getElementById('selectedFileName');
+  if (fileNameDisplay) {
+    fileNameDisplay.parentElement.classList.add('d-none');
+  }
+  
+  // Disable the upload button
+  const uploadButton = document.getElementById('uploadFileButton');
+  if (uploadButton) {
+    uploadButton.disabled = true;
+  }
+  
+  // Show the modal
+  const bsModal = new bootstrap.Modal(modal);
+  bsModal.show();
 }

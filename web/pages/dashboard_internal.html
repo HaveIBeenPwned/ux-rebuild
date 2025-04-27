@@ -744,117 +744,193 @@
                 <div class="tab-pane fade" id="domains">
                   <div class="card card-glow mb-4">
                     <div class="card-body p-4">
-                      <h3 class="fw-bold mb-4">Your Domains</h3>
-                      <p class="mb-4">Monitor your owned domains for email addresses that appear in data breaches.</p>
+                      <div class="domains-container">
+                        <!-- Domain List View -->
+                        <div class="domain-view" id="domainListView">
+                          <h3 class="fw-bold mb-4">Your Domains</h3>
+                          <p class="mb-4">Monitor your owned domains for email addresses that appear in data breaches.</p>
 
-                      <!-- Empty state view (shown when no domains are added) -->
-                      <div id="noDomainView">
-                        <div class="alert alert-info mb-4" role="alert">
-                          <div class="d-flex">
-                            <i class="bi bi-info-circle-fill me-2 fs-5"></i>
-                            <div>You haven't added any domains yet. Add a domain to start monitoring.</div>
+                          <!-- Empty state view (shown when no domains are added) -->
+                          <div id="noDomainView">
+                            <div class="alert alert-info mb-4" role="alert">
+                              <div class="d-flex">
+                                <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+                                <div>You haven't added any domains yet. Add a domain to start monitoring.</div>
+                              </div>
+                            </div>
+
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verificationModal">
+                              <i class="bi bi-plus-circle me-2"></i>Add Domain
+                            </button>
+                          </div>
+
+                          <!-- Domains Table View (hidden by default) -->
+                          <div id="domainsTableView" class="d-none">
+                            <!-- Action Buttons -->
+                            <div class="d-flex justify-content-end mb-4 mb-sm-3">
+                              <button
+                                class="btn btn-sm fs-7 fs-md-6 btn-primary me-2"
+                                data-bs-toggle="modal"
+                                data-bs-target="#verificationModal"
+                              >
+                                <i class="bi bi-plus-circle me-1"></i> Verify New Domain
+                              </button>
+                            </div>
+
+                            <!-- Domains Table -->
+                            <div class="table-responsive">
+                              <table class="table table-hover mb-0">
+                                <thead>
+                                  <tr>
+                                    <th>Domain</th>
+                                    <th>
+                                      Addresses
+                                      <span class="tooltip-container d-inline-block ms-1">
+                                        <i class="bi bi-question"></i>
+                                        <div class="tooltip-content">
+                                          <h6>Addresses</h6>
+                                          <p>
+                                            The number of breached addresses on the domain the last time it was successfully
+                                            indexed, based on breaches that are not classified as spam lists. The domain may
+                                            be larger when next indexed if more breaches have impacted it since.
+                                          </p>
+                                          <p>
+                                            This number does not include addresses found in pastes. A blank value will be
+                                            shown if the domain hasn't yet been indexed. Enable debug mode to see more.
+                                          </p>
+                                        </div>
+                                      </span>
+                                    </th>                                    
+                                    <th class="text-end">Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="domainsTableBody">
+                                  <tr>
+                                    <td>example.com</td>
+                                    <td>1,245</td>                                    
+                                    <td class="table-actions">
+                                      <button
+                                        class="btn btn-xs btn-outline-danger remove-domain me-1"
+                                        data-domain="example.com"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#domainRemovalPrompt"
+                                      >
+                                        <i class="bi bi-trash"></i>
+                                      </button>
+                                      <button class="btn btn-xs btn-outline-primary domain-search-btn" data-domain="example.com">
+                                        <i class="bi bi-search"></i>
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>mydomain.org</td>
+                                    <td>87</td>                                    
+                                    <td class="table-actions">
+                                      <button
+                                        class="btn btn-xs btn-outline-danger remove-domain me-1"
+                                        data-domain="mydomain.org"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#domainRemovalPrompt"
+                                      >
+                                        <i class="bi bi-trash"></i>
+                                      </button>
+                                      <button class="btn btn-xs btn-outline-primary domain-search-btn" data-domain="mydomain.org">
+                                        <i class="bi bi-search"></i>
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
                           </div>
                         </div>
 
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verificationModal">
-                          <i class="bi bi-plus-circle me-2"></i>Add Domain
-                        </button>
-                      </div>
+                        <!-- Domain Search View (initially off-screen to the right) -->
+                        <div class="domain-search-view" id="domainSearchView">
+                          <!-- Back Button and Title -->
+                          <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="d-flex align-items-center domain-back-button" id="domainSearchBackBtn">
+                              <i class="bi bi-arrow-left me-2 fs-5"></i>
+                              <span>Back to Domains</span>
+                            </div>
+                            <div class="d-flex">
+                              <button 
+                                class="btn btn-sm btn-outline-primary me-2" 
+                                id="domainSearchExcelBtn"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Load in data in Excel format"
+                              >
+                                <i class="bi bi-file-earmark-spreadsheet me-2"></i>Import Excel
+                              </button>
+                              <button 
+                                class="btn btn-sm btn-outline-primary" 
+                                id="domainSearchJsonBtn"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Load in data in JSON format"
+                              >
+                                <i class="bi bi-file-earmark-code me-2"></i>Import JSON
+                              </button>
+                            </div>
+                          </div>
 
-                      <!-- Domains Table View (hidden by default) -->
-                      <div id="domainsTableView" class="d-none">
-                        <!-- Action Buttons -->
-                        <div class="d-flex justify-content-end mb-4 mb-sm-3">
-                          <button
-                            class="btn btn-sm fs-7 fs-md-6 btn-primary me-2"
-                            data-bs-toggle="modal"
-                            data-bs-target="#verificationModal"
-                          >
-                            <i class="bi bi-plus-circle me-1"></i> Verify New Domain
-                          </button>
-                        </div>
+                          <!-- Domain Title -->
+                          <h3 class="fw-bold mb-3" id="searchDomainTitle">example.com</h3>
+                          <p class="mb-4">Email addresses found in data breaches:</p>
 
-                        <!-- Domains Table -->
-                        <div class="table-responsive">
-                          <table class="table table-hover mb-0">
-                            <thead>
-                              <tr>
-                                <th>Domain</th>
-                                <th>
-                                  Addresses
-                                  <span class="tooltip-container d-inline-block ms-1">
-                                    <i class="bi bi-question"></i>
-                                    <div class="tooltip-content">
-                                      <h6>Addresses</h6>
-                                      <p>
-                                        The number of breached addresses on the domain the last time it was successfully
-                                        indexed, based on breaches that are not classified as spam lists. The domain may
-                                        be larger when next indexed if more breaches have impacted it since.
-                                      </p>
-                                      <p>
-                                        This number does not include addresses found in pastes. A blank value will be
-                                        shown if the domain hasn't yet been indexed. Enable debug mode to see more.
-                                      </p>
-                                    </div>
-                                  </span>
-                                </th>
-                                <th>
-                                  Stealer Logs
-                                  <span class="tooltip-container d-inline-block ms-1">
-                                    <i class="bi bi-question"></i>
-                                    <div class="tooltip-content">
-                                      <h6>Stealer Logs</h6>
-                                      <p>
-                                        The stealer log count is the number of email addresses captured by infostealers
-                                        when the victim has been entering their credentials into a website on this
-                                        domain. These addresses are searchable by the API to get all stealer log email
-                                        addresses for a website domain.
-                                      </p>
-                                    </div>
-                                  </span>
-                                </th>
-                                <th class="text-end">Actions</th>
-                              </tr>
-                            </thead>
-                            <tbody id="domainsTableBody">
-                              <tr>
-                                <td>example.com</td>
-                                <td>1,245</td>
-                                <td>38</td>
-                                <td class="table-actions">
-                                  <button class="btn btn-xs btn-outline-primary me-1">
-                                    <i class="bi bi-search"></i>
-                                  </button>
-                                  <button
-                                    class="btn btn-xs btn-outline-danger remove-domain"
-                                    data-domain="example.com"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#domainRemovalPrompt"
-                                  >
-                                    <i class="bi bi-trash"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>mydomain.org</td>
-                                <td>87</td>
-                                <td>12</td>
-                                <td class="table-actions">
-                                  <button class="btn btn-xs btn-outline-primary me-1">
-                                    <i class="bi bi-search"></i>
-                                  </button>
-                                  <button
-                                    class="btn btn-xs btn-outline-danger remove-domain"
-                                    data-domain="mydomain.org"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#domainRemovalPrompt"
-                                  >
-                                    <i class="bi bi-trash"></i>
-                                  </button>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                          <!-- Search and Filter -->
+                          <div class="row mb-4">
+                            <div class="col-md-8">
+                              <div class="position-relative mx-auto">
+                                <input 
+                                  type="text" 
+                                  class="form-control form-control-sm form-control-minimal" 
+                                  placeholder="Filter results..." 
+                                  id="domainSearchFilter"
+                                >
+                                <i class="bi bi-search position-absolute search-icon"></i>
+                              </div>
+                            </div>
+                            <div class="col-md-4 mt-3 mt-md-0">
+                              <select class="form-select form-select-sm form-control-minimal" id="domainSearchSort">
+                                <option value="recent">Most Recent First</option>
+                                <option value="alphabetical">Alphabetical</option>
+                                <option value="breaches">Most Breaches First</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <!-- Search Results -->
+                          <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                              <thead>
+                                <tr>
+                                  <th>Email Address</th>
+                                  <th>Breaches</th>
+                                  <th>Pwned Sites</th>
+                                </tr>
+                              </thead>
+                              <tbody id="domainSearchResults">
+                                <!-- Results will be populated by JavaScript -->
+                              </tbody>
+                            </table>
+                          </div>
+
+                          <!-- Pagination -->
+                          <nav aria-label="Domain search results pagination" class="mt-4">
+                            <ul class="pagination justify-content-center" id="domainSearchPagination">
+                              <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                              </li>
+                              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                              </li>
+                            </ul>
+                          </nav>
                         </div>
                       </div>
                     </div>
@@ -1281,6 +1357,37 @@
                 Remove
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- File Upload Modal -->
+    <div class="modal fade" id="fileUploadModal" tabindex="-1" aria-labelledby="fileUploadModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="fileUploadModalLabel">Upload File</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-3">Choose a file to upload data for this domain.</p>
+            
+            <div class="mb-3">
+              <label for="fileUploadInput" class="form-label">Select File</label>
+              <input class="form-control form-control-sm form-control-minimal" type="file" id="fileUploadInput">              
+            </div>
+            
+            <div class="alert alert-info d-none mb-0">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-file-earmark me-2"></i>
+                <span id="selectedFileName"></span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="uploadFileButton" disabled>Upload</button>
           </div>
         </div>
       </div>
