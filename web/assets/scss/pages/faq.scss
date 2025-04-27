@@ -1,0 +1,19 @@
+.faq-permalink {
+  opacity: 0;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+
+.accordion-button:hover .faq-permalink,
+.accordion-button.collapsed:hover .faq-permalink {
+  opacity: 0.7;
+}
+
+.faq-permalink:hover {
+  opacity: 1;
+}
+
+.accordion-button strong {
+  display: flex;
+  align-items: center;
+} 
