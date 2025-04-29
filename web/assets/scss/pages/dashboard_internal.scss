@@ -39,6 +39,9 @@
 // Dashboard Statistics
 .dashboard-stat-card {
   transition: all 0.2s ease;
+  height: 120px;
+  display: flex;
+  align-items: center;  
 
   &:hover {
     background-color: rgba(var(--bs-primary-rgb), 0.05);
@@ -212,6 +215,67 @@
       width: 20px;
       text-align: center;
       margin-right: 0.5rem;
+    }
+  }
+}
+
+// Domain search animation styles
+.domains-container {
+  position: relative;
+  width: 100%;
+}
+
+.domain-view {
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.domain-search-view {
+  width: 100%;
+  display: none;
+  opacity: 0;
+}
+
+.domain-view.slide-left {
+  display: none;
+  opacity: 0;
+}
+
+.domain-search-view.slide-left {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.domain-search-result-item {
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+  }
+}
+
+.domain-back-button {
+  cursor: pointer;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--bs-primary);
+  }
+}
+
+// Enhance domain search button
+.domain-search-btn {
+  transition: all 0.3s ease;
+  
+  i {
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover {
+    i {
+      transform: scale(1.2);
     }
   }
 }

@@ -93,3 +93,35 @@ th.sortable {
     box-shadow: none;
   }
 }
+
+/* Table Pagination */
+.pagination {
+  .page-item {
+    .page-link {
+      background: transparent;
+      border: none;
+      color: var(--bs-body-color);
+      
+      &:hover {
+        color: var(--bs-primary);
+      }
+      
+      &:focus {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+    
+    &.active .page-link {
+      background: transparent;
+      color: var(--bs-primary);
+      font-weight: bold;
+    }
+    
+    &.disabled .page-link {
+      background: transparent;
+      color: var(--bs-body-color);
+      opacity: 0.5;
+    }
+  }
+}

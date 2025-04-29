@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .toUpperCase()}</span>`;
   }
 
+  // Initialize all popovers on page load
+  initializePopovers();
+
   // Logout button functionality
   const logoutButton = document.getElementById("logoutButton");
   if (logoutButton) {
@@ -381,6 +384,14 @@ function initializePopovers() {
   const popoverList = [...popoverTriggerList].map(
     (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
   );
+
+  // Initialize all tooltips
+  const tooltipTriggerList = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]'
+  );
+  [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+  );
 }
 
 // Domain management functionality
@@ -403,6 +414,9 @@ function setupDomainManagement() {
     }
   }
 
+  // Set up domain search functionality
+  setupDomainSearch();
+
   // Set up verification method selection
   setupVerificationMethodSelection();
 
@@ -415,6 +429,276 @@ function setupDomainManagement() {
   // Add global modal cleanup handler
   // TODO: Need to investigate why this is needed
   setupModalCleanup();
+}
+
+// Handle domain search functionality with slide animation
+function setupDomainSearch() {
+  const searchButtons = document.querySelectorAll('.domain-search-btn');
+  const domainListView = document.getElementById('domainListView');
+  const domainSearchView = document.getElementById('domainSearchView');
+  const searchDomainTitle = document.getElementById('searchDomainTitle');
+  const domainSearchBackBtn = document.getElementById('domainSearchBackBtn');
+  const domainSearchResults = document.getElementById('domainSearchResults');
+  const searchFilter = document.getElementById('domainSearchFilter');
+  const searchBreachFilter = document.getElementById('domainSearchBreachFilter');  
+  
+  // Initialize popovers and tooltips for the domain search view
+  initializePopovers();
+  
+  if (!searchButtons.length || !domainListView || !domainSearchView) {
+    return; // Required elements not found
+  }
+  
+  // Add event listeners to search buttons
+  searchButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const domain = this.getAttribute('data-domain');
+      showDomainSearchResults(domain);
+    });
+  });
+  
+  // Back button functionality
+  if (domainSearchBackBtn) {
+    domainSearchBackBtn.addEventListener('click', hideDomainSearchResults);
+  }
+
+  
+  // Filter functionality
+  if (searchFilter) {
+    searchFilter.addEventListener('input', function() {
+      filterDomainSearchResults(this.value);
+    });
+  }
+  
+  // Breach filter functionality
+  if (searchBreachFilter) {
+    searchBreachFilter.addEventListener('change', function() {
+      sortDomainSearchResults(this.value);
+    });
+  }
+  
+  // Function to show domain search results with animation
+  function showDomainSearchResults(domain) {
+    // Update the domain title
+    if (searchDomainTitle) {
+      searchDomainTitle.textContent = domain;
+    }
+    
+    // Update domain stats in the summary cards
+    updateDomainSummaryStats(domain);
+    
+    // Clear previous results
+    if (domainSearchResults) {
+      domainSearchResults.innerHTML = '';
+    }
+    
+    // Load mock data for demo
+    loadMockDomainSearchResults(domain);
+    
+    // Initialize popovers for the domain summary cards
+    initializePopovers();
+    
+    // First fade out domain list view
+    domainListView.style.opacity = '0';
+    
+    // After short delay, hide domain list and show search view
+    setTimeout(() => {
+      // Hide domain list and show search view
+      domainListView.classList.add('slide-left');
+      domainSearchView.classList.add('slide-left');
+      
+      // Fade in search view
+      setTimeout(() => {
+        domainSearchView.style.opacity = '1';
+      }, 50);
+    }, 300);
+  }
+  
+  // Helper function to update domain summary statistics
+  function updateDomainSummaryStats(domain) {
+    // Find the row in the domains table for this domain to get the stats
+    const domainRow = document.querySelector(`button[data-domain=""]`)?.closest('tr');
+    
+    // Get the stats elements
+    const totalBreachedEl = document.getElementById('totalBreachedAddresses');
+    const nonSpamBreachedEl = document.getElementById('nonSpamBreachedAddresses');
+    const stealerLogEl = document.getElementById('stealerLogAddresses');
+    
+    if (domainRow) {
+      // In a real app, we'd get this from an API, but for demo we'll use the table data
+      const addressCount = domainRow.querySelector('td:nth-child(2)').textContent;
+      const stealerLogCount = domainRow.querySelector('td:nth-child(3)').textContent;
+      
+      // Calculate a reasonable value for non-spam breaches (in a real app this would be from API)
+      // For demo purposes, we'll use about 80% of total breaches
+      const totalAddresses = parseInt(addressCount.replace(/,/g, ''));
+      const nonSpamAddresses = Math.round(totalAddresses * 0.78);
+      
+      // Update the UI elements
+      if (totalBreachedEl) totalBreachedEl.textContent = addressCount;
+      if (nonSpamBreachedEl) nonSpamBreachedEl.textContent = nonSpamAddresses.toLocaleString();
+      if (stealerLogEl) stealerLogEl.textContent = stealerLogCount;
+    } else {
+      // Fallback to mock data if domain row not found
+      if (totalBreachedEl) totalBreachedEl.textContent = '1,245';
+      if (nonSpamBreachedEl) nonSpamBreachedEl.textContent = '972';
+      if (stealerLogEl) stealerLogEl.textContent = '17';
+    }
+  }
+  
+  // Function to hide domain search results with animation
+  function hideDomainSearchResults() {
+    // First fade out search view
+    domainSearchView.style.opacity = '0';
+    
+    // After short delay, hide search view and show domain list
+    setTimeout(() => {
+      // Hide search view and show domain list
+      domainListView.classList.remove('slide-left');
+      domainSearchView.classList.remove('slide-left');
+      
+      // Fade in domain list
+      setTimeout(() => {
+        domainListView.style.opacity = '1';
+      }, 50);
+    }, 300);
+  }
+  
+  // Global variables to store the full dataset and current view state
+  let allEmailData = [];
+  let filteredEmailData = [];
+  let currentFilter = '';
+  let currentSortBy = 'all';
+  
+  // Function to load mock search results
+  function loadMockDomainSearchResults(domain) {
+    // Generate more mock email addresses for the domain (3 pages worth)
+    allEmailData = [
+      { email: `info@`, breaches: 8, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, Quora, MySpace, MyFitnessPal' },
+      { email: `contact@`, breaches: 5, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Quora' },
+      { email: `support@`, breaches: 7, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, Quora, MyFitnessPal' },
+      { email: `admin@`, breaches: 10, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, Quora, MySpace, MyFitnessPal, Tumblr, Zynga' },
+      { email: `webmaster@`, breaches: 4, pwnedSites: 'Adobe, LinkedIn, Yahoo, Tumblr' },
+      { email: `sales@`, breaches: 6, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, Quora' },
+      { email: `marketing@`, breaches: 3, pwnedSites: 'LinkedIn, Dropbox, Yahoo' },
+      { email: `help@`, breaches: 2, pwnedSites: 'Adobe, LinkedIn' },
+      { email: `billing@`, breaches: 5, pwnedSites: 'Adobe, LinkedIn, Yahoo, Canva, MyFitnessPal' },
+      { email: `hr@`, breaches: 7, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, MySpace, MyFitnessPal' },
+      { email: `developers@`, breaches: 6, pwnedSites: 'LinkedIn, Adobe, Dropbox, GitHub, Canva, MyFitnessPal' },
+      { email: `media@`, breaches: 3, pwnedSites: 'Snapchat, Adobe, Canva' },
+      { email: `editor@`, breaches: 4, pwnedSites: 'Adobe, Dropbox, LinkedIn, Quora' },
+      { email: `subscriptions@`, breaches: 2, pwnedSites: 'Adobe, Canva' },
+      { email: `abuse@`, breaches: 1, pwnedSites: 'Dropbox' },
+      { email: `no-reply@`, breaches: 3, pwnedSites: 'LinkedIn, Tumblr, Zynga' },
+      { email: `payments@`, breaches: 5, pwnedSites: 'Adobe, LinkedIn, Dropbox, Marriott, eBay' },
+      { email: `privacy@`, breaches: 4, pwnedSites: 'Adobe, LinkedIn, Yahoo, Evernote' }
+    ];
+    
+    // Initialize with all data
+    filteredEmailData = [...allEmailData];
+    
+    // Set default filter to 'all' and apply
+    currentSortBy = 'all';
+    // Sort by breach count
+    filteredEmailData.sort((a, b) => b.breaches - a.breaches);
+    
+    // Update the result count
+    updateResultCount();
+    
+    // Display all results
+    displayAllResults();
+  }
+  
+  // Function to display all results
+  function displayAllResults() {
+    // Clear previous results
+    if (domainSearchResults) {
+      domainSearchResults.innerHTML = '';
+    }
+    
+    // Update the result count
+    updateResultCount();
+    
+    // Display all the data
+    filteredEmailData.forEach(item => {
+      const row = document.createElement('tr');
+      row.className = 'domain-search-result-item';
+      row.innerHTML = `
+        <td>${item.email}</td>
+        <td class="text-end">${item.breaches}</td>
+        <td>${item.pwnedSites}</td>
+      `;
+      domainSearchResults.appendChild(row);
+    });
+  }
+  
+  // Helper function to update the result count display
+  function updateResultCount() {
+    const countElement = document.getElementById('domainSearchResultCount');
+    if (countElement) {
+      countElement.textContent = filteredEmailData.length;
+    }
+  }
+  
+  // Function to filter search results
+  function filterDomainSearchResults(query) {
+    currentFilter = query.toLowerCase();
+    
+    // Filter the full dataset
+    if (currentFilter === '') {
+      filteredEmailData = [...allEmailData]; // Reset to all data if filter is empty
+    } else {
+      filteredEmailData = allEmailData.filter(item => {
+        // Only filter by email alias now
+        const emailMatch = item.email.toLowerCase().includes(currentFilter);
+        return emailMatch;
+      });
+    }
+    
+    // Sort by breach count
+    filteredEmailData.sort((a, b) => b.breaches - a.breaches);
+    
+    // Update the result count
+    updateResultCount();
+    
+    // Show all results
+    displayAllResults();
+  }
+  
+  // Function to sort/filter search results
+  function sortDomainSearchResults(filterValue) {
+    currentSortBy = filterValue;
+    
+    // First, reset to all filtered data based on the text search filter
+    if (currentFilter === '') {
+      filteredEmailData = [...allEmailData];
+    } else {
+      filteredEmailData = allEmailData.filter(item => {
+        const emailMatch = item.email.toLowerCase().includes(currentFilter);
+        return emailMatch;
+      });
+    }
+    
+    // Then apply the breach filter if not showing all
+    if (filterValue !== 'all') {
+      // For demo purposes, we're using LinkedIn as the most recent breach
+      const recentBreachName = 'LinkedIn';
+      
+      // Filter to only show emails affected by the recent breach
+      filteredEmailData = filteredEmailData.filter(item => 
+        item.pwnedSites.includes(recentBreachName)
+      );
+    }
+    
+    // Sort by breach count as default
+    filteredEmailData.sort((a, b) => b.breaches - a.breaches);
+    
+    // Update the result count
+    updateResultCount();
+    
+    // Display all results
+    displayAllResults();
+  }
 }
 
 function setupVerificationMethodSelection() {

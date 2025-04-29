@@ -195,16 +195,4 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(performSearch, 500);
   });
-
-  // Add some basic styles for the search highlights
-  const style = document.createElement("style");
-  style.textContent = `
-      .search-highlight {
-        background-color: #ffeb3b;
-        color: #000;
-        padding: 0 2px;
-        border-radius: 2px;
-      }
-    `;
-  document.head.appendChild(style);
 });
