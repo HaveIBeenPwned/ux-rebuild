@@ -98,7 +98,126 @@
           <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
               <h1 class="page-title">HIBP Subscription</h1>
-              <p class="lead text-muted mb-0">Choose the plan that works best for you and your organization</p>
+              <p class="lead text-muted mb-0">The vast majority of services in HIBP are completely free, including personal email address searches and notifications, most domain searches and all searches of Pwned Passwords. Only searches of larger domains and using the API to search email addresses require a paid subscription.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Heading -->
+      <section class="py-5">
+        <div class="container">
+          <!-- Features Heading -->
+          <div class="row mt-5 mb-4">
+            <div class="col-12 text-center">
+            <div class="section-heading mb-4">
+              <h2 class="h2 fw-bold mb-0 d-flex align-items-center justify-content-center">
+                <i class="bi bi-info-circle text-primary me-2"></i>
+                What Do We Offer
+              </h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="row mt-5">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <div class="card card-glow h-100">
+              <div class="card-body p-4">
+                <h3 class="fw-bold mb-3">Domain Search</h3>
+                <p class="mb-4">
+                  The Domain Search feature allows verified domain owners to query all email addresses from their
+                  domain that have appeared in known data breaches.
+                </p>
+                <p>
+                  After verifying domain ownership (typically via DNS or file upload verification), the owner can
+                  receive breach notifications for their users, monitor ongoing exposure, and optionally configure
+                  alerts for future breaches.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card card-glow h-100">
+              <div class="card-body p-4">
+                <h3 class="fw-bold mb-3">API</h3>
+                <p class="mb-4">
+                  The HIBP API provides programmatic access to breach data, allowing developers and security teams to
+                  check whether specific email addresses, usernames, or passwords have been exposed in known breaches.
+                </p>
+                <p>
+                  The API supports services like password reuse prevention, proactive breach monitoring, and secure
+                  user notifications—without ever exposing raw breach data.
+                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Plan Selection Helper -->
+      <section class="py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <div class="card card-glow rounded-4 overflow-hidden">
+                <div class="card-body p-4">
+                  <h3 class="fw-bold mb-3 text-center">Find Your Ideal Plan</h3>
+                  <p class="text-muted mb-4 text-center">Our pricing is primarily based on two factors: API request rate and the number of email addresses in your domain.</p>
+                  
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <div class="form-group mb-3">
+                        <label for="domainSize" class="form-label fw-bold mb-2">
+                          Number of email addresses in your domain
+                          <i class="bi bi-info-circle ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="This is the total number of email addresses you want to monitor for breaches in your domain (e.g., example.com)"></i>
+                        </label>
+                        <input type="number" class="form-control form-control-sm form-control-minimal" id="domainSize" placeholder="e.g., 50">
+                      </div>
+                      <div class="form-group">
+                        <label for="apiRequestRate" class="form-label fw-bold mb-2">
+                          Required API request rate
+                          <i class="bi bi-info-circle ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="This is how many API requests you need to make per minute (RPM)"></i>
+                        </label>
+                        <select class="form-select form-select-sm form-control-minimal" id="apiRequestRate">
+                          <option value="10">Low (10 requests/minute)</option>
+                          <option value="50">Medium (50 requests/minute)</option>
+                          <option value="100">High (100 requests/minute)</option>
+                          <option value="500">Very High (500+ requests/minute)</option>
+                        </select>
+                      </div>
+                      <div class="d-grid mt-3">
+                        <button class="btn btn-primary" id="calculatePlan">Find My Plan</button>
+                      </div>
+                    </div>
+                    <div class="col-md-6 border-start border-primary-custom">
+                      <div id="planRecommendation" class="h-100 d-flex flex-column justify-content-center align-items-center text-center">
+                        <div class="mb-3">
+                          <i class="bi bi-lightbulb text-primary fs-1"></i>
+                        </div>
+                        <h4 class="fw-bold mb-2">Plan Recommendation</h4>
+                        <p class="text-muted">Enter your domain size and API needs for a personalized recommendation.</p>
+                        <div id="recommendedPlan" class="d-none">
+                          <div class="alert alert-primary p-3 mb-2">
+                            <span class="fw-bold">Recommended Plan:</span> <span id="planName">-</span>
+                          </div>
+                          <p class="small mb-0" id="planReason"></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-warning mt-4 mb-0">
+                    <div class="d-flex">
+                      <i class="bi bi-exclamation-triangle fs-4 me-3"></i>
+                      <div>
+                        <p class="mb-0"><strong>Important:</strong> Make sure you choose a plan that can support your domain size. If you select a plan that's too small for your domain's email count, you won't be able to monitor all addresses.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -137,12 +256,18 @@
                   <div class="feature-container">
                     <ul class="mb-4 ps-3">
                       <li class="mb-2">10 email searches per minute</li>
-                      <li>Up to 25 breached email addresses per domain</li>
+                      <li>
+                        Up to 25 breached email addresses per domain
+                        <i class="bi bi-info-circle ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Suitable for small personal domains or very small businesses"></i>
+                      </li>
                     </ul>
                   </div>
                   <div class="d-grid gap-2">
                     <a href="#" class="btn btn-primary">Subscribe</a>
                   </div>
+                </div>
+                <div class="domain-size-indicator" id="domainIndicator1">
+                  <span class="badge bg-success">Suitable for domains with <25 accounts</span>
                 </div>
               </div>
             </div>
@@ -164,12 +289,18 @@
                   <div class="feature-container">
                     <ul class="mb-4 ps-3">
                       <li class="mb-2">50 email searches per minute</li>
-                      <li>Up to 100 breached email addresses per domain</li>
+                      <li>
+                        Up to 100 breached email addresses per domain
+                        <i class="bi bi-info-circle ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Suitable for small businesses and organizations"></i>
+                      </li>
                     </ul>
                   </div>
                   <div class="d-grid gap-2">
                     <a href="#" class="btn btn-primary">Subscribe</a>
                   </div>
+                </div>
+                <div class="domain-size-indicator" id="domainIndicator2">
+                  <span class="badge bg-success">Suitable for domains with <100 accounts</span>
                 </div>
               </div>
             </div>
@@ -177,7 +308,6 @@
             <!-- Pwned 3 -->
             <div class="col">
               <div class="card h-100 card-glow pricing-card-3 rounded-4 overflow-hidden position-relative transition">
-                <div class="popular-badge">Most popular</div>
                 <div class="card-header text-center border-bottom border-1 border-opacity-10 py-4">
                   <h3 class="fw-bold mb-2">Pwned 3</h3>
                   <div class="text-white-50 fs-5">100RPM</div>
@@ -192,12 +322,18 @@
                   <div class="feature-container">
                     <ul class="mb-4 ps-3">
                       <li class="mb-2">100 email searches per minute</li>
-                      <li>Up to 500 breached email addresses per domain</li>
+                      <li>
+                        Up to 500 breached email addresses per domain
+                        <i class="bi bi-info-circle ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Suitable for medium-sized businesses and organizations"></i>
+                      </li>
                     </ul>
                   </div>
                   <div class="d-grid gap-2">
                     <a href="#" class="btn btn-primary">Subscribe</a>
                   </div>
+                </div>
+                <div class="domain-size-indicator" id="domainIndicator3">
+                  <span class="badge bg-success">Suitable for domains with <500 accounts</span>
                 </div>
               </div>
             </div>
@@ -219,12 +355,18 @@
                   <div class="feature-container">
                     <ul class="mb-4 ps-3">
                       <li class="mb-2">500 email searches per minute</li>
-                      <li>Unlimited breached email addresses per domain</li>
+                      <li>
+                        Unlimited breached email addresses per domain
+                        <i class="bi bi-info-circle ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Suitable for large organizations with many email addresses"></i>
+                      </li>
                     </ul>
                   </div>
                   <div class="d-grid gap-2">
                     <a href="#" class="btn btn-primary">Subscribe</a>
                   </div>
+                </div>
+                <div class="domain-size-indicator" id="domainIndicator4">
+                  <span class="badge bg-success">Suitable for domains of any size</span>
                 </div>
               </div>
             </div>
@@ -246,13 +388,19 @@
                   <div class="feature-container">
                     <ul class="mb-4 ps-3">
                       <li class="mb-2">1000 email searches per minute</li>
-                      <li class="mb-2">Unlimited breached email addresses per domain</li>
+                      <li class="mb-2">
+                        Unlimited breached email addresses per domain
+                        <i class="bi bi-info-circle ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Suitable for large organizations with high API usage requirements"></i>
+                      </li>
                       <li>Access to stealer log searches</li>
                     </ul>
                   </div>
                   <div class="d-grid gap-2">
                     <a href="#" class="btn btn-primary">Subscribe</a>
                   </div>
+                </div>
+                <div class="domain-size-indicator" id="domainIndicator5">
+                  <span class="badge bg-success">Suitable for domains of any size</span>
                 </div>
               </div>
             </div>
@@ -287,51 +435,114 @@
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- Features Heading -->
-          <div class="row mt-5 mb-4">
-            <div class="col-12 text-center">
-              <div class="section-heading mb-4">
-                <h2 class="h2 fw-bold mb-0 d-flex align-items-center justify-content-center">
-                  <i class="bi bi-info-circle text-primary me-2"></i>
-                  What Do We Offer
-                </h2>
+      <!-- High-Tier Pricing Section -->
+      <section class="py-5 bg-dark-subtle-custom">
+        <div class="container">
+          <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+              <div class="section-heading">
+                <h2 class="h2 fw-bold mb-3 d-flex align-items-center justify-content-center">
+                  <i class="bi bi-lightning-charge-fill text-primary me-2"></i>
+                  High-Performance Tiers
+                </h2>                
               </div>
             </div>
           </div>
-
-          <!-- Additional Information -->
-          <div class="row mt-5">
-            <div class="col-md-6 mb-4 mb-md-0">
-              <div class="card card-glow h-100">
-                <div class="card-body p-4">
-                  <h3 class="fw-bold mb-3">Domain Search</h3>
-                  <p class="mb-4">
-                    The Domain Search feature allows verified domain owners to query all email addresses from their
-                    domain that have appeared in known data breaches.
-                  </p>
-                  <p>
-                    After verifying domain ownership (typically via DNS or file upload verification), the owner can
-                    receive breach notifications for their users, monitor ongoing exposure, and optionally configure
-                    alerts for future breaches.
-                  </p>
+          
+          <!-- High-Tier Pricing Cards -->
+          <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
+            <!-- Pwned Ultra 1 -->
+            <div class="col">
+              <div class="card h-100 card-glow pricing-card-7 rounded-4 overflow-hidden position-relative transition">
+                <div class="card-header text-center border-bottom border-1 border-opacity-10 py-3">
+                  <h4 class="fw-bold mb-1">Pwned Ultra 1</h4>
+                  <div class="text-white-50 fs-6">4000RPM</div>
+                </div>
+                <div class="card-body text-center py-3 d-flex flex-column justify-content-center">
+                  <div class="fs-2 fw-bold mb-2">
+                    <span class="price-value">$995</span>
+                  </div>
+                  <span class="text-white-50 pricing-period">per month</span>
+                </div>
+                <div class="card-footer p-3 border-top border-1 border-opacity-10">
+                  <div class="feature-container">
+                    <ul class="mb-3 ps-3">
+                      <li class="mb-2">4000 email searches per minute</li>
+                      <li class="mb-2">Unlimited breached email addresses per domain</li>
+                      <li>Access to stealer log searches</li>
+                    </ul>
+                  </div>
+                  <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-primary btn-sm">Subscribe</a>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="card card-glow h-100">
-                <div class="card-body p-4">
-                  <h3 class="fw-bold mb-3">API</h3>
-                  <p class="mb-4">
-                    The HIBP API provides programmatic access to breach data, allowing developers and security teams to
-                    check whether specific email addresses, usernames, or passwords have been exposed in known breaches.
-                  </p>
-                  <p>
-                    The API supports services like password reuse prevention, proactive breach monitoring, and secure
-                    user notifications—without ever exposing raw breach data.
-                  </p>
+
+            <!-- Pwned Ultra 2 -->
+            <div class="col">
+              <div class="card h-100 card-glow pricing-card-8 rounded-4 overflow-hidden position-relative transition">
+                <div class="card-header text-center border-bottom border-1 border-opacity-10 py-3">
+                  <h4 class="fw-bold mb-1">Pwned Ultra 2</h4>
+                  <div class="text-white-50 fs-6">8000RPM</div>
+                </div>
+                <div class="card-body text-center py-3 d-flex flex-column justify-content-center">
+                  <div class="fs-2 fw-bold mb-2">
+                    <span class="price-value">$1,850</span>
+                  </div>
+                  <span class="text-white-50 pricing-period">per month</span>
+                </div>
+                <div class="card-footer p-3 border-top border-1 border-opacity-10">
+                  <div class="feature-container">
+                    <ul class="mb-3 ps-3">
+                      <li class="mb-2">8000 email searches per minute</li>
+                      <li class="mb-2">Unlimited breached email addresses per domain</li>
+                      <li>Access to stealer log searches</li>
+                    </ul>
+                  </div>
+                  <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-primary btn-sm">Subscribe</a>
+                  </div>
                 </div>
               </div>
+            </div>
+
+            <!-- Pwned Ultra 3 -->
+            <div class="col">
+              <div class="card h-100 card-glow pricing-card-9 rounded-4 overflow-hidden position-relative transition">
+                <div class="card-header text-center border-bottom border-1 border-opacity-10 py-3">
+                  <h4 class="fw-bold mb-1">Pwned Ultra 3</h4>
+                  <div class="text-white-50 fs-6">12000RPM</div>
+                </div>
+                <div class="card-body text-center py-3 d-flex flex-column justify-content-center">
+                  <div class="fs-2 fw-bold mb-2">
+                    <span class="price-value">$2,750</span>
+                  </div>
+                  <span class="text-white-50 pricing-period">per month</span>
+                </div>
+                <div class="card-footer p-3 border-top border-1 border-opacity-10">
+                  <div class="feature-container">
+                    <ul class="mb-3 ps-3">
+                      <li class="mb-2">12000 email searches per minute</li>
+                      <li class="mb-2">Unlimited breached email addresses per domain</li>
+                      <li>Access to stealer log searches</li>
+                    </ul>
+                  </div>
+                  <div class="d-grid gap-2">
+                    <a href="#" class="btn btn-primary btn-sm">Subscribe</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Enterprise Contact For Higher Rates -->
+          <div class="row mt-4">
+            <div class="col-12 text-center">
+              <p class="text-muted mb-0">Need even higher rate limits? <a href="#" class="text-primary">Contact us</a> for custom enterprise solutions.</p>
             </div>
           </div>
         </div>

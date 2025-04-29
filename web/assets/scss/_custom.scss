@@ -880,20 +880,26 @@ a:focus-visible {
   color: rgba(255, 255, 255, 0.7);
 }
 
-// Popular badge for pricing cards
-.popular-badge {
+/* Recommended plan styles */
+.recommended-plan {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 2px var(--bs-primary), 0 0 20px rgba(29, 114, 167, 0.3) !important;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.recommended-plan::after {
+  content: "Recommended";
   position: absolute;
-  top: 0;
-  right: 0;
-  background-color: var(--primary);
+  top: 0px;
+  right: 0px;
+  background-color: var(--bs-primary);
   color: white;
-  padding: 5px 15px;
-  border-radius: 0 16px 0 16px;
-  font-size: 12px;
+  padding: 3px 12px;
+  border-bottom-left-radius: 14px;
+  font-size: 0.8rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  z-index: 1;
+  z-index: 20;
 }
 
 // Color variants for pricing card headers
