@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .toUpperCase()}</span>`;
   }
 
+  // Initialize all popovers on page load
+  initializePopovers();
+
   // Logout button functionality
   const logoutButton = document.getElementById("logoutButton");
   if (logoutButton) {
@@ -148,9 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize domain management
   setupDomainManagement();
-
-  // Setup file upload functionality
-  setupFileUpload();
 });
 
 function setUserInfo() {
@@ -384,6 +384,14 @@ function initializePopovers() {
   const popoverList = [...popoverTriggerList].map(
     (popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl)
   );
+
+  // Initialize all tooltips
+  const tooltipTriggerList = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]'
+  );
+  [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+  );
 }
 
 // Domain management functionality
@@ -432,13 +440,10 @@ function setupDomainSearch() {
   const domainSearchBackBtn = document.getElementById('domainSearchBackBtn');
   const domainSearchResults = document.getElementById('domainSearchResults');
   const searchFilter = document.getElementById('domainSearchFilter');
-  const searchSort = document.getElementById('domainSearchSort');
-  const domainSearchExcelBtn = document.getElementById('domainSearchExcelBtn');
-  const domainSearchJsonBtn = document.getElementById('domainSearchJsonBtn');
+  const searchBreachFilter = document.getElementById('domainSearchBreachFilter');  
   
-  // Initialize tooltips for export buttons
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+  // Initialize popovers and tooltips for the domain search view
+  initializePopovers();
   
   if (!searchButtons.length || !domainListView || !domainSearchView) {
     return; // Required elements not found
@@ -456,28 +461,7 @@ function setupDomainSearch() {
   if (domainSearchBackBtn) {
     domainSearchBackBtn.addEventListener('click', hideDomainSearchResults);
   }
-  
-  // Excel button functionality
-  if (domainSearchExcelBtn) {
-    domainSearchExcelBtn.addEventListener('click', function() {
-      // Get current domain
-      const domain = searchDomainTitle ? searchDomainTitle.textContent : '';
-      
-      // Show the file upload modal with Excel format selected
-      showFileUploadModal('excel', domain);
-    });
-  }
-  
-  // JSON button functionality
-  if (domainSearchJsonBtn) {
-    domainSearchJsonBtn.addEventListener('click', function() {
-      // Get current domain
-      const domain = searchDomainTitle ? searchDomainTitle.textContent : '';
-      
-      // Show the file upload modal with JSON format selected
-      showFileUploadModal('json', domain);
-    });
-  }
+
   
   // Filter functionality
   if (searchFilter) {
@@ -486,9 +470,9 @@ function setupDomainSearch() {
     });
   }
   
-  // Sort functionality
-  if (searchSort) {
-    searchSort.addEventListener('change', function() {
+  // Breach filter functionality
+  if (searchBreachFilter) {
+    searchBreachFilter.addEventListener('change', function() {
       sortDomainSearchResults(this.value);
     });
   }
@@ -500,6 +484,9 @@ function setupDomainSearch() {
       searchDomainTitle.textContent = domain;
     }
     
+    // Update domain stats in the summary cards
+    updateDomainSummaryStats(domain);
+    
     // Clear previous results
     if (domainSearchResults) {
       domainSearchResults.innerHTML = '';
@@ -507,6 +494,9 @@ function setupDomainSearch() {
     
     // Load mock data for demo
     loadMockDomainSearchResults(domain);
+    
+    // Initialize popovers for the domain summary cards
+    initializePopovers();
     
     // First fade out domain list view
     domainListView.style.opacity = '0';
@@ -522,6 +512,38 @@ function setupDomainSearch() {
         domainSearchView.style.opacity = '1';
       }, 50);
     }, 300);
+  }
+  
+  // Helper function to update domain summary statistics
+  function updateDomainSummaryStats(domain) {
+    // Find the row in the domains table for this domain to get the stats
+    const domainRow = document.querySelector(`button[data-domain=""]`)?.closest('tr');
+    
+    // Get the stats elements
+    const totalBreachedEl = document.getElementById('totalBreachedAddresses');
+    const nonSpamBreachedEl = document.getElementById('nonSpamBreachedAddresses');
+    const stealerLogEl = document.getElementById('stealerLogAddresses');
+    
+    if (domainRow) {
+      // In a real app, we'd get this from an API, but for demo we'll use the table data
+      const addressCount = domainRow.querySelector('td:nth-child(2)').textContent;
+      const stealerLogCount = domainRow.querySelector('td:nth-child(3)').textContent;
+      
+      // Calculate a reasonable value for non-spam breaches (in a real app this would be from API)
+      // For demo purposes, we'll use about 80% of total breaches
+      const totalAddresses = parseInt(addressCount.replace(/,/g, ''));
+      const nonSpamAddresses = Math.round(totalAddresses * 0.78);
+      
+      // Update the UI elements
+      if (totalBreachedEl) totalBreachedEl.textContent = addressCount;
+      if (nonSpamBreachedEl) nonSpamBreachedEl.textContent = nonSpamAddresses.toLocaleString();
+      if (stealerLogEl) stealerLogEl.textContent = stealerLogCount;
+    } else {
+      // Fallback to mock data if domain row not found
+      if (totalBreachedEl) totalBreachedEl.textContent = '1,245';
+      if (nonSpamBreachedEl) nonSpamBreachedEl.textContent = '972';
+      if (stealerLogEl) stealerLogEl.textContent = '17';
+    }
   }
   
   // Function to hide domain search results with animation
@@ -545,137 +567,80 @@ function setupDomainSearch() {
   // Global variables to store the full dataset and current view state
   let allEmailData = [];
   let filteredEmailData = [];
-  let currentPage = 1;
-  let itemsPerPage = 10;
   let currentFilter = '';
-  let currentSortBy = 'recent';
+  let currentSortBy = 'all';
   
   // Function to load mock search results
   function loadMockDomainSearchResults(domain) {
     // Generate more mock email addresses for the domain (3 pages worth)
     allEmailData = [
-      // Page 1
-      { email: `admin@${domain}`, breaches: 3, pwnedSites: 'LinkedIn, Adobe, Dropbox' },
-      { email: `info@${domain}`, breaches: 2, pwnedSites: 'Yahoo, Canva' },
-      { email: `sales@${domain}`, breaches: 5, pwnedSites: 'LinkedIn, Adobe, Dropbox, MyFitnessPal, Zynga' },
-      { email: `support@${domain}`, breaches: 1, pwnedSites: 'LinkedIn' },
-      { email: `marketing@${domain}`, breaches: 4, pwnedSites: 'Adobe, Dropbox, Canva, Tumblr' },
-      { email: `contact@${domain}`, breaches: 2, pwnedSites: 'Yahoo, Marriott' },
-      { email: `help@${domain}`, breaches: 3, pwnedSites: 'LinkedIn, Snapchat, Quora' },
-      { email: `service@${domain}`, breaches: 6, pwnedSites: 'LinkedIn, Adobe, Dropbox, Snapchat, eBay, Zynga' },
-      { email: `webmaster@${domain}`, breaches: 4, pwnedSites: 'Adobe, Dropbox, Canva, eBay' },
-      { email: `jobs@${domain}`, breaches: 1, pwnedSites: 'Evernote' },
-      // Page 2
-      { email: `ceo@${domain}`, breaches: 7, pwnedSites: 'LinkedIn, Adobe, Dropbox, Yahoo, Canva, Marriott, Quora' },
-      { email: `cto@${domain}`, breaches: 4, pwnedSites: 'LinkedIn, Snapchat, eBay, Tumblr' },
-      { email: `cfo@${domain}`, breaches: 3, pwnedSites: 'Adobe, Canva, MyFitnessPal' },
-      { email: `hr@${domain}`, breaches: 5, pwnedSites: 'LinkedIn, Adobe, Snapchat, Canva, Quora' },
-      { email: `legal@${domain}`, breaches: 2, pwnedSites: 'Dropbox, Evernote' },
-      { email: `security@${domain}`, breaches: 8, pwnedSites: 'LinkedIn, Adobe, Dropbox, Yahoo, Canva, Marriott, Quora, Snapchat' },
-      { email: `billing@${domain}`, breaches: 3, pwnedSites: 'Adobe, Dropbox, eBay' },
-      { email: `feedback@${domain}`, breaches: 2, pwnedSites: 'LinkedIn, Evernote' },
-      { email: `press@${domain}`, breaches: 4, pwnedSites: 'Adobe, Tumblr, Yahoo, Zynga' },
-      { email: `partners@${domain}`, breaches: 3, pwnedSites: 'LinkedIn, Canva, MyFitnessPal' },
-      // Page 3
-      { email: `accounts@${domain}`, breaches: 5, pwnedSites: 'LinkedIn, Adobe, Dropbox, Marriott, Zynga' },
-      { email: `newsletter@${domain}`, breaches: 2, pwnedSites: 'Yahoo, Tumblr' },
-      { email: `developers@${domain}`, breaches: 6, pwnedSites: 'LinkedIn, Adobe, Dropbox, GitHub, Canva, MyFitnessPal' },
-      { email: `media@${domain}`, breaches: 3, pwnedSites: 'Snapchat, Adobe, Canva' },
-      { email: `editor@${domain}`, breaches: 4, pwnedSites: 'Adobe, Dropbox, LinkedIn, Quora' },
-      { email: `subscriptions@${domain}`, breaches: 2, pwnedSites: 'Adobe, Canva' },
-      { email: `abuse@${domain}`, breaches: 1, pwnedSites: 'Dropbox' },
-      { email: `no-reply@${domain}`, breaches: 3, pwnedSites: 'LinkedIn, Tumblr, Zynga' },
-      { email: `payments@${domain}`, breaches: 5, pwnedSites: 'Adobe, LinkedIn, Dropbox, Marriott, eBay' },
-      { email: `privacy@${domain}`, breaches: 4, pwnedSites: 'Adobe, LinkedIn, Yahoo, Evernote' }
+      { email: `info@`, breaches: 8, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, Quora, MySpace, MyFitnessPal' },
+      { email: `contact@`, breaches: 5, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Quora' },
+      { email: `support@`, breaches: 7, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, Quora, MyFitnessPal' },
+      { email: `admin@`, breaches: 10, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, Quora, MySpace, MyFitnessPal, Tumblr, Zynga' },
+      { email: `webmaster@`, breaches: 4, pwnedSites: 'Adobe, LinkedIn, Yahoo, Tumblr' },
+      { email: `sales@`, breaches: 6, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, Quora' },
+      { email: `marketing@`, breaches: 3, pwnedSites: 'LinkedIn, Dropbox, Yahoo' },
+      { email: `help@`, breaches: 2, pwnedSites: 'Adobe, LinkedIn' },
+      { email: `billing@`, breaches: 5, pwnedSites: 'Adobe, LinkedIn, Yahoo, Canva, MyFitnessPal' },
+      { email: `hr@`, breaches: 7, pwnedSites: 'Adobe, LinkedIn, Dropbox, Yahoo, Canva, MySpace, MyFitnessPal' },
+      { email: `developers@`, breaches: 6, pwnedSites: 'LinkedIn, Adobe, Dropbox, GitHub, Canva, MyFitnessPal' },
+      { email: `media@`, breaches: 3, pwnedSites: 'Snapchat, Adobe, Canva' },
+      { email: `editor@`, breaches: 4, pwnedSites: 'Adobe, Dropbox, LinkedIn, Quora' },
+      { email: `subscriptions@`, breaches: 2, pwnedSites: 'Adobe, Canva' },
+      { email: `abuse@`, breaches: 1, pwnedSites: 'Dropbox' },
+      { email: `no-reply@`, breaches: 3, pwnedSites: 'LinkedIn, Tumblr, Zynga' },
+      { email: `payments@`, breaches: 5, pwnedSites: 'Adobe, LinkedIn, Dropbox, Marriott, eBay' },
+      { email: `privacy@`, breaches: 4, pwnedSites: 'Adobe, LinkedIn, Yahoo, Evernote' }
     ];
     
     // Initialize with all data
     filteredEmailData = [...allEmailData];
     
-    // Apply initial sort
-    applySorting(currentSortBy);
+    // Set default filter to 'all' and apply
+    currentSortBy = 'all';
+    // Sort by breach count
+    filteredEmailData.sort((a, b) => b.breaches - a.breaches);
     
-    // Display the first page
-    displayPage(1);
+    // Update the result count
+    updateResultCount();
+    
+    // Display all results
+    displayAllResults();
   }
   
-  // Function to display a specific page
-  function displayPage(page) {
-    // Update current page
-    currentPage = page;
-    
+  // Function to display all results
+  function displayAllResults() {
     // Clear previous results
     if (domainSearchResults) {
       domainSearchResults.innerHTML = '';
     }
     
-    // Calculate start and end indices
-    const startIndex = (page - 1) * itemsPerPage;
-    const endIndex = Math.min(startIndex + itemsPerPage, filteredEmailData.length);
+    // Update the result count
+    updateResultCount();
     
-    // Display the data for this page
-    for (let i = startIndex; i < endIndex; i++) {
-      const item = filteredEmailData[i];
+    // Display all the data
+    filteredEmailData.forEach(item => {
       const row = document.createElement('tr');
       row.className = 'domain-search-result-item';
       row.innerHTML = `
         <td>${item.email}</td>
-        <td>${item.breaches}</td>
+        <td class="text-end">${item.breaches}</td>
         <td>${item.pwnedSites}</td>
       `;
       domainSearchResults.appendChild(row);
-    }
-    
-    // Update pagination
-    updatePagination(page);
+    });
   }
   
-  // Function to update pagination controls
-  function updatePagination(currentPage) {
-    const pagination = document.getElementById('domainSearchPagination');
-    if (pagination) {
-      const totalPages = Math.ceil(filteredEmailData.length / itemsPerPage);
-      
-      let paginationHTML = `
-        <li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
-          <a class="page-link" href="#" data-page="${currentPage - 1}" tabindex="-1" ${currentPage === 1 ? 'aria-disabled="true"' : ''}>Previous</a>
-        </li>
-      `;
-      
-      for (let i = 1; i <= totalPages; i++) {
-        paginationHTML += `
-          <li class="page-item ${currentPage === i ? 'active' : ''}">
-            <a class="page-link" href="#" data-page="${i}">${i}</a>
-          </li>
-        `;
-      }
-      
-      paginationHTML += `
-        <li class="page-item ${currentPage === totalPages || totalPages === 0 ? 'disabled' : ''}">
-          <a class="page-link" href="#" data-page="${currentPage + 1}" ${currentPage === totalPages || totalPages === 0 ? 'aria-disabled="true"' : ''}>Next</a>
-        </li>
-      `;
-      
-      pagination.innerHTML = paginationHTML;
-      
-      // Add event listeners to pagination controls
-      const pageLinks = pagination.querySelectorAll('.page-link');
-      pageLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          
-          if (this.parentElement.classList.contains('disabled')) {
-            return;
-          }
-          
-          const page = parseInt(this.getAttribute('data-page'), 10);
-          displayPage(page);
-        });
-      });
+  // Helper function to update the result count display
+  function updateResultCount() {
+    const countElement = document.getElementById('domainSearchResultCount');
+    if (countElement) {
+      countElement.textContent = filteredEmailData.length;
     }
   }
   
-  // Function to filter search results across all pages
+  // Function to filter search results
   function filterDomainSearchResults(query) {
     currentFilter = query.toLowerCase();
     
@@ -684,35 +649,55 @@ function setupDomainSearch() {
       filteredEmailData = [...allEmailData]; // Reset to all data if filter is empty
     } else {
       filteredEmailData = allEmailData.filter(item => {
+        // Only filter by email alias now
         const emailMatch = item.email.toLowerCase().includes(currentFilter);
-        const sitesMatch = item.pwnedSites.toLowerCase().includes(currentFilter);
-        return emailMatch || sitesMatch;
+        return emailMatch;
       });
     }
     
-    // Re-apply current sort
-    applySorting(currentSortBy);
+    // Sort by breach count
+    filteredEmailData.sort((a, b) => b.breaches - a.breaches);
     
-    // Show first page of results
-    displayPage(1);
+    // Update the result count
+    updateResultCount();
+    
+    // Show all results
+    displayAllResults();
   }
   
-  // Function to sort search results across all pages
-  function sortDomainSearchResults(sortBy) {
-    currentSortBy = sortBy;
-    applySorting(sortBy);
-    displayPage(currentPage);
-  }
-  
-  // Helper function to apply sorting
-  function applySorting(sortBy) {
-    if (sortBy === 'alphabetical') {
-      filteredEmailData.sort((a, b) => a.email.localeCompare(b.email));
-    } else if (sortBy === 'breaches') {
-      filteredEmailData.sort((a, b) => b.breaches - a.breaches);
-    } else { // recent - now sorting by breach count
-      filteredEmailData.sort((a, b) => b.breaches - a.breaches);
+  // Function to sort/filter search results
+  function sortDomainSearchResults(filterValue) {
+    currentSortBy = filterValue;
+    
+    // First, reset to all filtered data based on the text search filter
+    if (currentFilter === '') {
+      filteredEmailData = [...allEmailData];
+    } else {
+      filteredEmailData = allEmailData.filter(item => {
+        const emailMatch = item.email.toLowerCase().includes(currentFilter);
+        return emailMatch;
+      });
     }
+    
+    // Then apply the breach filter if not showing all
+    if (filterValue !== 'all') {
+      // For demo purposes, we're using LinkedIn as the most recent breach
+      const recentBreachName = 'LinkedIn';
+      
+      // Filter to only show emails affected by the recent breach
+      filteredEmailData = filteredEmailData.filter(item => 
+        item.pwnedSites.includes(recentBreachName)
+      );
+    }
+    
+    // Sort by breach count as default
+    filteredEmailData.sort((a, b) => b.breaches - a.breaches);
+    
+    // Update the result count
+    updateResultCount();
+    
+    // Display all results
+    displayAllResults();
   }
 }
 
@@ -895,109 +880,4 @@ function setupModalCleanup() {
       document.body.style.paddingRight = "";
     }
   });
-}
-
-/**
- * Setup file upload functionality for domain data
- */
-function setupFileUpload() {
-  // Event listener for file input change
-  const fileInput = document.getElementById('fileUploadInput');
-  if (fileInput) {
-    fileInput.addEventListener('change', function() {
-      // Enable the upload button if a file is selected
-      const uploadButton = document.getElementById('uploadFileButton');
-      if (uploadButton) {
-        uploadButton.disabled = !this.files.length;
-        
-        // Update the file name display if we have one
-        const fileNameDisplay = document.getElementById('selectedFileName');
-        if (fileNameDisplay && this.files.length) {
-          fileNameDisplay.textContent = this.files[0].name;
-          fileNameDisplay.parentElement.classList.remove('d-none');
-        } else if (fileNameDisplay) {
-          fileNameDisplay.parentElement.classList.add('d-none');
-        }
-      }
-    });
-  }
-  
-  // Event listener for upload button click
-  const uploadButton = document.getElementById('uploadFileButton');
-  if (uploadButton) {
-    uploadButton.addEventListener('click', function() {
-      // Get the file input
-      const fileInput = document.getElementById('fileUploadInput');
-      if (!fileInput || !fileInput.files.length) {
-        return;
-      }
-      
-      // In a real app, you would process the file here
-      // For this demo, we'll just show a success message
-      
-      // Get the file format and domain from the modal
-      const format = document.getElementById('fileUploadModal').getAttribute('data-format');
-      const domain = document.getElementById('fileUploadModal').getAttribute('data-domain');
-      
-      // Close the modal
-      const modal = bootstrap.Modal.getInstance(document.getElementById('fileUploadModal'));
-      if (modal) {
-        modal.hide();
-      }
-      
-      // Reset the file input
-      fileInput.value = '';
-      
-      // Show success message
-      showReturnNotification(
-        'success',
-        `File "${fileInput.files[0].name}" uploaded successfully for domain ${domain} in ${format.toUpperCase()} format.`
-      );
-    });
-  }
-}
-
-/**
- * Show the file upload modal
- * @param {string} format - The file format ('excel' or 'json')
- * @param {string} domain - The domain name
- */
-function showFileUploadModal(format, domain) {
-  // Get the modal
-  const modal = document.getElementById('fileUploadModal');
-  if (!modal) {
-    return;
-  }
-  
-  // Set the modal title based on format
-  const modalTitle = modal.querySelector('.modal-title');
-  if (modalTitle) {
-    modalTitle.textContent = `Upload ${format.toUpperCase()} File for ${domain}`;
-  }
-  
-  // Store the format and domain on the modal element for later use
-  modal.setAttribute('data-format', format);
-  modal.setAttribute('data-domain', domain);
-  
-  // Clear any previously selected file
-  const fileInput = document.getElementById('fileUploadInput');
-  if (fileInput) {
-    fileInput.value = '';
-  }
-  
-  // Hide the file name display
-  const fileNameDisplay = document.getElementById('selectedFileName');
-  if (fileNameDisplay) {
-    fileNameDisplay.parentElement.classList.add('d-none');
-  }
-  
-  // Disable the upload button
-  const uploadButton = document.getElementById('uploadFileButton');
-  if (uploadButton) {
-    uploadButton.disabled = true;
-  }
-  
-  // Show the modal
-  const bsModal = new bootstrap.Modal(modal);
-  bsModal.show();
 }
