@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
     { monthly: "$137", yearly: "$1,370" },
     { monthly: "$274", yearly: "$2,740" },
     { monthly: "Custom", yearly: "Custom" },
+    // Add High-Performance Tier pricing
+    { monthly: "$995", yearly: "$9,950" },
+    { monthly: "$1,850", yearly: "$18,500" },
+    { monthly: "$2,750", yearly: "$27,500" },
   ];
 
   function updatePrices(isYearly) {
@@ -33,4 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
       updatePrices(isYearly);
     });
   }
+  
+  // Initialize tooltips
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
 });
+

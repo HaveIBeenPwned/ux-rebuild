@@ -880,22 +880,6 @@ a:focus-visible {
   color: rgba(255, 255, 255, 0.7);
 }
 
-// Popular badge for pricing cards
-.popular-badge {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: var(--primary);
-  color: white;
-  padding: 5px 15px;
-  border-radius: 0 16px 0 16px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  z-index: 1;
-}
-
 // Color variants for pricing card headers
 .pricing-card-1 .card-header {
   background-color: rgba(41, 128, 185, 0.2);
