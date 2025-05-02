@@ -1128,200 +1128,242 @@
             <h5 class="modal-title" id="verificationModalLabel">Verify Domain Ownership</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            <div class="row">
-              <!-- Left Column - Domain Input and Verification Methods -->
-              <div class="col-lg-5 col-md-12 border-end pe-4 pe-sm-3 border-md-0 border-lg-end pb-md-4 pb-lg-0">
-                <div class="mb-4 mb-sm-3">
-                  <label class="form-label fw-bold mb-3 mb-sm-2">1. Enter Domain</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="domainInput"
-                    placeholder="example.com"
-                    autocapitalize="off"
-                  />
-                  <div class="invalid-feedback" id="domainInputError">Please provide a domain to verify</div>
-                </div>
-
-                <div class="mt-4 mt-sm-3">
-                  <label class="form-label fw-bold mb-3 mb-sm-2">2. Select verification method</label>
-                  <div class="verification-methods">
-                    <div class="verification-method-option active p-3 p-sm-2" data-method="dns">
-                      <div class="method-icon">
-                        <i class="bi bi-globe"></i>
-                      </div>
-                      <div class="method-content">
-                        <h6 class="mb-0 fs-6">DNS TXT Record</h6>
-                        <p class="mb-0 text-grey-400 fs-7">Add a TXT record to your domain's DNS</p>
-                      </div>
-                      <div class="method-indicator">
-                        <i class="bi bi-check-circle-fill"></i>
-                      </div>
-                    </div>
-                    <div class="verification-method-option p-3 p-sm-2" data-method="file">
-                      <div class="method-icon">
-                        <i class="bi bi-file-earmark"></i>
-                      </div>
-                      <div class="method-content">
-                        <h6 class="mb-0 fs-6">File Upload</h6>
-                        <p class="mb-0 text-grey-400 fs-7">Upload a verification file to your website</p>
-                      </div>
-                      <div class="method-indicator">
-                        <i class="bi bi-check-circle-fill"></i>
-                      </div>
-                    </div>
-                    <div class="verification-method-option p-3 p-sm-2" data-method="meta">
-                      <div class="method-icon">
-                        <i class="bi bi-code-slash"></i>
-                      </div>
-                      <div class="method-content">
-                        <h6 class="mb-0 fs-6">Meta Tag</h6>
-                        <p class="mb-0 text-grey-400 fs-7">Add a meta tag to your website's homepage</p>
-                      </div>
-                      <div class="method-indicator">
-                        <i class="bi bi-check-circle-fill"></i>
-                      </div>
-                    </div>
-                    <div class="verification-method-option p-3 p-sm-2" data-method="email">
-                      <div class="method-icon">
-                        <i class="bi bi-envelope"></i>
-                      </div>
-                      <div class="method-content">
-                        <h6 class="mb-0 fs-6">Verify by email</h6>
-                        <p class="mb-0 text-grey-400 fs-7">Send a verification email to your domain</p>
-                      </div>
-                      <div class="method-indicator">
-                        <i class="bi bi-check-circle-fill"></i>
-                      </div>
-                    </div>
+          <div class="modal-body py-4">
+            <!-- Step 1: Domain Input (initially visible) -->
+            <div id="domainInputStep" class="domain-step">
+              <h5 class="mb-4">Step 1: Enter Domain</h5>
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                  <div class="mb-4">
+                    <label for="domainInput" class="form-label">Domain Name</label>
+                    <input
+                      type="text"
+                      class="form-control form-control-sm"
+                      id="domainInput"
+                      placeholder="example.com"
+                      autocapitalize="off"
+                    />
+                    <div class="form-text mt-2">Enter the domain you want to verify ownership for.</div>
+                    <div class="invalid-feedback" id="domainInputError">Please provide a valid domain to verify</div>
                   </div>
                 </div>
               </div>
-
-              <!-- Right Column - Verification Instructions -->
-              <div class="col-lg-7 col-md-12 ps-lg-4 ps-md-0 pt-md-4 pt-lg-0">
-                <div id="verificationInstructions" class="h-100">
-                  <!-- DNS TXT Record Instructions (default) -->
-                  <div id="dnsInstructions">
-                    <h5 class="mb-3">DNS TXT Record Verification</h5>
-                    <p>Add the following TXT record to your domain's DNS settings:</p>
-                    <div class="card card-glass mb-3">
-                      <div class="card-body">
-                        <code>hibp-verify=abc123def456</code>
+            </div>
+            
+            <!-- Loading Spinner (initially hidden) -->
+            <div id="domainLoadingStep" class="domain-step d-none">
+              <div class="d-flex flex-column justify-content-center align-items-center py-5">
+                <div class="logo-mark-spinner mb-3">
+                  <svg width="60" height="40" viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      class="logo-piece logo-piece-1"
+                      d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                      fill="#F6F8FA"
+                    />
+                    <path
+                      class="logo-piece logo-piece-2"
+                      d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                      fill="#F6F8FA"
+                    />
+                    <path
+                      class="logo-piece logo-piece-3"
+                      d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                      fill="#F6F8FA"
+                    />
+                    <path
+                      class="logo-piece logo-piece-4"
+                      d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                      fill="#F6F8FA"
+                    />
+                    <path
+                      class="logo-piece logo-piece-5"
+                      d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
+                      fill="#F6F8FA"
+                    />
+                  </svg>
+                </div>
+                <p class="lead text-center">Validating domain...</p>
+              </div>
+            </div>
+            
+            <!-- Step 2: Verification Methods (initially hidden) -->
+            <div id="verificationMethodsStep" class="domain-step d-none">
+              <div class="d-flex align-items-center mb-4">
+                <h5 class="mb-0">Step 2: Select Verification Method</h5>
+              </div>
+              
+              <!-- Bootstrap Tab Layout -->
+              <div class="row">
+                <div class="col-12">
+                  <!-- Nav tabs -->
+                  <ul class="nav nav-tabs mb-4" id="verificationTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active d-flex align-items-center" id="dns-tab" data-bs-toggle="tab" data-bs-target="#dns-content" type="button" role="tab" aria-controls="dns-content" aria-selected="true">
+                        <i class="bi bi-globe text-primary me-2 fs-5"></i>
+                        <span>DNS TXT Record</span>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link d-flex align-items-center" id="file-tab" data-bs-toggle="tab" data-bs-target="#file-content" type="button" role="tab" aria-controls="file-content" aria-selected="false">
+                        <i class="bi bi-file-earmark text-primary me-2 fs-5"></i>
+                        <span>File Upload</span>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link d-flex align-items-center" id="meta-tab" data-bs-toggle="tab" data-bs-target="#meta-content" type="button" role="tab" aria-controls="meta-content" aria-selected="false">
+                        <i class="bi bi-code-slash text-primary me-2 fs-5"></i>
+                        <span>Meta Tag</span>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link d-flex align-items-center" id="email-tab" data-bs-toggle="tab" data-bs-target="#email-content" type="button" role="tab" aria-controls="email-content" aria-selected="false">
+                        <i class="bi bi-envelope text-primary me-2 fs-5"></i>
+                        <span>Email Verification</span>
+                      </button>
+                    </li>
+                  </ul>
+                  
+                  <!-- Tab panes -->
+                  <div class="tab-content p-4 border border-primary-custom rounded-3" id="verificationTabContent">
+                    <!-- DNS TXT Record Tab Content -->
+                    <div class="tab-pane fade show active" id="dns-content" role="tabpanel" aria-labelledby="dns-tab">
+                      <h5 class="mb-3">DNS TXT Record Verification</h5>
+                      <div class="row">
+                        <div class="col-lg-10">
+                          <p>Add the following TXT record to your domain's DNS settings:</p>
+                          <div class="card card-glass mb-3">
+                            <div class="card-body">
+                              <code>hibp-verify=abc123def456</code>
+                            </div>
+                          </div>
+                          <p>
+                            DNS changes may take up to 24 hours to propagate. Once you've added the record, click "Verify
+                            Now".
+                          </p>
+                        </div>
                       </div>
                     </div>
-                    <p>
-                      DNS changes may take up to 24 hours to propagate. Once you've added the record, click "Verify
-                      Now".
-                    </p>
+                    
+                    <!-- File Upload Tab Content -->
+                    <div class="tab-pane fade" id="file-content" role="tabpanel" aria-labelledby="file-tab">
+                      <h5 class="mb-3">File Upload Verification</h5>
+                      <div class="row">
+                        <div class="col-lg-10">
+                          <p>Upload the following file to your website's root directory:</p>
+                          <div class="card card-glass mb-3">
+                            <div class="card-body">
+                              <p class="mb-0">Filename: <code>hibp-verification.txt</code></p>
+                              <p class="mb-0">Content: <code>hibp-verify=abc123def456</code></p>
+                            </div>
+                          </div>
+                          <p>
+                            The file should be accessible at:
+                            <code>https://<span id="domainNamePlaceholder">yourdomain.com</span>/hibp-verification.txt</code>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Meta Tag Tab Content -->
+                    <div class="tab-pane fade" id="meta-content" role="tabpanel" aria-labelledby="meta-tab">
+                      <h5 class="mb-3">Meta Tag Verification</h5>
+                      <div class="row">
+                        <div class="col-lg-10">
+                          <p>
+                            Add the following meta tag to the
+                            <code>&lt;head&gt;</code> section of your website's homepage:
+                          </p>
+                          <div class="card card-glass mb-3">
+                            <div class="card-body">
+                              <code>&lt;meta name="hibp-verification" content="abc123def456"&gt;</code>
+                            </div>
+                          </div>
+                          <p>Once you've added the meta tag, click "Verify Now".</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Email Verification Tab Content -->
+                    <div class="tab-pane fade" id="email-content" role="tabpanel" aria-labelledby="email-tab">
+                      <h5 class="mb-3">Email Verification</h5>
+                      <div class="row">
+                        <div class="col-lg-10">
+                          <p>Select an email address to receive the verification link:</p>
+                          <div class="form-check-list mb-3">
+                            <div class="form-check mb-2">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="verificationEmail"
+                                id="emailAdmin"
+                                value="admin@yourdomain.com"
+                                checked
+                              />
+                              <label class="form-check-label" for="emailAdmin"> admin@<span class="domain-name-placeholder">yourdomain.com</span> </label>
+                            </div>
+                            <div class="form-check mb-2">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="verificationEmail"
+                                id="emailWebmaster"
+                                value="webmaster@yourdomain.com"
+                              />
+                              <label class="form-check-label" for="emailWebmaster"> webmaster@<span class="domain-name-placeholder">yourdomain.com</span> </label>
+                            </div>
+                            <div class="form-check mb-2">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="verificationEmail"
+                                id="emailInfo"
+                                value="info@yourdomain.com"
+                              />
+                              <label class="form-check-label" for="emailInfo"> info@<span class="domain-name-placeholder">yourdomain.com</span> </label>
+                            </div>
+                            <div class="form-check mb-2">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="verificationEmail"
+                                id="emailHostmaster"
+                                value="hostmaster@yourdomain.com"
+                              />
+                              <label class="form-check-label" for="emailHostmaster"> hostmaster@<span class="domain-name-placeholder">yourdomain.com</span> </label>
+                            </div>
+                            <div class="form-check mb-2">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="verificationEmail"
+                                id="emailSecurity"
+                                value="security@yourdomain.com"
+                              />
+                              <label class="form-check-label" for="emailSecurity"> security@<span class="domain-name-placeholder">yourdomain.com</span> </label>
+                            </div>
+                          </div>
+                          <div class="alert alert-info mb-3">
+                            <div class="d-flex">
+                              <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+                              <div>
+                                A verification email will be sent containing a unique link that you must click to verify
+                                ownership of your domain.
+                              </div>
+                            </div>
+                          </div>
+                          <p class="text-muted small">
+                            The verification email will expire after 24 hours. Make sure to check your spam folder if you
+                            don't receive it.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <!-- File Upload Instructions (hidden by default) -->
-                  <div id="fileInstructions" class="d-none">
-                    <h5 class="mb-3">File Upload Verification</h5>
-                    <p>Upload the following file to your website's root directory:</p>
-                    <div class="card card-glass mb-3">
-                      <div class="card-body">
-                        <p class="mb-0">Filename: <code>hibp-verification.txt</code></p>
-                        <p class="mb-0">Content: <code>hibp-verify=abc123def456</code></p>
-                      </div>
-                    </div>
-                    <p>
-                      The file should be accessible at:
-                      <code>https://yourdomain.com/hibp-verification.txt</code>
-                    </p>
-                  </div>
-
-                  <!-- Meta Tag Instructions (hidden by default) -->
-                  <div id="metaInstructions" class="d-none">
-                    <h5 class="mb-3">Meta Tag Verification</h5>
-                    <p>
-                      Add the following meta tag to the
-                      <code>&lt;head&gt;</code> section of your website's homepage:
-                    </p>
-                    <div class="card card-glass mb-3">
-                      <div class="card-body">
-                        <code>&lt;meta name="hibp-verification" content="abc123def456"&gt;</code>
-                      </div>
-                    </div>
-                    <p>Once you've added the meta tag, click "Verify Now".</p>
-                  </div>
-                  <!-- Email Verification Instructions (hidden by default) -->
-                  <div id="emailInstructions" class="d-none">
-                    <h5 class="mb-3">Email Verification</h5>
-                    <p>Select an email address to receive the verification link:</p>
-                    <div class="form-check-list mb-3">
-                      <div class="form-check mb-2">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="verificationEmail"
-                          id="emailAdmin"
-                          value="admin@yourdomain.com"
-                          checked
-                        />
-                        <label class="form-check-label" for="emailAdmin"> admin@yourdomain.com </label>
-                      </div>
-                      <div class="form-check mb-2">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="verificationEmail"
-                          id="emailWebmaster"
-                          value="webmaster@yourdomain.com"
-                        />
-                        <label class="form-check-label" for="emailWebmaster"> webmaster@yourdomain.com </label>
-                      </div>
-                      <div class="form-check mb-2">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="verificationEmail"
-                          id="emailInfo"
-                          value="info@yourdomain.com"
-                        />
-                        <label class="form-check-label" for="emailInfo"> info@yourdomain.com </label>
-                      </div>
-                      <div class="form-check mb-2">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="verificationEmail"
-                          id="emailHostmaster"
-                          value="hostmaster@yourdomain.com"
-                        />
-                        <label class="form-check-label" for="emailHostmaster"> hostmaster@yourdomain.com </label>
-                      </div>
-                      <div class="form-check mb-2">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="verificationEmail"
-                          id="emailSecurity"
-                          value="security@yourdomain.com"
-                        />
-                        <label class="form-check-label" for="emailSecurity"> security@yourdomain.com </label>
-                      </div>
-                    </div>
-                    <div class="card card-glass mb-3">
-                      <div class="card-body">
-                        <p class="mb-0">
-                          A verification email will be sent containing a unique link that you must click to verify
-                          ownership of your domain.
-                        </p>
-                      </div>
-                    </div>
-                    <p class="text-grey-400 fs-7">
-                      The verification email will expire after 24 hours. Make sure to check your spam folder if you
-                      don't receive it.
-                    </p>
-                  </div>
-
+                  
                   <!-- Verification Spinner (hidden by default) -->
                   <div
                     id="verificationSpinner"
-                    class="verification-spinner flex-column justify-content-center align-items-center h-100 d-none"
+                    class="verification-spinner flex-column justify-content-center align-items-center mt-4 py-5 d-none"
                   >
                     <div class="logo-mark-spinner mb-3">
                       <svg width="60" height="40" viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1359,8 +1401,9 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" id="verifyButton">Verify Now</button>
+            <button type="button" class="btn btn-secondary d-none" id="goBackButton" data-step1-action="dismiss" data-bs-dismiss="modal">Go Back</button>
+            <button type="button" class="btn btn-primary" id="continueToDomainVerification">Continue</button>
+            <button type="button" class="btn btn-primary d-none" id="verifyButton">Verify Now</button>
           </div>
         </div>
       </div>
