@@ -13,6 +13,13 @@
       content="Have I Been Pwned allows you to search across multiple data breaches to see if your email address or phone number has been compromised."
     />
     <title>Have I Been Pwned: Check if your email has been compromised in a data breach</title>
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HIBP" />
+    <link rel="manifest" href="/site.webmanifest" />
     <!-- Bootstrap 5 CSS -->
     <link
       rel="stylesheet"
@@ -48,6 +55,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pages/passwords.html">Passwords</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/notifications.html">Notify Me</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">API</a>
@@ -144,6 +154,26 @@
               </div>
             </div>
           </div>
+          
+          <!-- Notification CTA -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="alert bg-primary-transparent border border-primary-custom rounded-3 p-4">
+                <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+                  <div class="mb-3 mb-md-0">
+                    <h4 class="fs-5 fw-bold mb-2"><i class="bi bi-bell me-2"></i>Stay Protected</h4>
+                    <p class="mb-0">Get notified when your email appears in future data breaches</p>
+                  </div>
+                  <div>
+                    <a href="pages/notifications.html" class="btn btn-primary" id="notifyMeBtn">
+                      Notify Me
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
           <!-- Timeline -->
           <div class="row">
             <div class="col-12">
@@ -450,6 +480,9 @@
                     </li>
                     <li class="mb-2">
                       <a href="pages/passwords.html" class="text-decoration-none text-muted hover-white">Passwords</a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="pages/notifications.html" class="text-decoration-none text-muted hover-white">Notify Me</a>
                     </li>
                     <li class="mb-2">
                       <a href="#" class="text-decoration-none text-muted hover-white">API</a>
