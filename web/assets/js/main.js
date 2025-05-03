@@ -601,3 +601,60 @@ function initDomainSearchPage() {
     });
   }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Email search functionality
+  const emailInput = document.getElementById('emailInput');
+  const checkButton = document.getElementById('checkButton');
+  const breachTimeline = document.getElementById('breachTimeline');
+  
+  if (emailInput && checkButton) {
+    checkButton.addEventListener('click', function() {
+      performSearch();
+    });
+    
+    emailInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+    
+    function performSearch() {
+      const email = emailInput.value.trim();
+      
+      if (email && isValidEmail(email)) {
+        // In a real app, you would call an API to check if the email has been pwned
+        // For demo purposes, we'll just show the breach timeline
+        breachTimeline.classList.remove('d-none');
+        
+        // Store the email in session storage for use on the notifications page
+        sessionStorage.setItem('searchedEmail', email);
+        
+        // Scroll to results
+        breachTimeline.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        alert('Please enter a valid email address.');
+      }
+    }
+    
+    function isValidEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+  }
+  
+  // NotifyMe button functionality
+  const notifyMeBtn = document.getElementById('notifyMeBtn');
+  
+  if (notifyMeBtn) {
+    notifyMeBtn.addEventListener('click', function(e) {
+      // Get the email from the search input
+      const email = emailInput.value.trim();
+      
+      if (email) {
+        // Store the email in session storage for use on the notifications page
+        sessionStorage.setItem('searchedEmail', email);
+      }
+    });
+  }
+});

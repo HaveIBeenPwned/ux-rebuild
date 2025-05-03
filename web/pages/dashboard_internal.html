@@ -55,6 +55,9 @@
               <a class="nav-link" href="passwords.html">Passwords</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="notifications.html">Notify Me</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#">API</a>
             </li>
             <li class="nav-item">
@@ -157,7 +160,15 @@
                 <!-- Overview Tab -->
                 <div class="tab-pane fade show active" id="overview">
                   <!-- Return notification placeholder -->
-                  <div id="returnNotificationPlaceholder"></div>
+                  <div id="returnNotificationPlaceholder">
+                    <!-- Success Notification Alert (will be shown/hidden via JavaScript) -->
+                    <div id="notificationSuccess" class="alert alert-success notification-success d-flex align-items-center mb-4 d-none">
+                      <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+                      <div>
+                        <strong>Success!</strong> You have successfully signed up for breach notifications.
+                      </div>
+                    </div>
+                  </div>
 
                   <!-- Breach Summary Card -->
                   <div class="card card-glow mb-4">
@@ -1515,6 +1526,9 @@
                     </li>
                     <li class="mb-2">
                       <a href="passwords.html" class="text-decoration-none text-muted hover-white">Passwords</a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="notifications.html" class="text-decoration-none text-muted hover-white">Notify Me</a>
                     </li>
                     <li class="mb-2">
                       <a href="#" class="text-decoration-none text-muted hover-white">API</a>

@@ -3,18 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="og:title" content="Have I Been Pwned: Dashboard" />
+    <meta property="og:title" content="Have I Been Pwned: Notifications" />
     <meta
       name="description"
-      content="Access your personalised dashboard to view sensitive breach information, manage domains, and handle API subscriptions."
+      content="Sign up to be notified when your email appears in a data breach"
     />
     <meta
       property="og:description"
-      content="Access your personalised dashboard to view sensitive breach information, manage domains, and handle API subscriptions."
+      content="Sign up to be notified when your email appears in a data breach"
     />
-
-    <title>Have I Been Pwned: Dashboard</title>
-
+    <title>Have I Been Pwned: Notifications</title>
     <!-- Bootstrap 5 CSS -->
     <link
       rel="stylesheet"
@@ -23,15 +21,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-
     <!-- Switzer Font -->
     <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap" rel="stylesheet" />
-
     <link href="../assets/css/main.css" rel="stylesheet" />
   </head>
+
   <body>
     <!-- Navigation Component -->
     <nav class="navbar navbar-expand-lg">
@@ -40,7 +36,7 @@
           <img src="../assets/images/hibp-logo.svg" alt="Have I Been Pwned" height="30" />
         </a>
         <div class="d-flex align-items-center justify-content-end gap-2">
-          <a href="dashboard.html" class="btn btn-secondary btn-sm d-lg-none active" role="button">Dashboard</a>
+          <a href="dashboard.html" class="btn btn-secondary btn-sm d-lg-none" role="button">Dashboard</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -48,9 +44,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="pwned_websites.html"
-                >Who's been pwned</a
-              >
+              <a class="nav-link" href="pwned_websites.html">Who's been pwned</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="passwords.html">Passwords</a>
@@ -97,91 +91,155 @@
     </nav>
 
     <main>
-      <!-- Page Header -->
-      <section class="py-5 bg-dark-subtle-custom">
+      <!-- Notification Sign-up Section -->
+      <section class="py-5">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-              <h1 class="page-title">Your Dashboard</h1>
-              <p class="lead text-muted mb-0">
-                Access personalized features and manage your Have I Been Pwned
-                account
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Dashboard Verification Section -->
-      <section class="py-5" id="verificationSection">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-6 mx-auto">
-              <div class="card card-glow mb-4">
-                <div class="card-body p-4">
-                  <h3 class="fw-bold mb-3">Sign in to Your Dashboard</h3>
-                  <p class="mb-4">
-                    Your dashboard is where you can access features that require you to identify yourself first, including:
+            <div class="col-lg-8">
+              <!-- Initial State -->
+              <div id="notificationInitial">
+                <div class="text-center mb-5">
+                  <h1 class="fw-bold mb-3">Get Breach Notifications</h1>
+                  <p class="lead text-muted mb-4">
+                    We'll notify you when your email address appears in new data breaches, helping you stay ahead of potential security threats.
                   </p>
-                  <ul class="list-unstyled mb-4">
-                    <li class="d-flex align-items-start mb-3">
-                      <i class="bi bi-shield-lock text-primary me-2 fs-5"></i>
-                      <div>Searching for your email address in sensitive breaches</div>
-                    </li>
-                    <li class="d-flex align-items-start mb-3">
-                      <i class="bi bi-binoculars text-primary me-2 fs-5"></i>
-                      <div>Viewing stealer log entries that captured your email address</div>
-                    </li>
-                    <li class="d-flex align-items-start mb-3">
-                      <i class="bi bi-globe text-primary me-2 fs-5"></i>
-                      <div>Adding and searching domains you own</div>
-                    </li>
-                    <li class="d-flex align-items-start mb-3">
-                      <i class="bi bi-key text-primary me-2 fs-5"></i>
-                      <div>Purchasing and managing API keys and paid subscriptions</div>
-                    </li>
-                  </ul>
+                </div>
 
-                  <!-- sign in Form -->
-                  <div id="loginForm">
-                    <p class="text-muted mb-3">Enter your address to begin signing in:</p>
-                    <form id="dashboardVerificationForm">
-                      <div class="mb-3">
-                        <div class="input-group-custom">
-                          <input
-                            type="email"
-                            class="form-control"
-                            id="emailInput"
-                            placeholder="Your email address"
-                            required
-                          />
-                          <div class="btn-container">
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                          </div>
+                <div class="py-4">
+                    <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                        <h3 class="fw-bold mb-4">How it works</h3>
+                        <div class="d-flex mb-4">
+                        <div class="notification-step rounded-circle bg-primary-transparent text-primary d-flex align-items-center justify-content-center fs-5 fw-bold me-3" style="width: 40px; height: 40px; min-width: 40px; flex: 0 0 40px;">1</div>
+                        <div>
+                            <h4 class="fs-5 fw-bold">Enter your email address</h4>
+                            <p class="text-muted mb-0">Provide the email address you want to monitor</p>
                         </div>
-                        <div class="invalid-feedback d-none" id="emailError">Please enter a valid email address.</div>
-                      </div>
-                      <div class="form-text">We'll send a verification link to this address.</div>
-                    </form>
-                  </div>
-
-                  <!-- Error Message (Initially Hidden) -->
-                  <div id="errorMessage" class="alert alert-danger d-none mt-4" role="alert">
-                    <div class="d-flex align-items-start">
-                      <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
-                      <div><strong>Invalid email address.</strong> Please check the email address and try again.</div>
+                        </div>
+                        <div class="d-flex mb-4">
+                        <div class="notification-step rounded-circle bg-primary-transparent text-primary d-flex align-items-center justify-content-center fs-5 fw-bold me-3" style="width: 40px; height: 40px; min-width: 40px; flex: 0 0 40px;">2</div>
+                        <div>
+                            <h4 class="fs-5 fw-bold">Verify your email</h4>
+                            <p class="text-muted mb-0">Click the verification link sent to your inbox</p>
+                        </div>
+                        </div>
+                        <div class="d-flex">
+                        <div class="notification-step rounded-circle bg-primary-transparent text-primary d-flex align-items-center justify-content-center fs-5 fw-bold me-3" style="width: 40px; height: 40px; min-width: 40px; flex: 0 0 40px;">3</div>
+                        <div>
+                            <h4 class="fs-5 fw-bold">Stay protected</h4>
+                            <p class="text-muted mb-0">Get immediate notifications when your data appears in breaches</p>
+                        </div>
+                        </div>
                     </div>
-                  </div>
+                    </div>
+                </div>
 
-                  <!-- Success Message (Initially Hidden) -->
-                  <div id="successMessage" class="alert alert-success d-none mt-4" role="alert">
-                    <div class="d-flex align-items-start">
-                      <i class="bi bi-check-circle-fill me-2 fs-5"></i>
-                      <div>
-                        <strong>Verification email sent!</strong> Please check your inbox and click the link to access
-                        your dashboard.
-                        <p class="mt-2 mb-0">If you don't see the email, please check your spam folder.</p>
+                <div class="card card-glow">
+                  <div class="card-body p-4">
+                    <h3 class="fw-bold mb-4">Sign up for notifications</h3>
+                    <form id="notificationForm">
+                      <div class="mb-4">
+                        <label for="notificationEmail" class="form-label">Email Address</label>
+                        <div class="input-group">
+                          <input type="email" class="form-control" id="notificationEmail" placeholder="Enter your email address" required>
+                          <button class="btn btn-primary" type="submit" id="notifySubmitBtn" data-bs-toggle="loading-button" style="--btn-min-width: 120px; --btn-min-height: 38px">
+                            <span class="btn-text">Notify Me</span>
+                            <div class="loading-indicator loading-indicator-sm loading-indicator-light">
+                              <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  class="logo-piece logo-piece-1"
+                                  d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-2"
+                                  d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-3"
+                                  d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-4"
+                                  d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-5"
+                                  d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
+                                  fill="#F6F8FA"
+                                />
+                              </svg>
+                            </div>
+                          </button>
+                        </div>
+                        <div class="form-text">We'll never share your email with anyone else.</div>
                       </div>
+                    </form>
+                    <p class="text-muted body-small mb-0">
+                      By signing up, you agree to the <a href="toc.html" class="text-decoration-none">Terms of Use</a> and <a href="privacy.html" class="text-decoration-none">Privacy Policy</a>.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email Sent State -->
+              <div id="notificationSent" class="d-none">
+                <div class="text-center mb-5">
+                  <h1 class="fw-bold mb-3">Check Your Email</h1>
+                  <p class="lead text-muted mb-4">
+                    We've sent a verification link to your email address. Click the link to complete your notification setup.
+                  </p>
+                </div>
+
+                <div class="card card-glow">
+                  <div class="card-body p-4">
+                    <h3 class="fw-bold mb-3">What's next?</h3>
+                    <ol class="ps-3">
+                      <li class="mb-3">Check your inbox for an email from Have I Been Pwned</li>
+                      <li class="mb-3">Click the verification link in the email</li>
+                      <li class="mb-3">You'll be redirected to your dashboard with notification setup complete</li>
+                    </ol>
+                    <div class="alert alert-info">
+                      <i class="bi bi-info-circle-fill me-2"></i>
+                      <span>If you don't see the email, please check your spam folder.</span>
+                    </div>
+
+                    <div class="text-center mt-4">
+                      <button class="btn btn-outline-primary" id="resendVerificationBtn" data-bs-toggle="loading-button" style="--btn-min-width: 250px; --btn-min-height: 38px">
+                        <span class="btn-text"><i class="bi bi-envelope me-2"></i>Resend Verification Email</span>
+                        <div class="loading-indicator loading-indicator-sm">
+                          <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              class="logo-piece logo-piece-1"
+                              d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                              fill="#F6F8FA"
+                            />
+                            <path
+                              class="logo-piece logo-piece-2"
+                              d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                              fill="#F6F8FA"
+                            />
+                            <path
+                              class="logo-piece logo-piece-3"
+                              d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                              fill="#F6F8FA"
+                            />
+                            <path
+                              class="logo-piece logo-piece-4"
+                              d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                              fill="#F6F8FA"
+                            />
+                            <path
+                              class="logo-piece logo-piece-5"
+                              d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
+                              fill="#F6F8FA"
+                            />
+                          </svg>
+                        </div>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -193,9 +251,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark-subtle-custom">
+    <footer class="py-5">
       <div class="container">
-        <div class="footer-wrapper rounded-3 border border-primary-custom bg-dark-subtle-custom">
+        <div class="footer-wrapper rounded-3 border border-primary-custom">
           <div class="row g-0">
             <!-- Logo and Tagline -->
             <div class="col-lg-4 p-4 border-end border-primary-custom">
@@ -217,7 +275,9 @@
                     <li class="mb-2">
                       <a href="../index.html" class="text-decoration-none text-muted hover-white">Email Search</a>
                     </li>
-
+                    <li class="mb-2">
+                      <a href="domain_search.html" class="text-decoration-none text-muted hover-white">Domain Search</a>
+                    </li>
                     <li class="mb-2">
                       <a href="pwned_websites.html" class="text-decoration-none text-muted hover-white"
                         >Who's been pwned</a
@@ -320,8 +380,11 @@
       referrerpolicy="no-referrer"
     ></script>
 
+    <!-- Loading Button JS -->
+    <script src="../assets/js/loading-button.js"></script>
+
     <!-- Custom JS -->
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/notifications.js"></script>
   </body>
-</html>
+</html> 

@@ -151,6 +151,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize domain management
   setupDomainManagement();
+
+  // Check for notification confirmation
+  const urlParams = new URLSearchParams(window.location.search);
+  const notificationConfirmed = urlParams.get('notification_confirmed');
+  const notificationSuccess = document.getElementById('notificationSuccess');
+  
+  if (notificationConfirmed === 'true' && notificationSuccess) {
+    notificationSuccess.classList.remove('d-none');
+    
+    // Auto-hide the message after 10 seconds
+    setTimeout(() => {
+      notificationSuccess.classList.add('d-none');
+    }, 10000);
+  }
 });
 
 function setUserInfo() {
