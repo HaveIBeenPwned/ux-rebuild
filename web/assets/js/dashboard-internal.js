@@ -702,62 +702,125 @@ function setupDomainSearch() {
 }
 
 function setupVerificationMethodSelection() {
-  const methodOptions = document.querySelectorAll(
-    ".verification-method-option"
-  );
-  const instructionPanels = {
-    dns: document.getElementById("dnsInstructions"),
-    file: document.getElementById("fileInstructions"),
-    meta: document.getElementById("metaInstructions"),
-    email: document.getElementById("emailInstructions"),
-  };
-
-  methodOptions.forEach((option) => {
-    option.addEventListener("click", function () {
-      // Remove active class from all options
-      methodOptions.forEach((opt) => opt.classList.remove("active"));
-
-      // Add active class to the clicked option
-      this.classList.add("active");
-
-      // Hide all instruction panels
-      for (const key in instructionPanels) {
-        if (instructionPanels[key]) {
-          instructionPanels[key].classList.add("d-none");
-        }
-      }
-
-      // Show the selected instruction panel
-      const method = this.getAttribute("data-method");
-      if (instructionPanels[method]) {
-        instructionPanels[method].classList.remove("d-none");
-      }
+  // With Bootstrap's tab component, we don't need to manually handle tab switching
+  // as it's handled by Bootstrap's JavaScript.
+  // We just need to initialize the tabs if needed.
+  
+  // Store the current verification method when a tab is clicked
+  const tabButtons = document.querySelectorAll('#verificationTabs .nav-link');
+  
+  tabButtons.forEach(tab => {
+    tab.addEventListener('shown.bs.tab', function(event) {
+      // Get the ID of the activated tab (without the -tab suffix)
+      const activeMethod = event.target.id.replace('-tab', '');
+      // Store this as the current method - useful when verifying
+      localStorage.setItem('current_verification_method', activeMethod);
     });
   });
+  
+  // Initialize with DNS as the default method
+  localStorage.setItem('current_verification_method', 'dns');
 }
 
 function setupDomainVerification() {
-  const verifyButton = document.getElementById("verifyButton");
+  // Get elements for step 1
+  const domainInputStep = document.getElementById("domainInputStep");
+  const domainLoadingStep = document.getElementById("domainLoadingStep");
+  const verificationMethodsStep = document.getElementById("verificationMethodsStep");
+  const continueButton = document.getElementById("continueToDomainVerification");
   const domainInput = document.getElementById("domainInput");
+  const goBackButton = document.getElementById("goBackButton");
+  
+  // Get elements for step 2
+  const verifyButton = document.getElementById("verifyButton");
   const verificationSpinner = document.getElementById("verificationSpinner");
-  const verificationInstructions = document.querySelectorAll(
-    "#verificationInstructions > div:not(#verificationSpinner)"
-  );
-
-  if (verifyButton && domainInput) {
-    verifyButton.addEventListener("click", function () {
+  const tabContent = document.getElementById("verificationTabContent");
+  
+  // Handle the continue button to move from step 1 to loading to step 2
+  if (continueButton && domainInput) {
+    continueButton.addEventListener("click", function() {
       const domain = domainInput.value.trim();
-
+      
       if (!domain) {
         domainInput.classList.add("is-invalid");
         return;
       }
-
-      // Hide instructions and show spinner
-      if (verificationSpinner && verificationInstructions.length > 0) {
-        verificationInstructions.forEach((panel) => {
-          panel.classList.add("d-none");
+      
+      // Hide step 1, show loading step
+      domainInputStep.classList.add("d-none");
+      domainLoadingStep.classList.remove("d-none");
+      continueButton.classList.add("d-none"); // Hide continue button during loading
+      
+      // Remove the data-bs-dismiss attribute from the goBackButton
+      // as we don't want it to close the modal in step 2
+      if (goBackButton) {
+        goBackButton.removeAttribute("data-bs-dismiss");
+      }
+      
+      // Simulate domain validation (1.2 seconds)
+      setTimeout(() => {
+        // Hide loading step, show step 2
+        domainLoadingStep.classList.add("d-none");
+        verificationMethodsStep.classList.remove("d-none");
+        verifyButton.classList.remove("d-none"); // Show the verify button
+        
+        // Show the Go Back button when in step 2
+        if (goBackButton) {
+          goBackButton.classList.remove("d-none");
+        }
+        
+        // Update domain placeholders in the instructions with the entered domain
+        document.querySelectorAll(".domain-name-placeholder, #domainNamePlaceholder").forEach(placeholder => {
+          placeholder.textContent = domain;
         });
+      }, 1200);
+    });
+    
+    // Clear invalid state when input changes
+    domainInput.addEventListener("input", function() {
+      this.classList.remove("is-invalid");
+    });
+  }
+  
+  // Handle go back button to return to step 1 or close modal depending on current step
+  if (goBackButton) {
+    goBackButton.addEventListener("click", function(event) {
+      // If we're in step 2, go back to step 1 and prevent modal from closing
+      if (!verificationMethodsStep.classList.contains('d-none')) {
+        // Prevent the default dismiss behavior
+        event.preventDefault();
+        
+        // Go back to step 1
+        domainInputStep.classList.remove("d-none");
+        verificationMethodsStep.classList.add("d-none");
+        verifyButton.classList.add("d-none"); // Hide the verify button
+        continueButton.classList.remove("d-none"); // Show continue button
+        
+        // Hide the Go Back button when back in step 1
+        goBackButton.classList.add("d-none");
+        
+        // Restore the data-bs-dismiss attribute for step 1
+        goBackButton.setAttribute("data-bs-dismiss", "modal");
+      }      
+    });
+  }
+
+  // Handle the verify button functionality
+  if (verifyButton && domainInput) {
+    verifyButton.addEventListener("click", function() {
+      const domain = domainInput.value.trim();
+
+      if (!domain) {
+        // We shouldn't reach here, but just in case
+        domainInputStep.classList.remove("d-none");
+        verificationMethodsStep.classList.add("d-none");
+        domainInput.classList.add("is-invalid");
+        return;
+      }
+
+      // Hide tab content and show spinner
+      if (verificationSpinner && tabContent) {
+        tabContent.classList.add("d-none");
         verificationSpinner.classList.remove("d-none");
       }
 
@@ -766,11 +829,6 @@ function setupDomainVerification() {
         // Hide the spinner
         if (verificationSpinner) {
           verificationSpinner.classList.add("d-none");
-        }
-
-        // Show the first instruction panel again (DNS by default)
-        if (verificationInstructions.length > 0) {
-          verificationInstructions[0].classList.remove("d-none");
         }
 
         // Set domains flag in localStorage and update UI
@@ -799,11 +857,6 @@ function setupDomainVerification() {
           domainsTableView.classList.remove("d-none");
         }
       }, 3000);
-    });
-
-    // Clear invalid state when input changes
-    domainInput.addEventListener("input", function () {
-      this.classList.remove("is-invalid");
     });
   }
 }
@@ -864,7 +917,61 @@ function setupDomainRemoval() {
 }
 
 function setupModalCleanup() {
-  // Add global modal cleanup handler
+  const verificationModal = document.getElementById("verificationModal");
+  
+  if (verificationModal) {
+    verificationModal.addEventListener("hidden.bs.modal", function() {
+      // Reset modal to step 1 when closed
+      const domainInputStep = document.getElementById("domainInputStep");
+      const domainLoadingStep = document.getElementById("domainLoadingStep");
+      const verificationMethodsStep = document.getElementById("verificationMethodsStep");
+      const verifyButton = document.getElementById("verifyButton");
+      const continueButton = document.getElementById("continueToDomainVerification");
+      const domainInput = document.getElementById("domainInput");
+      const tabContent = document.getElementById("verificationTabContent");
+      const verificationSpinner = document.getElementById("verificationSpinner");
+      const goBackButton = document.getElementById("goBackButton");
+      
+      if (domainInputStep && verificationMethodsStep) {
+        // Reset to step 1
+        domainInputStep.classList.remove("d-none");
+        domainLoadingStep.classList.add("d-none");
+        verificationMethodsStep.classList.add("d-none");
+      }
+      
+      if (verifyButton && continueButton) {
+        verifyButton.classList.add("d-none");
+        continueButton.classList.remove("d-none");
+      }
+      
+      // Make sure the Go Back button is hidden in step 1
+      if (goBackButton) {
+        goBackButton.classList.add("d-none");
+        goBackButton.setAttribute("data-bs-dismiss", "modal");
+      }
+      
+      if (domainInput) {
+        domainInput.value = "";
+        domainInput.classList.remove("is-invalid");
+      }
+      
+      // Reset the verification flow
+      if (tabContent && verificationSpinner) {
+        tabContent.classList.remove("d-none");
+        verificationSpinner.classList.add("d-none");
+      }
+      
+      // Reset tab to the first tab (DNS)
+      const dnsTab = document.getElementById("dns-tab");
+      if (dnsTab) {
+        // Create a new Bootstrap Tab instance and show it
+        const bootstrapTab = new bootstrap.Tab(dnsTab);
+        bootstrapTab.show();
+      }
+    });
+  }
+  
+  // Add global modal cleanup handler for domain removal
   document.addEventListener("hidden.bs.modal", function (event) {
     if (event.target.id === "domainRemovalPrompt") {
       // Force cleanup of any lingering modal backdrops

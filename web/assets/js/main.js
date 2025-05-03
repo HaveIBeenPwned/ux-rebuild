@@ -531,14 +531,14 @@ function initDomainSearchPage() {
         const newRow = document.createElement("tr");
         newRow.innerHTML = `
           <td>${domain}</td>
-          <td>10</td>
-          <td>100</td>
-          <td class="table-actions">
-            <button class="btn btn-xs btn-outline-primary me-1">
-              <i class="bi bi-search"></i>
-            </button>
+          <td class="text-end">10</td>
+          <td class="text-end">100</td>
+          <td class="table-actions">            
             <button class="btn btn-xs btn-outline-danger remove-domain" data-domain="${domain}">
               <i class="bi bi-trash"></i>
+            </button>
+            <button class="btn btn-xs btn-outline-primary me-1">
+              <i class="bi bi-search"></i>
             </button>
           </td>
         `;
