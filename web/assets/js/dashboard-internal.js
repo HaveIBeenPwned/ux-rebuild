@@ -62,6 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Setup stealer logs navigation from breaches table
+  setupStealerLogsNavigation();
+
   // Run Full Scan button functionality
   const runFullScanButton = document.getElementById("runFullScanButton");
   if (runFullScanButton) {
@@ -1001,4 +1004,47 @@ function setupModalCleanup() {
       document.body.style.paddingRight = "";
     }
   });
+}
+
+// Function to setup navigation from breaches table to stealer logs tab
+function setupStealerLogsNavigation() {
+  // Find all stealer logs links in the breaches table (both badge and button)
+  const stealerLogsLinks = document.querySelectorAll('.breach-table-container a[href="#stealer-logs"]');
+  
+  if (stealerLogsLinks.length > 0) {
+    stealerLogsLinks.forEach(link => {
+      link.addEventListener('click', function(event) {
+        // Prevent the default hash change behavior
+        event.preventDefault();
+        
+        // Get the sidebar link and programmatically click it to activate the tab
+        const sidebarLink = document.querySelector('.sidebar-section a[href="#stealer-logs"]');
+        
+        if (sidebarLink) {
+          // Create a Bootstrap Tab instance and show it
+          const bsTab = new bootstrap.Tab(sidebarLink);
+          bsTab.show();
+        } else {
+          console.error("Sidebar stealer logs link not found");
+          
+          // Fallback method if sidebar link isn't found
+          const stealerLogsTab = document.querySelector('#stealer-logs');
+          const tabPanes = document.querySelectorAll('.tab-pane');
+          
+          if (stealerLogsTab) {
+            // Hide all tabs
+            tabPanes.forEach(pane => {
+              pane.classList.remove('show', 'active');
+            });
+            
+            // Show stealer logs tab
+            stealerLogsTab.classList.add('show', 'active');
+            
+            // Update URL hash
+            window.history.replaceState(null, null, '#stealer-logs');
+          }
+        }
+      });
+    });
+  }
 }
