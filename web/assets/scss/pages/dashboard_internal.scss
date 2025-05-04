@@ -373,3 +373,9 @@
   align-items: center;
   justify-content: center;
 }
+
+// Subscription tab positioning
+// Can be removed when the demo state toggle is removed
+#subscription {
+  position: relative;
+}
