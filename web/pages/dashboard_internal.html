@@ -1123,13 +1123,51 @@
                       <h3 class="fw-bold mb-4">API Keys</h3>
                       <p class="mb-4">Manage your API access keys for programmatic access to HIBP data.</p>
 
-                      <div class="alert alert-primary mb-4" role="alert">
-                        <div class="d-flex">
-                          <i class="bi bi-lightbulb-fill me-2 fs-5"></i>
-                          <div>You need an active subscription to access the API. Upgrade to get started.</div>
+                      <!-- Key Information Section -->
+                      <div class="api-key-section">
+                        <div class="card-glow p-4 mb-4 border border-primary-custom rounded-3">
+                          <div class="d-flex align-items-start">
+                            <div class="bg-primary-transparent rounded-circle p-2 me-3">
+                              <i class="bi bi-key-fill text-primary fs-5"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                              <h4 class="fs-5 fw-bold mb-3">Your API Key</h4>
+                              <p class="mb-3">For security reasons, existing API keys cannot be retrieved. You can generate a new key at any time, but this will immediately invalidate any existing key.</p>
+                              
+                              <!-- Key Generation Button -->
+                              <div id="apiKeyGenerateSection">
+                                <button id="generateApiKeyBtn" class="btn btn-primary">
+                                  <i class="bi bi-key me-2"></i>Generate New API Key
+                                </button>
+                              </div>
+                              
+                              <!-- API Key Display (initially hidden) -->
+                              <div id="apiKeyDisplaySection" class="d-none">
+                                <div class="alert alert-success mb-3">
+                                  <div class="d-flex">
+                                    <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                                    <div>
+                                      <strong>API key regenerated</strong><br>
+                                      Your API key has been generated and any existing key under your account is no longer functional.
+                                    </div>
+                                  </div>
+                                </div>
+                                
+                                <label for="apiKeyDisplay" class="form-label">Here's your new key:</label>
+                                <div class="input-group mb-3">
+                                  <input type="text" class="form-control text-white" id="apiKeyDisplay" value="" readonly>
+                                  <button class="btn btn-outline-secondary text-white" type="button" id="copyApiKeyBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to clipboard">
+                                    <i class="bi bi-clipboard"></i>
+                                  </button>
+                                </div>
+                                <p class="text-muted small mb-0">Make sure to save this key as it won't be displayed again.</p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
+                      <!-- API Documentation Section -->
                       <div class="row mb-4">
                         <div class="col-md-6">
                           <div class="api-doc-card p-3 border border-primary-custom rounded-3">
@@ -1141,10 +1179,6 @@
                           </div>
                         </div>
                       </div>
-
-                      <a href="pricing.html" class="btn btn-primary">
-                        <i class="bi bi-arrow-up-circle me-2"></i>Upgrade to Access API
-                      </a>
                     </div>
                   </div>
                 </div>
