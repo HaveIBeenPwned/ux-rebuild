@@ -134,6 +134,9 @@
                         <i class="bi bi-bell me-2"></i> Notifications
                         <span class="badge bg-danger rounded-pill ms-2">Off</span>
                       </a>
+                      <a href="#email-address" class="list-group-item list-group-item-action" data-bs-toggle="pill">
+                        <i class="bi bi-gear me-2"></i> Settings
+                      </a>
                     </div>
 
                     <!-- Business Section -->
@@ -1190,47 +1193,385 @@
                 <div class="tab-pane fade" id="subscription">
                   <div class="card card-glow mb-4">
                     <div class="card-body p-4">
-                      <h3 class="fw-bold mb-4">Your Subscription</h3>
-                      <p class="mb-4">Manage your subscription and billing information.</p>
+                      <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="fw-bold mb-0">Your Subscription</h3>
+                        <button class="btn btn-outline-primary d-none" id="generateQuoteBtn" data-bs-toggle="modal" data-bs-target="#generateQuoteModal">
+                          <i class="bi bi-file-earmark-text me-2"></i>Generate Quote
+                        </button>
+                      </div>
 
-                      <div class="recommended-action-item mb-4 p-3 border border-primary-custom rounded-3">
-                        <div class="d-flex align-items-start">
-                          <div class="recommended-action-icon bg-primary-transparent rounded-circle p-2 me-3">
-                            <i class="bi bi-person-fill text-primary fs-5"></i>
+                      <!-- Active Subscription View -->
+                      <div id="activeSubscriptionView">
+                        <p class="mb-4">Here's the status of your HIBP subscription, along with some tools to help you manage it. If you need help, check out our troubleshooting guide or submit a support request. As you have an active subscription, you can also query the API using the key accessible on the API key dashboard (link below).</p>
+
+                        <div class="row mb-4">
+                          <div class="col-md-4">
+                            <div class="mb-4">
+                              <div class="text-muted">Validity</div>
+                              <div class="bg-success-subtle text-success rounded-3 p-2 mt-2">Valid until 1 Jan 2030, 00:00 GMT</div>
+                            </div>
                           </div>
-                          <div class="flex-grow-1">
-                            <h4 class="fs-5 fw-bold mb-2">Free Account</h4>
-                            <p class="mb-3">Basic access to breach information with limited features.</p>
+                          <div class="col-md-4">
+                            <div class="mb-4">
+                              <div class="text-muted">Plan name</div>
+                              <div class="bg-primary-subtle rounded-3 p-2 mt-2">Pwned 1</div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="mb-4">
+                              <div class="text-muted">Scope</div>
+                              <div class="bg-primary-subtle rounded-3 p-2 mt-2">Domains with up to 25 breached addresses each, and a rate limited API key allowing 10 email address searches per minute</div>
+                            </div>
+                          </div>
+                        </div>
 
-                            <div class="subscription-features mb-3">
-                              <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                <span>Email breach monitoring</span>
+                        <div class="d-flex flex-wrap gap-3">
+                          <a href="https://stripe.com" target="_blank" class="btn btn-outline-primary">
+                            <i class="bi bi-credit-card me-2"></i>Manage subscription
+                          </a>
+                          <a href="#api-keys" class="btn btn-outline-primary" data-bs-toggle="pill">
+                            <i class="bi bi-key me-2"></i>API keys
+                          </a>
+                          <a href="#email-address" class="btn btn-outline-primary" data-bs-toggle="pill">
+                            <i class="bi bi-gear me-2"></i>Update email address
+                          </a>
+                        </div>
+                      </div>
+
+                      <!-- No Subscription View -->
+                      <div id="noSubscriptionView" class="d-none">
+                        <div class="mb-4">
+                          <p class="mb-0">You don't currently have an active HIBP subscription under the email address you used to access your dashboard. Subscription free breaches and domains with up to 10 breached accounts can be searched for free or you can purchase a subscription below to query larger domains. All paid subscriptions also grant access to domain and email address searches by API and include online support.</p>
+                        </div>
+
+                        <button class="btn btn-primary mb-4" id="showPricingPlansBtn">
+                          <i class="bi bi-plus-circle me-2"></i>Purchase new subscription
+                        </button>
+                      </div>
+
+                      <!-- Pricing Plans Section (Initially Hidden) -->
+                      <div id="pricingPlansSection" class="d-none mt-4">
+                        <h4 class="fw-bold mb-4">Select a Subscription Plan</h4>
+                        
+                        <!-- Pricing Toggle -->
+                        <div class="d-flex align-items-center justify-content-end mb-4">
+                          <div class="pricing-toggle">
+                            <input type="checkbox" id="subscriptionPricingToggle" />
+                            <label for="subscriptionPricingToggle" class="pricing-toggle-label monthly">Monthly</label>
+                            <label for="subscriptionPricingToggle" class="pricing-toggle-label yearly">Yearly</label>
+                            <div class="pricing-toggle-slider"></div>
+                          </div>
+                          <span class="ms-3 text-muted small">Save up to 16% with annual billing</span>
+                        </div>
+
+                        <!-- Standard Pricing Cards -->                        
+                        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                          <!-- Pwned 1 -->
+                          <div class="col">
+                            <div class="card h-100 card-glow pricing-card-1 rounded-3 overflow-hidden position-relative transition">
+                              <div class="card-header text-center border-bottom border-1 border-opacity-10 py-3">
+                                <h5 class="fw-bold mb-1">Pwned 1</h5>
+                                <div class="text-muted">10RPM</div>
                               </div>
-                              <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-check-circle-fill text-success me-2"></i>
-                                <span>Public breach data access</span>
+                              <div class="card-body text-center py-3 d-flex flex-column justify-content-center">
+                                <div class="fs-3 fw-bold mb-1">
+                                  <span class="price-value">$3.95</span>
+                                </div>
+                                <span class="text-muted pricing-period">per month</span>
                               </div>
-                              <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                                <span class="text-muted">Domain monitoring</span>
+                              <div class="card-footer p-3 border-top border-1 border-opacity-10">
+                                <ul class="mb-3 ps-3 small">
+                                  <li class="mb-2">10 email searches per minute</li>
+                                  <li>Up to 25 breached addresses per domain</li>
+                                </ul>
+                                <div class="d-grid gap-2">
+                                  <button class="btn btn-primary btn-sm select-plan-btn" data-plan="pwned1">Select</button>
+                                </div>
                               </div>
-                              <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                                <span class="text-muted">API access</span>
+                            </div>
+                          </div>
+
+                          <!-- Pwned 2 -->
+                          <div class="col">
+                            <div class="card h-100 card-glow pricing-card-2 rounded-3 overflow-hidden position-relative transition">
+                              <div class="card-header text-center border-bottom border-1 border-opacity-10 py-3">
+                                <h5 class="fw-bold mb-1">Pwned 2</h5>
+                                <div class="text-muted">50RPM</div>
                               </div>
-                              <div class="d-flex align-items-center">
-                                <i class="bi bi-x-circle-fill text-danger me-2"></i>
-                                <span class="text-muted">Sensitive breach data</span>
+                              <div class="card-body text-center py-3 d-flex flex-column justify-content-center">
+                                <div class="fs-3 fw-bold mb-1">
+                                  <span class="price-value">$19</span>
+                                </div>
+                                <span class="text-muted pricing-period">per month</span>
+                              </div>
+                              <div class="card-footer p-3 border-top border-1 border-opacity-10">
+                                <ul class="mb-3 ps-3 small">
+                                  <li class="mb-2">50 email searches per minute</li>
+                                  <li>Up to 100 breached addresses per domain</li>
+                                </ul>
+                                <div class="d-grid gap-2">
+                                  <button class="btn btn-primary btn-sm select-plan-btn" data-plan="pwned2">Select</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Pwned 3 -->
+                          <div class="col">
+                            <div class="card h-100 card-glow pricing-card-3 rounded-3 overflow-hidden position-relative transition">
+                              <div class="card-header text-center border-bottom border-1 border-opacity-10 py-3">
+                                <h5 class="fw-bold mb-1">Pwned 3</h5>
+                                <div class="text-muted">100RPM</div>
+                              </div>
+                              <div class="card-body text-center py-3 d-flex flex-column justify-content-center">
+                                <div class="fs-3 fw-bold mb-1">
+                                  <span class="price-value">$32</span>
+                                </div>
+                                <span class="text-muted pricing-period">per month</span>
+                              </div>
+                              <div class="card-footer p-3 border-top border-1 border-opacity-10">
+                                <ul class="mb-3 ps-3 small">
+                                  <li class="mb-2">100 email searches per minute</li>
+                                  <li>Up to 250 breached addresses per domain</li>
+                                </ul>
+                                <div class="d-grid gap-2">
+                                  <button class="btn btn-primary btn-sm select-plan-btn" data-plan="pwned3">Select</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <!-- Pwned 4 -->
+                          <div class="col">
+                            <div class="card h-100 card-glow pricing-card-4 rounded-3 overflow-hidden position-relative transition">
+                              <div class="card-header text-center border-bottom border-1 border-opacity-10 py-3">
+                                <h5 class="fw-bold mb-1">Pwned 4</h5>
+                                <div class="text-muted">500RPM</div>
+                              </div>
+                              <div class="card-body text-center py-3 d-flex flex-column justify-content-center">
+                                <div class="fs-3 fw-bold mb-1">
+                                  <span class="price-value">$137</span>
+                                </div>
+                                <span class="text-muted pricing-period">per month</span>
+                              </div>
+                              <div class="card-footer p-3 border-top border-1 border-opacity-10">
+                                <ul class="mb-3 ps-3 small">
+                                  <li class="mb-2">500 email searches per minute</li>
+                                  <li>Unlimited breached addresses per domain</li>
+                                </ul>
+                                <div class="d-grid gap-2">
+                                  <button class="btn btn-primary btn-sm select-plan-btn" data-plan="pwned4">Select</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <!-- Pwned 5 -->
+                          <div class="col">
+                            <div class="card h-100 card-glow pricing-card-5 rounded-3 overflow-hidden position-relative transition">
+                              <div class="card-header text-center border-bottom border-1 border-opacity-10 py-3">
+                                <h5 class="fw-bold mb-1">Pwned 5</h5>
+                                <div class="text-muted">1000RPM</div>
+                              </div>
+                              <div class="card-body text-center py-3 d-flex flex-column justify-content-center">
+                                <div class="fs-3 fw-bold mb-1">
+                                  <span class="price-value">$274</span>
+                                </div>
+                                <span class="text-muted pricing-period">per month</span>
+                              </div>
+                              <div class="card-footer p-3 border-top border-1 border-opacity-10">
+                                <ul class="mb-3 ps-3 small">
+                                  <li class="mb-2">1000 email searches per minute</li>
+                                  <li class="mb-2">Unlimited breached addresses per domain</li>
+                                  <li>Access to stealer log searches</li>
+                                </ul>
+                                <div class="d-grid gap-2">
+                                  <button class="btn btn-primary btn-sm select-plan-btn" data-plan="pwned5">Select</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <!-- Enterprise -->
+                          <div class="col">
+                            <div class="card h-100 card-glow pricing-card-6 enterprise-card rounded-3 overflow-hidden position-relative transition">
+                              <div class="card-header text-center border-bottom border-1 border-opacity-10 py-3">
+                                <h5 class="fw-bold mb-1">Enterprise</h5>
+                                <div class="text-muted">Custom</div>
+                              </div>
+                              <div class="card-body text-center py-3 d-flex flex-column justify-content-center">
+                                <div class="fs-3 fw-bold mb-1">
+                                  <span class="price-value">Custom</span>
+                                </div>
+                                <span class="text-muted pricing-period">pricing</span>
+                              </div>
+                              <div class="card-footer p-3 border-top border-1 border-opacity-10">
+                                <ul class="mb-3 ps-3 small">
+                                  <li class="mb-2">Custom rate limits</li>
+                                  <li class="mb-2">Dedicated support</li>
+                                  <li>Volume discounts available</li>
+                                </ul>
+                                <div class="d-grid gap-2">
+                                  <button class="btn btn-outline-primary btn-sm select-plan-btn" data-plan="enterprise">Contact us</button>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
+                        
+                        <!-- High-Performance Plans -->
+                        <h5 class="mb-3">High-Performance Plans</h5>
+                        <div class="card card-glow rounded-3 overflow-hidden mb-4">
+                          <div class="card-body p-3">
+                            <div class="table-responsive">
+                              <table class="table table-borderless align-middle mb-0">
+                                <thead>
+                                  <tr>
+                                    <th>Plan</th>
+                                    <th class="text-center">API Rate</th>
+                                    <th class="text-center">Price</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <!-- Ultra 1 -->
+                                  <tr class="high-tier-row">
+                                    <td>
+                                      <h6 class="mb-0 fw-bold">Pwned Ultra 1</h6>
+                                      <small class="text-muted d-block">Unlimited domains, includes stealer logs</small>
+                                    </td>
+                                    <td class="text-center">
+                                      <span class="badge bg-primary px-2 py-1 rounded-pill">4,000 RPM</span>
+                                    </td>
+                                    <td class="text-center">
+                                      <div class="fw-bold"><span class="price-value">$995</span></div>
+                                      <small class="text-muted pricing-period">per month</small>
+                                    </td>
+                                    <td class="text-end">
+                                      <button class="btn btn-primary btn-sm px-3 select-plan-btn" data-plan="ultra1">Select</button>
+                                    </td>
+                                  </tr>
+                                  
+                                  <!-- Ultra 2 -->
+                                  <tr class="high-tier-row">
+                                    <td>
+                                      <h6 class="mb-0 fw-bold">Pwned Ultra 2</h6>
+                                      <small class="text-muted d-block">Unlimited domains, includes stealer logs</small>
+                                    </td>
+                                    <td class="text-center">
+                                      <span class="badge bg-primary px-2 py-1 rounded-pill">8,000 RPM</span>
+                                    </td>
+                                    <td class="text-center">
+                                      <div class="fw-bold"><span class="price-value">$1,850</span></div>
+                                      <small class="text-muted pricing-period">per month</small>
+                                    </td>
+                                    <td class="text-end">
+                                      <button class="btn btn-primary btn-sm px-3 select-plan-btn" data-plan="ultra2">Select</button>
+                                    </td>
+                                  </tr>
+                                  
+                                  <!-- Ultra 3 -->
+                                  <tr class="high-tier-row">
+                                    <td>
+                                      <h6 class="mb-0 fw-bold">Pwned Ultra 3</h6>
+                                      <small class="text-muted d-block">Unlimited domains, includes stealer logs</small>
+                                    </td>
+                                    <td class="text-center">
+                                      <span class="badge bg-primary px-2 py-1 rounded-pill">12,000 RPM</span>
+                                    </td>
+                                    <td class="text-center">
+                                      <div class="fw-bold"><span class="price-value">$2,750</span></div>
+                                      <small class="text-muted pricing-period">per month</small>
+                                    </td>
+                                    <td class="text-end">
+                                      <button class="btn btn-primary btn-sm px-3 select-plan-btn" data-plan="ultra3">Select</button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Email Address Tab -->
+                <div class="tab-pane fade" id="email-address">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <h3 class="fw-bold mb-4">Settings</h3>
+                      <!-- Add the success notification alert above the form (initially hidden) -->
+                      <div id="emailUpdateSuccess" class="alert alert-success d-none mb-4" role="alert">
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                          <div>
+                            <strong>Success!</strong> Your email address has been updated successfully.
+                          </div>
+                        </div>
                       </div>
 
-                      <a href="pricing.html" class="btn btn-primary">
-                        <i class="bi bi-arrow-up-circle me-2"></i>Upgrade Your Account
-                      </a>
+                      <p class="mb-4">Change the email address associated with your account. This email will be used for notifications and account communication.</p>
+                      
+                      <form id="updateEmailForm">
+                        <div class="mb-4">
+                          <label for="currentEmail" class="form-label">Current Email</label>
+                          <input type="email" class="form-control form-control-sm form-control-minimal" id="currentEmail" value="user@example.com" disabled>
+                        </div>
+                        
+                        <div class="mb-4">
+                          <label for="newEmail" class="form-label">New Email</label>
+                          <input type="email" class="form-control form-control-sm form-control-minimal" id="newEmail" placeholder="Enter new email address" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                          <label for="confirmNewEmail" class="form-label">Confirm New Email</label>
+                          <input type="email" class="form-control form-control-sm form-control-minimal" id="confirmNewEmail" placeholder="Confirm new email address" required>
+                          <div class="invalid-feedback">Email addresses do not match.</div>
+                        </div>
+                        
+                        <div class="alert alert-info mb-4" role="alert">
+                          <div class="d-flex">
+                            <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+                            <div>A verification link will be sent to your new email address. You'll need to click this link to complete the email change.</div>
+                          </div>
+                        </div>
+                        
+                        <!-- Update the button to use loading state -->
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="loading-button" data-bs-reset-after="2000" style="--btn-min-width: 140px; --btn-min-height: 38px">
+                          <span class="btn-text"><i class="bi bi-check-circle me-2"></i>Update Email</span>
+                          <div class="loading-indicator loading-indicator-sm loading-indicator-light">
+                            <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                class="logo-piece logo-piece-1"
+                                d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                                fill="#F6F8FA"
+                              />
+                              <path
+                                class="logo-piece logo-piece-2"
+                                d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                                fill="#F6F8FA"
+                              />
+                              <path
+                                class="logo-piece logo-piece-3"
+                                d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                                fill="#F6F8FA"
+                              />
+                              <path
+                                class="logo-piece logo-piece-4"
+                                d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                                fill="#F6F8FA"
+                              />
+                              <path
+                                class="logo-piece logo-piece-5"
+                                d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
+                                fill="#F6F8FA"
+                              />
+                            </svg>
+                          </div>
+                        </button>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -1783,5 +2124,261 @@
     <!-- Custom JS -->
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/dashboard-internal.js"></script>
+    
+    <!-- Generate Quote Modal -->
+    <div class="modal fade" id="generateQuoteModal" tabindex="-1" aria-labelledby="generateQuoteModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="generateQuoteModalLabel">Generate Quote</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="quoteForm">
+              <div class="mb-4">
+                <h6 class="fw-bold mb-3">Customer Information</h6>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="customerName" class="form-label">Customer Name</label>
+                    <input type="text" class="form-control form-control-sm" id="customerName" placeholder="Enter customer name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="customerCompany" class="form-label">Company Name</label>
+                    <input type="text" class="form-control form-control-sm" id="customerCompany" placeholder="Enter company name" required>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <h6 class="fw-bold mb-3">Address</h6>
+                <div class="row g-3">
+                  <div class="col-md-12">
+                    <label for="addressLine1" class="form-label">Street Address</label>
+                    <input type="text" class="form-control form-control-sm" id="addressLine1" placeholder="Enter street address" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="addressCity" class="form-label">City</label>
+                    <input type="text" class="form-control form-control-sm" id="addressCity" placeholder="Enter city" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="addressState" class="form-label">State/Province</label>
+                    <input type="text" class="form-control form-control-sm" id="addressState" placeholder="Enter state or province" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="addressPostal" class="form-label">Postal Code</label>
+                    <input type="text" class="form-control form-control-sm" id="addressPostal" placeholder="Enter postal code" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="addressCountry" class="form-label">Country</label>
+                    <select class="form-select form-select-sm" id="addressCountry" required>
+                      <option value="" selected disabled>Select country</option>
+                      <option value="US">United States</option>
+                      <option value="CA">Canada</option>
+                      <option value="GB">United Kingdom</option>
+                      <option value="AU">Australia</option>
+                      <option value="NZ">New Zealand</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <h6 class="fw-bold mb-3">Tax Information</h6>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="taxId" class="form-label">Tax ID/VAT Number</label>
+                    <input type="text" class="form-control form-control-sm" id="taxId" placeholder="Enter Tax ID or VAT number">
+                  </div>                  
+                </div>
+              </div>
+              
+              <div class="mb-4">
+                <h6 class="fw-bold mb-3">Purchase Order</h6>
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="poNumber" class="form-label">PO Number</label>
+                    <input type="text" class="form-control form-control-sm" id="poNumber" placeholder="Enter PO number (if applicable)">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="quoteDuration" class="form-label">Quote Validity</label>
+                    <select class="form-select form-select-sm" id="quoteDuration">
+                      <option value="30" selected>30 days</option>
+                      <option value="60">60 days</option>
+                      <option value="90">90 days</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+            
+            <!-- Add success message (initially hidden) -->
+            <div id="quoteSuccessMessage" class="alert alert-success d-none" role="alert">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                <div>
+                  <strong>Quote generated successfully!</strong> A PDF copy has been sent to your email address.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="submitQuoteForm">Generate Quote</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quote Form Submission Handling -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const submitQuoteBtn = document.getElementById('submitQuoteForm');
+        const quoteForm = document.getElementById('quoteForm');
+        const quoteSuccessMessage = document.getElementById('quoteSuccessMessage');
+        const modalElement = document.getElementById('generateQuoteModal');
+        
+        // Store original button text
+        const originalButtonText = 'Generate Quote';
+        let isFormSubmitted = false;
+        
+        // Reset form when modal is hidden
+        modalElement.addEventListener('hidden.bs.modal', function() {
+          // Reset form display and state
+          quoteForm.style.display = 'block';
+          quoteSuccessMessage.classList.add('d-none');
+          quoteForm.reset();
+          
+          // Reset button
+          submitQuoteBtn.innerHTML = originalButtonText;
+          submitQuoteBtn.disabled = false;
+          
+          // Reset submission flag
+          isFormSubmitted = false;
+        });
+        
+        // Handle form submission
+        submitQuoteBtn.addEventListener('click', function() {
+          // If the form was already submitted, just close the modal
+          if (isFormSubmitted) {
+            const modal = bootstrap.Modal.getInstance(modalElement);
+            modal.hide();
+            return;
+          }
+          
+          // Form validation
+          if (quoteForm.checkValidity()) {
+            // Show loading state
+            submitQuoteBtn.disabled = true;
+            submitQuoteBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
+            
+            // Simulate submission (1.5 second delay)
+            setTimeout(function() {
+              // Hide form, show success message
+              quoteForm.style.display = 'none';
+              quoteSuccessMessage.classList.remove('d-none');
+              
+              // Update button to Close
+              submitQuoteBtn.innerHTML = 'Close';
+              submitQuoteBtn.disabled = false;
+              
+              // Mark as submitted
+              isFormSubmitted = true;
+            }, 1500);
+          } else {
+            // Show validation messages
+            quoteForm.reportValidity();
+          }
+        });
+        
+        // Fix tab navigation for subscription section links
+        const tabLinkElements = document.querySelectorAll('a[data-bs-toggle="pill"]');
+        tabLinkElements.forEach(linkElement => {
+          linkElement.addEventListener('click', function(event) {
+            const targetTabId = this.getAttribute('href').substring(1); // Remove the # character
+            const targetTab = document.getElementById(targetTabId);
+            
+            if (targetTab) {
+              // Deactivate all tabs first
+              document.querySelectorAll('.tab-pane').forEach(tabPane => {
+                tabPane.classList.remove('show', 'active');
+              });
+              
+              // Deactivate all tab triggers
+              document.querySelectorAll('.list-group-item-action').forEach(tabTrigger => {
+                tabTrigger.classList.remove('active');
+              });
+              
+              // Activate the target tab
+              targetTab.classList.add('show', 'active');
+              
+              // Find and activate the corresponding nav item
+              const correspondingNavItem = document.querySelector(`.list-group-item-action[href="#${targetTabId}"]`);
+              if (correspondingNavItem) {
+                correspondingNavItem.classList.add('active');
+              }
+            }
+          });
+        });
+      });
+    </script>
+    
+    <!-- Loading Button Plugin -->
+    <script src="../assets/js/loading-button.js"></script>
+    
+    <!-- Handle email update form submission -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Get form and success message elements
+        const updateEmailForm = document.getElementById('updateEmailForm');
+        const successMessage = document.getElementById('emailUpdateSuccess');
+        const newEmailInput = document.getElementById('newEmail');
+        const confirmEmailInput = document.getElementById('confirmNewEmail');
+        
+        // Handle form submission
+        updateEmailForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get the submit button and its loading button instance
+          const submitButton = updateEmailForm.querySelector('button[type="submit"]');
+          const loadingButton = LoadingButton.getOrCreateInstance(submitButton);
+          
+          // Validate that emails match
+          if (newEmailInput.value !== confirmEmailInput.value) {
+            confirmEmailInput.classList.add('is-invalid');
+            return;
+          } else {
+            confirmEmailInput.classList.remove('is-invalid');
+          }
+          
+          // Start loading animation
+          loadingButton.start();
+          
+          // Simulate form submission with a delay
+          setTimeout(function() {
+            // Stop loading animation
+            loadingButton.stop();
+            
+            // Reset form
+            updateEmailForm.reset();
+            
+            // Show success message
+            successMessage.classList.remove('d-none');
+            
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+              successMessage.classList.add('d-none');
+            }, 5000);
+          }, 1500);
+        });
+        
+        // Remove invalid feedback when user types in confirm email field
+        confirmEmailInput.addEventListener('input', function() {
+          if (this.classList.contains('is-invalid')) {
+            this.classList.remove('is-invalid');
+          }
+        });
+      });
+    </script>
   </body>
 </html>
