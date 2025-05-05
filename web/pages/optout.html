@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Have I Been Pwned: Opt-out of public searchability" />
+    <meta
+      name="description"
+      content="Remove your email address from public searchability in Have I Been Pwned."
+    />
+    <meta
+      property="og:description"
+      content="Remove your email address from public searchability in Have I Been Pwned."
+    />
+    <title>Have I Been Pwned: Opt-out of public searchability</title>
+
+    <link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HIBP" />
+    <link rel="manifest" href="../site.webmanifest" />
+    <!-- Bootstrap 5 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+      integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+    <!-- Switzer Font -->
+    <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap" rel="stylesheet" />
+    <link href="../assets/css/main.css" rel="stylesheet" />
+    
+  </head>
+
+  <body>
+    <!-- Navigation Component -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="../index.html" class="navbar-brand">
+          <img src="../assets/images/hibp-logo.svg" alt="Have I Been Pwned" height="30" />
+        </a>
+        <div class="d-flex align-items-center justify-content-end gap-2">
+          <a href="dashboard.html" class="btn btn-secondary btn-sm d-lg-none" role="button">Dashboard</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="pwned_websites.html">Who's been pwned</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="passwords.html">Passwords</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="notifications.html">Notify Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">API</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle active"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                About
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="about.html">Who, what & why</a>
+                </li>
+                <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                <li>
+                  <a class="dropdown-item" href="toc.html">Terms of Use</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="privacy.html">Privacy Policy</a>
+                </li>
+                <li>
+                  <a class="dropdown-item active" href="optout.html">Opt-out</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Donate</a>
+            </li>
+          </ul>
+        </div>
+        <a href="dashboard.html" class="btn btn-secondary d-none d-lg-inline-flex" role="button"> Dashboard </a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Step 1: Email Entry Page -->
+      <div id="optout-step-1">
+        <section class="py-5 bg-dark-subtle-custom">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8 text-center">
+                <h1 class="text-center mb-3">Opt-out</h1>
+                <p class="lead text-center text-muted mb-0">You can remove your email address by opting-out</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-5">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-10">
+                <div class="card card-glow">
+                  <div class="card-body p-4">
+                    <div class="row align-items-center">
+                      <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h3 class="fw-bold mb-4">Opt-out of Public Searchability</h3>
+                        <p class="mb-4">
+                          Opting-out provides various mechanisms to ensure your email address is no longer publicly searchable. After verifying
+                          control of the address, you'll be given 3 different options that put you in control of how your visibility should be removed from
+                          both existing data breaches and ones that impact you in the future.
+                        </p>
+                        <p class="small text-muted mb-0">
+                          Using Have I Been Pwned is subject to the <a href="toc.html">terms of use</a>
+                        </p>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="card card-glow bg-dark-subtle-custom">
+                          <div class="card-body p-4">
+                            <h4 class="fw-bold mb-4">Enter your email address</h4>
+                            <form id="optoutForm">
+                              <div class="mb-4">
+                                <div class="input-group-custom">
+                                  <input type="email" class="form-control" id="emailInput" placeholder="Enter your email address" aria-label="Your email address">
+                                  <div class="btn-container">
+                                    <button type="submit" class="btn btn-primary" id="optoutBtn" data-bs-toggle="loading-button" style="--btn-min-width: 100px; --btn-min-height: 42px">
+                                      <span class="btn-text">opt-out</span>
+                                      <div class="loading-indicator loading-indicator-sm loading-indicator-light">
+                                        <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path
+                                            class="logo-piece logo-piece-1"
+                                            d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                                            fill="#F6F8FA"
+                                          />
+                                          <path
+                                            class="logo-piece logo-piece-2"
+                                            d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                                            fill="#F6F8FA"
+                                          />
+                                          <path
+                                            class="logo-piece logo-piece-3"
+                                            d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                                            fill="#F6F8FA"
+                                          />
+                                          <path
+                                            class="logo-piece logo-piece-4"
+                                            d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                                            fill="#F6F8FA"
+                                          />
+                                        </svg>
+                                      </div>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                              <p class="small text-muted mb-0">
+                                You will need to verify ownership of this email address
+                              </p>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <!-- Verification Message (Initially Hidden) -->
+                    <div id="verification-message" class="d-none">
+                      <div class="text-center py-4">
+                        <div class="mb-4">
+                          <div class="bg-primary-transparent rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-envelope-check fs-1 text-primary"></i>
+                          </div>
+                          <h3 class="fw-bold mb-4">Check Your Inbox</h3>
+                        </div>
+                        <div class="row justify-content-center">
+                          <div class="col-lg-10">
+                            <p class="mb-4">
+                              You've just been sent a verification email, all you need to do now is confirm your address by clicking on the link when it hits your mailbox to continue the opt-out process.
+                            </p>
+                            <p class="mb-0 text-muted">
+                              In case it doesn't show up, check your junk mail and if you still can't find it, you can always repeat this process.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Step 2: Opt-out Options Page (initially hidden) -->
+      <div id="optout-step-2" class="d-none">
+        <section class="py-5 bg-dark-subtle-custom">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <h1 class="text-center mb-3">You're opting-out</h1>
+                <p class="lead text-center text-muted mb-0">Choose how you'd like your data to be opted-out</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-5">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-8">
+                <p class="mb-5">
+                  Opting-out puts you in control of how your data is processed. There are 3 different models available depending on how much
+                  information you wish to remain in HIBP and how you want yourself and others to be able to search your data in the future. None of
+                  these opt-out options affect the notification service; you'll still receive an email if you opted-in to receive them when your address
+                  appears in a data breach.
+                </p>
+
+                <!-- Option 1: Just remove public searchability -->
+                <div class="card card-glow mb-4 hover-elevate">
+                  <div class="card-body p-4">
+                    <div class="d-flex align-items-start mb-3">
+                      <div class="me-3 bg-primary-transparent rounded-circle p-3">
+                        <i class="bi bi-eye-slash fs-4 text-primary"></i>
+                      </div>
+                      <div>
+                        <h3 class="h4 mb-3">Just remove my email address from public searchability</h3>
+                        <p class="mb-4">
+                          Nobody using the public HIBP search feature will be able to see your email address in search results. You can still search your own
+                          address using the notification service that ensures you control the address before seeing the results. The controller of the domain your
+                          email address is on will still see you in domain searches.
+                        </p>
+                        <div class="d-flex align-items-center">
+                          <button class="btn btn-primary optout-method-btn" data-bs-toggle="loading-button" style="--btn-min-width: 230px; --btn-min-height: 42px">
+                            <span class="btn-text">remove public searchability</span>
+                            <div class="loading-indicator loading-indicator-sm loading-indicator-light">
+                              <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  class="logo-piece logo-piece-1"
+                                  d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-2"
+                                  d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-3"
+                                  d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-4"
+                                  d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                                  fill="#F6F8FA"
+                                />
+                              </svg>
+                            </div>
+                          </button>
+                          <span class="text-success ms-3 success-message d-none"><i class="bi bi-check-circle-fill me-2"></i>Done!</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Option 2: Remove searchability and breach list -->
+                <div class="card card-glow mb-4 hover-elevate">
+                  <div class="card-body p-4">
+                    <div class="d-flex align-items-start mb-3">
+                      <div class="me-3 bg-primary-transparent rounded-circle p-3">
+                        <i class="bi bi-list-ul fs-4 text-primary"></i>
+                      </div>
+                      <div>
+                        <h3 class="h4 mb-3">Remove my email address from public searchability and remove the list of breaches it appears in</h3>
+                        <p class="mb-4">
+                          Your email address is no longer searchable either via the public service or by yourself (even if verifying your address) as the breaches are
+                          deleted from the database. Your email address is retained by HIBP to ensure any subsequent breaches it appears in are not added to
+                          your record.
+                        </p>
+                        <div class="d-flex align-items-center">
+                          <button class="btn btn-primary optout-method-btn" data-bs-toggle="loading-button" style="--btn-min-width: 180px; --btn-min-height: 42px">
+                            <span class="btn-text">remove all breaches</span>
+                            <div class="loading-indicator loading-indicator-sm loading-indicator-light">
+                              <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  class="logo-piece logo-piece-1"
+                                  d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-2"
+                                  d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-3"
+                                  d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-4"
+                                  d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                                  fill="#F6F8FA"
+                                />
+                              </svg>
+                            </div>
+                          </button>
+                          <span class="text-success ms-3 success-message d-none"><i class="bi bi-check-circle-fill me-2"></i>Done!</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Option 3: Remove completely -->
+                <div class="card card-glow mb-4 hover-elevate">
+                  <div class="card-body p-4">
+                    <div class="d-flex align-items-start mb-3">
+                      <div class="me-3 bg-primary-transparent rounded-circle p-3">
+                        <i class="bi bi-trash fs-4 text-primary"></i>
+                      </div>
+                      <div>
+                        <h3 class="h4 mb-3">Remove my email address completely</h3>
+                        <p class="mb-4">
+                          The record with your email address is removed completely and neither you nor the public will see it in search results at the time of
+                          removal. However, if subsequent data breaches impact that account it will become publicly searchable for new incidents as the opt-out
+                          record has been completely deleted.
+                        </p>
+                        <div class="d-flex align-items-center">
+                          <button class="btn btn-primary optout-method-btn" data-bs-toggle="loading-button" style="--btn-min-width: 260px; --btn-min-height: 42px">
+                            <span class="btn-text">remove email address completely</span>
+                            <div class="loading-indicator loading-indicator-sm loading-indicator-light">
+                              <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                  class="logo-piece logo-piece-1"
+                                  d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-2"
+                                  d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-3"
+                                  d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
+                                  fill="#F6F8FA"
+                                />
+                                <path
+                                  class="logo-piece logo-piece-4"
+                                  d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
+                                  fill="#F6F8FA"
+                                />
+                              </svg>
+                            </div>
+                          </button>
+                          <span class="text-success ms-3 success-message d-none"><i class="bi bi-check-circle-fill me-2"></i>Done!</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark-subtle-custom">
+      <div class="container">
+        <div class="footer-wrapper rounded-3 border border-primary-custom bg-dark-subtle-custom">
+          <div class="row g-0">
+            <!-- Logo and Tagline -->
+            <div class="col-lg-4 p-4 border-end border-primary-custom">
+              <div class="footer-logo mb-3">
+                <a href="../index.html" class="text-white text-decoration-none fw-bold fs-4"> Have I Been Pwned </a>
+              </div>
+              <p class="text-muted mb-4">Check if your email has been compromised in a data breach</p>
+              <a href="../index.html" class="btn btn-outline-primary"> <i class="bi bi-search me-2"></i>Check my email </a>
+            </div>
+            <!-- Sitemap -->
+            <div class="col-lg-5 p-4 border-end border-primary-custom">
+              <div class="row g-4">
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Services</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a href="../index.html" class="text-decoration-none text-muted hover-white">Email Search</a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="domain_search.html" class="text-decoration-none text-muted hover-white"
+                        >Domain Search</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a href="pwned_websites.html" class="text-decoration-none text-muted hover-white"
+                        >Who's been pwned</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a href="passwords.html" class="text-decoration-none text-muted hover-white">Passwords</a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="notifications.html" class="text-decoration-none text-muted hover-white">Notify Me</a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="#" class="text-decoration-none text-muted hover-white">API</a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="pricing.html" class="text-decoration-none text-muted hover-white">Pricing</a>
+                    </li>
+                    <li>
+                      <a href="dashboard.html" class="text-decoration-none text-muted hover-white">Dashboard</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <h5 class="fw-bold mb-3">Information</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <a href="about.html" class="text-decoration-none text-muted hover-white">About Us</a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="faq.html" class="text-decoration-none text-muted hover-white">FAQ</a>
+                    </li>
+                    <li class="mb-2">
+                      <a href="privacy.html" class="text-decoration-none text-muted hover-white"
+                        >Privacy Policy</a
+                      >
+                    </li>
+                    <li class="mb-2">
+                      <a href="toc.html" class="text-decoration-none text-muted hover-white">Terms of Use</a>
+                    </li>
+                    <li>
+                      <a href="optout.html" class="text-decoration-none text-muted hover-white">Opt-out</a>
+                    </li>
+                    <li>
+                      <a href="#" class="text-decoration-none text-muted hover-white">Donate</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Social Media Links -->
+            <div class="col-lg-3 p-4">
+              <h5 class="fw-bold mb-3">Connect With Us</h5>
+              <div class="d-flex gap-3">
+                <a href="https://x.com/haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
+                  <i class="bi bi-twitter-x"></i>
+                </a>
+                <a href="https://facebook.com/haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
+                  <i class="bi bi-facebook"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/haveibeenpwned/"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="https://github.com/HaveIBeenPwned" target="_blank" class="text-muted hover-white fs-5">
+                  <i class="bi bi-github"></i>
+                </a>
+                <a
+                  href="https://bsky.app/profile/haveibeenpwned.com"
+                  target="_blank"
+                  class="text-muted hover-white fs-5"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 568 501" width="20" height="20">
+                    <path
+                      fill="currentColor"
+                      d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"
+                    />
+                  </svg>
+                </a>
+                <a href="https://infosec.exchange/@haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
+                  <i class="bi bi-mastodon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Copyright -->
+          <div class="border-top border-primary-custom">
+            <div class="p-3 text-center">
+              <p class="text-muted mb-0">&copy; 2025 Have I Been Pwned. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+      integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    
+    <!-- Loading Button Plugin -->
+    <script src="../assets/js/loading-button.js"></script>
+    <script src="../assets/js/optout.js"></script>
+    
+    <script>
+      
+    </script>
+  </body>
+</html> 
