@@ -212,6 +212,17 @@
   }
 }
 
+// API Key Section Styling
+.api-key-section {
+  .input-group {
+    .form-control {
+      background-color: rgba(var(--bs-dark-rgb), 0.03);
+      font-family: monospace;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
 // Return notification styling
 #returnNotificationPlaceholder {
   position: relative;
