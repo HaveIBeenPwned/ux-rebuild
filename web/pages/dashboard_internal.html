@@ -144,17 +144,16 @@
             <!-- Main Content -->
             <div class="col-lg-9">
               <div class="tab-content">
+                <!-- Return notification placeholder -->
+                <div id="returnNotificationPlaceholder">
+                  <!-- Success Notification Alert (will be shown/hidden via JavaScript) -->
+                  <div id="notificationSuccess" class="alert alert-success notification-success d-flex align-items-center mb-4 d-none">
+                    <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+                    <div><strong>Success!</strong> You have successfully signed up for breach notifications.</div>
+                  </div>
+                </div>
                 <!-- Overview Tab -->
                 <div class="tab-pane fade show active" id="overview">
-                  <!-- Return notification placeholder -->
-                  <div id="returnNotificationPlaceholder">
-                    <!-- Success Notification Alert (will be shown/hidden via JavaScript) -->
-                    <div id="notificationSuccess" class="alert alert-success notification-success d-flex align-items-center mb-4 d-none">
-                      <i class="bi bi-check-circle-fill me-2 fs-4"></i>
-                      <div><strong>Success!</strong> You have successfully signed up for breach notifications.</div>
-                    </div>
-                  </div>
-
                   <!-- Breach Summary Card -->
                   <div class="card card-glow mb-4">
                     <div class="card-body p-4">
@@ -758,18 +757,6 @@
                           </li>
                         </ul>
                       </div>
-
-                      <!-- Email Preferences -->
-                      <div class="email-preferences">
-                        <div class="mb-3">
-                          <label for="notificationEmail" class="form-label">Notification Email</label>
-                          <input type="email" class="form-control" id="notificationEmail" value="user@example.com" />
-                          <div class="form-text">This is the email address where you'll receive notifications.</div>
-                        </div>
-                      </div>
-
-                      <!-- Save Preferences Button -->
-                      <button class="btn btn-primary" id="saveNotificationPreferences"><i class="bi bi-check-circle me-2"></i>Save Preferences</button>
                     </div>
                   </div>
                 </div>

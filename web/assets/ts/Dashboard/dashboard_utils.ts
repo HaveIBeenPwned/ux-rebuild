@@ -41,9 +41,10 @@ export async function showReturnNotification(type: string, message: string) {
     // Append the alert
     notificationPlaceholder.appendChild(alert);
 
+    const bsAlert = new Alert(alert);
+
     await delay(5000);
 
-    const bsAlert = new Alert(alert);
     bsAlert.close();
   }
 }
