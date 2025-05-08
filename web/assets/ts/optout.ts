@@ -13,7 +13,7 @@ export function initializeOptOutPage() {
     const step1Typed = step1 as HTMLElement | null;
     const step2Typed = step2 as HTMLElement | null;
     const verificationMessageTyped = verificationMessage as HTMLElement | null;
-    const optoutMethodBtnsTyped = Array.from(document.querySelectorAll<LoadingButtonElement>(".optout-method-btn"));
+    const optoutMethodBtnsTyped = document.queryHtmlElements<LoadingButtonElement>(".optout-method-btn");
 
     // Check URL parameters to determine which view to show
     const urlParams = new URLSearchParams(window.location.search);
@@ -48,7 +48,7 @@ export function initializeOptOutPage() {
 
     if (optoutFormTyped && optoutBtnTyped && verificationMessageTyped) {
       optoutFormTyped.addEventListener("submit", async (e: Event) => {
-        const emailInput = document.getElementById("emailInput") as HTMLInputElement | null;
+        const emailInput = document.getHtmlElementById<HTMLInputElement>("emailInput");
         if (emailInput?.value && emailInput.value.length > 0) {
           e.preventDefault();
 

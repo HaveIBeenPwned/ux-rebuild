@@ -43,7 +43,7 @@ export async function initializeBreachTable() {
   };
 
   // Select all sortable column headers
-  const sortableHeaders = Array.from(document.querySelectorAll<HTMLTableCellElement>("th.sortable"));
+  const sortableHeaders = document.queryHtmlElements<HTMLTableCellElement>("th.sortable");
 
   // Add click event listeners to sortable headers
   for (const header of sortableHeaders) {
@@ -96,20 +96,20 @@ function sortBreaches(currentSort: SortState, breachesTableBody: HTMLTableSectio
 
     switch (currentSort.column) {
       case "name": {
-        const aTitle = (a as HTMLTableRowElement).querySelector<HTMLTableCellElement>("td[data-name='breach']")?.dataset.value || "";
-        const bTitle = (b as HTMLTableRowElement).querySelector<HTMLTableCellElement>("td[data-name='breach']")?.dataset.value || "";
+        const aTitle = a.querySelector<HTMLTableCellElement>("td[data-name='breach']")?.dataset.value || "";
+        const bTitle = b.querySelector<HTMLTableCellElement>("td[data-name='breach']")?.dataset.value || "";
         comparison = aTitle.localeCompare(bTitle);
         break;
       }
       case "count": {
-        const aPwnCount = Number.parseInt((a as HTMLTableRowElement).querySelector<HTMLTableCellElement>("td[data-name='pwncount']")?.dataset.value || "0");
-        const bPwnCount = Number.parseInt((b as HTMLTableRowElement).querySelector<HTMLTableCellElement>("td[data-name='pwncount']")?.dataset.value || "0");
+        const aPwnCount = Number.parseInt(a.querySelector<HTMLTableCellElement>("td[data-name='pwncount']")?.dataset.value || "0");
+        const bPwnCount = Number.parseInt(b.querySelector<HTMLTableCellElement>("td[data-name='pwncount']")?.dataset.value || "0");
         comparison = aPwnCount - bPwnCount;
         break;
       }
       case "date": {
-        const aDate = Number.parseInt((a as HTMLTableRowElement).querySelector<HTMLTableCellElement>("td[data-name='date']")?.dataset.value || "0");
-        const bDate = Number.parseInt((b as HTMLTableRowElement).querySelector<HTMLTableCellElement>("td[data-name='date']")?.dataset.value || "0");
+        const aDate = Number.parseInt(a.querySelector<HTMLTableCellElement>("td[data-name='date']")?.dataset.value || "0");
+        const bDate = Number.parseInt(b.querySelector<HTMLTableCellElement>("td[data-name='date']")?.dataset.value || "0");
         comparison = aDate - bDate;
         break;
       }

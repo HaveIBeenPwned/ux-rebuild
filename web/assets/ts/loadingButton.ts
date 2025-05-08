@@ -143,7 +143,7 @@ function parseDataAttributes(element: LoadingButtonElement): LoadingButtonOption
 
 // Initialize all loading buttons on page
 function initializeLoadingButtons() {
-  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-bs-toggle="loading-button"]'));
+  const buttons = document.queryHtmlElements<HTMLButtonElement>('[data-bs-toggle="loading-button"]');
   for (const button of buttons) {
     const btn = button as LoadingButtonElement;
     if (!btn.loadingButton) {

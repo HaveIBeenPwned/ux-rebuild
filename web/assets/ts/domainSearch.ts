@@ -55,10 +55,10 @@ export function initDomainSearchPage() {
   // Variables for domain removal
   let domainToRemove: string | null = null;
   const domainRemovalPrompt = document.getElementById("domainRemovalPrompt");
-  const confirmDomainRemovalBtn = document.getElementById("confirmDomainRemoval") as HTMLButtonElement | null;
+  const confirmDomainRemovalBtn = document.getHtmlElementById<HTMLButtonElement>("confirmDomainRemoval");
 
   // Handle domain removal
-  const removeButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".remove-domain"));
+  const removeButtons = document.queryHtmlElements<HTMLButtonElement>(".remove-domain");
   for (const button of removeButtons) {
     button.addEventListener("click", function (this: HTMLButtonElement) {
       domainToRemove = this.getAttribute("data-domain");
@@ -92,13 +92,13 @@ export function initDomainSearchPage() {
   }
 
   // Handle verification method selection
-  const verificationMethods = Array.from(document.querySelectorAll<HTMLElement>(".verification-method-option"));
+  const verificationMethods = document.queryHtmlElements<HTMLElement>(".verification-method-option");
   const dnsInstructions = document.getElementById("dnsInstructions");
   const fileInstructions = document.getElementById("fileInstructions");
   const metaInstructions = document.getElementById("metaInstructions");
   const emailInstructions = document.getElementById("emailInstructions");
   const verificationSpinner = document.getElementById("verificationSpinner");
-  const verifyButton = document.getElementById("verifyButton") as HTMLButtonElement | null;
+  const verifyButton = document.getHtmlElementById<HTMLButtonElement>("verifyButton");
 
   for (const method of verificationMethods) {
     method.addEventListener("click", function (this: HTMLElement) {

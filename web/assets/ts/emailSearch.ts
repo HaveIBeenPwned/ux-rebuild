@@ -5,9 +5,9 @@ import { LoadingButton, type LoadingButtonElement } from "./loadingButton";
  */
 export function initEmailSearch() {
   // Email search functionality
-  const emailInput = document.getElementById("emailInput") as HTMLInputElement | null;
-  const checkButton = document.getElementById("checkButton") as LoadingButtonElement | null;
-  const breachTimeline = document.getElementById("breachTimeline") as HTMLElement | null;
+  const emailInput = document.getHtmlElementById<HTMLInputElement>("emailInput");
+  const checkButton = document.getHtmlElementById<LoadingButtonElement>("checkButton");
+  const breachTimeline = document.getHtmlElementById<HTMLElement>("breachTimeline");
 
   if (emailInput && checkButton && breachTimeline) {
     emailInput.addEventListener("input", function (this: HTMLInputElement) {
@@ -43,7 +43,7 @@ export function initEmailSearch() {
   }
 
   // NotifyMe button functionality
-  const notifyMeBtn = document.getElementById("notifyMeBtn") as HTMLButtonElement | null;
+  const notifyMeBtn = document.getHtmlElementById<HTMLButtonElement>("notifyMeBtn");
 
   if (notifyMeBtn && emailInput) {
     notifyMeBtn.addEventListener("click", (e: MouseEvent) => {

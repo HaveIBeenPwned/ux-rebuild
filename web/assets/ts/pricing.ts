@@ -1,10 +1,10 @@
 import { Tooltip } from "bootstrap";
 
 export function initializePricingPage() {
-  const pricingToggle = document.getElementById("pricingToggle") as HTMLInputElement | null;
+  const pricingToggle = document.getHtmlElementById<HTMLInputElement>("pricingToggle");
   if (pricingToggle) {
     const priceValues = document.querySelectorAll<HTMLElement>(".price-value");
-    const pricePeriods = Array.from(document.querySelectorAll<HTMLElement>(".pricing-period"));
+    const pricePeriods = document.queryHtmlElements<HTMLElement>(".pricing-period");
 
     // Price data for all packages (monthly and yearly)
     const priceData: { monthly: string; yearly: string }[] = [
@@ -20,7 +20,7 @@ export function initializePricingPage() {
       { monthly: "$2,750", yearly: "$27,500" },
     ];
 
-    function updatePrices(isYearly: boolean): void {
+    function updatePrices(isYearly: boolean) {
       priceValues.forEach((priceElement: HTMLElement, index: number) => {
         if (index < priceData.length) {
           priceElement.textContent = isYearly ? priceData[index].yearly : priceData[index].monthly;

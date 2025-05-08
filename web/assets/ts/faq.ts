@@ -2,7 +2,7 @@ import { Collapse } from "bootstrap";
 
 export function initializeFAQSearch() {
   // Get all accordion items
-  const accordionItems = Array.from(document.querySelectorAll<HTMLElement>(".accordion-item"));
+  const accordionItems = document.queryHtmlElements<HTMLElement>(".accordion-item");
   const accordionButtons = document.querySelectorAll<HTMLButtonElement>(".accordion-button");
 
   // Get search input (already in the HTML)
