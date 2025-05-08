@@ -1,5 +1,7 @@
 .DS_Store
 node_modules
 *.css.map
+bundle.js
+*.js.map
 main.css
 email_templates/output.html

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    // webpack handles output, so remove outDir
+    // "outDir": "./web/assets/tsjs",
+    "rootDir": "./web/assets/ts",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "sourceMap": false,
+    "lib": ["ESNext", "DOM"]
+  },
+  "include": ["web/assets/ts/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "web/assets/tsjs/**/*.js"]
+}

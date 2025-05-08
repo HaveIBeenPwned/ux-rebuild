@@ -90,7 +90,7 @@ button.addEventListener("loaded.bs.button", (event) => {
 ### Form Submission
 
 ```javascript
-document.getElementById("myForm").addEventListener("submit", function (event) {
+document.getElementById("myForm").addEventListener("submit", async function (event) {
   event.preventDefault();
 
   // Get the submit button
@@ -104,32 +104,28 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
   }
 
   // Process form (e.g., AJAX submission)
-  fetch(this.action, {
-    method: this.method,
-    body: new FormData(this),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // Handle success
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      // Handle error
-      console.error("Error:", error);
-    })
-    .finally(() => {
-      // Stop loading regardless of outcome
-      if (submitBtn.loadingButton) {
-        submitBtn.loadingButton.stop();
-      }
+  try {
+    const response = await fetch(this.action, {
+        method: this.method,
+        body: new FormData(this),
     });
+    const data = await response.json();
+    console.log("Success:", data);
+  } catch (error) {
+    console.error("Error:", error);
+  } finally {
+    // Stop loading regardless of outcome
+    if (submitBtn.loadingButton) {
+    submitBtn.loadingButton.stop();
+    }
+  }
 });
 ```
 
 ### AJAX Request
 
 ```javascript
-document.getElementById("loadDataBtn").addEventListener("click", function () {
+document.getElementById("loadDataBtn").addEventListener("click", async function () {
   // Get button instance or create new one
   const loadingBtn = LoadingButton.getInstance(this) || new LoadingButton(this);
 
@@ -137,19 +133,16 @@ document.getElementById("loadDataBtn").addEventListener("click", function () {
   loadingBtn.start();
 
   // Fetch data
-  fetch("/api/data")
-    .then((response) => response.json())
-    .then((data) => {
-      // Process data
-      displayData(data);
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    })
-    .finally(() => {
-      // Stop loading
-      loadingBtn.stop();
-    });
+
+  try {
+    const response = await fetch("/api/data");
+    const data = await response.json();
+    displayData(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  } finally {
+    loadingBtn.stop();
+  }
 });
 ```
 

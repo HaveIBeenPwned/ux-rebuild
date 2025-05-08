@@ -96,17 +96,13 @@
 
 // Enterprise card styles
 .enterprise-card {
-  background: linear-gradient(
-    145deg,
-    rgba(45, 55, 72, 0.3),
-    rgba(17, 24, 39, 0.3)
-  );
+  background: linear-gradient(145deg, rgba(45, 55, 72, 0.3), rgba(17, 24, 39, 0.3));
 }
 
 // High-tier pricing styles
 .high-tier-row {
   transition: background-color 0.2s ease;
-  
+
   &:hover {
     background-color: rgba(var(--bs-primary-rgb), 0.05);
   }
@@ -123,8 +119,10 @@
 
 // Transitions for hover effects
 .transition {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -134,4 +132,4 @@
 // Feature container for consistent height
 .feature-container {
   min-height: 120px;
-} 
+}
