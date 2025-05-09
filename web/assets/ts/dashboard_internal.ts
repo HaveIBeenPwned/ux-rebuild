@@ -1,4 +1,4 @@
-import { Tab, Tooltip } from "bootstrap";
+import { Tab } from "bootstrap";
 import { initializePopovers } from "./utils";
 import { setupDomainManagement } from "./Dashboard/domain_search";
 import { showReturnNotification } from "./Dashboard/dashboard_utils";

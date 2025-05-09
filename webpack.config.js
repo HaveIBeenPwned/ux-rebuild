@@ -22,6 +22,7 @@ module.exports = {
   },
   externals: {
     bootstrap: true,
+    turnstile: true
   },
   mode: 'production', // or 'development'
   devtool: 'source-map',
