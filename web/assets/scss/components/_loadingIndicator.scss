@@ -149,7 +149,9 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: background-color 0.2s ease, border-color 0.2s ease,
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
     color 0.2s ease;
   box-sizing: border-box;
 
@@ -223,7 +225,9 @@
       visibility: hidden;
       opacity: 0;
       transform: scale(0.8);
-      transition: opacity 0.2s ease, transform 0.2s ease,
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease,
         visibility 0s linear 0.2s;
     }
 
@@ -241,13 +245,17 @@
       visibility: visible;
       opacity: 1;
       transform: scale(1);
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
     }
 
     .loading-indicator {
       visibility: hidden;
       opacity: 0;
-      transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+      transition:
+        opacity 0.2s ease,
+        visibility 0s linear 0.2s;
     }
   }
 }

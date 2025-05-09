@@ -14,13 +14,7 @@
       content: "";
       position: absolute;
       width: 2px;
-      background: linear-gradient(
-        to bottom,
-        rgba($primary, 0.1) 0%,
-        rgba($primary, 0.8) 15%,
-        rgba($primary, 0.8) 85%,
-        rgba($primary, 0.1) 100%
-      );
+      background: linear-gradient(to bottom, rgba($primary, 0.1) 0%, rgba($primary, 0.8) 15%, rgba($primary, 0.8) 85%, rgba($primary, 0.1) 100%);
       box-shadow: 0 0 8px rgba($primary, 0.4);
       top: 0;
       bottom: 0;
@@ -63,11 +57,7 @@
     position: absolute;
     width: 80px;
     height: 80px;
-    background: linear-gradient(
-      135deg,
-      $primary 0%,
-      darken($primary, 15%) 100%
-    );
+    background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);
     border: 2px solid rgba($white, 0.3);
     border-radius: 50%;
     top: 65px;
@@ -94,11 +84,7 @@
 
   &-content {
     // Padding is now handled by Bootstrap p-4 class
-    background: linear-gradient(
-      145deg,
-      rgba($primary, 0.08) 0%,
-      rgba($primary, 0.03) 100%
-    );
+    background: linear-gradient(145deg, rgba($primary, 0.08) 0%, rgba($primary, 0.03) 100%);
     backdrop-filter: blur(8px);
     // Border-radius is now handled by Bootstrap rounded-3 class
     box-shadow: 0 0.125rem 0.5rem rgba($black, 0.15);
@@ -191,11 +177,7 @@
       right: -3px;
       bottom: -3px;
       border-radius: 12px;
-      background: linear-gradient(
-        135deg,
-        rgba($primary, 0.2) 0%,
-        rgba($primary, 0.05) 100%
-      );
+      background: linear-gradient(135deg, rgba($primary, 0.2) 0%, rgba($primary, 0.05) 100%);
       z-index: -1;
       filter: blur(4px);
     }
@@ -352,11 +334,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      135deg,
-      rgba($primary, 0.03) 0%,
-      rgba($primary, 0.01) 100%
-    );
+    background: linear-gradient(135deg, rgba($primary, 0.03) 0%, rgba($primary, 0.01) 100%);
     z-index: 0;
   }
 
@@ -372,11 +350,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(
-      135deg,
-      $primary 0%,
-      darken($primary, 15%) 100%
-    );
+    background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);
     // Display, align-items, and justify-content are now handled by Bootstrap classes
     box-shadow: 0 0.125rem 0.375rem rgba($black, 0.2);
     margin-right: 1rem;

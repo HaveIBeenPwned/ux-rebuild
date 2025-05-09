@@ -42,10 +42,7 @@ $accordion-bg: transparent;
 $accordion-border-width: 1px;
 $accordion-border-color: $border-color;
 $accordion-border-radius: 8px;
-$accordion-inner-border-radius: subtract(
-  $accordion-border-radius,
-  $accordion-border-width
-);
+$accordion-inner-border-radius: subtract($accordion-border-radius, $accordion-border-width);
 
 $accordion-body-padding-y: 1rem;
 $accordion-body-padding-x: 1.25rem;
@@ -54,7 +51,9 @@ $accordion-button-padding-y: 0.75rem;
 $accordion-button-padding-x: 1rem;
 $accordion-button-color: $white;
 $accordion-button-bg: transparent;
-$accordion-transition: all 0.3s ease, border-radius 0.15s ease;
+$accordion-transition:
+  all 0.3s ease,
+  border-radius 0.15s ease;
 $accordion-button-active-bg: rgba($primary, 0.1);
 $accordion-button-active-color: $primary;
 

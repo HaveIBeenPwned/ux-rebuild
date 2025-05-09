@@ -4,14 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:title" content="Have I Been Pwned: Notifications" />
-    <meta
-      name="description"
-      content="Sign up to be notified when your email appears in a data breach"
-    />
-    <meta
-      property="og:description"
-      content="Sign up to be notified when your email appears in a data breach"
-    />
+    <meta name="description" content="Sign up to be notified when your email appears in a data breach" />
+    <meta property="og:description" content="Sign up to be notified when your email appears in a data breach" />
     <title>Have I Been Pwned: Notifications</title>
     <!-- Bootstrap 5 CSS -->
     <link
@@ -19,8 +13,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
       integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      referrerpolicy="no-referrer" />
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <!-- Switzer Font -->
@@ -59,15 +52,7 @@
               <a class="nav-link" href="pricing.html">Pricing</a>
             </li>
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                About
-              </a>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> About </a>
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item" href="about.html">Who, what & why</a>
@@ -109,32 +94,44 @@
                 </div>
 
                 <div class="py-4">
-                    <div class="card card-glow mb-4">
+                  <div class="card card-glow mb-4">
                     <div class="card-body p-4">
-                        <h3 class="fw-bold mb-4">How it works</h3>
-                        <div class="d-flex mb-4">
-                        <div class="notification-step rounded-circle bg-primary-transparent text-primary d-flex align-items-center justify-content-center fs-5 fw-bold me-3" style="width: 40px; height: 40px; min-width: 40px; flex: 0 0 40px;">1</div>
+                      <h3 class="fw-bold mb-4">How it works</h3>
+                      <div class="d-flex mb-4">
+                        <div
+                          class="notification-step rounded-circle bg-primary-transparent text-primary d-flex align-items-center justify-content-center fs-5 fw-bold me-3"
+                          style="width: 40px; height: 40px; min-width: 40px; flex: 0 0 40px">
+                          1
+                        </div>
                         <div>
-                            <h4 class="fs-5 fw-bold">Enter your email address</h4>
-                            <p class="text-muted mb-0">Provide the email address you want to monitor</p>
+                          <h4 class="fs-5 fw-bold">Enter your email address</h4>
+                          <p class="text-muted mb-0">Provide the email address you want to monitor</p>
                         </div>
+                      </div>
+                      <div class="d-flex mb-4">
+                        <div
+                          class="notification-step rounded-circle bg-primary-transparent text-primary d-flex align-items-center justify-content-center fs-5 fw-bold me-3"
+                          style="width: 40px; height: 40px; min-width: 40px; flex: 0 0 40px">
+                          2
                         </div>
-                        <div class="d-flex mb-4">
-                        <div class="notification-step rounded-circle bg-primary-transparent text-primary d-flex align-items-center justify-content-center fs-5 fw-bold me-3" style="width: 40px; height: 40px; min-width: 40px; flex: 0 0 40px;">2</div>
                         <div>
-                            <h4 class="fs-5 fw-bold">Verify your email</h4>
-                            <p class="text-muted mb-0">Click the verification link sent to your inbox</p>
+                          <h4 class="fs-5 fw-bold">Verify your email</h4>
+                          <p class="text-muted mb-0">Click the verification link sent to your inbox</p>
                         </div>
+                      </div>
+                      <div class="d-flex">
+                        <div
+                          class="notification-step rounded-circle bg-primary-transparent text-primary d-flex align-items-center justify-content-center fs-5 fw-bold me-3"
+                          style="width: 40px; height: 40px; min-width: 40px; flex: 0 0 40px">
+                          3
                         </div>
-                        <div class="d-flex">
-                        <div class="notification-step rounded-circle bg-primary-transparent text-primary d-flex align-items-center justify-content-center fs-5 fw-bold me-3" style="width: 40px; height: 40px; min-width: 40px; flex: 0 0 40px;">3</div>
                         <div>
-                            <h4 class="fs-5 fw-bold">Stay protected</h4>
-                            <p class="text-muted mb-0">Get immediate notifications when your data appears in breaches</p>
+                          <h4 class="fs-5 fw-bold">Stay protected</h4>
+                          <p class="text-muted mb-0">Get immediate notifications when your data appears in breaches</p>
                         </div>
-                        </div>
+                      </div>
                     </div>
-                    </div>
+                  </div>
                 </div>
 
                 <div class="card card-glow">
@@ -144,45 +141,18 @@
                       <div class="mb-4">
                         <label for="notificationEmail" class="form-label">Email Address</label>
                         <div class="input-group">
-                          <input type="email" class="form-control" id="notificationEmail" placeholder="Enter your email address" required>
-                          <button class="btn btn-primary" type="submit" id="notifySubmitBtn" data-bs-toggle="loading-button" style="--btn-min-width: 120px; --btn-min-height: 38px">
+                          <input type="email" class="form-control" id="notificationEmail" placeholder="Enter your email address" required autofocus />
+                          <button class="btn btn-primary btn-fixed-size px-5" type="submit" id="notifySubmitBtn" data-bs-toggle="loading-button">
                             <span class="btn-text">Notify Me</span>
-                            <div class="loading-indicator loading-indicator-sm loading-indicator-light">
-                              <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                  class="logo-piece logo-piece-1"
-                                  d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
-                                  fill="#F6F8FA"
-                                />
-                                <path
-                                  class="logo-piece logo-piece-2"
-                                  d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
-                                  fill="#F6F8FA"
-                                />
-                                <path
-                                  class="logo-piece logo-piece-3"
-                                  d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
-                                  fill="#F6F8FA"
-                                />
-                                <path
-                                  class="logo-piece logo-piece-4"
-                                  d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
-                                  fill="#F6F8FA"
-                                />
-                                <path
-                                  class="logo-piece logo-piece-5"
-                                  d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
-                                  fill="#F6F8FA"
-                                />
-                              </svg>
-                            </div>
                           </button>
                         </div>
                         <div class="form-text">We'll never share your email with anyone else.</div>
                       </div>
                     </form>
                     <p class="text-muted body-small mb-0">
-                      By signing up, you agree to the <a href="toc.html" class="text-decoration-none">Terms of Use</a> and <a href="privacy.html" class="text-decoration-none">Privacy Policy</a>.
+                      By signing up, you agree to the
+                      <a href="toc.html" class="text-decoration-none">Terms of Use</a> and
+                      <a href="privacy.html" class="text-decoration-none">Privacy Policy</a>.
                     </p>
                   </div>
                 </div>
@@ -192,9 +162,7 @@
               <div id="notificationSent" class="d-none">
                 <div class="text-center mb-5">
                   <h1 class="fw-bold mb-3">Check Your Email</h1>
-                  <p class="lead text-muted mb-4">
-                    We've sent a verification link to your email address. Click the link to complete your notification setup.
-                  </p>
+                  <p class="lead text-muted mb-4">We've sent a verification link to your email address. Click the link to complete your notification setup.</p>
                 </div>
 
                 <div class="card card-glow">
@@ -211,37 +179,8 @@
                     </div>
 
                     <div class="text-center mt-4">
-                      <button class="btn btn-outline-primary" id="resendVerificationBtn" data-bs-toggle="loading-button" style="--btn-min-width: 250px; --btn-min-height: 38px">
+                      <button class="btn btn-outline-primary w-50 py-3" id="resendVerificationBtn" data-bs-toggle="loading-button">
                         <span class="btn-text"><i class="bi bi-envelope me-2"></i>Resend Verification Email</span>
-                        <div class="loading-indicator loading-indicator-sm">
-                          <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                              class="logo-piece logo-piece-1"
-                              d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
-                              fill="#F6F8FA"
-                            />
-                            <path
-                              class="logo-piece logo-piece-2"
-                              d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
-                              fill="#F6F8FA"
-                            />
-                            <path
-                              class="logo-piece logo-piece-3"
-                              d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
-                              fill="#F6F8FA"
-                            />
-                            <path
-                              class="logo-piece logo-piece-4"
-                              d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
-                              fill="#F6F8FA"
-                            />
-                            <path
-                              class="logo-piece logo-piece-5"
-                              d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
-                              fill="#F6F8FA"
-                            />
-                          </svg>
-                        </div>
                       </button>
                     </div>
                   </div>
@@ -264,9 +203,7 @@
                 <a href="../index.html" class="text-white text-decoration-none fw-bold fs-4"> Have I Been Pwned </a>
               </div>
               <p class="text-muted mb-4">Check if your email has been compromised in a data breach</p>
-              <a href="../index.html" class="btn btn-outline-primary">
-                <i class="bi bi-search me-2"></i>Check my email
-              </a>
+              <a href="../index.html" class="btn btn-outline-primary"> <i class="bi bi-search me-2"></i>Check my email </a>
             </div>
 
             <!-- Sitemap -->
@@ -282,9 +219,7 @@
                       <a href="domain_search.html" class="text-decoration-none text-muted hover-white">Domain Search</a>
                     </li>
                     <li class="mb-2">
-                      <a href="pwned_websites.html" class="text-decoration-none text-muted hover-white"
-                        >Who's been pwned</a
-                      >
+                      <a href="pwned_websites.html" class="text-decoration-none text-muted hover-white">Who's been pwned</a>
                     </li>
                     <li class="mb-2">
                       <a href="passwords.html" class="text-decoration-none text-muted hover-white">Passwords</a>
@@ -336,26 +271,17 @@
                 <a href="https://facebook.com/haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-facebook"></i>
                 </a>
-                <a
-                  href="https://www.linkedin.com/company/haveibeenpwned/"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://www.linkedin.com/company/haveibeenpwned/" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-linkedin"></i>
                 </a>
                 <a href="https://github.com/HaveIBeenPwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-github"></i>
                 </a>
-                <a
-                  href="https://bsky.app/profile/haveibeenpwned.com"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://bsky.app/profile/haveibeenpwned.com" target="_blank" class="text-muted hover-white fs-5">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 568 501" width="20" height="20">
                     <path
                       fill="currentColor"
-                      d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"
-                    />
+                      d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z" />
                   </svg>
                 </a>
                 <a href="https://infosec.exchange/@haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
@@ -380,14 +306,9 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
       integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-
-    <!-- Loading Button JS -->
-    <script src="../assets/js/loading-button.js"></script>
+      referrerpolicy="no-referrer"></script>
 
     <!-- Custom JS -->
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/notifications.js"></script>
+    <script src="../assets/js/bundle.js"></script>
   </body>
-</html> 
+</html>

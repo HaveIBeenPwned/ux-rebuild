@@ -101,23 +101,23 @@ th.sortable {
       background: transparent;
       border: none;
       color: var(--bs-body-color);
-      
+
       &:hover {
         color: var(--bs-primary);
       }
-      
+
       &:focus {
         box-shadow: none;
         outline: none;
       }
     }
-    
+
     &.active .page-link {
       background: transparent;
       color: var(--bs-primary);
       font-weight: bold;
     }
-    
+
     &.disabled .page-link {
       background: transparent;
       color: var(--bs-body-color);

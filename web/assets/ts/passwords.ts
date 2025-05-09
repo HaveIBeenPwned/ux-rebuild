@@ -1,0 +1,104 @@
+import { LoadingButton, type LoadingButtonElement } from "./loadingButton";
+
+export function initializePwnedPasswordsSearch() {
+  // Password checking functionality
+  const passwordForm = document.getElementById("passwordForm") as HTMLFormElement;
+
+  if (passwordForm) {
+    const passwordInput = document.getElementById("passwordInput") as HTMLInputElement;
+    const checkButton = document.getElementById("checkButton") as LoadingButtonElement;
+    const goodResult = document.getElementById("pwned-result-good") as HTMLElement;
+    const badResult = document.getElementById("pwned-result-bad") as HTMLElement;
+    const occurrenceCount = document.getElementById("occurrence-count") as HTMLElement;
+
+    // Hide results initially
+    goodResult.classList.add("d-none");
+    badResult.classList.add("d-none");
+
+    // Handle form submissions (Enter key)
+    passwordForm.addEventListener("submit", async (e: Event) => {
+      e.preventDefault();
+      await handlePasswordCheck();
+    });
+
+    // Handle direct button clicks
+    checkButton.addEventListener("click", async (e: MouseEvent) => {
+      e.preventDefault();
+      await handlePasswordCheck();
+    });
+
+    // Function to handle password checking
+    async function handlePasswordCheck() {
+      const password: string = passwordInput.value.trim();
+
+      if (!password) {
+        // Empty password, don't do anything
+        return;
+      }
+
+      // Hide any previous results
+      goodResult.classList.add("d-none");
+      badResult.classList.add("d-none");
+
+      // Manually trigger the loading state
+      if (!checkButton.loadingButton) {
+        // Initialize if not already done
+        checkButton.loadingButton = new LoadingButton(checkButton, {
+          loadingClass: "is-loading",
+          disableButton: true,
+          resetAfter: 0,
+        });
+      }
+
+      // Start loading animation
+      checkButton.loadingButton.start();
+
+      // Simulate API call
+      const prevalence = await checkPasswordSecurity(password);
+      // Stop loading animation
+      if (checkButton.loadingButton) {
+        checkButton.loadingButton.stop();
+      }
+
+      if (prevalence > 0) {
+        showPwnedResult(prevalence);
+      } else {
+        showSafeResult();
+      }
+
+      function showPwnedResult(count: number) {
+        goodResult.classList.add("d-none");
+        badResult.classList.remove("d-none");
+
+        // Format the count with commas
+        occurrenceCount.textContent = count.toLocaleString();
+
+        // Scroll to results
+        badResult.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
+      function showSafeResult() {
+        badResult.classList.add("d-none");
+        goodResult.classList.remove("d-none");
+
+        // Scroll to results
+        goodResult.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }
+}
+
+async function checkPasswordSecurity(password: string) {
+  // For demo purposes, we'll consider common passwords as "pwned"
+  const commonPasswords: string[] = ["password", "123456", "qwerty", "admin", "welcome", "password123"];
+
+  // Simulate API call delay
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  if (commonPasswords.includes(password.toLowerCase())) {
+    // Password found in breach database
+    const fakeCount: number = Math.floor(Math.random() * 5000000) + 1000000;
+    return fakeCount;
+  }
+  // Password not found
+  return 0;
+}

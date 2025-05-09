@@ -1,25 +1,38 @@
 {
   "devDependencies": {
-    "bootstrap": "5.3.5",
+    "bootstrap": "5.3.6",
     "sass": "1.87.0",
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "typescript": "5.8.3",
+    "@biomejs/biome": "1.9.4",
+    "@types/bootstrap": "5.2.10",
+    "webpack": "5.99.8",
+    "webpack-cli": "6.0.1",
+    "ts-loader": "9.5.2"
   },
   "name": "hibp",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass web/assets/scss/main.scss:web/assets/css/main.css --style compressed --load-path=node_modules",
-    "sass:watch": "sass --watch web/assets/scss/main.scss:web/assets/css/main.css --load-path=node_modules",
+    "sass": "sass web/assets/scss/main.scss:web/assets/css/main.css --style compressed --load-path=node_modules --quiet-deps",
+    "sass:watch": "sass --watch web/assets/scss/main.scss:web/assets/css/main.css --load-path=node_modules --quiet-deps",
     "prettier-html": "prettier -w ./web/**/*.html",
-    "build": "npm run prettier-html && npm run sass"
+    "prettier-scss": "prettier -w ./web/**/*.scss",
+    "tscompile": "tsc",
+    "biomeformat": "biome format --write ./web/assets/ts",
+    "biomelint": "biome lint --write ./web/assets/ts",
+    "webpack:watch": "webpack --watch",
+    "lint": "npm run prettier-html && npm run prettier-scss && npm run biomeformat && npm run biomelint",
+    "build": "webpack && npm run sass"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
-  "prettier":{
+  "prettier": {
     "tabWidth": 2,
-    "printWidth": 120
+    "printWidth": 160,
+    "bracketSameLine": true
   }
 }

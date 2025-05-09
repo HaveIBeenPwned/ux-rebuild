@@ -4,14 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta property="og:title" content="Have I Been Pwned: Dashboard" />
-    <meta
-      name="description"
-      content="Access your personalized dashboard to view sensitive breach information, manage domains, and handle API subscriptions."
-    />
+    <meta name="description" content="Access your personalized dashboard to view sensitive breach information, manage domains, and handle API subscriptions." />
     <meta
       property="og:description"
-      content="Access your personalized dashboard to view sensitive breach information, manage domains, and handle API subscriptions."
-    />
+      content="Access your personalized dashboard to view sensitive breach information, manage domains, and handle API subscriptions." />
 
     <title>Have I Been Pwned: Dashboard</title>
 
@@ -21,8 +17,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
       integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      referrerpolicy="no-referrer" />
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -64,15 +59,7 @@
               <a class="nav-link" href="pricing.html">Pricing</a>
             </li>
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                About
-              </a>
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> About </a>
               <ul class="dropdown-menu">
                 <li>
                   <a class="dropdown-item" href="about.html">Who, what & why</a>
@@ -142,20 +129,14 @@
                     <!-- Business Section -->
                     <div class="sidebar-section">
                       <div class="sidebar-heading small text-uppercase text-muted mb-2 ps-3">Business</div>
-                      <a href="#domains" class="list-group-item list-group-item-action" data-bs-toggle="pill">
-                        <i class="bi bi-globe me-2"></i> Domains
-                      </a>
-                      <a href="#api-keys" class="list-group-item list-group-item-action" data-bs-toggle="pill">
-                        <i class="bi bi-key me-2"></i> API Keys
-                      </a>
+                      <a href="#domains" class="list-group-item list-group-item-action" data-bs-toggle="pill"> <i class="bi bi-globe me-2"></i> Domains </a>
+                      <a href="#api-keys" class="list-group-item list-group-item-action" data-bs-toggle="pill"> <i class="bi bi-key me-2"></i> API Keys </a>
                       <a href="#subscription" class="list-group-item list-group-item-action" data-bs-toggle="pill">
                         <i class="bi bi-credit-card me-2"></i> Subscription
                       </a>
                     </div>
                   </div>
-                  <button id="logoutButton" class="btn btn-outline-danger w-100 mt-4">
-                    <i class="bi bi-box-arrow-right me-2"></i> Log Out
-                  </button>
+                  <button id="logoutButton" class="btn btn-outline-danger w-100 mt-4"><i class="bi bi-box-arrow-right me-2"></i> Log Out</button>
                 </div>
               </div>
             </div>
@@ -163,27 +144,22 @@
             <!-- Main Content -->
             <div class="col-lg-9">
               <div class="tab-content">
+                <!-- Return notification placeholder -->
+                <div id="returnNotificationPlaceholder">
+                  <!-- Success Notification Alert (will be shown/hidden via JavaScript) -->
+                  <div id="notificationSuccess" class="alert alert-success notification-success d-flex align-items-center mb-4 d-none">
+                    <i class="bi bi-check-circle-fill me-2 fs-4"></i>
+                    <div><strong>Success!</strong> You have successfully signed up for breach notifications.</div>
+                  </div>
+                </div>
                 <!-- Overview Tab -->
                 <div class="tab-pane fade show active" id="overview">
-                  <!-- Return notification placeholder -->
-                  <div id="returnNotificationPlaceholder">
-                    <!-- Success Notification Alert (will be shown/hidden via JavaScript) -->
-                    <div id="notificationSuccess" class="alert alert-success notification-success d-flex align-items-center mb-4 d-none">
-                      <i class="bi bi-check-circle-fill me-2 fs-4"></i>
-                      <div>
-                        <strong>Success!</strong> You have successfully signed up for breach notifications.
-                      </div>
-                    </div>
-                  </div>
-
                   <!-- Breach Summary Card -->
                   <div class="card card-glow mb-4">
                     <div class="card-body p-4">
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="fw-bold mb-0">Breach Summary</h3>
-                        <a href="#" id="runFullScanButton" class="btn btn-primary">
-                          <i class="bi bi-shield-check me-2"></i>Run Full Scan
-                        </a>
+                        <a href="#" id="runFullScanButton" class="btn btn-primary"> <i class="bi bi-shield-check me-2"></i>Run Full Scan </a>
                       </div>
 
                       <div class="row g-4 mb-4">
@@ -206,8 +182,7 @@
                               data-bs-placement="top"
                               data-bs-trigger="focus"
                               data-bs-content="Sites where your data was exposed in security breaches. <a href='faq.html#data-breaches'>Learn more in our FAQ</a>"
-                              tabindex="0"
-                            >
+                              tabindex="0">
                               <i class="bi bi-info-circle-fill small"></i>
                             </a>
                           </div>
@@ -231,8 +206,7 @@
                               data-bs-placement="top"
                               data-bs-trigger="focus"
                               data-bs-content="Your information found in pastes from paste sites like Pastebin. <a href='faq.html#paste-references'>Learn more in our FAQ</a>"
-                              tabindex="0"
-                            >
+                              tabindex="0">
                               <i class="bi bi-info-circle-fill small"></i>
                             </a>
                           </div>
@@ -304,7 +278,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>                  
+                  </div>
 
                   <!-- Recommended Actions Card -->
                   <div class="card card-glow mb-4">
@@ -319,8 +293,8 @@
                           <div class="flex-grow-1">
                             <h4 class="fs-5 fw-bold mb-2">Use a password manager</h4>
                             <p class="mb-3">
-                              Your passwords have been exposed in 3 breaches. Using a password manager helps you create
-                              and store strong, unique passwords for every site.
+                              Your passwords have been exposed in 3 breaches. Using a password manager helps you create and store strong, unique passwords for
+                              every site.
                             </p>
 
                             <!-- Partner Placement with 1Password logo -->
@@ -335,23 +309,14 @@
                                     alt="1Password"
                                     class="partner-logo-wide"
                                     width="120"
-                                    height="25"
-                                  />
+                                    height="25" />
                                 </div>
                                 <div class="flex-grow-1">
-                                  <p class="mb-0 small">
-                                    Secure password management with end-to-end encryption and seamless experience across
-                                    all devices.
-                                  </p>
+                                  <p class="mb-0 small">Secure password management with end-to-end encryption and seamless experience across all devices.</p>
                                 </div>
                               </div>
                               <div class="d-flex justify-content-end">
-                                <a
-                                  href="https://1password.com"
-                                  target="_blank"
-                                  class="btn btn-sm btn-outline-primary partner-btn"
-                                  >Get Started</a
-                                >
+                                <a href="https://1password.com" target="_blank" class="btn btn-sm btn-outline-primary partner-btn">Get Started</a>
                               </div>
                             </div>
                           </div>
@@ -365,10 +330,7 @@
                           </div>
                           <div class="flex-grow-1">
                             <h4 class="fs-5 fw-bold mb-2">Enable two-factor authentication</h4>
-                            <p class="mb-3">
-                              Add an extra layer of security to your accounts by enabling two-factor authentication
-                              where available.
-                            </p>
+                            <p class="mb-3">Add an extra layer of security to your accounts by enabling two-factor authentication where available.</p>
 
                             <!-- Partner Placement -->
                             <div class="partner-recommendation mb-3 p-3 rounded-3">
@@ -376,27 +338,14 @@
                                 <span class="text-primary">Sponsored</span>
                               </div>
                               <div class="d-flex align-items-center mb-3">
-                                <img
-                                  src="../assets/images/logos/Authy Logo.svg"
-                                  alt="Authy"
-                                  class="partner-logo me-3"
-                                  width="40"
-                                  height="40"
-                                />
+                                <img src="../assets/images/logos/Authy Logo.svg" alt="Authy" class="partner-logo me-3" width="40" height="40" />
                                 <div class="flex-grow-1">
                                   <h5 class="fs-6 mb-1">Authy</h5>
-                                  <p class="mb-0 small">
-                                    Secure two-factor authentication app with cloud backup and multi-device support.
-                                  </p>
+                                  <p class="mb-0 small">Secure two-factor authentication app with cloud backup and multi-device support.</p>
                                 </div>
                               </div>
                               <div class="d-flex justify-content-end">
-                                <a
-                                  href="https://authy.com"
-                                  target="_blank"
-                                  class="btn btn-sm btn-outline-primary partner-btn"
-                                  >Get Started</a
-                                >
+                                <a href="https://authy.com" target="_blank" class="btn btn-sm btn-outline-primary partner-btn">Get Started</a>
                               </div>
                             </div>
                           </div>
@@ -411,8 +360,8 @@
                           <div class="flex-grow-1">
                             <h4 class="fs-5 fw-bold mb-2">Change your security questions</h4>
                             <p class="mb-3">
-                              Your personal information has been exposed in data breaches. Update your security
-                              questions to information that cannot be easily found online.
+                              Your personal information has been exposed in data breaches. Update your security questions to information that cannot be easily
+                              found online.
                             </p>
                           </div>
                         </div>
@@ -438,12 +387,12 @@
                                 <th class="text-end breach-col-action">Actions</th>
                               </tr>
                             </thead>
-                            <tbody>                              
+                            <tbody>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/List.png" alt="RedLine Stealer logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/List.png" alt="RedLine Stealer logo" height="30" />
                                     </div>
                                     <div>RedLine Stealer</div>
                                     <a href="#stealer-logs" class="badge bg-danger ms-2 text-decoration-none" data-bs-toggle="pill">Stealer log</a>
@@ -452,33 +401,29 @@
                                 <td>Aug 2023</td>
                                 <td>Passwords, Cookies, Browser Data</td>
                                 <td class="text-end">
-                                  <a href="breach.html" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="breach.html" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/LinkedIn.png" alt="LinkedIn logo" height="30">
-                                    </div>                                    
+                                      <img src="https://logos.haveibeenpwned.com/LinkedIn.png" alt="LinkedIn logo" height="30" />
+                                    </div>
                                     <div>LinkedIn</div>
                                   </div>
                                 </td>
                                 <td class="text-nowrap">Jun 2012</td>
                                 <td class="breach-data-cell" title="Emails, Passwords, Names">Emails, Passwords, Names</td>
                                 <td class="text-end">
-                                  <a href="breach.html" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="breach.html" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/PaddyPower.png" alt="Paddy Power logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/PaddyPower.png" alt="Paddy Power logo" height="30" />
                                     </div>
                                     <div>Paddy Power</div>
                                   </div>
@@ -486,16 +431,14 @@
                                 <td class="text-nowrap">Oct 2013</td>
                                 <td class="breach-data-cell" title="Emails, Names, Addresses, Phone Numbers">Emails, Names, Addresses, Phone Numbers</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/Plex.png" alt="Plex logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/Plex.png" alt="Plex logo" height="30" />
                                     </div>
                                     <div>Plex</div>
                                   </div>
@@ -503,33 +446,34 @@
                                 <td class="text-nowrap">May 2019</td>
                                 <td class="breach-data-cell" title="Emails, Passwords, IP Addresses">Emails, Passwords, IP Addresses</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/Adobe.png" alt="Adobe logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/Adobe.png" alt="Adobe logo" height="30" />
                                     </div>
                                     <div>Adobe</div>
                                   </div>
                                 </td>
                                 <td class="text-nowrap">Oct 2013</td>
-                                <td class="breach-data-cell" title="Emails, Passwords, Credit Cards, Phone Numbers, Addresses, Names, Security Questions, IP Addresses, Dates of Birth, Genders, Geographic Locations, Usernames">Emails, Passwords, Credit Cards, Phone Numbers, Addresses, Names, Security Questions, IP Addresses, Dates of Birth, Genders, Geographic Locations, Usernames</td>
+                                <td
+                                  class="breach-data-cell"
+                                  title="Emails, Passwords, Credit Cards, Phone Numbers, Addresses, Names, Security Questions, IP Addresses, Dates of Birth, Genders, Geographic Locations, Usernames">
+                                  Emails, Passwords, Credit Cards, Phone Numbers, Addresses, Names, Security Questions, IP Addresses, Dates of Birth, Genders,
+                                  Geographic Locations, Usernames
+                                </td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/Dropbox.png" alt="Dropbox logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/Dropbox.png" alt="Dropbox logo" height="30" />
                                     </div>
                                     <div>Dropbox</div>
                                   </div>
@@ -537,16 +481,14 @@
                                 <td class="text-nowrap">Aug 2016</td>
                                 <td class="breach-data-cell" title="Emails, Passwords">Emails, Passwords</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/MyFitnessPal.png" alt="MyFitnessPal logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/MyFitnessPal.png" alt="MyFitnessPal logo" height="30" />
                                     </div>
                                     <div>MyFitnessPal</div>
                                   </div>
@@ -554,16 +496,14 @@
                                 <td class="text-nowrap">Feb 2018</td>
                                 <td class="breach-data-cell" title="Emails, Passwords, Usernames">Emails, Passwords, Usernames</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/Snapchat.png" alt="Snapchat logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/Snapchat.png" alt="Snapchat logo" height="30" />
                                     </div>
                                     <div>Snapchat</div>
                                   </div>
@@ -571,16 +511,14 @@
                                 <td class="text-nowrap">Dec 2013</td>
                                 <td class="breach-data-cell" title="Usernames, Phone Numbers">Usernames, Phone Numbers</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/Canva.png" alt="Canva logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/Canva.png" alt="Canva logo" height="30" />
                                     </div>
                                     <div>Canva</div>
                                   </div>
@@ -588,16 +526,14 @@
                                 <td class="text-nowrap">May 2019</td>
                                 <td class="breach-data-cell" title="Emails, Passwords, Names, Countries">Emails, Passwords, Names, Countries</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/Tumblr.png" alt="Tumblr logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/Tumblr.png" alt="Tumblr logo" height="30" />
                                     </div>
                                     <div>Tumblr</div>
                                   </div>
@@ -605,35 +541,35 @@
                                 <td class="text-nowrap">Feb 2013</td>
                                 <td class="breach-data-cell" title="Emails, Passwords">Emails, Passwords</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/Otelier.png" alt="
-                                      Otelier logo" height="30">
+                                      <img
+                                        src="https://logos.haveibeenpwned.com/Otelier.png"
+                                        alt="
+                                      Otelier logo"
+                                        height="30" />
                                     </div>
-                                    <div>
-                                      Otelier</div>
+                                    <div>Otelier</div>
                                   </div>
                                 </td>
                                 <td class="text-nowrap">Nov 2018</td>
-                                <td class="breach-data-cell" title="Names, Addresses, Passport Numbers, Credit Cards">Names, Addresses, Passport Numbers, Credit Cards</td>
+                                <td class="breach-data-cell" title="Names, Addresses, Passport Numbers, Credit Cards">
+                                  Names, Addresses, Passport Numbers, Credit Cards
+                                </td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/Yahoo.png" alt="Yahoo logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/Yahoo.png" alt="Yahoo logo" height="30" />
                                     </div>
                                     <div>Yahoo</div>
                                   </div>
@@ -641,16 +577,14 @@
                                 <td class="text-nowrap">Aug 2013</td>
                                 <td class="breach-data-cell" title="Emails, Passwords, Security Questions">Emails, Passwords, Security Questions</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/Zynga.png" alt="Zynga logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/Zynga.png" alt="Zynga logo" height="30" />
                                     </div>
                                     <div>Zynga</div>
                                   </div>
@@ -658,16 +592,14 @@
                                 <td class="text-nowrap">Sep 2019</td>
                                 <td class="breach-data-cell" title="Emails, Passwords, Phone Numbers">Emails, Passwords, Phone Numbers</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/OVH.png" alt="OVH logo" height="30">
+                                      <img src="https://logos.haveibeenpwned.com/OVH.png" alt="OVH logo" height="30" />
                                     </div>
                                     <div>OVH</div>
                                   </div>
@@ -675,47 +607,47 @@
                                 <td class="text-nowrap">Dec 2018</td>
                                 <td class="breach-data-cell" title="Emails, Passwords, Profile Data">Emails, Passwords, Profile Data</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/500px.png" alt="
-                                      500px logo" height="30">
+                                      <img
+                                        src="https://logos.haveibeenpwned.com/500px.png"
+                                        alt="
+                                      500px logo"
+                                        height="30" />
                                     </div>
-                                    <div>
-                                      500px</div>
+                                    <div>500px</div>
                                   </div>
                                 </td>
                                 <td class="text-nowrap">Mar 2013</td>
                                 <td class="breach-data-cell" title="Emails, Passwords">Emails, Passwords</td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                               <tr>
                                 <td>
                                   <div class="d-flex align-items-center">
                                     <div class="breach-logo me-2">
-                                      <img src="https://logos.haveibeenpwned.com/digiDirect.png" alt="
-                                      digiDirect logo" height="30">
+                                      <img
+                                        src="https://logos.haveibeenpwned.com/digiDirect.png"
+                                        alt="
+                                      digiDirect logo"
+                                        height="30" />
                                     </div>
-                                    <div>
-                                      digiDirect</div>
+                                    <div>digiDirect</div>
                                   </div>
                                 </td>
                                 <td class="text-nowrap">May 2014</td>
-                                <td class="breach-data-cell" title="Emails, Passwords, Addresses, Phone Numbers">Emails, Passwords, Addresses, Phone Numbers</td>
+                                <td class="breach-data-cell" title="Emails, Passwords, Addresses, Phone Numbers">
+                                  Emails, Passwords, Addresses, Phone Numbers
+                                </td>
                                 <td class="text-end">
-                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100">
-                                    Details
-                                  </a>
+                                  <a href="#" class="btn btn-sm btn-outline-secondary w-100"> Details </a>
                                 </td>
                               </tr>
                             </tbody>
@@ -737,8 +669,15 @@
                         <div class="d-flex">
                           <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
                           <div>
-                            <p><strong>What are stealer logs?</strong> Stealer logs are created by malware running on infected machines that creates collections of email addresses, passwords and the websites they were entered into. When stealer logs are added to HIBP, the domain of each website a victim's email address appears against is also loaded.</p>
-                            <p>The list below shows each entry against your email address or in other words, each website the malware watched you enter your email address and password into.</p> 
+                            <p>
+                              <strong>What are stealer logs?</strong> Stealer logs are created by malware running on infected machines that creates collections
+                              of email addresses, passwords and the websites they were entered into. When stealer logs are added to HIBP, the domain of each
+                              website a victim's email address appears against is also loaded.
+                            </p>
+                            <p>
+                              The list below shows each entry against your email address or in other words, each website the malware watched you enter your
+                              email address and password into.
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -770,8 +709,8 @@
                         <div class="d-flex">
                           <i class="bi bi-info-circle-fill me-2 fs-5"></i>
                           <div>
-                            <strong>Recommended action:</strong> If your data appears in stealer logs, you should change
-                            your passwords immediately and scan your devices for malware.
+                            <strong>Recommended action:</strong> If your data appears in stealer logs, you should change your passwords immediately and scan
+                            your devices for malware.
                           </div>
                         </div>
                       </div>
@@ -795,8 +734,8 @@
                       </div>
 
                       <p class="mb-4">
-                        Get notified when your personal information appears in data breaches or when we discover
-                        sensitive information about you elsewhere online.
+                        Get notified when your personal information appears in data breaches or when we discover sensitive information about you elsewhere
+                        online.
                       </p>
 
                       <!-- Notification Types -->
@@ -818,20 +757,6 @@
                           </li>
                         </ul>
                       </div>
-
-                      <!-- Email Preferences -->
-                      <div class="email-preferences">
-                        <div class="mb-3">
-                          <label for="notificationEmail" class="form-label">Notification Email</label>
-                          <input type="email" class="form-control" id="notificationEmail" value="user@example.com" />
-                          <div class="form-text">This is the email address where you'll receive notifications.</div>
-                        </div>
-                      </div>
-
-                      <!-- Save Preferences Button -->
-                      <button class="btn btn-primary" id="saveNotificationPreferences">
-                        <i class="bi bi-check-circle me-2"></i>Save Preferences
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -864,11 +789,7 @@
                           <div id="domainsTableView" class="d-none">
                             <!-- Action Buttons -->
                             <div class="d-flex justify-content-end mb-4 mb-sm-3">
-                              <button
-                                class="btn btn-sm fs-7 fs-md-6 btn-primary me-2"
-                                data-bs-toggle="modal"
-                                data-bs-target="#verificationModal"
-                              >
+                              <button class="btn btn-sm fs-7 fs-md-6 btn-primary me-2" data-bs-toggle="modal" data-bs-target="#verificationModal">
                                 <i class="bi bi-plus-circle me-1"></i> Verify New Domain
                               </button>
                             </div>
@@ -889,8 +810,7 @@
                                         data-bs-placement="top"
                                         data-bs-trigger="focus"
                                         data-bs-content="<div><strong>Addresses</strong><p>The number of breached addresses on the domain the last time it was successfully indexed, based on breaches that are not classified as spam lists. The domain may be larger when next indexed if more breaches have impacted it since.</p><p>This number does not include addresses found in pastes. A blank value will be shown if the domain hasn't yet been indexed. Enable debug mode to see more.</p></div>"
-                                        tabindex="0"
-                                      >
+                                        tabindex="0">
                                         <i class="bi bi-info-circle-fill small"></i>
                                       </a>
                                     </th>
@@ -904,11 +824,10 @@
                                         data-bs-placement="top"
                                         data-bs-trigger="focus"
                                         data-bs-content="<div><strong>Stealer Logs</strong><p>The number of email addresses from this domain found in malware stealer logs. These are credentials captured by malware from infected computers.</p><p>A blank value will be shown if no stealer logs have been found for this domain.</p></div>"
-                                        tabindex="0"
-                                      >
+                                        tabindex="0">
                                         <i class="bi bi-info-circle-fill small"></i>
                                       </a>
-                                    </th>                                    
+                                    </th>
                                     <th class="text-end">Actions</th>
                                   </tr>
                                 </thead>
@@ -916,14 +835,13 @@
                                   <tr>
                                     <td>example.com</td>
                                     <td class="text-end">1,245</td>
-                                    <td class="text-end">17</td>                                    
+                                    <td class="text-end">17</td>
                                     <td class="table-actions">
                                       <button
                                         class="btn btn-xs btn-outline-danger remove-domain me-1"
                                         data-domain="example.com"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#domainRemovalPrompt"
-                                      >
+                                        data-bs-target="#domainRemovalPrompt">
                                         <i class="bi bi-trash"></i>
                                       </button>
                                       <button class="btn btn-xs btn-outline-primary domain-search-btn" data-domain="example.com">
@@ -934,14 +852,13 @@
                                   <tr>
                                     <td>mydomain.org</td>
                                     <td class="text-end">87</td>
-                                    <td class="text-end">3</td>                                    
+                                    <td class="text-end">3</td>
                                     <td class="table-actions">
                                       <button
                                         class="btn btn-xs btn-outline-danger remove-domain me-1"
                                         data-domain="mydomain.org"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#domainRemovalPrompt"
-                                      >
+                                        data-bs-target="#domainRemovalPrompt">
                                         <i class="bi bi-trash"></i>
                                       </button>
                                       <button class="btn btn-xs btn-outline-primary domain-search-btn" data-domain="mydomain.org">
@@ -964,24 +881,22 @@
                               <span>Back to Domains</span>
                             </div>
                             <div class="d-flex">
-                              <button 
-                                class="btn btn-sm btn-outline-primary me-2" 
+                              <button
+                                class="btn btn-sm btn-outline-primary me-2"
                                 id="domainSearchExcelBtn"
                                 data-bs-toggle="popover"
                                 data-bs-placement="top"
                                 data-bs-trigger="hover focus"
-                                data-bs-content="Export data in Excel format"
-                              >
+                                data-bs-content="Export data in Excel format">
                                 <i class="bi bi-file-earmark-spreadsheet me-2"></i>Export Excel
                               </button>
-                              <button 
-                                class="btn btn-sm btn-outline-primary" 
+                              <button
+                                class="btn btn-sm btn-outline-primary"
                                 id="domainSearchJsonBtn"
                                 data-bs-toggle="popover"
                                 data-bs-placement="top"
                                 data-bs-trigger="hover focus"
-                                data-bs-content="Export data in JSON format"
-                              >
+                                data-bs-content="Export data in JSON format">
                                 <i class="bi bi-file-earmark-code me-2"></i>Export JSON
                               </button>
                             </div>
@@ -989,10 +904,10 @@
 
                           <!-- Domain Title -->
                           <h3 class="fw-bold mb-3" id="searchDomainTitle">example.com</h3>
-                          
+
                           <!-- Domain Summary Cards -->
                           <div class="m b-4">
-                            <div class="card-body p-4">                              
+                            <div class="card-body p-4">
                               <div class="row g-4 mb-2">
                                 <div class="col-md-4">
                                   <div class="dashboard-stat-card p-3 border border-primary-custom rounded-3 position-relative">
@@ -1013,8 +928,7 @@
                                       data-bs-placement="top"
                                       data-bs-trigger="focus"
                                       data-bs-content="The total number of email addresses on this domain that have appeared in data breaches."
-                                      tabindex="0"
-                                    >
+                                      tabindex="0">
                                       <i class="bi bi-info-circle-fill small"></i>
                                     </a>
                                   </div>
@@ -1038,8 +952,7 @@
                                       data-bs-placement="top"
                                       data-bs-trigger="focus"
                                       data-bs-content="The number of breached addresses excluding spam lists. This is the number used to calculate required subscription size."
-                                      tabindex="0"
-                                    >
+                                      tabindex="0">
                                       <i class="bi bi-info-circle-fill small"></i>
                                     </a>
                                   </div>
@@ -1063,8 +976,7 @@
                                       data-bs-placement="top"
                                       data-bs-trigger="focus"
                                       data-bs-content="The number of email addresses from this domain found in malware stealer logs. These are credentials captured by malware from infected computers."
-                                      tabindex="0"
-                                    >
+                                      tabindex="0">
                                       <i class="bi bi-info-circle-fill small"></i>
                                     </a>
                                   </div>
@@ -1079,12 +991,11 @@
                           <div class="row mb-4">
                             <div class="col-md-8">
                               <div class="position-relative mx-auto">
-                                <input 
-                                  type="text" 
-                                  class="form-control form-control-sm form-control-minimal" 
-                                  placeholder="Filter by email alias..." 
-                                  id="domainSearchFilter"
-                                >
+                                <input
+                                  type="text"
+                                  class="form-control form-control-sm form-control-minimal"
+                                  placeholder="Filter by email alias..."
+                                  id="domainSearchFilter" />
                                 <i class="bi bi-search position-absolute search-icon"></i>
                               </div>
                             </div>
@@ -1138,31 +1049,38 @@
                             </div>
                             <div class="flex-grow-1">
                               <h4 class="fs-5 fw-bold mb-3">Your API Key</h4>
-                              <p class="mb-3">For security reasons, existing API keys cannot be retrieved. You can generate a new key at any time, but this will immediately invalidate any existing key.</p>
-                              
+                              <p class="mb-3">
+                                For security reasons, existing API keys cannot be retrieved. You can generate a new key at any time, but this will immediately
+                                invalidate any existing key.
+                              </p>
+
                               <!-- Key Generation Button -->
                               <div id="apiKeyGenerateSection">
-                                <button id="generateApiKeyBtn" class="btn btn-primary">
-                                  <i class="bi bi-key me-2"></i>Generate New API Key
-                                </button>
+                                <button id="generateApiKeyBtn" class="btn btn-primary"><i class="bi bi-key me-2"></i>Generate New API Key</button>
                               </div>
-                              
+
                               <!-- API Key Display (initially hidden) -->
                               <div id="apiKeyDisplaySection" class="d-none">
                                 <div class="alert alert-success mb-3">
                                   <div class="d-flex">
                                     <i class="bi bi-check-circle-fill me-2 fs-5"></i>
                                     <div>
-                                      <strong>API key regenerated</strong><br>
+                                      <strong>API key regenerated</strong><br />
                                       Your API key has been generated and any existing key under your account is no longer functional.
                                     </div>
                                   </div>
                                 </div>
-                                
+
                                 <label for="apiKeyDisplay" class="form-label">Here's your new key:</label>
                                 <div class="input-group mb-3">
-                                  <input type="text" class="form-control text-white" id="apiKeyDisplay" value="" readonly>
-                                  <button class="btn btn-outline-secondary text-white" type="button" id="copyApiKeyBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to clipboard">
+                                  <input type="text" class="form-control text-white" id="apiKeyDisplay" value="" readonly />
+                                  <button
+                                    class="btn btn-outline-secondary text-white"
+                                    type="button"
+                                    id="copyApiKeyBtn"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Copy to clipboard">
                                     <i class="bi bi-clipboard"></i>
                                   </button>
                                 </div>
@@ -1178,9 +1096,7 @@
                         <div class="col-md-6">
                           <div class="api-doc-card p-3 border border-primary-custom rounded-3">
                             <h5 class="mb-2"><i class="bi bi-book me-2"></i>API Documentation</h5>
-                            <p class="mb-3 small">
-                              Learn how to use our API endpoints and integrate with your systems.
-                            </p>
+                            <p class="mb-3 small">Learn how to use our API endpoints and integrate with your systems.</p>
                             <a href="#" class="btn btn-sm btn-outline-primary">View Documentation</a>
                           </div>
                         </div>
@@ -1202,7 +1118,11 @@
 
                       <!-- Active Subscription View -->
                       <div id="activeSubscriptionView">
-                        <p class="mb-4">Here's the status of your HIBP subscription, along with some tools to help you manage it. If you need help, check out our troubleshooting guide or submit a support request. As you have an active subscription, you can also query the API using the key accessible on the API key dashboard (link below).</p>
+                        <p class="mb-4">
+                          Here's the status of your HIBP subscription, along with some tools to help you manage it. If you need help, check out our
+                          troubleshooting guide or submit a support request. As you have an active subscription, you can also query the API using the key
+                          accessible on the API key dashboard (link below).
+                        </p>
 
                         <div class="row mb-4">
                           <div class="col-md-4">
@@ -1220,7 +1140,9 @@
                           <div class="col-md-4">
                             <div class="mb-4">
                               <div class="text-muted">Scope</div>
-                              <div class="bg-primary-subtle rounded-3 p-2 mt-2">Domains with up to 25 breached addresses each, and a rate limited API key allowing 10 email address searches per minute</div>
+                              <div class="bg-primary-subtle rounded-3 p-2 mt-2">
+                                Domains with up to 25 breached addresses each, and a rate limited API key allowing 10 email address searches per minute
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1229,9 +1151,7 @@
                           <a href="https://stripe.com" target="_blank" class="btn btn-outline-primary">
                             <i class="bi bi-credit-card me-2"></i>Manage subscription
                           </a>
-                          <a href="#api-keys" class="btn btn-outline-primary" data-bs-toggle="pill">
-                            <i class="bi bi-key me-2"></i>API keys
-                          </a>
+                          <a href="#api-keys" class="btn btn-outline-primary" data-bs-toggle="pill"> <i class="bi bi-key me-2"></i>API keys </a>
                           <a href="#email-address" class="btn btn-outline-primary" data-bs-toggle="pill">
                             <i class="bi bi-gear me-2"></i>Update email address
                           </a>
@@ -1241,18 +1161,20 @@
                       <!-- No Subscription View -->
                       <div id="noSubscriptionView" class="d-none">
                         <div class="mb-4">
-                          <p class="mb-0">You don't currently have an active HIBP subscription under the email address you used to access your dashboard. Subscription free breaches and domains with up to 10 breached accounts can be searched for free or you can purchase a subscription below to query larger domains. All paid subscriptions also grant access to domain and email address searches by API and include online support.</p>
+                          <p class="mb-0">
+                            You don't currently have an active HIBP subscription under the email address you used to access your dashboard. Subscription free
+                            breaches and domains with up to 10 breached accounts can be searched for free or you can purchase a subscription below to query
+                            larger domains. All paid subscriptions also grant access to domain and email address searches by API and include online support.
+                          </p>
                         </div>
 
-                        <button class="btn btn-primary mb-4" id="showPricingPlansBtn">
-                          <i class="bi bi-plus-circle me-2"></i>Purchase new subscription
-                        </button>
+                        <button class="btn btn-primary mb-4" id="showPricingPlansBtn"><i class="bi bi-plus-circle me-2"></i>Purchase new subscription</button>
                       </div>
 
                       <!-- Pricing Plans Section (Initially Hidden) -->
                       <div id="pricingPlansSection" class="d-none mt-4">
                         <h4 class="fw-bold mb-4">Select a Subscription Plan</h4>
-                        
+
                         <!-- Pricing Toggle -->
                         <div class="d-flex align-items-center justify-content-end mb-4">
                           <div class="pricing-toggle">
@@ -1264,7 +1186,7 @@
                           <span class="ms-3 text-muted small">Save up to 16% with annual billing</span>
                         </div>
 
-                        <!-- Standard Pricing Cards -->                        
+                        <!-- Standard Pricing Cards -->
                         <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
                           <!-- Pwned 1 -->
                           <div class="col">
@@ -1340,7 +1262,7 @@
                               </div>
                             </div>
                           </div>
-                          
+
                           <!-- Pwned 4 -->
                           <div class="col">
                             <div class="card h-100 card-glow pricing-card-4 rounded-3 overflow-hidden position-relative transition">
@@ -1365,7 +1287,7 @@
                               </div>
                             </div>
                           </div>
-                          
+
                           <!-- Pwned 5 -->
                           <div class="col">
                             <div class="card h-100 card-glow pricing-card-5 rounded-3 overflow-hidden position-relative transition">
@@ -1391,7 +1313,7 @@
                               </div>
                             </div>
                           </div>
-                          
+
                           <!-- Enterprise -->
                           <div class="col">
                             <div class="card h-100 card-glow pricing-card-6 enterprise-card rounded-3 overflow-hidden position-relative transition">
@@ -1418,7 +1340,7 @@
                             </div>
                           </div>
                         </div>
-                        
+
                         <!-- High-Performance Plans -->
                         <h5 class="mb-3">High-Performance Plans</h5>
                         <div class="card card-glow rounded-3 overflow-hidden mb-4">
@@ -1451,7 +1373,7 @@
                                       <button class="btn btn-primary btn-sm px-3 select-plan-btn" data-plan="ultra1">Select</button>
                                     </td>
                                   </tr>
-                                  
+
                                   <!-- Ultra 2 -->
                                   <tr class="high-tier-row">
                                     <td>
@@ -1469,7 +1391,7 @@
                                       <button class="btn btn-primary btn-sm px-3 select-plan-btn" data-plan="ultra2">Select</button>
                                     </td>
                                   </tr>
-                                  
+
                                   <!-- Ultra 3 -->
                                   <tr class="high-tier-row">
                                     <td>
@@ -1506,68 +1428,63 @@
                       <div id="emailUpdateSuccess" class="alert alert-success d-none mb-4" role="alert">
                         <div class="d-flex align-items-center">
                           <i class="bi bi-check-circle-fill me-2 fs-5"></i>
-                          <div>
-                            <strong>Success!</strong> Your email address has been updated successfully.
-                          </div>
+                          <div><strong>Success!</strong> Your email address has been updated successfully.</div>
                         </div>
                       </div>
 
-                      <p class="mb-4">Change the email address associated with your account. This email will be used for notifications and account communication.</p>
-                      
+                      <p class="mb-4">
+                        Change the email address associated with your account. This email will be used for notifications and account communication.
+                      </p>
+
                       <form id="updateEmailForm">
                         <div class="mb-4">
                           <label for="currentEmail" class="form-label">Current Email</label>
-                          <input type="email" class="form-control form-control-sm form-control-minimal" id="currentEmail" value="user@example.com" disabled>
+                          <input type="email" class="form-control form-control-sm form-control-minimal" id="currentEmail" value="user@example.com" disabled />
                         </div>
-                        
+
                         <div class="mb-4">
                           <label for="newEmail" class="form-label">New Email</label>
-                          <input type="email" class="form-control form-control-sm form-control-minimal" id="newEmail" placeholder="Enter new email address" required>
+                          <input
+                            type="email"
+                            class="form-control form-control-sm form-control-minimal"
+                            id="newEmail"
+                            placeholder="Enter new email address"
+                            required />
                         </div>
-                        
+
                         <div class="mb-4">
                           <label for="confirmNewEmail" class="form-label">Confirm New Email</label>
-                          <input type="email" class="form-control form-control-sm form-control-minimal" id="confirmNewEmail" placeholder="Confirm new email address" required>
+                          <input
+                            type="email"
+                            class="form-control form-control-sm form-control-minimal"
+                            id="confirmNewEmail"
+                            placeholder="Confirm new email address"
+                            required />
                           <div class="invalid-feedback">Email addresses do not match.</div>
                         </div>
-                        
+
                         <div class="alert alert-info mb-4" role="alert">
                           <div class="d-flex">
                             <i class="bi bi-info-circle-fill me-2 fs-5"></i>
                             <div>A verification link will be sent to your new email address. You'll need to click this link to complete the email change.</div>
                           </div>
                         </div>
-                        
+
                         <!-- Update the button to use loading state -->
-                        <button type="submit" class="btn btn-primary" data-bs-toggle="loading-button" data-bs-reset-after="2000" style="--btn-min-width: 140px; --btn-min-height: 38px">
+                        <button
+                          type="submit"
+                          class="btn btn-primary"
+                          data-bs-toggle="loading-button"
+                          data-bs-reset-after="2000"
+                          style="--btn-min-width: 140px; --btn-min-height: 38px">
                           <span class="btn-text"><i class="bi bi-check-circle me-2"></i>Update Email</span>
                           <div class="loading-indicator loading-indicator-sm loading-indicator-light">
                             <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                class="logo-piece logo-piece-1"
-                                d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
-                                fill="#F6F8FA"
-                              />
-                              <path
-                                class="logo-piece logo-piece-2"
-                                d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
-                                fill="#F6F8FA"
-                              />
-                              <path
-                                class="logo-piece logo-piece-3"
-                                d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
-                                fill="#F6F8FA"
-                              />
-                              <path
-                                class="logo-piece logo-piece-4"
-                                d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
-                                fill="#F6F8FA"
-                              />
-                              <path
-                                class="logo-piece logo-piece-5"
-                                d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
-                                fill="#F6F8FA"
-                              />
+                              <path class="logo-piece logo-piece-1" d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z" fill="#F6F8FA" />
+                              <path class="logo-piece logo-piece-2" d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z" fill="#F6F8FA" />
+                              <path class="logo-piece logo-piece-3" d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z" fill="#F6F8FA" />
+                              <path class="logo-piece logo-piece-4" d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z" fill="#F6F8FA" />
+                              <path class="logo-piece logo-piece-5" d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z" fill="#F6F8FA" />
                             </svg>
                           </div>
                         </button>
@@ -1583,13 +1500,7 @@
     </main>
 
     <!-- Domain Verification Modal -->
-    <div
-      class="modal fade"
-      id="verificationModal"
-      tabindex="-1"
-      aria-labelledby="verificationModalLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="verificationModal" tabindex="-1" aria-labelledby="verificationModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -1604,93 +1515,99 @@
                 <div class="col-md-10 col-lg-8">
                   <div class="mb-4">
                     <label for="domainInput" class="form-label">Domain Name</label>
-                    <input
-                      type="text"
-                      class="form-control form-control-sm"
-                      id="domainInput"
-                      placeholder="example.com"
-                      autocapitalize="off"
-                    />
+                    <input type="text" class="form-control form-control-sm" id="domainInput" placeholder="example.com" autocapitalize="off" />
                     <div class="form-text mt-2">Enter the domain you want to verify ownership for.</div>
                     <div class="invalid-feedback" id="domainInputError">Please provide a valid domain to verify</div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <!-- Loading Spinner (initially hidden) -->
             <div id="domainLoadingStep" class="domain-step d-none">
               <div class="d-flex flex-column justify-content-center align-items-center py-5">
                 <div class="logo-mark-spinner mb-3">
                   <svg width="60" height="40" viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      class="logo-piece logo-piece-1"
-                      d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
-                      fill="#F6F8FA"
-                    />
-                    <path
-                      class="logo-piece logo-piece-2"
-                      d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
-                      fill="#F6F8FA"
-                    />
-                    <path
-                      class="logo-piece logo-piece-3"
-                      d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
-                      fill="#F6F8FA"
-                    />
-                    <path
-                      class="logo-piece logo-piece-4"
-                      d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
-                      fill="#F6F8FA"
-                    />
-                    <path
-                      class="logo-piece logo-piece-5"
-                      d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
-                      fill="#F6F8FA"
-                    />
+                    <path class="logo-piece logo-piece-1" d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z" fill="#F6F8FA" />
+                    <path class="logo-piece logo-piece-2" d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z" fill="#F6F8FA" />
+                    <path class="logo-piece logo-piece-3" d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z" fill="#F6F8FA" />
+                    <path class="logo-piece logo-piece-4" d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z" fill="#F6F8FA" />
+                    <path class="logo-piece logo-piece-5" d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z" fill="#F6F8FA" />
                   </svg>
                 </div>
                 <p class="lead text-center">Validating domain...</p>
               </div>
             </div>
-            
+
             <!-- Step 2: Verification Methods (initially hidden) -->
             <div id="verificationMethodsStep" class="domain-step d-none">
               <div class="d-flex align-items-center mb-4">
                 <h5 class="mb-0">Step 2: Select Verification Method</h5>
               </div>
-              
+
               <!-- Bootstrap Tab Layout -->
               <div class="row">
                 <div class="col-12">
                   <!-- Nav tabs -->
                   <ul class="nav nav-tabs mb-4" id="verificationTabs" role="tablist">
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link active d-flex align-items-center" id="dns-tab" data-bs-toggle="tab" data-bs-target="#dns-content" type="button" role="tab" aria-controls="dns-content" aria-selected="true">
+                      <button
+                        class="nav-link active d-flex align-items-center"
+                        id="dns-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#dns-content"
+                        type="button"
+                        role="tab"
+                        aria-controls="dns-content"
+                        aria-selected="true">
                         <i class="bi bi-globe text-primary me-2 fs-5"></i>
                         <span>DNS TXT Record</span>
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link d-flex align-items-center" id="file-tab" data-bs-toggle="tab" data-bs-target="#file-content" type="button" role="tab" aria-controls="file-content" aria-selected="false">
+                      <button
+                        class="nav-link d-flex align-items-center"
+                        id="file-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#file-content"
+                        type="button"
+                        role="tab"
+                        aria-controls="file-content"
+                        aria-selected="false">
                         <i class="bi bi-file-earmark text-primary me-2 fs-5"></i>
                         <span>File Upload</span>
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link d-flex align-items-center" id="meta-tab" data-bs-toggle="tab" data-bs-target="#meta-content" type="button" role="tab" aria-controls="meta-content" aria-selected="false">
+                      <button
+                        class="nav-link d-flex align-items-center"
+                        id="meta-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#meta-content"
+                        type="button"
+                        role="tab"
+                        aria-controls="meta-content"
+                        aria-selected="false">
                         <i class="bi bi-code-slash text-primary me-2 fs-5"></i>
                         <span>Meta Tag</span>
                       </button>
                     </li>
                     <li class="nav-item" role="presentation">
-                      <button class="nav-link d-flex align-items-center" id="email-tab" data-bs-toggle="tab" data-bs-target="#email-content" type="button" role="tab" aria-controls="email-content" aria-selected="false">
+                      <button
+                        class="nav-link d-flex align-items-center"
+                        id="email-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#email-content"
+                        type="button"
+                        role="tab"
+                        aria-controls="email-content"
+                        aria-selected="false">
                         <i class="bi bi-envelope text-primary me-2 fs-5"></i>
                         <span>Email Verification</span>
                       </button>
                     </li>
                   </ul>
-                  
+
                   <!-- Tab panes -->
                   <div class="tab-content p-4 border border-primary-custom rounded-3" id="verificationTabContent">
                     <!-- DNS TXT Record Tab Content -->
@@ -1704,14 +1621,11 @@
                               <code>hibp-verify=abc123def456</code>
                             </div>
                           </div>
-                          <p>
-                            DNS changes may take up to 24 hours to propagate. Once you've added the record, click "Verify
-                            Now".
-                          </p>
+                          <p>DNS changes may take up to 24 hours to propagate. Once you've added the record, click "Verify Now".</p>
                         </div>
                       </div>
                     </div>
-                    
+
                     <!-- File Upload Tab Content -->
                     <div class="tab-pane fade" id="file-content" role="tabpanel" aria-labelledby="file-tab">
                       <h5 class="mb-3">File Upload Verification</h5>
@@ -1731,7 +1645,7 @@
                         </div>
                       </div>
                     </div>
-                    
+
                     <!-- Meta Tag Tab Content -->
                     <div class="tab-pane fade" id="meta-content" role="tabpanel" aria-labelledby="meta-tab">
                       <h5 class="mb-3">Meta Tag Verification</h5>
@@ -1750,7 +1664,7 @@
                         </div>
                       </div>
                     </div>
-                    
+
                     <!-- Email Verification Tab Content -->
                     <div class="tab-pane fade" id="email-content" role="tabpanel" aria-labelledby="email-tab">
                       <h5 class="mb-3">Email Verification</h5>
@@ -1759,107 +1673,53 @@
                           <p>Select an email address to receive the verification link:</p>
                           <div class="form-check-list mb-3">
                             <div class="form-check mb-2">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="verificationEmail"
-                                id="emailAdmin"
-                                value="admin@yourdomain.com"
-                                checked
-                              />
+                              <input class="form-check-input" type="radio" name="verificationEmail" id="emailAdmin" value="admin@yourdomain.com" checked />
                               <label class="form-check-label" for="emailAdmin"> admin@<span class="domain-name-placeholder">yourdomain.com</span> </label>
                             </div>
                             <div class="form-check mb-2">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="verificationEmail"
-                                id="emailWebmaster"
-                                value="webmaster@yourdomain.com"
-                              />
-                              <label class="form-check-label" for="emailWebmaster"> webmaster@<span class="domain-name-placeholder">yourdomain.com</span> </label>
+                              <input class="form-check-input" type="radio" name="verificationEmail" id="emailWebmaster" value="webmaster@yourdomain.com" />
+                              <label class="form-check-label" for="emailWebmaster">
+                                webmaster@<span class="domain-name-placeholder">yourdomain.com</span>
+                              </label>
                             </div>
                             <div class="form-check mb-2">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="verificationEmail"
-                                id="emailInfo"
-                                value="info@yourdomain.com"
-                              />
+                              <input class="form-check-input" type="radio" name="verificationEmail" id="emailInfo" value="info@yourdomain.com" />
                               <label class="form-check-label" for="emailInfo"> info@<span class="domain-name-placeholder">yourdomain.com</span> </label>
                             </div>
                             <div class="form-check mb-2">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="verificationEmail"
-                                id="emailHostmaster"
-                                value="hostmaster@yourdomain.com"
-                              />
-                              <label class="form-check-label" for="emailHostmaster"> hostmaster@<span class="domain-name-placeholder">yourdomain.com</span> </label>
+                              <input class="form-check-input" type="radio" name="verificationEmail" id="emailHostmaster" value="hostmaster@yourdomain.com" />
+                              <label class="form-check-label" for="emailHostmaster">
+                                hostmaster@<span class="domain-name-placeholder">yourdomain.com</span>
+                              </label>
                             </div>
                             <div class="form-check mb-2">
-                              <input
-                                class="form-check-input"
-                                type="radio"
-                                name="verificationEmail"
-                                id="emailSecurity"
-                                value="security@yourdomain.com"
-                              />
+                              <input class="form-check-input" type="radio" name="verificationEmail" id="emailSecurity" value="security@yourdomain.com" />
                               <label class="form-check-label" for="emailSecurity"> security@<span class="domain-name-placeholder">yourdomain.com</span> </label>
                             </div>
                           </div>
                           <div class="alert alert-info mb-3">
                             <div class="d-flex">
                               <i class="bi bi-info-circle-fill me-2 fs-5"></i>
-                              <div>
-                                A verification email will be sent containing a unique link that you must click to verify
-                                ownership of your domain.
-                              </div>
+                              <div>A verification email will be sent containing a unique link that you must click to verify ownership of your domain.</div>
                             </div>
                           </div>
                           <p class="text-muted small">
-                            The verification email will expire after 24 hours. Make sure to check your spam folder if you
-                            don't receive it.
+                            The verification email will expire after 24 hours. Make sure to check your spam folder if you don't receive it.
                           </p>
                         </div>
                       </div>
                     </div>
                   </div>
-                  
+
                   <!-- Verification Spinner (hidden by default) -->
-                  <div
-                    id="verificationSpinner"
-                    class="verification-spinner flex-column justify-content-center align-items-center mt-4 py-5 d-none"
-                  >
+                  <div id="verificationSpinner" class="verification-spinner flex-column justify-content-center align-items-center mt-4 py-5 d-none">
                     <div class="logo-mark-spinner mb-3">
                       <svg width="60" height="40" viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          class="logo-piece logo-piece-1"
-                          d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z"
-                          fill="#F6F8FA"
-                        />
-                        <path
-                          class="logo-piece logo-piece-2"
-                          d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z"
-                          fill="#F6F8FA"
-                        />
-                        <path
-                          class="logo-piece logo-piece-3"
-                          d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z"
-                          fill="#F6F8FA"
-                        />
-                        <path
-                          class="logo-piece logo-piece-4"
-                          d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z"
-                          fill="#F6F8FA"
-                        />
-                        <path
-                          class="logo-piece logo-piece-5"
-                          d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z"
-                          fill="#F6F8FA"
-                        />
+                        <path class="logo-piece logo-piece-1" d="M387.941 162.208L400 99.9971H321.582L309.523 162.208H387.941Z" fill="#F6F8FA" />
+                        <path class="logo-piece logo-piece-2" d="M284.766 162.208L296.826 99.9971H218.408L206.349 162.208H284.766Z" fill="#F6F8FA" />
+                        <path class="logo-piece logo-piece-3" d="M160.475 270.998L176.746 187.029H98.3277L82.0571 270.998H160.475Z" fill="#F6F8FA" />
+                        <path class="logo-piece logo-piece-4" d="M78.4179 162.208L109.874 0.0765381H31.4565L0 162.208H78.4179Z" fill="#F6F8FA" />
+                        <path class="logo-piece logo-piece-5" d="M181.592 162.208L197.863 78.2393H119.445L103.174 162.208H181.592Z" fill="#F6F8FA" />
                       </svg>
                     </div>
                     <p>Verifying your domain...</p>
@@ -1878,13 +1738,7 @@
     </div>
 
     <!-- Subscription Modal -->
-    <div
-      class="modal fade"
-      id="subscriptionModal"
-      tabindex="-1"
-      aria-labelledby="subscriptionModalLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="subscriptionModal" tabindex="-1" aria-labelledby="subscriptionModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
@@ -1948,14 +1802,12 @@
           <div class="modal-body text-center p-4">
             <h5 class="mb-3">Remove the domain?</h5>
             <p class="mb-4">
-              Removing this domain will delete it from your account. You will no longer be able to search for breached
-              email addresses on this domain unless you verify it again.
+              Removing this domain will delete it from your account. You will no longer be able to search for breached email addresses on this domain unless you
+              verify it again.
             </p>
             <div class="d-flex justify-content-center gap-3">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-danger" id="confirmDomainRemoval" data-bs-dismiss="modal">
-                Remove
-              </button>
+              <button type="button" class="btn btn-danger" id="confirmDomainRemoval" data-bs-dismiss="modal">Remove</button>
             </div>
           </div>
         </div>
@@ -1972,12 +1824,12 @@
           </div>
           <div class="modal-body">
             <p class="mb-3">Choose a file to upload data for this domain.</p>
-            
+
             <div class="mb-3">
               <label for="fileUploadInput" class="form-label">Select File</label>
-              <input class="form-control form-control-sm form-control-minimal" type="file" id="fileUploadInput">              
+              <input class="form-control form-control-sm form-control-minimal" type="file" id="fileUploadInput" />
             </div>
-            
+
             <div class="alert alert-info d-none mb-0">
               <div class="d-flex align-items-center">
                 <i class="bi bi-file-earmark me-2"></i>
@@ -2004,9 +1856,7 @@
                 <a href="../index.html" class="text-white text-decoration-none fw-bold fs-4"> Have I Been Pwned </a>
               </div>
               <p class="text-muted mb-4">Check if your email has been compromised in a data breach</p>
-              <a href="../index.html" class="btn btn-outline-primary">
-                <i class="bi bi-search me-2"></i>Check my email
-              </a>
+              <a href="../index.html" class="btn btn-outline-primary"> <i class="bi bi-search me-2"></i>Check my email </a>
             </div>
 
             <!-- Sitemap -->
@@ -2020,9 +1870,7 @@
                     </li>
 
                     <li class="mb-2">
-                      <a href="pwned_websites.html" class="text-decoration-none text-muted hover-white"
-                        >Who's been pwned</a
-                      >
+                      <a href="pwned_websites.html" class="text-decoration-none text-muted hover-white">Who's been pwned</a>
                     </li>
                     <li class="mb-2">
                       <a href="passwords.html" class="text-decoration-none text-muted hover-white">Passwords</a>
@@ -2074,26 +1922,17 @@
                 <a href="https://facebook.com/haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-facebook"></i>
                 </a>
-                <a
-                  href="https://www.linkedin.com/company/haveibeenpwned/"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://www.linkedin.com/company/haveibeenpwned/" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-linkedin"></i>
                 </a>
                 <a href="https://github.com/HaveIBeenPwned" target="_blank" class="text-muted hover-white fs-5">
                   <i class="bi bi-github"></i>
                 </a>
-                <a
-                  href="https://bsky.app/profile/haveibeenpwned.com"
-                  target="_blank"
-                  class="text-muted hover-white fs-5"
-                >
+                <a href="https://bsky.app/profile/haveibeenpwned.com" target="_blank" class="text-muted hover-white fs-5">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 10 568 501" width="20" height="20">
                     <path
                       fill="currentColor"
-                      d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"
-                    />
+                      d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z" />
                   </svg>
                 </a>
                 <a href="https://infosec.exchange/@haveibeenpwned" target="_blank" class="text-muted hover-white fs-5">
@@ -2118,13 +1957,11 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
       integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
+      referrerpolicy="no-referrer"></script>
 
     <!-- Custom JS -->
-    <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/dashboard-internal.js"></script>
-    
+    <script src="../assets/js/bundle.js"></script>
+
     <!-- Generate Quote Modal -->
     <div class="modal fade" id="generateQuoteModal" tabindex="-1" aria-labelledby="generateQuoteModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
@@ -2140,33 +1977,33 @@
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label for="customerName" class="form-label">Customer Name</label>
-                    <input type="text" class="form-control form-control-sm" id="customerName" placeholder="Enter customer name" required>
+                    <input type="text" class="form-control form-control-sm" id="customerName" placeholder="Enter customer name" required />
                   </div>
                   <div class="col-md-6">
                     <label for="customerCompany" class="form-label">Company Name</label>
-                    <input type="text" class="form-control form-control-sm" id="customerCompany" placeholder="Enter company name" required>
+                    <input type="text" class="form-control form-control-sm" id="customerCompany" placeholder="Enter company name" required />
                   </div>
                 </div>
               </div>
-              
+
               <div class="mb-4">
                 <h6 class="fw-bold mb-3">Address</h6>
                 <div class="row g-3">
                   <div class="col-md-12">
                     <label for="addressLine1" class="form-label">Street Address</label>
-                    <input type="text" class="form-control form-control-sm" id="addressLine1" placeholder="Enter street address" required>
+                    <input type="text" class="form-control form-control-sm" id="addressLine1" placeholder="Enter street address" required />
                   </div>
                   <div class="col-md-6">
                     <label for="addressCity" class="form-label">City</label>
-                    <input type="text" class="form-control form-control-sm" id="addressCity" placeholder="Enter city" required>
+                    <input type="text" class="form-control form-control-sm" id="addressCity" placeholder="Enter city" required />
                   </div>
                   <div class="col-md-6">
                     <label for="addressState" class="form-label">State/Province</label>
-                    <input type="text" class="form-control form-control-sm" id="addressState" placeholder="Enter state or province" required>
+                    <input type="text" class="form-control form-control-sm" id="addressState" placeholder="Enter state or province" required />
                   </div>
                   <div class="col-md-6">
                     <label for="addressPostal" class="form-label">Postal Code</label>
-                    <input type="text" class="form-control form-control-sm" id="addressPostal" placeholder="Enter postal code" required>
+                    <input type="text" class="form-control form-control-sm" id="addressPostal" placeholder="Enter postal code" required />
                   </div>
                   <div class="col-md-6">
                     <label for="addressCountry" class="form-label">Country</label>
@@ -2182,23 +2019,23 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="mb-4">
                 <h6 class="fw-bold mb-3">Tax Information</h6>
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label for="taxId" class="form-label">Tax ID/VAT Number</label>
-                    <input type="text" class="form-control form-control-sm" id="taxId" placeholder="Enter Tax ID or VAT number">
-                  </div>                  
+                    <input type="text" class="form-control form-control-sm" id="taxId" placeholder="Enter Tax ID or VAT number" />
+                  </div>
                 </div>
               </div>
-              
+
               <div class="mb-4">
                 <h6 class="fw-bold mb-3">Purchase Order</h6>
                 <div class="row g-3">
                   <div class="col-md-6">
                     <label for="poNumber" class="form-label">PO Number</label>
-                    <input type="text" class="form-control form-control-sm" id="poNumber" placeholder="Enter PO number (if applicable)">
+                    <input type="text" class="form-control form-control-sm" id="poNumber" placeholder="Enter PO number (if applicable)" />
                   </div>
                   <div class="col-md-6">
                     <label for="quoteDuration" class="form-label">Quote Validity</label>
@@ -2211,14 +2048,12 @@
                 </div>
               </div>
             </form>
-            
+
             <!-- Add success message (initially hidden) -->
             <div id="quoteSuccessMessage" class="alert alert-success d-none" role="alert">
               <div class="d-flex align-items-center">
                 <i class="bi bi-check-circle-fill me-2 fs-5"></i>
-                <div>
-                  <strong>Quote generated successfully!</strong> A PDF copy has been sent to your email address.
-                </div>
+                <div><strong>Quote generated successfully!</strong> A PDF copy has been sent to your email address.</div>
               </div>
             </div>
           </div>
@@ -2229,59 +2064,59 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Quote Form Submission Handling -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const submitQuoteBtn = document.getElementById('submitQuoteForm');
-        const quoteForm = document.getElementById('quoteForm');
-        const quoteSuccessMessage = document.getElementById('quoteSuccessMessage');
-        const modalElement = document.getElementById('generateQuoteModal');
-        
+      document.addEventListener("DOMContentLoaded", function () {
+        const submitQuoteBtn = document.getElementById("submitQuoteForm");
+        const quoteForm = document.getElementById("quoteForm");
+        const quoteSuccessMessage = document.getElementById("quoteSuccessMessage");
+        const modalElement = document.getElementById("generateQuoteModal");
+
         // Store original button text
-        const originalButtonText = 'Generate Quote';
+        const originalButtonText = "Generate Quote";
         let isFormSubmitted = false;
-        
+
         // Reset form when modal is hidden
-        modalElement.addEventListener('hidden.bs.modal', function() {
+        modalElement.addEventListener("hidden.bs.modal", function () {
           // Reset form display and state
-          quoteForm.style.display = 'block';
-          quoteSuccessMessage.classList.add('d-none');
+          quoteForm.style.display = "block";
+          quoteSuccessMessage.classList.add("d-none");
           quoteForm.reset();
-          
+
           // Reset button
           submitQuoteBtn.innerHTML = originalButtonText;
           submitQuoteBtn.disabled = false;
-          
+
           // Reset submission flag
           isFormSubmitted = false;
         });
-        
+
         // Handle form submission
-        submitQuoteBtn.addEventListener('click', function() {
+        submitQuoteBtn.addEventListener("click", function () {
           // If the form was already submitted, just close the modal
           if (isFormSubmitted) {
             const modal = bootstrap.Modal.getInstance(modalElement);
             modal.hide();
             return;
           }
-          
+
           // Form validation
           if (quoteForm.checkValidity()) {
             // Show loading state
             submitQuoteBtn.disabled = true;
             submitQuoteBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processing...';
-            
+
             // Simulate submission (1.5 second delay)
-            setTimeout(function() {
+            setTimeout(function () {
               // Hide form, show success message
-              quoteForm.style.display = 'none';
-              quoteSuccessMessage.classList.remove('d-none');
-              
+              quoteForm.style.display = "none";
+              quoteSuccessMessage.classList.remove("d-none");
+
               // Update button to Close
-              submitQuoteBtn.innerHTML = 'Close';
+              submitQuoteBtn.innerHTML = "Close";
               submitQuoteBtn.disabled = false;
-              
+
               // Mark as submitted
               isFormSubmitted = true;
             }, 1500);
@@ -2290,92 +2125,89 @@
             quoteForm.reportValidity();
           }
         });
-        
+
         // Fix tab navigation for subscription section links
         const tabLinkElements = document.querySelectorAll('a[data-bs-toggle="pill"]');
-        tabLinkElements.forEach(linkElement => {
-          linkElement.addEventListener('click', function(event) {
-            const targetTabId = this.getAttribute('href').substring(1); // Remove the # character
+        tabLinkElements.forEach((linkElement) => {
+          linkElement.addEventListener("click", function (event) {
+            const targetTabId = this.getAttribute("href").substring(1); // Remove the # character
             const targetTab = document.getElementById(targetTabId);
-            
+
             if (targetTab) {
               // Deactivate all tabs first
-              document.querySelectorAll('.tab-pane').forEach(tabPane => {
-                tabPane.classList.remove('show', 'active');
+              document.querySelectorAll(".tab-pane").forEach((tabPane) => {
+                tabPane.classList.remove("show", "active");
               });
-              
+
               // Deactivate all tab triggers
-              document.querySelectorAll('.list-group-item-action').forEach(tabTrigger => {
-                tabTrigger.classList.remove('active');
+              document.querySelectorAll(".list-group-item-action").forEach((tabTrigger) => {
+                tabTrigger.classList.remove("active");
               });
-              
+
               // Activate the target tab
-              targetTab.classList.add('show', 'active');
-              
+              targetTab.classList.add("show", "active");
+
               // Find and activate the corresponding nav item
               const correspondingNavItem = document.querySelector(`.list-group-item-action[href="#${targetTabId}"]`);
               if (correspondingNavItem) {
-                correspondingNavItem.classList.add('active');
+                correspondingNavItem.classList.add("active");
               }
             }
           });
         });
       });
     </script>
-    
-    <!-- Loading Button Plugin -->
-    <script src="../assets/js/loading-button.js"></script>
-    
+
     <!-- Handle email update form submission -->
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         // Get form and success message elements
-        const updateEmailForm = document.getElementById('updateEmailForm');
-        const successMessage = document.getElementById('emailUpdateSuccess');
-        const newEmailInput = document.getElementById('newEmail');
-        const confirmEmailInput = document.getElementById('confirmNewEmail');
-        
+        const updateEmailForm = document.getElementById("updateEmailForm");
+        const successMessage = document.getElementById("emailUpdateSuccess");
+        const newEmailInput = document.getElementById("newEmail");
+        const confirmEmailInput = document.getElementById("confirmNewEmail");
+
         // Handle form submission
-        updateEmailForm.addEventListener('submit', function(e) {
+        updateEmailForm.addEventListener("submit", function (e) {
           e.preventDefault();
-          
+
           // Get the submit button and its loading button instance
           const submitButton = updateEmailForm.querySelector('button[type="submit"]');
           const loadingButton = LoadingButton.getOrCreateInstance(submitButton);
-          
+
           // Validate that emails match
           if (newEmailInput.value !== confirmEmailInput.value) {
-            confirmEmailInput.classList.add('is-invalid');
+            confirmEmailInput.classList.add("is-invalid");
             return;
           } else {
-            confirmEmailInput.classList.remove('is-invalid');
+            confirmEmailInput.classList.remove("is-invalid");
           }
-          
+
           // Start loading animation
           loadingButton.start();
-          
+
           // Simulate form submission with a delay
-          setTimeout(function() {
+          setTimeout(function () {
             // Stop loading animation
             loadingButton.stop();
-            
+
             // Reset form
             updateEmailForm.reset();
-            
+
             // Show success message
-            successMessage.classList.remove('d-none');
-            
+            successMessage.classList.remove("d-none");
+
             // Hide success message after 5 seconds
-            setTimeout(function() {
-              successMessage.classList.add('d-none');
+            setTimeout(function () {
+              successMessage.classList.add("d-none");
             }, 5000);
           }, 1500);
         });
-        
+
         // Remove invalid feedback when user types in confirm email field
-        confirmEmailInput.addEventListener('input', function() {
-          if (this.classList.contains('is-invalid')) {
-            this.classList.remove('is-invalid');
+        confirmEmailInput.addEventListener("input", function () {
+          if (this.classList.contains("is-invalid")) {
+            this.classList.remove("is-invalid");
           }
         });
       });
