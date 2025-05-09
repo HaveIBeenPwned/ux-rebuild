@@ -1,4 +1,5 @@
 import { LoadingButton, type LoadingButtonElement } from "./loadingButton";
+import { delay } from "./utils";
 
 export function initializePwnedPasswordsSearch() {
   // Password checking functionality
@@ -54,7 +55,8 @@ export function initializePwnedPasswordsSearch() {
       checkButton.loadingButton.start();
 
       // Simulate API call
-      const prevalence = await checkPasswordSecurity(password);
+      const results = await Promise.all([checkPasswordSecurity(password), delay(100 + Math.random() * 200)]);
+      const prevalence = results[0];
       // Stop loading animation
       if (checkButton.loadingButton) {
         checkButton.loadingButton.stop();
