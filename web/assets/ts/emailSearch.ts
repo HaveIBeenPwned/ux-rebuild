@@ -2,6 +2,21 @@ import { LoadingButton, type LoadingButtonElement } from "./loadingButton";
 import type { UnifiedSearchResults } from "./Models/unified_search";
 import { delay } from "./utils";
 
+// Declare the confetti function from the global scope
+interface ConfettiOptions {
+  particleCount?: number;
+  angle?: number;
+  spread?: number;
+  origin?: {
+    x?: number;
+    y?: number;
+  };
+}
+
+type ConfettiFunction = (options?: ConfettiOptions) => void;
+
+declare const confetti: ConfettiFunction;
+
 /**
  * Initialize the breach timeline functionality
  */
@@ -11,6 +26,20 @@ export function initEmailSearch() {
   const emailInput = document.getHtmlElementById<HTMLInputElement>("emailInput");
   const checkButton = document.getHtmlElementById<LoadingButtonElement>("checkButton");
   const breachTimeline = document.getHtmlElementById<HTMLElement>("breachTimeline");
+
+  // Result state elements
+  const goodResultElement = document.getHtmlElementById<HTMLElement>("email-result-good");
+  const badResultElement = document.getHtmlElementById<HTMLElement>("email-result-bad");
+  const regularBreachSummary = document.getHtmlElementById<HTMLElement>("regular-breach-summary");
+
+  // Set up result elements if they exist
+  if (goodResultElement && badResultElement) {
+    // Make sure the original breach summary is hidden
+    if (regularBreachSummary) {
+      regularBreachSummary.classList.add("d-none");
+    }
+  }
+
   if (pwnedSearchForm && emailInput && checkButton && breachTimeline) {
     // @ts-ignore
     window.turnstileCompleted = turnstileCompleted;
@@ -31,6 +60,9 @@ export function initEmailSearch() {
           return;
         }
 
+        // Hide any previously shown results with animation
+        await hideResultsWithAnimation();
+
         const loadingButton = LoadingButton.getOrCreateInstance(checkButton);
         loadingButton.start();
         const searchResults = await performSearch(email);
@@ -43,6 +75,17 @@ export function initEmailSearch() {
 
         // Clear any previous validation errors
         emailInput.classList.remove("is-invalid");
+
+        // Show success or warning result based on breach count
+        if (searchResults.Breaches.length === 0) {
+          showGoodResult();
+          // Trigger confetti animation with a slight delay for better visual effect
+          setTimeout(() => {
+            triggerConfetti();
+          }, 300);
+        } else {
+          showBadResult();
+        }
 
         // Show the breach timeline section
         breachTimeline.classList.remove("d-none");
@@ -69,6 +112,107 @@ export function initEmailSearch() {
       }
     });
   }
+
+  // Function to hide result elements with animation
+  async function hideResultsWithAnimation() {
+    if (!goodResultElement || !badResultElement) return Promise.resolve();
+
+    // If neither result is visible, no need for animation
+    if (goodResultElement.classList.contains("d-none") && badResultElement.classList.contains("d-none")) {
+      return Promise.resolve();
+    }
+
+    const visibleContainer = goodResultElement.classList.contains("d-none")
+      ? badResultElement.querySelector(".search-result")
+      : goodResultElement.querySelector(".search-result");
+
+    if (visibleContainer) {
+      // Add fade-out class to start animation
+      visibleContainer.classList.add("fade-out");
+
+      // Wait for animation to complete
+      await delay(400);
+    }
+
+    // Hide elements after fade-out completes
+    goodResultElement.classList.add("d-none");
+    badResultElement.classList.add("d-none");
+  }
+
+  // Function to show good result with animation
+  function showGoodResult() {
+    if (!goodResultElement) return;
+
+    // First ensure the element is in DOM but not visible
+    goodResultElement.classList.remove("d-none");
+
+    // Get the container
+    const resultContainer = goodResultElement.querySelector(".search-result");
+    if (resultContainer) {
+      // Ensure fade-out class is applied first (to set opacity to 0)
+      resultContainer.classList.add("fade-out");
+
+      // Force a reflow to ensure the browser registers the opacity change
+      void (resultContainer as HTMLElement).offsetWidth;
+
+      // Then remove it to trigger the transition
+      setTimeout(() => {
+        resultContainer.classList.remove("fade-out");
+      }, 50);
+    }
+  }
+
+  // Function to show bad result with animation
+  function showBadResult() {
+    if (!badResultElement) return;
+
+    // First ensure the element is in DOM but not visible
+    badResultElement.classList.remove("d-none");
+
+    // Get the container
+    const resultContainer = badResultElement.querySelector(".search-result");
+    if (resultContainer) {
+      // Ensure fade-out class is applied first
+      resultContainer.classList.add("fade-out");
+
+      // Force a reflow to ensure the browser registers the opacity change
+      void (resultContainer as HTMLElement).offsetWidth;
+
+      // Then remove it to trigger the transition
+      setTimeout(() => {
+        resultContainer.classList.remove("fade-out");
+      }, 50);
+    }
+  }
+
+  // Function to trigger confetti animation
+  function triggerConfetti() {
+    if (typeof confetti !== "undefined") {
+      // First, create an initial burst of confetti
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+
+      // Then trigger a cannon from both sides
+      setTimeout(() => {
+        confetti({
+          particleCount: 50,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+        });
+
+        confetti({
+          particleCount: 50,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+        });
+      }, 250);
+    }
+  }
 }
 
 function renderBreaches(searchResults: UnifiedSearchResults) {
@@ -76,20 +220,23 @@ function renderBreaches(searchResults: UnifiedSearchResults) {
   const timelineItems = document.getHtmlElementById<HTMLDivElement>("timelineItems");
 
   if (breachCountElement && timelineItems) {
+    // Update the breach count in the bad result element
     breachCountElement.innerHTML = searchResults.Breaches.length.toLocaleString();
 
-    let timelineItemsContent = "";
-    for (const breach of searchResults.Breaches) {
-      const breachDate = new Date(Date.parse(breach.BreachDate));
-      let dataClassContent = "";
+    // Only render the timeline items if there are breaches
+    if (searchResults.Breaches.length > 0) {
+      let timelineItemsContent = "";
+      for (const breach of searchResults.Breaches) {
+        const breachDate = new Date(Date.parse(breach.BreachDate));
+        let dataClassContent = "";
 
-      for (const dataClass of breach.DataClasses) {
-        dataClassContent += `<li class="d-flex align-items-start mb-2">
+        for (const dataClass of breach.DataClasses) {
+          dataClassContent += `<li class="d-flex align-items-start mb-2">
                                <i class="bi bi-dot me-2 text-primary"></i>${dataClass}
                              </li>`;
-      }
+        }
 
-      timelineItemsContent += `<div class="timeline-item pt-5">
+        timelineItemsContent += `<div class="timeline-item pt-5">
                                       <div class="timeline-date d-flex flex-column justify-content-center align-items-center text-white">
                                           <span class="timeline-date-text">${breachDate.toLocaleDateString("default", { month: "short" })}</span>
                                           <span class="timeline-date-text">${breachDate.toLocaleDateString("default", { year: "numeric" })}</span>
@@ -122,9 +269,13 @@ function renderBreaches(searchResults: UnifiedSearchResults) {
                                           </div>
                                       </div>
                                   </div>`;
-    }
+      }
 
-    timelineItems.innerHTML = timelineItemsContent;
+      timelineItems.innerHTML = timelineItemsContent;
+    } else {
+      // Clear the timeline if no breaches
+      timelineItems.innerHTML = "";
+    }
   }
 }
 
@@ -191,58 +342,69 @@ function isValidEmail(email: string): boolean {
 async function performSearch(email: string) {
   // replace with actual API call
   await delay(1000);
+
+  // For testing:
+  // - Any email containing "good" will show success state (0 breaches)
+  // - Any other email will show breach state (2 breaches)
+  const shouldShowGood = email.toLowerCase().includes("good");
+
   const mockResults: UnifiedSearchResults = {
-    Breaches: [
-      {
-        Name: "Adobe",
-        Title: "Adobe",
-        Domain: "adobe.com",
-        AddedDate: "2013-10-01T00:00:00Z",
-        BreachDate: "2013-10-01T00:00:00Z",
-        Description: "Adobe data breach affecting 38 million users.",
-        DataClasses: ["Email addresses", "Password hints", "Usernames"],
-        LogoPath: "https://haveibeenpwned.com/Content/Images/PwnedLogos/Adobe.png",
-        IsFabricated: false,
-        IsVerified: true,
-        IsSensitive: false,
-        IsRetired: false,
-        IsSpamList: false,
-        IsMalware: false,
-        IsStealerLog: false,
-        IsSubscriptionFree: false,
-        ModifiedDate: "2013-10-01T00:00:00Z",
-        PwnCount: 152000000,
-      },
-      {
-        Name: "LinkedIn",
-        Title: "LinkedIn",
-        Domain: "linkedin.com",
-        AddedDate: "2012-06-01T00:00:00Z",
-        BreachDate: "2012-06-01T00:00:00Z",
-        Description: "LinkedIn data breach affecting 117 million users.",
-        DataClasses: ["Email addresses", "Password hints", "Usernames"],
-        LogoPath: "https://haveibeenpwned.com/Content/Images/PwnedLogos/LinkedIn.png",
-        IsFabricated: false,
-        IsVerified: true,
-        IsSensitive: false,
-        IsRetired: false,
-        IsSpamList: false,
-        IsMalware: false,
-        IsStealerLog: false,
-        IsSubscriptionFree: false,
-        ModifiedDate: "2012-06-01T00:00:00Z",
-        PwnCount: 117000000,
-      },
-    ],
-    Pastes: [
-      {
-        Date: "2023-10-01T00:00:00Z",
-        EmailCount: 1000,
-        Id: "123456",
-        Source: "Pastebin",
-        Title: "Sample Paste 1",
-      },
-    ],
+    Breaches: shouldShowGood
+      ? []
+      : [
+          {
+            Name: "Adobe",
+            Title: "Adobe",
+            Domain: "adobe.com",
+            AddedDate: "2013-10-01T00:00:00Z",
+            BreachDate: "2013-10-01T00:00:00Z",
+            Description: "Adobe data breach affecting 38 million users.",
+            DataClasses: ["Email addresses", "Password hints", "Usernames"],
+            LogoPath: "https://haveibeenpwned.com/Content/Images/PwnedLogos/Adobe.png",
+            IsFabricated: false,
+            IsVerified: true,
+            IsSensitive: false,
+            IsRetired: false,
+            IsSpamList: false,
+            IsMalware: false,
+            IsStealerLog: false,
+            IsSubscriptionFree: false,
+            ModifiedDate: "2013-10-01T00:00:00Z",
+            PwnCount: 152000000,
+          },
+          {
+            Name: "LinkedIn",
+            Title: "LinkedIn",
+            Domain: "linkedin.com",
+            AddedDate: "2012-06-01T00:00:00Z",
+            BreachDate: "2012-06-01T00:00:00Z",
+            Description: "LinkedIn data breach affecting 117 million users.",
+            DataClasses: ["Email addresses", "Password hints", "Usernames"],
+            LogoPath: "https://haveibeenpwned.com/Content/Images/PwnedLogos/LinkedIn.png",
+            IsFabricated: false,
+            IsVerified: true,
+            IsSensitive: false,
+            IsRetired: false,
+            IsSpamList: false,
+            IsMalware: false,
+            IsStealerLog: false,
+            IsSubscriptionFree: false,
+            ModifiedDate: "2012-06-01T00:00:00Z",
+            PwnCount: 117000000,
+          },
+        ],
+    Pastes: shouldShowGood
+      ? []
+      : [
+          {
+            Date: "2023-10-01T00:00:00Z",
+            EmailCount: 1000,
+            Id: "123456",
+            Source: "Pastebin",
+            Title: "Sample Paste 1",
+          },
+        ],
   };
+
   return mockResults;
 }
