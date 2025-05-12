@@ -16,6 +16,14 @@ export function initializePwnedPasswordsSearch() {
     goodResult.classList.add("d-none");
     badResult.classList.add("d-none");
 
+    // Add opacity classes for transition
+    goodResult.classList.add("opacity-0");
+    badResult.classList.add("opacity-0");
+
+    // Add transition CSS
+    goodResult.style.transition = "opacity 0.4s ease-in-out";
+    badResult.style.transition = "opacity 0.4s ease-in-out";
+
     // Handle form submissions (Enter key)
     passwordForm.addEventListener("submit", async (e: Event) => {
       e.preventDefault();
@@ -37,9 +45,8 @@ export function initializePwnedPasswordsSearch() {
         return;
       }
 
-      // Hide any previous results
-      goodResult.classList.add("d-none");
-      badResult.classList.add("d-none");
+      // Hide any previous results with animation
+      await hideResultsWithAnimation();
 
       // Manually trigger the loading state
       if (!checkButton.loadingButton) {
@@ -68,6 +75,30 @@ export function initializePwnedPasswordsSearch() {
         showSafeResult();
       }
 
+      // Function to hide results with animation
+      async function hideResultsWithAnimation() {
+        // If neither result is visible, no need for animation
+        if (goodResult.classList.contains("d-none") && badResult.classList.contains("d-none")) {
+          return Promise.resolve();
+        }
+
+        // Add opacity-0 class to start fade-out animation
+        if (!goodResult.classList.contains("d-none")) {
+          goodResult.classList.add("opacity-0");
+        }
+
+        if (!badResult.classList.contains("d-none")) {
+          badResult.classList.add("opacity-0");
+        }
+
+        // Wait for animation to complete
+        await delay(400);
+
+        // Hide elements after fade-out completes
+        goodResult.classList.add("d-none");
+        badResult.classList.add("d-none");
+      }
+
       function showPwnedResult(count: number) {
         goodResult.classList.add("d-none");
         badResult.classList.remove("d-none");
@@ -77,6 +108,11 @@ export function initializePwnedPasswordsSearch() {
 
         // Scroll to results
         badResult.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        // Trigger animation after a brief delay to ensure DOM has updated
+        setTimeout(() => {
+          badResult.classList.remove("opacity-0");
+        }, 50);
       }
 
       function showSafeResult() {
@@ -85,6 +121,11 @@ export function initializePwnedPasswordsSearch() {
 
         // Scroll to results
         goodResult.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        // Trigger animation after a brief delay to ensure DOM has updated
+        setTimeout(() => {
+          goodResult.classList.remove("opacity-0");
+        }, 50);
       }
     }
   }

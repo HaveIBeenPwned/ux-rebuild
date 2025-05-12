@@ -957,3 +957,64 @@ a:focus-visible {
   background-color: #0dcaf0;
   box-shadow: 0 0 8px rgba(13, 202, 240, 0.6);
 }
+
+/* Search Results Styling
+-------------------------------------------------- */
+.search-result {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+  border-width: 1px;
+  border-style: solid;
+
+  &.fade-out {
+    opacity: 0;
+  }
+
+  .result-content {
+    text-align: center;
+  }
+
+  .result-message {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .result-icon {
+    margin-bottom: 1rem;
+  }
+
+  .result-count {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .result-heading {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+}
+
+// Good Result (Success)
+.search-result-good {
+  border-color: $success;
+  background-color: rgba($success, 0.1);
+
+  .result-count,
+  .result-heading {
+    color: $success;
+  }
+}
+
+// Bad Result (Danger)
+.search-result-bad {
+  border-color: $danger;
+  background-color: rgba($danger, 0.1);
+
+  .result-count,
+  .result-heading {
+    color: $danger;
+  }
+}

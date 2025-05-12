@@ -30,6 +30,8 @@
     <!-- Switzer Font -->
     <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,700&display=swap" rel="stylesheet" />
     <link href="assets/css/main.css" rel="stylesheet" />
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   </head>
 
   <body>
@@ -137,17 +139,31 @@
           <div class="row mb-4">
             <!-- Breach Summary -->
             <div class="col-12">
-              <div class="data-summary breach-summary position-relative overflow-hidden rounded-4 p-3 border border-primary-custom mb-4 bg-dark-subtle-custom">
-                <div class="data-summary-content d-flex align-items-center position-relative z-1">
-                  <div class="data-summary-item d-flex justify-content-evenly align-items-center w-100">
-                    <div class="data-summary-text" id="breachSummary">
-                      <div class="data-summary-count-wrapper d-flex flex-column align-items-center mb-1">
-                        <div class="data-summary-count fs-1 fw-bold lh-1" id="breachCount"></div>
-                        <h3 class="data-summary-label text-primary">Data Breaches</h3>
-                      </div>
-                      <div class="data-summary-description text-white-70 fs-6 lh-sm">
-                        Services that have had their databases compromised, exposing your personal information
-                      </div>
+              <!-- Good Result (initially hidden) -->
+              <div id="email-result-good" class="d-none">
+                <div class="data-summary breach-summary position-relative overflow-hidden rounded-4 p-4 search-result search-result-good">
+                  <div class="data-summary-content position-relative z-1">
+                    <div class="result-content">
+                      <div class="result-count">0</div>
+                      <h3 class="result-heading">Data Breaches</h3>
+                      <p class="result-message">
+                        Good news — no pwnage found! This email wasn't found in any of the data breaches loaded into Have I Been Pwned. That's great news!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bad Result (initially hidden) -->
+              <div id="email-result-bad" class="d-none">
+                <div class="data-summary breach-summary position-relative overflow-hidden rounded-4 p-4 search-result search-result-bad">
+                  <div class="data-summary-content position-relative z-1">
+                    <div class="result-content">
+                      <div class="result-count" id="breachCount"></div>
+                      <h3 class="result-heading">Data Breaches</h3>
+                      <p class="result-message">
+                        Oh no — pwned! This email has been found in data breaches. Review the details below to see where your data was exposed.
+                      </p>
                     </div>
                   </div>
                 </div>
