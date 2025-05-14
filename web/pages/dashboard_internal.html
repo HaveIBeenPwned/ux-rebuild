@@ -906,7 +906,7 @@
                           <h3 class="fw-bold mb-3" id="searchDomainTitle">example.com</h3>
 
                           <!-- Domain Summary Cards -->
-                          <div class="m b-4">
+                          <div class="mb-4">
                             <div class="card-body p-4">
                               <div class="row g-4 mb-2">
                                 <div class="col-md-4">
@@ -1118,48 +1118,150 @@
 
                       <!-- Active Subscription View -->
                       <div id="activeSubscriptionView">
-                        <p class="mb-4">
-                          Here's the status of your HIBP subscription, along with some tools to help you manage it. If you need help, check out our
-                          troubleshooting guide or submit a support request. As you have an active subscription, you can also query the API using the key
-                          accessible on the API key dashboard (link below).
-                        </p>
+                        <!-- Reseller Alert (initially hidden) -->
+                        <div id="resellerAlert" class="alert alert-info mb-4 d-flex align-items-center border border-info reseller-alert" role="alert">
+                          <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+                          <div>Your subscription was purchased by a reseller, contact them for all billing enquiries.</div>
+                        </div>
 
-                        <div class="row mb-4">
-                          <div class="col-md-4">
-                            <div class="mb-4">
-                              <div class="text-muted">Validity</div>
-                              <div class="bg-success-subtle text-success rounded-3 p-2 mt-2">Valid until 1 Jan 2030, 00:00 GMT</div>
+                        <!-- Modernized Subscription Card -->
+                        <div class="card card-glow border border-primary-custom rounded-4 mb-4 position-relative overflow-hidden">
+                          <div class="card-body p-4">
+                            <div class="row g-4">
+                              <!-- Plan Icon & Name -->
+                              <div class="col-lg-6">
+                                <div class="d-flex align-items-start">
+                                  <div class="bg-primary-transparent rounded-circle p-3 me-3">
+                                    <i class="bi bi-shield-check text-primary fs-4"></i>
+                                  </div>
+                                  <div>
+                                    <h5 class="fw-bold mb-2">Pwned 1</h5>
+                                    <!-- Replaced 10 RPM badge with active status -->
+                                    <div class="bg-success text-white rounded-pill px-2 py-0 d-inline-flex align-items-center small">
+                                      <i class="bi bi-check-circle-fill me-1"></i>
+                                      <span>Active</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- Expiry Date -->
+                              <div class="col-lg-6">
+                                <div class="subscription-detail text-lg-end">
+                                  <div class="text-muted mb-1"><i class="bi bi-calendar-check me-2"></i>Expiry Date</div>
+                                  <div class="fw-medium">1 Jan 2030, 00:00 GMT</div>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          <div class="col-md-4">
-                            <div class="mb-4">
-                              <div class="text-muted">Plan name</div>
-                              <div class="bg-primary-subtle rounded-3 p-2 mt-2">Pwned 1</div>
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                            <div class="mb-4">
-                              <div class="text-muted">Scope</div>
-                              <div class="bg-primary-subtle rounded-3 p-2 mt-2">
-                                Domains with up to 25 breached addresses each, and a rate limited API key allowing 10 email address searches per minute
+
+                          <div class="card-footer bg-primary-transparent p-4 border-top border-primary-custom">
+                            <h6 class="fw-bold mb-3">Plan Features</h6>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                  <li class="mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>10 email searches per minute</span>
+                                  </li>
+                                  <li class="mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Up to 25 breached addresses per domain</span>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-md-6">
+                                <ul class="list-unstyled mb-0">
+                                  <li class="mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Full API access</span>
+                                  </li>
+                                  <li class="mb-2">
+                                    <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                    <span>Email notifications for new breaches</span>
+                                  </li>
+                                </ul>
                               </div>
                             </div>
                           </div>
                         </div>
 
-                        <div class="d-flex flex-wrap gap-3">
-                          <a href="https://stripe.com" target="_blank" class="btn btn-outline-primary">
-                            <i class="bi bi-credit-card me-2"></i>Manage subscription
-                          </a>
-                          <a href="#api-keys" class="btn btn-outline-primary" data-bs-toggle="pill"> <i class="bi bi-key me-2"></i>API keys </a>
-                          <a href="#email-address" class="btn btn-outline-primary" data-bs-toggle="pill">
-                            <i class="bi bi-gear me-2"></i>Update email address
-                          </a>
+                        <div class="row g-4 mb-4">
+                          <!-- Usage Statistics -->
+                          <div class="col-md-6">
+                            <div class="card card-glow border border-primary-custom rounded-3 h-100">
+                              <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3">
+                                  <i class="bi bi-graph-up me-2"></i>
+                                  Usage Statistics
+                                </h5>
+                                <div class="mb-4">
+                                  <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>API Requests</span>
+                                    <span class="badge bg-success rounded-pill">34% used</span>
+                                  </div>
+                                  <div class="progress progress-thin">
+                                    <div class="progress-bar bg-primary progress-width-34" role="progressbar"></div>
+                                  </div>
+                                  <div class="d-flex justify-content-between mt-1">
+                                    <small class="text-muted">3,472 requests</small>
+                                    <small class="text-muted">10,000 limit</small>
+                                  </div>
+                                </div>
+                                <div>
+                                  <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>Monitored Domains</span>
+                                    <span class="badge bg-success rounded-pill">60% used</span>
+                                  </div>
+                                  <div class="progress progress-thin">
+                                    <div class="progress-bar bg-primary progress-width-60" role="progressbar"></div>
+                                  </div>
+                                  <div class="d-flex justify-content-between mt-1">
+                                    <small class="text-muted">3 domains</small>
+                                    <small class="text-muted">5 limit</small>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Quick Actions -->
+                          <div class="col-md-6">
+                            <div class="card card-glow border border-primary-custom rounded-3 h-100">
+                              <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3">
+                                  <i class="bi bi-lightning-charge me-2"></i>
+                                  Quick Actions
+                                </h5>
+                                <div class="d-grid gap-3">
+                                  <div class="action-block">
+                                    <a href="https://stripe.com" target="_blank" class="btn btn-outline-primary w-100">
+                                      <i class="bi bi-credit-card me-2"></i>Manage billing
+                                    </a>
+                                    <p class="text-muted small mt-2 mb-0">Update payment methods, view past invoices, or change your billing cycle</p>
+                                  </div>
+
+                                  <div class="action-block">
+                                    <a href="#api-keys" class="btn btn-outline-primary w-100" data-bs-toggle="pill">
+                                      <i class="bi bi-key me-2"></i>Manage API keys
+                                    </a>
+                                    <p class="text-muted small mt-2 mb-0">Generate or refresh your API keys for programmatic access to breach data</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
                       <!-- No Subscription View -->
                       <div id="noSubscriptionView" class="d-none">
+                        <!-- Reseller Alert for No Subscription View (initially hidden) -->
+                        <div id="noSubResellerAlert" class="alert alert-info mb-4 d-flex align-items-center border border-info reseller-alert" role="alert">
+                          <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+                          <div>Your account is managed by a reseller. Please contact them directly to purchase a subscription.</div>
+                        </div>
+
                         <div class="mb-4">
                           <p class="mb-0">
                             You don't currently have an active HIBP subscription under the email address you used to access your dashboard. Subscription free
@@ -1471,12 +1573,7 @@
                         </div>
 
                         <!-- Update the button to use loading state -->
-                        <button
-                          type="submit"
-                          class="btn btn-primary"
-                          data-bs-toggle="loading-button"
-                          data-bs-reset-after="2000"
-                          style="--btn-min-width: 140px; --btn-min-height: 38px">
+                        <button type="submit" class="btn btn-primary btn-update-email" data-bs-toggle="loading-button" data-bs-reset-after="2000">
                           <span class="btn-text"><i class="bi bi-check-circle me-2"></i>Update Email</span>
                           <div class="loading-indicator loading-indicator-sm loading-indicator-light">
                             <svg viewBox="0 0 400 271" fill="none" xmlns="http://www.w3.org/2000/svg">

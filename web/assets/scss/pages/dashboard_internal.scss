@@ -393,6 +393,21 @@
   position: relative;
 }
 
+// Progress bar widths - for demo purposes
+.progress-width-34 {
+  width: 34% !important;
+}
+
+.progress-width-60 {
+  width: 60% !important;
+}
+
+// Email update button sizing
+.btn-update-email {
+  --btn-min-width: 140px;
+  --btn-min-height: 38px;
+}
+
 #userEmail {
   max-width: 200px;
   white-space: nowrap;
