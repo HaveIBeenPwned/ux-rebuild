@@ -407,3 +407,26 @@
   --btn-min-width: 140px;
   --btn-min-height: 38px;
 }
+
+#userEmail {
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  color: white; /* Ensure text is visible */
+}
+
+/* Adjust avatar-circle for icon */
+.avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-circle .bi-person-fill {
+  font-size: 1.5rem;
+}
