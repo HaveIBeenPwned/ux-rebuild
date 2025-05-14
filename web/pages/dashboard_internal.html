@@ -81,7 +81,7 @@
             </li>
           </ul>
         </div>
-        <a href="dashboard.html" class="btn btn-secondary d-none d-lg-inline-flex" role="button"> Dashboard </a>
+        <a href="dashboard.html" class="btn btn-secondary d-none d-lg-inline-flex" role="button">Dashboard</a>
       </div>
     </nav>
 
@@ -94,12 +94,12 @@
               <div class="card card-glow mb-4">
                 <div class="card-body p-4">
                   <div class="d-flex align-items-center mb-4">
-                    <div class="avatar-circle me-3 bg-primary" id="userInitial">
-                      <!-- Will be filled by JS -->
+                    <div class="avatar-circle me-3 bg-primary-transparent" id="userInitial">
+                      <i class="bi bi-person-fill text-primary"></i>
                     </div>
                     <div>
-                      <div class="text-truncate" id="userEmail">
-                        <!-- Will be filled by JS -->
+                      <div id="userEmail" data-bs-toggle="tooltip" data-bs-placement="bottom" title="very.long.email.address.that.needs.truncation@example.com">
+                        very.long.email.address.that.needs.truncation@example.com
                       </div>
                       <div class="text-muted small">Free Account</div>
                     </div>
@@ -2209,6 +2209,17 @@
           if (this.classList.contains("is-invalid")) {
             this.classList.remove("is-invalid");
           }
+        });
+      });
+    </script>
+
+    <!-- Initialize tooltips and handle email display -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
         });
       });
     </script>
