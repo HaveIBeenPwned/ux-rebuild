@@ -305,7 +305,7 @@ function renderPastes(searchResults: UnifiedSearchResults) {
                           </div>
                         </td>
                         <td>${pasteDate?.toLocaleDateString("default", { month: "long", day: "numeric", year: "numeric" }) ?? ""}</td>
-                        <td>${pasteItem.EmailCount}</td>
+                        <td class="text-end">${pasteItem.EmailCount}</td>
                       </tr>`;
       }
 
@@ -398,7 +398,7 @@ async function performSearch(email: string) {
       : [
           {
             Date: "2023-10-01T00:00:00Z",
-            EmailCount: 1000,
+            EmailCount: 3,
             Id: "123456",
             Source: "Pastebin",
             Title: "Sample Paste 1",
