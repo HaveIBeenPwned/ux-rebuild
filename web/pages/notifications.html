@@ -137,11 +137,13 @@
                     <form id="notificationForm">
                       <div class="mb-4">
                         <label for="notificationEmail" class="form-label">Email Address</label>
-                        <div class="input-group">
+                        <div class="input-group-custom">
                           <input type="email" class="form-control" id="notificationEmail" placeholder="Enter your email address" required autofocus />
-                          <button class="btn btn-primary btn-fixed-size px-5" type="submit" id="notifySubmitBtn" data-bs-toggle="loading-button">
-                            <span class="btn-text">Notify Me</span>
-                          </button>
+                          <div class="btn-container">
+                            <button class="btn btn-primary btn-fixed-size px-5" type="submit" id="notifySubmitBtn" data-bs-toggle="loading-button">
+                              <span class="btn-text">Notify Me</span>
+                            </button>
+                          </div>
                         </div>
                         <div class="form-text">We'll never share your email with anyone else.</div>
                       </div>
