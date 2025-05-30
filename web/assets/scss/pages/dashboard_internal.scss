@@ -430,3 +430,189 @@
 .avatar-circle .bi-person-fill {
   font-size: 1.5rem;
 }
+
+// Customer Management Styling
+.disabled-section {
+  opacity: 0.6;
+  pointer-events: none;
+
+  input,
+  select,
+  textarea,
+  button {
+    background-color: rgba(var(--bs-secondary-rgb), 0.1) !important;
+    color: var(--bs-secondary) !important;
+    cursor: not-allowed !important;
+  }
+}
+
+// Dropdown component styling (matching pwned_websites.html)
+.feature-item-hover {
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05) !important;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.user-select-none {
+  user-select: none !important;
+}
+
+.chevron-icon {
+  transition: transform 0.2s ease;
+}
+
+.dropdown[aria-expanded="true"] .chevron-icon {
+  transform: rotate(180deg);
+}
+
+.min-w-240 {
+  min-width: 240px !important;
+}
+
+// Text color utilities
+.text-gray-300 {
+  color: #d1d5db !important;
+}
+
+// Fix circular icon in dropdown
+#customerActionsDropdown .btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  i {
+    font-size: 1rem;
+  }
+}
+
+// Customer Info Items - Modern SaaS styling
+.customer-info-item {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: rgba(var(--bs-primary-rgb), 0.03);
+  border: 1px solid rgba(var(--bs-primary-rgb), 0.1);
+  transition: all 0.2s ease;
+  height: 100%;
+
+  &:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.05);
+    border-color: rgba(var(--bs-primary-rgb), 0.15);
+  }
+}
+
+.customer-info-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--grey-400);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.customer-info-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.4;
+
+  // Handle long email addresses
+  word-break: break-word;
+
+  // Style for badges within values
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  // Style for status indicators
+  .text-success {
+    font-weight: 500;
+
+    i {
+      opacity: 0.8;
+    }
+  }
+}
+
+// Button group positioning in card
+.card.position-relative {
+  .btn-group {
+    z-index: 10;
+
+    .btn {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+
+      &.dropdown-toggle {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+    }
+
+    #generate-renewal-quote-action {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    // Fix Bootstrap's button group spacing and border radius issues
+    // Remove gaps between buttons
+    .btn + .btn,
+    .btn + .btn-group .btn,
+    .btn-group + .btn,
+    .btn-group + .btn-group .btn {
+      margin-left: -1px;
+    }
+
+    // Specific fix for dropdown button connection
+    .btn-group .btn.dropdown-toggle {
+      border-left: 0;
+    }
+
+    // Fix dropdown positioning to prevent jumping
+    .dropdown-menu {
+      min-width: 200px;
+      // Override global dropdown styles that interfere with Popper positioning
+      margin-top: 0 !important; // Remove the global margin-top: 0.5rem
+      animation: none !important; // Remove the fadeIn animation that uses transform
+      transform: none !important; // Ensure no transform interference
+
+      // Force positioning below the trigger
+      top: 100% !important;
+      bottom: auto !important;
+    }
+  }
+
+  .position-absolute {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+// Responsive adjustments for button group
+@media (max-width: 768px) {
+  .card.position-relative .position-absolute {
+    position: relative !important;
+    top: 10px !important;
+    right: 25px !important;
+    margin: 0 0 1rem 0 !important;
+    display: flex;
+    justify-content: flex-end;
+
+    .btn-group {
+      .btn {
+        flex: 1;
+      }
+    }
+  }
+}

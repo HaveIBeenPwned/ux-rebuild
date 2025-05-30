@@ -124,12 +124,26 @@
                     </div>
 
                     <!-- Business Section -->
-                    <div class="sidebar-section">
+                    <div class="sidebar-section mb-3">
                       <div class="sidebar-heading small text-uppercase text-muted mb-2 ps-3">Business</div>
                       <a href="#domains" class="list-group-item list-group-item-action" data-bs-toggle="pill"> <i class="bi bi-globe me-2"></i> Domains </a>
                       <a href="#api-keys" class="list-group-item list-group-item-action" data-bs-toggle="pill"> <i class="bi bi-key me-2"></i> API Keys </a>
                       <a href="#subscription" class="list-group-item list-group-item-action" data-bs-toggle="pill">
                         <i class="bi bi-credit-card me-2"></i> Subscription
+                      </a>
+                    </div>
+
+                    <!-- Reseller Section -->
+                    <div class="sidebar-section">
+                      <div class="sidebar-heading small text-uppercase text-muted mb-2 ps-3">Reseller</div>
+                      <a href="#customers" class="list-group-item list-group-item-action" data-bs-toggle="pill">
+                        <i class="bi bi-people me-2"></i> Customers
+                      </a>
+                      <a href="#create-quote" class="list-group-item list-group-item-action" data-bs-toggle="pill">
+                        <i class="bi bi-file-earmark-text me-2"></i> Create a Quote
+                      </a>
+                      <a href="#create-invoice" class="list-group-item list-group-item-action" data-bs-toggle="pill">
+                        <i class="bi bi-receipt me-2"></i> Create an Invoice
                       </a>
                     </div>
                   </div>
@@ -1586,6 +1600,1090 @@
                     </div>
                   </div>
                 </div>
+
+                <!-- Customers Tab -->
+                <div class="tab-pane fade" id="customers">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="fw-bold mb-0">Customer Management</h3>
+                        <button class="btn btn-primary" id="add-new-customer-btn"><i class="bi bi-person-plus me-2"></i>Add New Customer</button>
+                      </div>
+
+                      <!-- Quote Generation Success Message (Hidden by default) -->
+                      <div id="customer-quote-success-message" class="alert alert-success mb-4 d-none" role="alert">
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-check-circle-fill me-2 fs-5 flex-shrink-0"></i>
+                          <div>
+                            <div><strong>Quote generated successfully!</strong></div>
+                            <div class="mt-1">The quote has been created and is ready for review.</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <p class="mb-4">Manage your reseller customers and their subscriptions.</p>
+
+                      <!-- Search and Filter -->
+                      <div class="row mb-4">
+                        <div class="col-md-8">
+                          <div class="position-relative">
+                            <input
+                              type="text"
+                              class="form-control form-control-sm form-control-minimal"
+                              placeholder="Search customers..."
+                              id="customerSearch" />
+                            <i class="bi bi-search position-absolute search-icon"></i>
+                          </div>
+                        </div>
+                        <div class="col-md-4 mt-3 mt-md-0">
+                          <select class="form-select form-select-sm form-control-minimal" id="customerStatusFilter">
+                            <option value="all">All Customers</option>
+                            <option value="auto-renews">Auto-renews</option>
+                            <option value="cancels">Cancels</option>
+                            <option value="expired">Expired</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <!-- Customers Table -->
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th>Customer</th>
+                              <th>End-user Email</th>
+                              <th>Tier</th>
+                              <th>Period</th>
+                              <th>Status</th>
+                              <th>Created</th>
+                              <th class="text-end">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="avatar-circle me-2 bg-primary-transparent">
+                                    <span class="text-primary fw-bold">AC</span>
+                                  </div>
+                                  <div>Acme Corporation</div>
+                                </div>
+                              </td>
+                              <td>admin@acme.com</td>
+                              <td>Pwned 4</td>
+                              <td>Monthly</td>
+                              <td><span class="badge bg-success rounded-pill">Auto-renews</span></td>
+                              <td>Jan 15, 2024</td>
+                              <td class="text-end">
+                                <button class="btn btn-sm btn-outline-primary" title="Manage Customer">
+                                  <i class="bi bi-gear"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="avatar-circle me-2 bg-primary-transparent">
+                                    <span class="text-primary fw-bold">TC</span>
+                                  </div>
+                                  <div>TechCorp Ltd</div>
+                                </div>
+                              </td>
+                              <td>contact@techcorp.com</td>
+                              <td>Pwned 3</td>
+                              <td>Annual</td>
+                              <td><span class="badge bg-secondary rounded-pill">Cancels</span></td>
+                              <td>Feb 3, 2024</td>
+                              <td class="text-end">
+                                <button class="btn btn-sm btn-outline-primary" title="Manage Customer">
+                                  <i class="bi bi-gear"></i>
+                                </button>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="d-flex align-items-center">
+                                  <div class="avatar-circle me-2 bg-primary-transparent">
+                                    <span class="text-primary fw-bold">GS</span>
+                                  </div>
+                                  <div>Global Systems Inc</div>
+                                </div>
+                              </td>
+                              <td>security@globalsys.com</td>
+                              <td>Pwned 3</td>
+                              <td>Monthly</td>
+                              <td><span class="badge bg-danger rounded-pill">Expired</span></td>
+                              <td>Dec 8, 2023</td>
+                              <td class="text-end">
+                                <button class="btn btn-sm btn-outline-primary" title="Manage Customer">
+                                  <i class="bi bi-gear"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Customer Management View (Hidden by default) -->
+                <div id="customer-management" style="display: none">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <!-- Back Button -->
+                      <div class="d-flex align-items-center mb-4">
+                        <button class="btn btn-link text-primary p-0 me-3" id="back-to-customers">
+                          <i class="bi bi-arrow-left me-2 fs-5"></i>
+                          <span>Back to Customers</span>
+                        </button>
+                      </div>
+
+                      <!-- Two Column Layout -->
+                      <div class="row">
+                        <!-- Full Width: Subscription Overview with integrated actions -->
+                        <div class="col-12">
+                          <div class="mb-4">
+                            <h4 class="fw-bold mb-3">Subscription Overview</h4>
+                            <!-- Card wrapper for better contrast -->
+                            <div class="card card-glow border border-primary-custom position-relative">
+                              <!-- Action Button Group in top-right corner -->
+                              <div class="position-absolute top-0 end-0 m-3">
+                                <div class="btn-group" role="group" aria-label="Customer actions">
+                                  <!-- Quote Generation Actions (Dynamic based on subscription status) -->
+                                  <!-- Generate Quote (for expired subscriptions) -->
+                                  <button type="button" class="btn btn-primary btn-sm d-none" id="generate-quote-action">
+                                    <i class="bi bi-file-earmark-text me-2"></i>Generate Quote
+                                  </button>
+
+                                  <!-- Generate Renewal Quote (for active subscriptions) -->
+                                  <button type="button" class="btn btn-primary btn-sm d-none" id="generate-renewal-quote-action">
+                                    <i class="bi bi-arrow-clockwise me-2"></i>Generate Renewal Quote
+                                  </button>
+
+                                  <!-- Nested dropdown group -->
+                                  <div class="btn-group" role="group">
+                                    <button
+                                      id="customerActionsDropdown"
+                                      type="button"
+                                      class="btn btn-primary btn-sm dropdown-toggle"
+                                      data-bs-toggle="dropdown"
+                                      data-bs-placement="bottom"
+                                      data-bs-offset="0,8"
+                                      aria-expanded="false">
+                                      <span class="visually-hidden">More actions</span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end shadow-sm" aria-labelledby="customerActionsDropdown">
+                                      <li>
+                                        <a class="dropdown-item" href="#" id="update-payment-method">
+                                          <i class="bi bi-credit-card me-2"></i>Update payment method
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item" href="#" id="add-po-invoice"> <i class="bi bi-receipt me-2"></i>Add PO to upcoming invoice </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item" href="#" id="change-email"> <i class="bi bi-envelope me-2"></i>Change end-user email </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item" href="#" id="manage-tier"> <i class="bi bi-layers me-2"></i>Manage subscription tier </a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item" href="#" id="access-history">
+                                          <i class="bi bi-file-text me-2"></i>Access invoice & Quote history
+                                        </a>
+                                      </li>
+                                      <li><hr class="dropdown-divider" /></li>
+                                      <li>
+                                        <a class="dropdown-item text-danger" href="#" id="set-to-cancel-btn">
+                                          <i class="bi bi-x-circle me-2"></i>Set to Cancel
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="card-body p-4 pt-5">
+                                <div class="row g-4 mt-1">
+                                  <div class="col-md-6 col-lg-4">
+                                    <div class="customer-info-item">
+                                      <div class="customer-info-label">End-user email</div>
+                                      <div class="customer-info-value" id="mgmt-customer-email">admin@acme.com</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-lg-4">
+                                    <div class="customer-info-item">
+                                      <div class="customer-info-label">Subscription Tier</div>
+                                      <div class="customer-info-value" id="mgmt-subscription-tier">Pwned 4</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-lg-4">
+                                    <div class="customer-info-item">
+                                      <div class="customer-info-label">Status</div>
+                                      <div class="customer-info-value">
+                                        <span class="badge bg-success rounded-pill" id="mgmt-subscription-status">Auto-renews</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-lg-4">
+                                    <div class="customer-info-item">
+                                      <div class="customer-info-label">Current Period</div>
+                                      <div class="customer-info-value" id="mgmt-subscription-period">1 Jan 2025 - 1 Jan 2026</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-lg-4">
+                                    <div class="customer-info-item">
+                                      <div class="customer-info-label">Next Renewal Date</div>
+                                      <div class="customer-info-value" id="mgmt-next-renewal">1 Jan 2026</div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 col-lg-4">
+                                    <div class="customer-info-item">
+                                      <div class="customer-info-label">Renewal Quote</div>
+                                      <div class="customer-info-value">
+                                        <span class="text-success small" id="renewal-quote-status">
+                                          <i class="bi bi-check-circle-fill me-1"></i>
+                                          Renewal quote available (30 days until expiry)
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Quote History -->
+                      <div class="mb-4">
+                        <h4 class="fw-bold mb-3">History</h4>
+                        <div class="table-responsive">
+                          <table class="table table-hover mb-0">
+                            <thead>
+                              <tr>
+                                <th>Quote ID</th>
+                                <th>Date Generated</th>
+                                <th>Tier</th>
+                                <th>Period</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <a href="#" class="text-primary text-decoration-none">QT-565464-4543546</a>
+                                </td>
+                                <td>Dec 15, 2024</td>
+                                <td>Pwned 4</td>
+                                <td>Annual</td>
+                                <td>$1,644.00</td>
+                                <td><span class="badge bg-success rounded-pill">Accepted</span></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Create a Quote Tab -->
+                <div class="tab-pane fade" id="create-quote">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <h3 class="fw-bold mb-4">Create a Quote</h3>
+                      <p class="mb-4">Generate professional quotes for potential customers.</p>
+
+                      <!-- Success Message (Hidden by default) -->
+                      <div id="quote-success-message" class="alert alert-success mb-4 d-none" role="alert">
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                          <div>
+                            <strong>Quote generated successfully!</strong><br />
+                            The quote has been created and is ready for review.
+                            <a href="#" id="back-to-customer-link" class="text-success fw-bold">Return to customer management</a>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Quote Form -->
+                      <div id="quote-form-section">
+                        <form id="createQuoteForm">
+                          <!-- Customer Information -->
+                          <div class="mb-4">
+                            <h5 class="fw-bold mb-3">Customer Information</h5>
+
+                            <!-- Customer Selection Dropdown -->
+                            <div class="mb-3">
+                              <label for="quoteCustomerSelect" class="form-label">Select Customer</label>
+                              <select class="form-select form-select-sm form-control-minimal" id="quoteCustomerSelect">
+                                <option value="" selected>Select existing customer or add new</option>
+                                <option
+                                  value="acme"
+                                  data-name="John Smith"
+                                  data-company="Acme Corporation"
+                                  data-email="admin@acme.com"
+                                  data-phone="+1 (555) 123-4567">
+                                  Acme Corporation (admin@acme.com)
+                                </option>
+                                <option
+                                  value="techcorp"
+                                  data-name="Jane Doe"
+                                  data-company="TechCorp Ltd"
+                                  data-email="contact@techcorp.com"
+                                  data-phone="+1 (555) 987-6543">
+                                  TechCorp Ltd (contact@techcorp.com)
+                                </option>
+                                <option
+                                  value="globalsys"
+                                  data-name="Michael Johnson"
+                                  data-company="Global Systems Inc"
+                                  data-email="security@globalsys.com"
+                                  data-phone="+1 (555) 246-8135">
+                                  Global Systems Inc (security@globalsys.com)
+                                </option>
+                                <option value="new">+ Create New Customer</option>
+                              </select>
+                            </div>
+
+                            <!-- Basic Customer Fields (shown for existing customers) -->
+                            <div id="quoteBasicCustomerFields">
+                              <div class="row g-3">
+                                <div class="col-md-6">
+                                  <label for="quoteCustomerName" class="form-label">Customer Name</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="quoteCustomerName"
+                                    placeholder="Enter customer name"
+                                    required />
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="quoteCompanyName" class="form-label">Company Name</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="quoteCompanyName"
+                                    placeholder="Enter company name"
+                                    required />
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="quoteCustomerEmail" class="form-label">Email Address</label>
+                                  <input
+                                    type="email"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="quoteCustomerEmail"
+                                    placeholder="Enter email address"
+                                    required />
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="quoteCustomerPhone" class="form-label">Phone Number</label>
+                                  <input
+                                    type="tel"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="quoteCustomerPhone"
+                                    placeholder="Enter phone number" />
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Complete Customer Creation Fields (hidden by default) -->
+                            <div id="quoteNewCustomerFields" class="d-none">
+                              <!-- Reseller Billing Details -->
+                              <div class="mb-4">
+                                <h6 class="fw-bold mb-3">Reseller Billing Details</h6>
+                                <div class="row g-3">
+                                  <div class="col-md-4">
+                                    <label for="quoteResellerCompany" class="form-label">Company Name</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteResellerCompany"
+                                      placeholder="Enter company name" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteResellerAddress1" class="form-label">Address 1</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteResellerAddress1"
+                                      placeholder="Enter address" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteResellerAddress2" class="form-label">Address 2</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteResellerAddress2"
+                                      placeholder="Enter address 2" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteResellerCity" class="form-label">City</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteResellerCity"
+                                      placeholder="Enter city" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteResellerPostCode" class="form-label">Post Code</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteResellerPostCode"
+                                      placeholder="Enter post code" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteResellerCountry" class="form-label">Country</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteResellerCountry"
+                                      placeholder="Enter country" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteResellerTaxId" class="form-label">Tax ID</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteResellerTaxId"
+                                      placeholder="Enter tax ID" />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- End-user Details -->
+                              <div class="mb-4">
+                                <h6 class="fw-bold mb-3">End-user Details</h6>
+                                <div class="row g-3">
+                                  <div class="col-md-4">
+                                    <label for="quoteEnduserCompany" class="form-label">Company Name</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteEnduserCompany"
+                                      placeholder="Enter company name" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteEnduserAddress1" class="form-label">Address 1</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteEnduserAddress1"
+                                      placeholder="Enter address" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteEnduserAddress2" class="form-label">Address 2</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteEnduserAddress2"
+                                      placeholder="Enter address 2" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteEnduserCity" class="form-label">City</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteEnduserCity"
+                                      placeholder="Enter city" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteEnduserPostCode" class="form-label">Post Code</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteEnduserPostCode"
+                                      placeholder="Enter post code" />
+                                  </div>
+                                  <div class="col-md-4">
+                                    <label for="quoteEnduserCountry" class="form-label">Country</label>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteEnduserCountry"
+                                      placeholder="Enter country" />
+                                  </div>
+                                  <div class="col-md-6">
+                                    <label for="quoteEnduserEmail" class="form-label">
+                                      End-user Email (this will be the subscription email)
+                                      <a
+                                        href="javascript:void(0)"
+                                        class="text-primary text-decoration-none ms-1"
+                                        data-bs-toggle="popover"
+                                        data-bs-html="true"
+                                        data-bs-placement="top"
+                                        data-bs-trigger="focus"
+                                        data-bs-content="This email address will be used for the HIBP subscription and will receive breach notifications."
+                                        tabindex="0">
+                                        <i class="bi bi-info-circle-fill small"></i>
+                                      </a>
+                                    </label>
+                                    <input
+                                      type="email"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      id="quoteEnduserEmail"
+                                      placeholder="Enter email address" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Subscription Details -->
+                          <div class="mb-4">
+                            <h5 class="fw-bold mb-3">Subscription Details</h5>
+                            <div class="row g-3">
+                              <div class="col-md-6">
+                                <label for="quotePlan" class="form-label">Plan</label>
+                                <select class="form-select form-select-sm form-control-minimal" id="quotePlan" required>
+                                  <option value="" selected disabled>Select a plan</option>
+                                  <option value="pwned1">Pwned 1 - $3.95/month</option>
+                                  <option value="pwned2">Pwned 2 - $19/month</option>
+                                  <option value="pwned3">Pwned 3 - $32/month</option>
+                                  <option value="pwned4">Pwned 4 - $137/month</option>
+                                  <option value="pwned5">Pwned 5 - $274/month</option>
+                                </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="quoteBillingCycle" class="form-label">Billing Cycle</label>
+                                <select class="form-select form-select-sm form-control-minimal" id="quoteBillingCycle" required>
+                                  <option value="monthly">Monthly</option>
+                                  <option value="yearly">Yearly (16% discount)</option>
+                                </select>
+                              </div>
+                              <div class="col-md-6">
+                                <label for="quoteValidUntil" class="form-label">Quote Valid Until</label>
+                                <input type="date" class="form-control form-control-sm form-control-minimal" id="quoteValidUntil" required />
+                              </div>
+                              <div class="col-md-6">
+                                <label for="quoteDiscount" class="form-label">Discount (%)</label>
+                                <input
+                                  type="number"
+                                  class="form-control form-control-sm form-control-minimal"
+                                  id="quoteDiscount"
+                                  placeholder="0"
+                                  min="0"
+                                  max="100" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Additional Notes -->
+                          <div class="mb-4">
+                            <label for="quoteNotes" class="form-label">Additional Notes</label>
+                            <textarea
+                              class="form-control form-control-sm form-control-minimal"
+                              id="quoteNotes"
+                              rows="3"
+                              placeholder="Enter any additional notes or terms..."></textarea>
+                          </div>
+
+                          <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-primary" id="quoteSubmitBtn">
+                              <i class="bi bi-file-earmark-text me-2"></i>Generate Quote
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Create an Invoice Tab -->
+                <div class="tab-pane fade" id="create-invoice">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <h3 class="fw-bold mb-4">Create an Invoice</h3>
+                      <p class="mb-4">Generate invoices for your customers.</p>
+
+                      <form id="createInvoiceForm">
+                        <!-- Customer Selection -->
+                        <div class="mb-4">
+                          <h5 class="fw-bold mb-3">Customer Information</h5>
+                          <div class="row g-3">
+                            <div class="col-md-6">
+                              <label for="invoiceCustomer" class="form-label">Select Customer</label>
+                              <select class="form-select form-select-sm form-control-minimal" id="invoiceCustomer" required>
+                                <option value="" selected disabled>Choose a customer</option>
+                                <option value="acme">Acme Corporation (admin@acme.com)</option>
+                                <option value="techcorp">TechCorp Ltd (contact@techcorp.com)</option>
+                                <option value="new">+ Create New Customer</option>
+                              </select>
+                            </div>
+                            <div class="col-md-6">
+                              <label for="invoiceNumber" class="form-label">Invoice Number</label>
+                              <input type="text" class="form-control form-control-sm form-control-minimal" id="invoiceNumber" value="INV-2024-001" readonly />
+                            </div>
+                          </div>
+
+                          <!-- Complete Customer Creation Fields (hidden by default) -->
+                          <div id="invoiceNewCustomerFields" class="d-none mt-4">
+                            <!-- Reseller Billing Details -->
+                            <div class="mb-4">
+                              <h6 class="fw-bold mb-3">Reseller Billing Details</h6>
+                              <div class="row g-3">
+                                <div class="col-md-4">
+                                  <label for="invoiceResellerCompany" class="form-label">Company Name</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceResellerCompany"
+                                    placeholder="Enter company name" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceResellerAddress1" class="form-label">Address 1</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceResellerAddress1"
+                                    placeholder="Enter address" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceResellerAddress2" class="form-label">Address 2</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceResellerAddress2"
+                                    placeholder="Enter address 2" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceResellerCity" class="form-label">City</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceResellerCity"
+                                    placeholder="Enter city" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceResellerPostCode" class="form-label">Post Code</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceResellerPostCode"
+                                    placeholder="Enter post code" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceResellerCountry" class="form-label">Country</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceResellerCountry"
+                                    placeholder="Enter country" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceResellerTaxId" class="form-label">Tax ID</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceResellerTaxId"
+                                    placeholder="Enter tax ID" />
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- End-user Details -->
+                            <div class="mb-4">
+                              <h6 class="fw-bold mb-3">End-user Details</h6>
+                              <div class="row g-3">
+                                <div class="col-md-4">
+                                  <label for="invoiceEnduserCompany" class="form-label">Company Name</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceEnduserCompany"
+                                    placeholder="Enter company name" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceEnduserAddress1" class="form-label">Address 1</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceEnduserAddress1"
+                                    placeholder="Enter address" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceEnduserAddress2" class="form-label">Address 2</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceEnduserAddress2"
+                                    placeholder="Enter address 2" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceEnduserCity" class="form-label">City</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceEnduserCity"
+                                    placeholder="Enter city" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceEnduserPostCode" class="form-label">Post Code</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceEnduserPostCode"
+                                    placeholder="Enter post code" />
+                                </div>
+                                <div class="col-md-4">
+                                  <label for="invoiceEnduserCountry" class="form-label">Country</label>
+                                  <input
+                                    type="text"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceEnduserCountry"
+                                    placeholder="Enter country" />
+                                </div>
+                                <div class="col-md-6">
+                                  <label for="invoiceEnduserEmail" class="form-label">
+                                    End-user Email (this will be the subscription email)
+                                    <a
+                                      href="javascript:void(0)"
+                                      class="text-primary text-decoration-none ms-1"
+                                      data-bs-toggle="popover"
+                                      data-bs-html="true"
+                                      data-bs-placement="top"
+                                      data-bs-trigger="focus"
+                                      data-bs-content="This email address will be used for the HIBP subscription and will receive breach notifications."
+                                      tabindex="0">
+                                      <i class="bi bi-info-circle-fill small"></i>
+                                    </a>
+                                  </label>
+                                  <input
+                                    type="email"
+                                    class="form-control form-control-sm form-control-minimal"
+                                    id="invoiceEnduserEmail"
+                                    placeholder="Enter email address" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Quote Selection -->
+                        <div class="mb-4" id="quote-selection-section">
+                          <h5 class="fw-bold mb-3">Quote Selection</h5>
+                          <div class="row g-3">
+                            <div class="col-12">
+                              <label for="invoiceQuote" class="form-label">Select Quote (Optional)</label>
+                              <select class="form-select form-select-sm form-control-minimal" id="invoiceQuote">
+                                <option value="" selected>Create new invoice without quote</option>
+                                <option value="qt-001" data-customer="acme" data-amount="1644.00" data-tier="Pwned 4" data-period="Annual">
+                                  QT-565464-4543546 - Acme Corporation - $1,644.00 (Pwned 4 Annual)
+                                </option>
+                                <option value="qt-002" data-customer="techcorp" data-amount="384.00" data-tier="Pwned 3" data-period="Annual">
+                                  QT-782341-9876543 - TechCorp Ltd - $384.00 (Pwned 3 Annual)
+                                </option>
+                                <option value="qt-003" data-customer="acme" data-amount="137.00" data-tier="Pwned 4" data-period="Monthly">
+                                  QT-123456-7890123 - Acme Corporation - $137.00 (Pwned 4 Monthly)
+                                </option>
+                              </select>
+                              <div class="form-text">Select an existing quote to auto-populate invoice details, or leave blank to create a new invoice.</div>
+                            </div>
+                          </div>
+
+                          <!-- Quote Details Card (Hidden by default) -->
+                          <div id="selected-quote-details" class="card card-glow border border-primary-custom mt-3 d-none">
+                            <div class="card-body p-3">
+                              <h6 class="fw-bold mb-3">Selected Quote Details</h6>
+                              <div class="row g-3">
+                                <div class="col-md-3">
+                                  <div class="quote-detail-item">
+                                    <div class="small text-muted">Quote ID</div>
+                                    <div class="fw-medium" id="quote-detail-id">-</div>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="quote-detail-item">
+                                    <div class="small text-muted">Customer</div>
+                                    <div class="fw-medium" id="quote-detail-customer">-</div>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="quote-detail-item">
+                                    <div class="small text-muted">Subscription</div>
+                                    <div class="fw-medium" id="quote-detail-subscription">-</div>
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="quote-detail-item">
+                                    <div class="small text-muted">Amount</div>
+                                    <div class="fw-medium text-primary" id="quote-detail-amount">-</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Invoice Details -->
+                        <div class="mb-4">
+                          <h5 class="fw-bold mb-3">Invoice Details</h5>
+                          <div class="row g-3">
+                            <div class="col-md-6">
+                              <label for="invoiceDate" class="form-label">Invoice Date</label>
+                              <input type="date" class="form-control form-control-sm form-control-minimal" id="invoiceDate" required />
+                            </div>
+                            <div class="col-md-6">
+                              <label for="invoiceDueDate" class="form-label">Due Date</label>
+                              <input type="date" class="form-control form-control-sm form-control-minimal" id="invoiceDueDate" required />
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Line Items -->
+                        <div class="mb-4">
+                          <h5 class="fw-bold mb-3">Line Items</h5>
+                          <div class="table-responsive">
+                            <table class="table table-borderless">
+                              <thead>
+                                <tr>
+                                  <th>Description</th>
+                                  <th width="120">Quantity</th>
+                                  <th width="120">Unit Price</th>
+                                  <th width="120">Total</th>
+                                  <th width="50"></th>
+                                </tr>
+                              </thead>
+                              <tbody id="invoiceLineItems">
+                                <tr>
+                                  <td>
+                                    <input
+                                      type="text"
+                                      class="form-control form-control-sm form-control-minimal"
+                                      placeholder="Item description"
+                                      value="Pwned 2 Subscription - Monthly" />
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control form-control-sm form-control-minimal" value="1" min="1" />
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control form-control-sm form-control-minimal" value="19.00" step="0.01" />
+                                  </td>
+                                  <td>
+                                    <input type="number" class="form-control form-control-sm form-control-minimal" value="19.00" readonly />
+                                  </td>
+                                  <td>
+                                    <button type="button" class="btn btn-sm btn-outline-danger">
+                                      <i class="bi bi-trash"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <button type="button" class="btn btn-sm btn-outline-primary" id="addLineItem"><i class="bi bi-plus me-2"></i>Add Line Item</button>
+                        </div>
+
+                        <!-- Invoice Summary -->
+                        <div class="mb-4">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="invoiceNotes" class="form-label">Notes</label>
+                              <textarea
+                                class="form-control form-control-sm form-control-minimal"
+                                id="invoiceNotes"
+                                rows="3"
+                                placeholder="Payment terms, notes, etc..."></textarea>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="card card-glow border border-primary-custom">
+                                <div class="card-body p-3">
+                                  <div class="d-flex justify-content-between mb-2">
+                                    <span>Subtotal:</span>
+                                    <span>$19.00</span>
+                                  </div>
+                                  <div class="d-flex justify-content-between mb-2">
+                                    <span>Tax (0%):</span>
+                                    <span>$0.00</span>
+                                  </div>
+                                  <hr class="my-2" />
+                                  <div class="d-flex justify-content-between fw-bold">
+                                    <span>Total:</span>
+                                    <span>$19.00</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="d-flex gap-3">
+                          <button type="submit" class="btn btn-primary" id="invoiceSubmitBtn"><i class="bi bi-receipt me-2"></i>Generate Invoice</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Create a Customer View (Hidden by default) -->
+                <div id="create-customer" style="display: none">
+                  <div class="card card-glow mb-4">
+                    <div class="card-body p-4">
+                      <!-- Back Button -->
+                      <div class="d-flex align-items-center mb-4">
+                        <button class="btn btn-link text-primary p-0 me-3" id="back-to-customers-from-create">
+                          <i class="bi bi-arrow-left me-2 fs-5"></i>
+                          <span>Back to Customers</span>
+                        </button>
+                      </div>
+
+                      <h3 class="fw-bold mb-4">Create a Customer</h3>
+
+                      <!-- Reseller Billing Details -->
+                      <div class="mb-4">
+                        <h5 class="fw-bold mb-3">Reseller Billing details</h5>
+                        <div class="row g-3">
+                          <div class="col-md-4">
+                            <label for="reseller-company-name" class="form-label">Company name</label>
+                            <input
+                              type="text"
+                              class="form-control form-control-sm form-control-minimal"
+                              id="reseller-company-name"
+                              placeholder="Enter company name" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="reseller-address-1" class="form-label">Address 1</label>
+                            <input type="text" class="form-control form-control-sm form-control-minimal" id="reseller-address-1" placeholder="Enter address" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="reseller-address-2" class="form-label">Address 2</label>
+                            <input
+                              type="text"
+                              class="form-control form-control-sm form-control-minimal"
+                              id="reseller-address-2"
+                              placeholder="Enter address 2" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="reseller-city" class="form-label">City</label>
+                            <input type="text" class="form-control form-control-sm form-control-minimal" id="reseller-city" placeholder="Enter city" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="reseller-post-code" class="form-label">Post code</label>
+                            <input
+                              type="text"
+                              class="form-control form-control-sm form-control-minimal"
+                              id="reseller-post-code"
+                              placeholder="Enter post code" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="reseller-country" class="form-label">Country</label>
+                            <input type="text" class="form-control form-control-sm form-control-minimal" id="reseller-country" placeholder="Enter country" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="reseller-tax-id" class="form-label">TAX ID</label>
+                            <input type="text" class="form-control form-control-sm form-control-minimal" id="reseller-tax-id" placeholder="Enter TAX ID" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- End-user Details -->
+                      <div class="mb-4">
+                        <h5 class="fw-bold mb-3">End-user details</h5>
+                        <div class="row g-3">
+                          <div class="col-md-4">
+                            <label for="enduser-company-name" class="form-label">Company name</label>
+                            <input
+                              type="text"
+                              class="form-control form-control-sm form-control-minimal"
+                              id="enduser-company-name"
+                              placeholder="Enter company name" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="enduser-address-1" class="form-label">Address 1</label>
+                            <input type="text" class="form-control form-control-sm form-control-minimal" id="enduser-address-1" placeholder="Enter address" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="enduser-address-2" class="form-label">Address 2</label>
+                            <input type="text" class="form-control form-control-sm form-control-minimal" id="enduser-address-2" placeholder="Enter address 2" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="enduser-city" class="form-label">City</label>
+                            <input type="text" class="form-control form-control-sm form-control-minimal" id="enduser-city" placeholder="Enter city" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="enduser-post-code" class="form-label">Post code</label>
+                            <input type="text" class="form-control form-control-sm form-control-minimal" id="enduser-post-code" placeholder="Enter post code" />
+                          </div>
+                          <div class="col-md-4">
+                            <label for="enduser-country" class="form-label">Country</label>
+                            <input type="text" class="form-control form-control-sm form-control-minimal" id="enduser-country" placeholder="Enter country" />
+                          </div>
+                          <div class="col-md-6">
+                            <label for="enduser-email-subscription" class="form-label">
+                              End-user email (this will be the subscription email)
+                              <a
+                                href="javascript:void(0)"
+                                class="text-primary text-decoration-none ms-1"
+                                data-bs-toggle="popover"
+                                data-bs-html="true"
+                                data-bs-placement="top"
+                                data-bs-trigger="focus"
+                                data-bs-content="This email address will be used for the HIBP subscription and will receive breach notifications."
+                                tabindex="0">
+                                <i class="bi bi-info-circle-fill small"></i>
+                              </a>
+                            </label>
+                            <input
+                              type="email"
+                              class="form-control form-control-sm form-control-minimal"
+                              id="enduser-email-subscription"
+                              placeholder="Enter email address" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Subscription Tier Selection -->
+                      <div class="mb-4">
+                        <div class="card card-glow border border-primary-custom rounded-3">
+                          <div class="card-body p-3">
+                            <h6 class="fw-bold mb-3">Subscription tier</h6>
+                            <div class="subscription-tier-options">
+                              <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="subscriptionTier" id="tier-pwned3" value="pwned3" />
+                                <label class="form-check-label d-flex justify-content-between align-items-center w-100" for="tier-pwned3">
+                                  <span>Pwned 3 - Annual</span>
+                                  <span class="text-primary fw-bold">US$320</span>
+                                </label>
+                              </div>
+                              <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" name="subscriptionTier" id="tier-pwned4" value="pwned4" />
+                                <label class="form-check-label d-flex justify-content-between align-items-center w-100" for="tier-pwned4">
+                                  <span>Pwned 4 - Annual</span>
+                                  <span class="text-primary fw-bold">US$1370</span>
+                                </label>
+                              </div>
+                              <div class="form-check mb-0">
+                                <input class="form-check-input" type="radio" name="subscriptionTier" id="tier-pwned5" value="pwned5" />
+                                <label class="form-check-label d-flex justify-content-between align-items-center w-100" for="tier-pwned5">
+                                  <span>Pwned 5 - Annual</span>
+                                  <span class="text-primary fw-bold">US$2740</span>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Generate Quote Button -->
+                      <!-- <div class="d-flex gap-3">
+                        <button type="button" class="btn btn-primary" id="generate-quote-btn">
+                          <i class="bi bi-file-earmark-text me-2"></i>Generate quote
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" id="create-invoice-btn">
+                          <i class="bi bi-receipt me-2"></i>Create invoice
+                        </button>
+                      </div> -->
+                      <!-- Create Customer Button -->
+                      <div class="d-flex gap-3">
+                        <button type="button" class="btn btn-primary" id="create-customer-btn"><i class="bi bi-person-plus me-2"></i>Create customer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2317,5 +3415,130 @@
         });
       });
     </script>
+
+    <!-- Quote Details Modal -->
+    <div class="modal fade" id="quoteDetailsModal" tabindex="-1" aria-labelledby="quoteDetailsModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="quoteDetailsModalLabel">Quote Details</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Quote Information -->
+            <div class="mb-4">
+              <div class="card card-glow border border-primary-custom">
+                <div class="card-body p-4">
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Quote ID</div>
+                        <div class="fw-bold" id="modal-quote-id">-</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Date Generated</div>
+                        <div id="modal-quote-date">-</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Status</div>
+                        <div id="modal-quote-status">-</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Valid Until</div>
+                        <div id="modal-quote-valid-until">Jan 15, 2025</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Customer Information -->
+            <div class="mb-4">
+              <h6 class="fw-bold mb-3">Customer Information</h6>
+              <div class="card card-glow border border-primary-custom">
+                <div class="card-body p-3">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Company</div>
+                        <div id="modal-customer-company">-</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Email</div>
+                        <div id="modal-customer-email">-</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Contact Person</div>
+                        <div id="modal-customer-contact">John Smith</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Phone</div>
+                        <div id="modal-customer-phone">+1 (555) 123-4567</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Subscription Details -->
+            <div class="mb-4">
+              <h6 class="fw-bold mb-3">Subscription Details</h6>
+              <div class="card card-glow border border-primary-custom">
+                <div class="card-body p-3">
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Tier</div>
+                        <div id="modal-subscription-tier">-</div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Billing Period</div>
+                        <div id="modal-subscription-period">-</div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="quote-info-item">
+                        <div class="small text-muted mb-1">Total Amount</div>
+                        <div class="fw-bold text-primary" id="modal-subscription-amount">-</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes (if any) -->
+            <div class="mb-0" id="modal-notes-section" style="display: none">
+              <h6 class="fw-bold mb-3">Additional Notes</h6>
+              <div class="card card-glow border border-primary-custom">
+                <div class="card-body p-3">
+                  <div id="modal-quote-notes">-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="downloadQuoteBtn"><i class="bi bi-download me-2"></i>Download PDF</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
