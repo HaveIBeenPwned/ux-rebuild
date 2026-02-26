@@ -69,55 +69,213 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-// Pricing Card Styles - Use original background colors
-.pricing-card-1 .card-header {
-  background-color: rgba(41, 128, 185, 0.2);
+// =============================================
+// Wizard Styles
+// =============================================
+
+.wizard-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
 }
 
-.pricing-card-2 .card-header {
-  background-color: rgba(0, 184, 148, 0.2);
+.wizard-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.pricing-card-3 .card-header {
-  background-color: rgba(155, 89, 182, 0.2);
+.wizard-step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
 }
 
-.pricing-card-4 .card-header {
-  background-color: rgba(214, 48, 49, 0.2);
+.wizard-step.active .wizard-step-number {
+  background-color: var(--bs-primary);
+  color: #fff;
 }
 
-.pricing-card-5 .card-header {
-  background-color: rgba(9, 132, 227, 0.2);
+.wizard-step.completed .wizard-step-number {
+  background-color: rgba(var(--bs-success-rgb), 0.2);
+  color: var(--bs-success);
 }
 
-.pricing-card-6 .card-header {
-  background-color: rgba(45, 52, 54, 0.2);
+.wizard-step-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
 }
 
-// Enterprise card styles
-.enterprise-card {
-  background: linear-gradient(145deg, rgba(45, 55, 72, 0.3), rgba(17, 24, 39, 0.3));
+.wizard-step.active .wizard-step-label {
+  color: rgba(255, 255, 255, 0.9);
 }
 
-// High-tier pricing styles
-.high-tier-row {
-  transition: background-color 0.2s ease;
+.wizard-step-connector {
+  width: 24px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 0 4px;
+
+  @media (max-width: 576px) {
+    width: 12px;
+    margin: 0 2px;
+  }
+}
+
+.wizard-step-number {
+  @media (max-width: 576px) {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+}
+
+// Wizard panels
+.wizard-panel {
+  > h3 {
+    text-align: center;
+  }
+}
+
+// Wizard option cards
+.wizard-option-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: inherit;
+  cursor: pointer;
+  height: 100%;
+  transition: all 0.2s ease;
 
   &:hover {
+    background: rgba(var(--bs-primary-rgb), 0.1);
+    border-color: rgba(var(--bs-primary-rgb), 0.3);
+  }
+
+  &.selected {
+    background: rgba(var(--bs-primary-rgb), 0.15);
+    border-color: var(--bs-primary);
+  }
+}
+
+// Wizard recommendation
+.wizard-recommendation {
+  background: rgba(var(--bs-primary-rgb), 0.08);
+  border: 1px solid rgba(var(--bs-primary-rgb), 0.2);
+}
+
+// =============================================
+// SKU Overview Cards
+// =============================================
+
+.sku-card {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.sku-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+}
+
+.sku-badge:not(.d-none) ~ .sku-badge {
+  top: 48px;
+}
+
+.sku-card-highlighted {
+  border-color: var(--bs-primary) !important;
+  box-shadow: 0 0 20px rgba(var(--bs-primary-rgb), 0.15);
+}
+
+.sku-card-recommended {
+  border-color: var(--bs-success) !important;
+  box-shadow: 0 0 20px rgba(var(--bs-success-rgb), 0.15);
+}
+
+// =============================================
+// Plan Detail Tables
+// =============================================
+
+.plan-table {
+  thead th {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 16px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: rgba(var(--bs-primary-rgb), 0.05);
+    }
+  }
+
+  td {
+    padding: 16px 12px;
+    white-space: nowrap;
+  }
+}
+
+.plan-row-recommended {
+  background-color: rgba(var(--bs-success-rgb), 0.08) !important;
+  border-left: 3px solid var(--bs-success);
+
+  td:first-child {
+    padding-left: 13px;
+  }
+}
+
+// =============================================
+// Feature Comparison Table
+// =============================================
+
+.comparison-table {
+  thead th {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 16px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  td {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .comparison-col-highlight {
     background-color: rgba(var(--bs-primary-rgb), 0.05);
   }
 }
 
-// Plan information styling
-.bg-success-subtle {
-  background-color: rgba(var(--bs-success-rgb), 0.2) !important;
-}
-
-.bg-primary-subtle {
-  background-color: rgba(var(--bs-primary-rgb), 0.2) !important;
-}
-
-// Transitions for hover effects
 .transition {
   transition:
     transform 0.3s ease,
@@ -129,7 +287,11 @@
   }
 }
 
-// Feature container for consistent height
-.feature-container {
-  min-height: 120px;
+// Plan information styling
+.bg-success-subtle {
+  background-color: rgba(var(--bs-success-rgb), 0.2) !important;
+}
+
+.bg-primary-subtle {
+  background-color: rgba(var(--bs-primary-rgb), 0.2) !important;
 }
