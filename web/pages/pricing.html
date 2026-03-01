@@ -107,54 +107,65 @@
 
                   <!-- Step Indicators -->
                   <div class="wizard-steps mb-5" role="navigation" aria-label="Wizard progress">
-                    <div class="wizard-step active" data-step="1">
+                    <div class="wizard-step active" data-step="0">
                       <span class="wizard-step-number">1</span>
-                      <span class="wizard-step-label d-none d-sm-inline">Use Case</span>
+                      <span class="wizard-step-label d-none d-sm-inline">Features</span>
                     </div>
                     <div class="wizard-step-connector"></div>
-                    <div class="wizard-step" data-step="2">
+                    <div class="wizard-step" data-step="1">
                       <span class="wizard-step-number">2</span>
                       <span class="wizard-step-label d-none d-sm-inline">API</span>
                     </div>
                     <div class="wizard-step-connector"></div>
-                    <div class="wizard-step" data-step="3">
+                    <div class="wizard-step" data-step="2">
                       <span class="wizard-step-number">3</span>
                       <span class="wizard-step-label d-none d-sm-inline">Domains</span>
                     </div>
                     <div class="wizard-step-connector"></div>
-                    <div class="wizard-step" data-step="4">
+                    <div class="wizard-step" data-step="3">
                       <span class="wizard-step-number">4</span>
                       <span class="wizard-step-label d-none d-sm-inline">Check Domain</span>
                     </div>
                     <div class="wizard-step-connector"></div>
-                    <div class="wizard-step" data-step="5">
+                    <div class="wizard-step" data-step="4">
                       <span class="wizard-step-number">5</span>
-                      <span class="wizard-step-label d-none d-sm-inline">Features</span>
+                      <span class="wizard-step-label d-none d-sm-inline">Stealer Logs</span>
                     </div>
                   </div>
 
-                  <!-- Step 1: Use Case -->
-                  <div class="wizard-panel" id="wizardStep1">
-                    <h3 class="h5 fw-bold mb-3">What do you need to monitor?</h3>
+                  <!-- Step 0: Feature Mode -->
+                  <div class="wizard-panel" id="wizardStep0">
+                    <h3 class="h5 fw-bold mb-3">What do you want to do?</h3>
                     <div class="row g-3">
-                      <div class="col-md-6">
-                        <button class="wizard-option-card w-100 text-start p-3" data-usecase="own" aria-label="Monitor my own domains">
+                      <div class="col-md-4">
+                        <button class="wizard-option-card w-100 text-start p-3" data-feature-mode="email" aria-label="Search for breached email addresses">
                           <div class="d-flex align-items-start">
-                            <i class="bi bi-building fs-4 text-primary me-3 mt-1"></i>
+                            <i class="bi bi-envelope fs-4 text-primary me-3 mt-1"></i>
                             <div>
-                              <div class="fw-bold mb-1">My own domains</div>
-                              <small class="text-muted">I want to monitor breach exposure for my organisation's domains.</small>
+                              <div class="fw-bold mb-1">Email search</div>
+                              <small class="text-muted">Programmatically search for breached email addresses via the API.</small>
                             </div>
                           </div>
                         </button>
                       </div>
-                      <div class="col-md-6">
-                        <button class="wizard-option-card w-100 text-start p-3" data-usecase="customers" aria-label="Monitor my customers' domains too">
+                      <div class="col-md-4">
+                        <button class="wizard-option-card w-100 text-start p-3" data-feature-mode="domain" aria-label="Monitor domains for breaches">
                           <div class="d-flex align-items-start">
-                            <i class="bi bi-people fs-4 text-primary me-3 mt-1"></i>
+                            <i class="bi bi-globe fs-4 text-primary me-3 mt-1"></i>
                             <div>
-                              <div class="fw-bold mb-1">My customers' domains too</div>
-                              <small class="text-muted">I'm an MSP or enterprise and need to monitor third-party domains.</small>
+                              <div class="fw-bold mb-1">Domain monitoring</div>
+                              <small class="text-muted">Track breach exposure for your domains and get alerted on new breaches.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="col-md-4">
+                        <button class="wizard-option-card w-100 text-start p-3" data-feature-mode="both" aria-label="Both email search and domain monitoring">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-layers fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">Both</div>
+                              <small class="text-muted">I need email search via the API and domain monitoring.</small>
                             </div>
                           </div>
                         </button>
@@ -231,16 +242,82 @@
                     </div>
                   </div>
 
-                  <!-- Step 3: Domain Count -->
-                  <div class="wizard-panel d-none" id="wizardStep3">
-                    <h3 class="h5 fw-bold mb-3 text-center">How many domains do you need to monitor?</h3>
-                    <div class="wizard-domain-buttons d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="Domain count selection">
-                      <button class="btn btn-outline-primary wizard-domain-btn" data-count="1">1-5</button>
-                      <button class="btn btn-outline-primary wizard-domain-btn" data-count="10">5-20</button>
-                      <button class="btn btn-outline-primary wizard-domain-btn" data-count="50">20-50</button>
-                      <button class="btn btn-outline-primary wizard-domain-btn" data-count="100">50-100</button>
-                      <button class="btn btn-outline-primary wizard-domain-btn" data-count="200">100+</button>
+                  <!-- Domain Step: Combined use case + domain add mode + domain count -->
+                  <div class="wizard-panel d-none" id="wizardStepDomains">
+                    <h3 class="h5 fw-bold mb-4">Tell us about your domain monitoring needs</h3>
+
+                    <!-- Use case -->
+                    <div class="mb-4">
+                      <p class="text-muted small fw-semibold mb-2">Whose domains are you monitoring?</p>
+                      <div class="row g-2">
+                        <div class="col-md-6">
+                          <button class="wizard-option-card w-100 text-start p-3" data-usecase="own" aria-label="Monitor my own domains">
+                            <div class="d-flex align-items-start">
+                              <i class="bi bi-building fs-4 text-primary me-3 mt-1"></i>
+                              <div>
+                                <div class="fw-bold mb-1">My own domains</div>
+                                <small class="text-muted">I want to monitor my organisation's domains.</small>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                        <div class="col-md-6">
+                          <button class="wizard-option-card w-100 text-start p-3" data-usecase="customers" aria-label="Monitor my customers' domains too">
+                            <div class="d-flex align-items-start">
+                              <i class="bi bi-people fs-4 text-primary me-3 mt-1"></i>
+                              <div>
+                                <div class="fw-bold mb-1">My customers' domains too</div>
+                                <small class="text-muted">I'm an MSP or enterprise monitoring third-party domains.</small>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
                     </div>
+
+                    <!-- Domain add mode -->
+                    <div class="mb-4">
+                      <p class="text-muted small fw-semibold mb-2">How would you like to add domains?</p>
+                      <div class="row g-2">
+                        <div class="col-md-6">
+                          <button class="wizard-option-card w-100 text-start p-3" data-domain-api="api" aria-label="Add domains via API or bulk upload">
+                            <div class="d-flex align-items-start">
+                              <i class="bi bi-code-slash fs-4 text-primary me-3 mt-1"></i>
+                              <div>
+                                <div class="fw-bold mb-1">Via API / bulk upload</div>
+                                <small class="text-muted">Automate domain management programmatically or via CSV.</small>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                        <div class="col-md-6">
+                          <button class="wizard-option-card w-100 text-start p-3" data-domain-api="manual" aria-label="Add domains manually via dashboard">
+                            <div class="d-flex align-items-start">
+                              <i class="bi bi-pencil fs-4 text-primary me-3 mt-1"></i>
+                              <div>
+                                <div class="fw-bold mb-1">Manually via dashboard</div>
+                                <small class="text-muted">Add and manage domains through the HIBP dashboard.</small>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Domain count -->
+                    <div>
+                      <p class="text-muted small fw-semibold mb-2">How many domains do you need to monitor?</p>
+                      <div class="wizard-domain-buttons d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="Domain count selection">
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="1">1–5</button>
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="10">5–20</button>
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="50">20–50</button>
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="100">50–100</button>
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="200">100+</button>
+                      </div>
+                    </div>
+
+                    <!-- Domain guidance (populated by JS when available) -->
+                    <div id="wizardDomainGuidance" class="alert alert-info mt-3 d-none" role="alert"></div>
                   </div>
 
                   <!-- Step 4: Domain Lookup (Core path) -->
@@ -269,11 +346,18 @@
                   <div class="wizard-panel d-none" id="wizardStep5">
                     <h3 class="h5 fw-bold mb-3">Do you need to search stealer logs?</h3>
                     <p class="text-muted small mb-3">
-                      Stealer logs contain credentials harvested by infostealer malware. All Pro plans include stealer log access; Core plans require Core 5 or higher.
+                      All Pro plans include stealer log access. Stealer logs are not available on Core plans.
                     </p>
                     <div class="row g-3">
                       <div class="col-md-6">
-                        <button class="wizard-option-card w-100 text-start p-3" data-stealer="yes" aria-label="Yes, I need stealer log access">
+                        <button
+                          class="wizard-option-card w-100 text-start p-3"
+                          data-stealer="yes"
+                          aria-label="Yes, I need stealer log access"
+                          data-bs-toggle="popover"
+                          data-bs-trigger="hover focus"
+                          data-bs-placement="top"
+                          data-bs-content="Stealer logs record the website where credentials were entered, the email address used, and the compromised password — giving you rich context beyond standard breach data.">
                           <div class="d-flex align-items-start">
                             <i class="bi bi-bug fs-4 text-primary me-3 mt-1"></i>
                             <div>
@@ -284,7 +368,14 @@
                         </button>
                       </div>
                       <div class="col-md-6">
-                        <button class="wizard-option-card w-100 text-start p-3" data-stealer="no" aria-label="No, I don't need stealer logs">
+                        <button
+                          class="wizard-option-card w-100 text-start p-3"
+                          data-stealer="no"
+                          aria-label="No, I don't need stealer logs"
+                          data-bs-toggle="popover"
+                          data-bs-trigger="hover focus"
+                          data-bs-placement="top"
+                          data-bs-content="You'll still see which email addresses on your monitored domains appeared in breaches, but you won't see the website where the credentials were entered or the compromised password.">
                           <div class="d-flex align-items-start">
                             <i class="bi bi-x-circle fs-4 text-primary me-3 mt-1"></i>
                             <div>
@@ -322,12 +413,35 @@
       <!-- Three SKU Overview Cards -->
       <section class="py-5 bg-dark-subtle-custom" id="skuOverview">
         <div class="container">
+          <!-- Plan Finder CTA -->
+          <div class="wizard-cta-banner mb-4 p-4 rounded-3">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+              <div>
+                <p class="fw-semibold mb-1">Not sure which plan fits your needs?</p>
+                <small class="text-muted">Answer a few questions and we'll recommend the best plan for you.</small>
+              </div>
+              <a href="#planFinderWizard" class="btn btn-primary">Find my plan <i class="bi bi-arrow-up ms-1"></i></a>
+            </div>
+          </div>
+
           <div class="row justify-content-center mb-4">
             <div class="col-lg-8 text-center">
               <h2 class="h2 fw-bold mb-3">Choose Your Plan</h2>
               <p class="text-muted">Three tiers designed for different needs, from individual domain monitoring to full enterprise breach intelligence.</p>
             </div>
           </div>
+
+          <!-- Free Tier Strip -->
+          <div class="free-tier-strip mb-4 p-3 rounded-3">
+            <div class="d-flex align-items-center flex-wrap gap-3">
+              <span class="fw-semibold small text-white">Free:</span>
+              <span class="small"><i class="bi bi-check text-success me-1"></i><button class="feature-link" data-feature="email-search-browser">Browser email search</button></span>
+              <span class="small"><i class="bi bi-check text-success me-1"></i><button class="feature-link" data-feature="email-notifications">Email notifications</button></span>
+              <span class="small"><i class="bi bi-check text-success me-1"></i><button class="feature-link" data-feature="pwned-passwords">Pwned Passwords</button></span>
+              <span class="small"><i class="bi bi-check text-success me-1"></i><button class="feature-link" data-feature="domain-size-free">Domain monitoring (up to 10 breached addresses)</button></span>
+            </div>
+          </div>
+
           <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
             <!-- Core -->
             <div class="col">
@@ -338,10 +452,9 @@
                   <div class="fs-3 fw-bold mb-1">From $5.30<span class="fs-6 fw-normal text-muted">/mo</span></div>
                   <p class="text-muted small mb-4">Monitor your own domains with up to 20 domains per plan.</p>
                   <ul class="list-unstyled text-start small mb-4 flex-grow-1">
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Website and API access</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Plain text email search</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>1-20 domain limit</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Stealer logs (Core 5+)</li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="api-access">Website and API access</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="plain-text-search">Plain text email search</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="domain-monitoring">1–20 domain monitoring</button></li>
                   </ul>
                   <a href="#corePlans" class="btn btn-outline-primary w-100">See Core plans</a>
                 </div>
@@ -358,11 +471,11 @@
                   <p class="text-muted small mb-4">Monitor your own and your customers' domains with up to 800 domains.</p>
                   <ul class="list-unstyled text-start small mb-4 flex-grow-1">
                     <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Everything in Core, plus:</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Customer domain monitoring</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Bulk domain add</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Auto subdomain verification</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>k-Anonymity search</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Stealer logs (all plans)</li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="customer-domains">Customer domain monitoring</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="bulk-domain-add">Bulk domain add</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="auto-subdomain">Auto subdomain verification</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="k-anonymity">k-Anonymity search</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="stealer-logs">Stealer logs (all plans)</button></li>
                     <li class="mb-2"><i class="bi bi-check text-success me-2"></i>No domain size limit</li>
                     <li class="mb-2"><i class="bi bi-check text-success me-2"></i>EDU/NFP discounts available</li>
                   </ul>
@@ -380,11 +493,11 @@
                   <p class="text-muted small mb-4">White-label breach intelligence with real-time callbacks and invoice billing.</p>
                   <ul class="list-unstyled text-start small mb-4 flex-grow-1">
                     <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Everything in Pro, plus:</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>White-label (no HIBP attribution)</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Real-time breach callbacks</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Invoice &amp; EFT payment</li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="white-label">White-label (no HIBP attribution)</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="real-time-callbacks">Real-time breach callbacks</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="invoice-billing">Invoice &amp; EFT payment</button></li>
                     <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Legal/procurement docs</li>
-                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>k-Anonymity search</li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="k-anonymity">k-Anonymity search</button></li>
                   </ul>
                   <a href="mailto:support@haveibeenpwned.com" class="btn btn-outline-primary w-100">Contact us</a>
                 </div>
@@ -489,10 +602,7 @@
                         </tr>
                         <tr class="plan-row" data-plan="core5">
                           <td class="ps-4">
-                            <div class="fw-bold">
-                              Core 5
-                              <span class="badge bg-success bg-opacity-25 text-success ms-2 small">Stealer logs</span>
-                            </div>
+                            <div class="fw-bold">Core 5</div>
                             <small class="text-muted">EDU/NFP discounts available</small>
                           </td>
                           <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">1,000</span></td>
@@ -506,10 +616,7 @@
                         </tr>
                         <tr class="plan-row" data-plan="coreUltra4000">
                           <td class="ps-4">
-                            <div class="fw-bold">
-                              Core Ultra 4000
-                              <span class="badge bg-success bg-opacity-25 text-success ms-2 small">Stealer logs</span>
-                            </div>
+                            <div class="fw-bold">Core Ultra 4000</div>
                           </td>
                           <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">4,000</span></td>
                           <td class="text-center">Unlimited</td>
@@ -522,10 +629,7 @@
                         </tr>
                         <tr class="plan-row" data-plan="coreUltra8000">
                           <td class="ps-4">
-                            <div class="fw-bold">
-                              Core Ultra 8000
-                              <span class="badge bg-success bg-opacity-25 text-success ms-2 small">Stealer logs</span>
-                            </div>
+                            <div class="fw-bold">Core Ultra 8000</div>
                           </td>
                           <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">8,000</span></td>
                           <td class="text-center">Unlimited</td>
@@ -538,10 +642,7 @@
                         </tr>
                         <tr class="plan-row" data-plan="coreUltra12000">
                           <td class="ps-4">
-                            <div class="fw-bold">
-                              Core Ultra 12000
-                              <span class="badge bg-success bg-opacity-25 text-success ms-2 small">Stealer logs</span>
-                            </div>
+                            <div class="fw-bold">Core Ultra 12000</div>
                           </td>
                           <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">12,000</span></td>
                           <td class="text-center">Unlimited</td>
@@ -830,6 +931,19 @@
           </div>
         </div>
       </section>
+
+      <!-- Feature Detail Modal -->
+      <div class="modal fade" id="featureDetailModal" tabindex="-1" aria-labelledby="featureDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header border-0">
+              <h5 class="modal-title fw-bold" id="featureDetailModalLabel"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0 text-muted" id="featureDetailModalBody"></div>
+          </div>
+        </div>
+      </div>
 
       <!-- Enterprise CTA -->
       <section class="py-5" id="enterpriseCTA">

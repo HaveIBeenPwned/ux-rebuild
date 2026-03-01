@@ -295,3 +295,50 @@
 .bg-primary-subtle {
   background-color: rgba(var(--bs-primary-rgb), 0.2) !important;
 }
+
+// =============================================
+// Feature Links (Zendesk-style)
+// =============================================
+
+.feature-link {
+  background: none;
+  border: none;
+  border-bottom: 1px dotted currentColor;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: left;
+
+  &:hover {
+    color: var(--bs-primary);
+    border-bottom-style: solid;
+  }
+}
+
+// =============================================
+// Free Tier Strip
+// =============================================
+
+.free-tier-strip {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+
+  .feature-link {
+    color: rgba(255, 255, 255, 0.8);
+
+    &:hover {
+      color: var(--bs-primary);
+    }
+  }
+}
+
+// =============================================
+// Plan Finder CTA Banner
+// =============================================
+
+.wizard-cta-banner {
+  background: rgba(var(--bs-primary-rgb), 0.08);
+  border: 1px solid rgba(var(--bs-primary-rgb), 0.2);
+}

@@ -7,26 +7,106 @@ interface PlanDef {
   tier: "core" | "pro";
   maxDomains: number;
   maxDomainSize: number; // 0 = unlimited
+  stealerLogs: boolean;
 }
 
 const CORE_PLANS: PlanDef[] = [
-  { id: "core1", name: "Core 1", tier: "core", maxDomains: 1, maxDomainSize: 25 },
-  { id: "core2", name: "Core 2", tier: "core", maxDomains: 3, maxDomainSize: 100 },
-  { id: "core3", name: "Core 3", tier: "core", maxDomains: 5, maxDomainSize: 500 },
-  { id: "core4", name: "Core 4", tier: "core", maxDomains: 10, maxDomainSize: 0 },
-  { id: "core5", name: "Core 5", tier: "core", maxDomains: 20, maxDomainSize: 0 },
-  { id: "coreUltra4000", name: "Core Ultra 4000", tier: "core", maxDomains: 20, maxDomainSize: 0 },
-  { id: "coreUltra8000", name: "Core Ultra 8000", tier: "core", maxDomains: 20, maxDomainSize: 0 },
-  { id: "coreUltra12000", name: "Core Ultra 12000", tier: "core", maxDomains: 20, maxDomainSize: 0 },
+  { id: "core1", name: "Core 1", tier: "core", maxDomains: 1, maxDomainSize: 25, stealerLogs: false },
+  { id: "core2", name: "Core 2", tier: "core", maxDomains: 3, maxDomainSize: 100, stealerLogs: false },
+  { id: "core3", name: "Core 3", tier: "core", maxDomains: 5, maxDomainSize: 500, stealerLogs: false },
+  { id: "core4", name: "Core 4", tier: "core", maxDomains: 10, maxDomainSize: 0, stealerLogs: false },
+  { id: "core5", name: "Core 5", tier: "core", maxDomains: 20, maxDomainSize: 0, stealerLogs: false },
+  { id: "coreUltra4000", name: "Core Ultra 4000", tier: "core", maxDomains: 20, maxDomainSize: 0, stealerLogs: false },
+  { id: "coreUltra8000", name: "Core Ultra 8000", tier: "core", maxDomains: 20, maxDomainSize: 0, stealerLogs: false },
+  { id: "coreUltra12000", name: "Core Ultra 12000", tier: "core", maxDomains: 20, maxDomainSize: 0, stealerLogs: false },
 ];
 
 const PRO_PLANS: PlanDef[] = [
-  { id: "pro1", name: "Pro 1", tier: "pro", maxDomains: 50, maxDomainSize: 0 },
-  { id: "pro2", name: "Pro 2", tier: "pro", maxDomains: 100, maxDomainSize: 0 },
-  { id: "pro3", name: "Pro 3", tier: "pro", maxDomains: 200, maxDomainSize: 0 },
-  { id: "pro4", name: "Pro 4", tier: "pro", maxDomains: 400, maxDomainSize: 0 },
-  { id: "pro5", name: "Pro 5", tier: "pro", maxDomains: 800, maxDomainSize: 0 },
+  { id: "pro1", name: "Pro 1", tier: "pro", maxDomains: 50, maxDomainSize: 0, stealerLogs: true },
+  { id: "pro2", name: "Pro 2", tier: "pro", maxDomains: 100, maxDomainSize: 0, stealerLogs: true },
+  { id: "pro3", name: "Pro 3", tier: "pro", maxDomains: 200, maxDomainSize: 0, stealerLogs: true },
+  { id: "pro4", name: "Pro 4", tier: "pro", maxDomains: 400, maxDomainSize: 0, stealerLogs: true },
+  { id: "pro5", name: "Pro 5", tier: "pro", maxDomains: 800, maxDomainSize: 0, stealerLogs: true },
 ];
+
+// Feature definitions for the feature detail modal
+const FEATURE_DEFINITIONS: Record<string, { label: string; description: string }> = {
+  "email-search-browser": {
+    label: "Browser Email Search",
+    description:
+      "Search for any email address directly in the HIBP website to see if it has appeared in a known data breach. Available on all plans including free.",
+  },
+  "email-notifications": {
+    label: "Email Notifications",
+    description:
+      "Receive email alerts when your monitored addresses appear in new breaches. Notifications are sent to the address being monitored.",
+  },
+  "pwned-passwords": {
+    label: "Pwned Passwords",
+    description:
+      "Check individual passwords against a database of over 800 million real-world passwords previously exposed in data breaches. Available free via the website or API.",
+  },
+  "domain-monitoring": {
+    label: "Domain Monitoring",
+    description:
+      "Monitor all email addresses associated with your domain for breach exposure. Receive alerts when any address on your domain appears in a new breach.",
+  },
+  "domain-size-free": {
+    label: "Domain Monitoring (Free)",
+    description:
+      "Free domain monitoring covers up to 10 breached email addresses per domain. Upgrade to a Core plan for higher limits and additional features.",
+  },
+  "api-access": {
+    label: "API Access",
+    description:
+      "Programmatically query the HIBP API to check email addresses and domains for breach exposure. Rate limits vary by plan.",
+  },
+  "plain-text-search": {
+    label: "Plain Text Email Search",
+    description:
+      "Search for email addresses via the API using full, unmasked email addresses. Simpler to implement than k-anonymity but the queried address is visible to the API.",
+  },
+  "k-anonymity": {
+    label: "K-Anonymity Search",
+    description:
+      "Search for email addresses using a partial hash so the full address is never sent to the API. This privacy-preserving technique is exclusive to Pro and Enterprise plans.",
+  },
+  "stealer-logs": {
+    label: "Stealer Logs",
+    description:
+      "Access credentials harvested by infostealer malware. Stealer log data includes the website where credentials were entered, the email address, and the compromised password — giving rich context beyond standard breach data. This is a Pro-exclusive feature.",
+  },
+  "customer-domains": {
+    label: "Customer Domain Monitoring",
+    description:
+      "Monitor domains belonging to your customers or clients, not just your own organisation. Requires a Pro or Enterprise plan.",
+  },
+  "bulk-domain-add": {
+    label: "Bulk Domain Add",
+    description:
+      "Add multiple domains at once using a CSV upload or API call. Speeds up onboarding for MSPs managing many clients.",
+  },
+  "auto-subdomain": {
+    label: "Auto Subdomain Verification",
+    description:
+      "Automatically detect and monitor subdomains of your verified domains. Ensures complete coverage without manually adding each subdomain.",
+  },
+  "real-time-callbacks": {
+    label: "Real-Time Breach Callbacks",
+    description:
+      "Receive an immediate HTTP callback to your endpoint when a new breach affecting your monitored domains is added to HIBP. Enables automated response workflows. Exclusive to Enterprise.",
+  },
+  "white-label": {
+    label: "White-Label",
+    description:
+      "Deliver breach intelligence under your own brand with no HIBP attribution. Ideal for MSSPs and security vendors building breach monitoring into their products. Exclusive to Enterprise.",
+  },
+  "invoice-billing": {
+    label: "Invoice & EFT Billing",
+    description:
+      "Pay via invoice and electronic funds transfer instead of a credit card. Required for procurement-gated enterprises. Available on Enterprise plans.",
+  },
+};
 
 // Mock domain lookup -- simulates checking breach count for a domain
 function mockDomainLookup(domain: string): Promise<number> {
@@ -50,18 +130,22 @@ interface RecommendInput {
   needsAnonymity: boolean;
   apiRpmTier: "low" | "medium" | "high" | null;
   needsStealerLogs: boolean;
+  featureMode: "email" | "domain" | "both";
+  domainApiMode: "api" | "manual" | null;
 }
 
 function recommendPlan(input: RecommendInput): { plan: PlanDef; reason: string } {
   const { useCase, domainCount, breachCount, needsAnonymity, needsStealerLogs } = input;
 
   // Pro-forcing conditions
-  if (needsAnonymity || useCase === "customers" || domainCount > 20) {
+  if (needsAnonymity || useCase === "customers" || needsStealerLogs || domainCount > 20) {
     const plan = PRO_PLANS.find((p) => domainCount <= p.maxDomains) || PRO_PLANS[PRO_PLANS.length - 1];
     const domainLabel = `${plan.maxDomains} domains`;
     let reason: string;
-    if (needsAnonymity) {
-      reason = `K-anonymity is a Pro-exclusive feature. ${plan.name} supports ${domainLabel} with anonymous searches, stealer logs, and customer domain monitoring.`;
+    if (needsStealerLogs) {
+      reason = `Stealer log access is a Pro-exclusive feature. ${plan.name} supports ${domainLabel} with stealer logs and full domain monitoring.`;
+    } else if (needsAnonymity) {
+      reason = `K-anonymity is a Pro-exclusive feature. ${plan.name} supports ${domainLabel} with anonymous searches and customer domain monitoring.`;
     } else if (useCase === "customers") {
       reason = `Supports ${domainLabel} with customer domain monitoring, k-anonymity, and stealer logs on all plans.`;
     } else {
@@ -79,14 +163,6 @@ function recommendPlan(input: RecommendInput): { plan: PlanDef; reason: string }
       plan,
       reason: `You need more than 20 domains, which exceeds Core limits. Pro supports ${domainLabel} with additional features.`,
     };
-  }
-
-  // Stealer logs require Core 5+ on Core
-  if (needsStealerLogs) {
-    const stealerPlans = plans.filter((p) => p.id === "core5" || p.id.startsWith("coreUltra"));
-    if (stealerPlans.length > 0) {
-      plans = stealerPlans;
-    }
   }
 
   if (breachCount !== undefined && breachCount > 0) {
@@ -108,9 +184,6 @@ function recommendPlan(input: RecommendInput): { plan: PlanDef; reason: string }
   } else {
     reason += " with unlimited breached addresses per domain";
   }
-  if (needsStealerLogs) {
-    reason += " and includes stealer log access";
-  }
   reason += ".";
   return { plan, reason };
 }
@@ -118,6 +191,7 @@ function recommendPlan(input: RecommendInput): { plan: PlanDef; reason: string }
 export function initializePricingPage() {
   initPricingToggle();
   initWizard();
+  initFeatureModals();
 }
 
 // Pricing toggle for monthly/yearly
@@ -144,24 +218,55 @@ function initPricingToggle() {
   });
 }
 
+// Feature detail modals (Zendesk-style)
+function initFeatureModals() {
+  document.addEventListener("click", (e: Event) => {
+    const target = (e.target as HTMLElement).closest("[data-feature]") as HTMLElement | null;
+    if (!target) return;
+
+    const slug = target.getAttribute("data-feature");
+    if (!slug) return;
+
+    const def = FEATURE_DEFINITIONS[slug];
+    if (!def) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const labelEl = document.getElementById("featureDetailModalLabel");
+    const bodyEl = document.getElementById("featureDetailModalBody");
+    if (labelEl) labelEl.textContent = def.label;
+    if (bodyEl) bodyEl.textContent = def.description;
+
+    const modalEl = document.getElementById("featureDetailModal");
+    if (modalEl) {
+      // biome-ignore lint/suspicious/noExplicitAny: Bootstrap is loaded via CDN
+      const modal = (window as any).bootstrap.Modal.getOrCreateInstance(modalEl);
+      modal.show();
+    }
+  });
+}
+
 // Wizard logic
 function initWizard() {
   const wizard = document.getHtmlElementById<HTMLElement>("planFinderWizard");
   if (!wizard) return;
 
-  const step1 = document.getElementById("wizardStep1") as HTMLElement;
+  const step0 = document.getElementById("wizardStep0") as HTMLElement;
   const step2 = document.getElementById("wizardStep2") as HTMLElement;
   const step2a = document.getElementById("wizardStep2a") as HTMLElement;
   const step2b = document.getElementById("wizardStep2b") as HTMLElement;
-  const step3 = document.getElementById("wizardStep3") as HTMLElement;
+  const stepDomains = document.getElementById("wizardStepDomains") as HTMLElement;
   const step4 = document.getElementById("wizardStep4") as HTMLElement;
   const step5 = document.getElementById("wizardStep5") as HTMLElement;
   const result = document.getElementById("wizardResult") as HTMLElement;
-  if (!step1 || !step2 || !step2a || !step2b || !step3 || !step4 || !step5 || !result) return;
-  const steps: HTMLElement[] = [step1, step2, step2a, step2b, step3, step4, step5, result];
+  if (!step0 || !step2 || !step2a || !step2b || !stepDomains || !step4 || !step5 || !result) return;
+  const steps: HTMLElement[] = [step0, step2, step2a, step2b, stepDomains, step4, step5, result];
 
   const stepIndicators = wizard.queryHtmlElements<HTMLElement>(".wizard-step");
 
+  let featureMode: "email" | "domain" | "both" = "both";
+  let domainApiMode: "api" | "manual" | null = null;
   let useCase: "own" | "customers" = "own";
   let domainCount = 1;
   let breachCount: number | undefined;
@@ -171,17 +276,17 @@ function initWizard() {
   let needsStealerLogs = false;
 
   function getRecommendInput(): RecommendInput {
-    return { useCase, domainCount, breachCount, needsApi, needsAnonymity, apiRpmTier, needsStealerLogs };
+    return { useCase, domainCount, breachCount, needsApi, needsAnonymity, apiRpmTier, needsStealerLogs, featureMode, domainApiMode };
   }
 
-  // Map panels to step indicator indices (step2a/step2b share index 1 with step2)
+  // Map panels to step indicator indices
   function stepIndicatorIndex(panel: HTMLElement): number {
     switch (panel) {
-      case step1: return 0;
+      case step0: return 0;
       case step2: return 1;
       case step2a: return 1;
       case step2b: return 1;
-      case step3: return 2;
+      case stepDomains: return 2;
       case step4: return 3;
       case step5: return 4;
       case result: return 5;
@@ -200,20 +305,25 @@ function initWizard() {
     }
   }
 
-  // Step 1: Use case selection
-  const useCaseCards = step1.queryHtmlElements<HTMLButtonElement>(".wizard-option-card");
-  for (const card of useCaseCards) {
+  // Step 0: Feature mode selection
+  const featureModeCards = step0.queryHtmlElements<HTMLButtonElement>(".wizard-option-card");
+  for (const card of featureModeCards) {
     card.addEventListener("click", () => {
-      useCase = card.getAttribute("data-usecase") as "own" | "customers";
-      for (const c of useCaseCards) c.classList.remove("selected");
+      featureMode = card.getAttribute("data-feature-mode") as "email" | "domain" | "both";
+      for (const c of featureModeCards) c.classList.remove("selected");
       card.classList.add("selected");
-      setTimeout(() => showPanel(step2), 200);
+
+      if (featureMode === "domain") {
+        needsApi = false;
+        setTimeout(() => showPanel(stepDomains), 200);
+      } else {
+        setTimeout(() => showPanel(step2), 200);
+      }
     });
   }
 
   // Step 2: API email search
   const apiCards = step2.queryHtmlElements<HTMLButtonElement>(".wizard-option-card[data-api]");
-
   for (const card of apiCards) {
     card.addEventListener("click", () => {
       const val = card.getAttribute("data-api");
@@ -226,7 +336,11 @@ function initWizard() {
       } else {
         needsAnonymity = false;
         apiRpmTier = null;
-        setTimeout(() => showPanel(step3), 200);
+        if (featureMode === "email") {
+          setTimeout(() => showPanel(step5), 200);
+        } else {
+          setTimeout(() => showPanel(stepDomains), 200);
+        }
       }
     });
   }
@@ -242,19 +356,39 @@ function initWizard() {
     });
   }
 
-  // Step 2b: RPM tier (proceeds to step 3)
+  // Step 2b: RPM tier
   const rpmBtns = step2b.queryHtmlElements<HTMLButtonElement>(".wizard-rpm-btn");
   for (const btn of rpmBtns) {
     btn.addEventListener("click", () => {
       apiRpmTier = btn.getAttribute("data-rpm") as "low" | "medium" | "high";
       for (const b of rpmBtns) b.classList.remove("active");
       btn.classList.add("active");
-      setTimeout(() => showPanel(step3), 200);
+      if (featureMode === "email") {
+        setTimeout(() => showPanel(step5), 200);
+      } else {
+        setTimeout(() => showPanel(stepDomains), 200);
+      }
     });
   }
 
-  // Step 3: Domain count (range buttons)
-  const domainBtns = step3.queryHtmlElements<HTMLButtonElement>(".wizard-domain-btn");
+  // Combined domain step: use case, domain add mode, domain count
+  const useCaseCards = stepDomains.queryHtmlElements<HTMLButtonElement>(".wizard-option-card[data-usecase]");
+  for (const card of useCaseCards) {
+    card.addEventListener("click", () => {
+      useCase = card.getAttribute("data-usecase") as "own" | "customers";
+      for (const c of useCaseCards) c.classList.remove("selected");
+      card.classList.add("selected");
+    });
+  }
+
+  const domainApiCards = stepDomains.queryHtmlElements<HTMLButtonElement>(".wizard-option-card[data-domain-api]");
+  for (const card of domainApiCards) {
+    card.addEventListener("click", () => {
+      domainApiMode = card.getAttribute("data-domain-api") as "api" | "manual";
+      for (const c of domainApiCards) c.classList.remove("selected");
+      card.classList.add("selected");
+    });
+  }
 
   function proceedFromDomains(count: number) {
     domainCount = count;
@@ -266,6 +400,7 @@ function initWizard() {
     }
   }
 
+  const domainBtns = stepDomains.queryHtmlElements<HTMLButtonElement>(".wizard-domain-btn");
   for (const btn of domainBtns) {
     btn.addEventListener("click", () => {
       const count = Number.parseInt(btn.getAttribute("data-count") || "1", 10);
@@ -275,7 +410,7 @@ function initWizard() {
     });
   }
 
-  // Step 4: Domain lookup (Core path) -- result + recommendation shown inline
+  // Step 4: Domain lookup (Core path)
   const domainLookupInput = document.getHtmlElementById<HTMLInputElement>("wizardDomainLookup");
   const domainCheckBtn = document.getHtmlElementById<LoadingButtonElement>("wizardDomainCheck");
   const domainResultEl = document.getHtmlElementById<HTMLElement>("wizardDomainResult");
@@ -317,8 +452,12 @@ function initWizard() {
     });
   }
 
-  // Step 5: Stealer logs
+  // Step 5: Stealer logs — initialize Bootstrap popovers
   const stealerCards = step5.queryHtmlElements<HTMLButtonElement>(".wizard-option-card");
+  for (const card of stealerCards) {
+    // biome-ignore lint/suspicious/noExplicitAny: Bootstrap is loaded via CDN
+    new (window as any).bootstrap.Popover(card);
+  }
   for (const card of stealerCards) {
     card.addEventListener("click", () => {
       needsStealerLogs = card.getAttribute("data-stealer") === "yes";
@@ -341,11 +480,14 @@ function initWizard() {
     highlightRecommendedPlan(plan);
   }
 
-  // View plan buttons (both inline and alt)
+  // View plan button — scroll to the highlighted SKU card so it's centred in view
   function handleViewPlan() {
-    const el = document.getElementById("skuOverview");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    const highlighted = document.querySelector<HTMLElement>(".sku-card-recommended");
+    if (highlighted) {
+      highlighted.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+      const el = document.getElementById("skuOverview");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   }
 
