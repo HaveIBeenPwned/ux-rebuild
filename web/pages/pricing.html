@@ -80,65 +80,330 @@
     </nav>
 
     <main>
-      <!-- Page Header -->
+      <!-- Hero -->
       <section class="py-5 bg-dark-subtle-custom">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-              <h1 class="page-title">HIBP Subscription</h1>
+              <h1 class="page-title">Find the Right Plan</h1>
               <p class="lead text-muted mb-0">
-                The vast majority of services in HIBP are completely free, including personal email address searches and notifications, most domain searches and
-                all searches of Pwned Passwords. Only searches of larger domains and using the API to search email addresses require a paid subscription.
+                Whether you're protecting your own domains or monitoring your customers', HIBP has a plan for you. Use the plan finder below or browse our
+                options.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Features Heading -->
+      <!-- Plan Finder Wizard -->
       <section class="py-5">
         <div class="container">
-          <!-- Features Heading -->
-          <div class="row mt-5 mb-4">
-            <div class="col-12 text-center">
-              <div class="section-heading mb-4">
-                <h2 class="h2 fw-bold mb-0 d-flex align-items-center justify-content-center">
-                  <i class="bi bi-info-circle text-primary me-2"></i>
-                  What Do We Offer
-                </h2>
-              </div>
-            </div>
-          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="card card-glow rounded-4 overflow-hidden" id="planFinderWizard">
+                <div class="card-body p-4 p-md-5">
+                  <h2 class="h4 fw-bold mb-2 text-center"><i class="bi bi-compass me-2 text-primary"></i>Plan Finder</h2>
+                  <p class="text-muted text-center mb-4">Answer a few questions and we'll recommend the best plan for you.</p>
 
-          <!-- Additional Information -->
-          <div class="row mt-5">
-            <div class="col-md-6 mb-4 mb-md-0">
-              <div class="card card-glow h-100">
-                <div class="card-body p-4">
-                  <h3 class="fw-bold mb-3">Domain Search</h3>
-                  <p class="mb-4">
-                    The Domain Search feature allows verified domain owners to query all email addresses from their domain that have appeared in known data
-                    breaches.
-                  </p>
-                  <p>
-                    After verifying domain ownership (typically via DNS or file upload verification), the owner can receive breach notifications for their
-                    users, monitor ongoing exposure, and optionally configure alerts for future breaches.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="card card-glow h-100">
-                <div class="card-body p-4">
-                  <h3 class="fw-bold mb-3">API</h3>
-                  <p class="mb-4">
-                    The HIBP API provides programmatic access to breach data, allowing developers and security teams to check whether specific email addresses,
-                    usernames, or passwords have been exposed in known breaches.
-                  </p>
-                  <p>
-                    The API supports services like password reuse prevention, proactive breach monitoring, and secure user notifications—without ever exposing
-                    raw breach data.
-                  </p>
+                  <!-- Step Indicators -->
+                  <div class="wizard-steps mb-5" role="navigation" aria-label="Wizard progress">
+                    <div class="wizard-step active" data-step="0">
+                      <span class="wizard-step-number">1</span>
+                      <span class="wizard-step-label d-none d-sm-inline">Features</span>
+                    </div>
+                    <div class="wizard-step-connector"></div>
+                    <div class="wizard-step" data-step="1">
+                      <span class="wizard-step-number">2</span>
+                      <span class="wizard-step-label d-none d-sm-inline">API</span>
+                    </div>
+                    <div class="wizard-step-connector"></div>
+                    <div class="wizard-step" data-step="2">
+                      <span class="wizard-step-number">3</span>
+                      <span class="wizard-step-label d-none d-sm-inline">Domains</span>
+                    </div>
+                    <div class="wizard-step-connector"></div>
+                    <div class="wizard-step" data-step="3">
+                      <span class="wizard-step-number">4</span>
+                      <span class="wizard-step-label d-none d-sm-inline">Check Domain</span>
+                    </div>
+                    <div class="wizard-step-connector"></div>
+                    <div class="wizard-step" data-step="4">
+                      <span class="wizard-step-number">5</span>
+                      <span class="wizard-step-label d-none d-sm-inline">Stealer Logs</span>
+                    </div>
+                  </div>
+
+                  <!-- Step 0: Feature Mode -->
+                  <div class="wizard-panel" id="wizardStep0">
+                    <h3 class="h5 fw-bold mb-3">What do you want to do?</h3>
+                    <div class="row g-3">
+                      <div class="col-md-4">
+                        <button class="wizard-option-card w-100 text-start p-3" data-feature-mode="email" aria-label="Search for breached email addresses">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-envelope fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">Email search</div>
+                              <small class="text-muted">Programmatically search for breached email addresses via the API.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="col-md-4">
+                        <button class="wizard-option-card w-100 text-start p-3" data-feature-mode="domain" aria-label="Monitor domains for breaches">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-globe fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">Domain monitoring</div>
+                              <small class="text-muted">Track breach exposure for your domains and get alerted on new breaches.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="col-md-4">
+                        <button class="wizard-option-card w-100 text-start p-3" data-feature-mode="both" aria-label="Both email search and domain monitoring">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-layers fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">Both</div>
+                              <small class="text-muted">I need email search via the API and domain monitoring.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 2: API Email Search -->
+                  <div class="wizard-panel d-none" id="wizardStep2">
+                    <h3 class="h5 fw-bold mb-3">Do you need to search for breached email addresses via the API?</h3>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <button class="wizard-option-card w-100 text-start p-3" data-api="yes" aria-label="Yes, I need API email search">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-code-slash fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">Yes</div>
+                              <small class="text-muted">I want to programmatically query email addresses for breach data.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="col-md-6">
+                        <button class="wizard-option-card w-100 text-start p-3" data-api="no" aria-label="No, I don't need API email search">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-x-circle fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">No</div>
+                              <small class="text-muted">I only need domain monitoring, not individual email lookups.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 2a: Anonymity (k-anonymity) -->
+                  <div class="wizard-panel d-none" id="wizardStep2a">
+                    <h3 class="h5 fw-bold mb-3">Do you need anonymous (k-anonymity) searches?</h3>
+                    <p class="text-muted small mb-3">K-anonymity lets you search without revealing the full email address to the API. This is a Pro-exclusive feature.</p>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <button class="wizard-option-card w-100 text-start p-3 wizard-anonymity-btn" data-anonymity="yes" aria-label="Yes, I need anonymous searches">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-shield-lock fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">Yes</div>
+                              <small class="text-muted">I need to search without exposing full email addresses.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="col-md-6">
+                        <button class="wizard-option-card w-100 text-start p-3 wizard-anonymity-btn" data-anonymity="no" aria-label="No, plain text search is fine">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-envelope fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">No</div>
+                              <small class="text-muted">Plain text email search is fine for my use case.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Step 2b: API Rate -->
+                  <div class="wizard-panel d-none" id="wizardStep2b">
+                    <h3 class="h5 fw-bold mb-3">What API rate do you need?</h3>
+                    <div class="wizard-domain-buttons d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="API rate selection">
+                      <button class="btn btn-outline-primary wizard-rpm-btn" data-rpm="low">Low (10-50 RPM)</button>
+                      <button class="btn btn-outline-primary wizard-rpm-btn" data-rpm="medium">Medium (100-500 RPM)</button>
+                      <button class="btn btn-outline-primary wizard-rpm-btn" data-rpm="high">High (1000+ RPM)</button>
+                    </div>
+                  </div>
+
+                  <!-- Domain Step: Combined use case + domain add mode + domain count -->
+                  <div class="wizard-panel d-none" id="wizardStepDomains">
+                    <h3 class="h5 fw-bold mb-4">Tell us about your domain monitoring needs</h3>
+                    <p class="text-muted small mb-4">You don't currently have any domains on <a href="dashboard.html">your dashboard</a>, add them first for a more accurate result.</p>
+
+                    <!-- Use case -->
+                    <div class="mb-4">
+                      <p class="text-muted small fw-semibold mb-2">Whose domains are you monitoring?</p>
+                      <div class="row g-2">
+                        <div class="col-md-6">
+                          <button class="wizard-option-card w-100 text-start p-3" data-usecase="own" aria-label="Monitor my own domains">
+                            <div class="d-flex align-items-start">
+                              <i class="bi bi-building fs-4 text-primary me-3 mt-1"></i>
+                              <div>
+                                <div class="fw-bold mb-1">My own domains</div>
+                                <small class="text-muted">I want to monitor my organisation's domains.</small>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                        <div class="col-md-6">
+                          <button class="wizard-option-card w-100 text-start p-3" data-usecase="customers" aria-label="Monitor my customers' domains too">
+                            <div class="d-flex align-items-start">
+                              <i class="bi bi-people fs-4 text-primary me-3 mt-1"></i>
+                              <div>
+                                <div class="fw-bold mb-1">My customers' domains too</div>
+                                <small class="text-muted">I'm an MSP or enterprise monitoring third-party domains.</small>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Domain add mode -->
+                    <div class="mb-4">
+                      <p class="text-muted small fw-semibold mb-2">How would you like to add domains?</p>
+                      <div class="row g-2">
+                        <div class="col-md-6">
+                          <button class="wizard-option-card w-100 text-start p-3" data-domain-api="api" aria-label="Add domains via API or bulk upload">
+                            <div class="d-flex align-items-start">
+                              <i class="bi bi-code-slash fs-4 text-primary me-3 mt-1"></i>
+                              <div>
+                                <div class="fw-bold mb-1">Via API / bulk upload</div>
+                                <small class="text-muted">Automate domain management programmatically or via CSV.</small>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                        <div class="col-md-6">
+                          <button class="wizard-option-card w-100 text-start p-3" data-domain-api="manual" aria-label="Add domains manually via dashboard">
+                            <div class="d-flex align-items-start">
+                              <i class="bi bi-pencil fs-4 text-primary me-3 mt-1"></i>
+                              <div>
+                                <div class="fw-bold mb-1">Manually via dashboard</div>
+                                <small class="text-muted">Add and manage domains through the HIBP dashboard.</small>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Domain count -->
+                    <div>
+                      <p class="text-muted small fw-semibold mb-2">How many domains do you need to monitor?</p>
+                      <div class="wizard-domain-buttons d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="Domain count selection">
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="1">1–5</button>
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="10">5–20</button>
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="50">20–50</button>
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="100">50–100</button>
+                        <button class="btn btn-outline-primary wizard-domain-btn" data-count="200">100+</button>
+                      </div>
+                    </div>
+
+                    <!-- Domain guidance (populated by JS when available) -->
+                    <div id="wizardDomainGuidance" class="alert alert-info mt-3 d-none" role="alert"></div>
+                  </div>
+
+                  <!-- Step 4: Domain Lookup (Core path) -->
+                  <div class="wizard-panel d-none" id="wizardStep4">
+                    <h3 class="h5 fw-bold mb-3">Check your domain's breach exposure <span class="text-muted fw-normal">(optional)</span></h3>
+                    <p class="text-muted small mb-3">
+                      Enter your primary domain to see how many breached email addresses are associated with it. This helps size your Core plan.
+                    </p>
+                    <div class="input-group mb-3">
+                      <input
+                        type="text"
+                        class="form-control form-control-minimal"
+                        id="wizardDomainLookup"
+                        placeholder="example.com"
+                        aria-label="Domain to check" />
+                      <button class="btn btn-primary" id="wizardDomainCheck" type="button" data-bs-toggle="loading-button" style="padding-inline: 2rem"><span class="btn-text">Check</span></button>
+                    </div>
+                    <div class="text-end">
+                      <button class="btn btn-link btn-sm text-primary p-0" id="wizardSkipLookup">
+                        Skip <i class="bi bi-arrow-right ms-1"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Step 5: Stealer Logs -->
+                  <div class="wizard-panel d-none" id="wizardStep5">
+                    <h3 class="h5 fw-bold mb-3">Do you need to search stealer logs?</h3>
+                    <p class="text-muted small mb-3">
+                      All Pro plans include stealer log access. Stealer logs are not available on Core plans.
+                    </p>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <button
+                          class="wizard-option-card w-100 text-start p-3"
+                          data-stealer="yes"
+                          aria-label="Yes, I need stealer log access"
+                          data-bs-toggle="popover"
+                          data-bs-trigger="hover focus"
+                          data-bs-placement="top"
+                          data-bs-content="Stealer logs record the website where credentials were entered, the email address used, and the compromised password — giving you rich context beyond standard breach data.">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-bug fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">Yes</div>
+                              <small class="text-muted">I want access to infostealer malware data for my domains.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="col-md-6">
+                        <button
+                          class="wizard-option-card w-100 text-start p-3"
+                          data-stealer="no"
+                          aria-label="No, I don't need stealer logs"
+                          data-bs-toggle="popover"
+                          data-bs-trigger="hover focus"
+                          data-bs-placement="top"
+                          data-bs-content="You'll still see which email addresses on your monitored domains appeared in breaches, but you won't see the website where the credentials were entered or the compromised password.">
+                          <div class="d-flex align-items-start">
+                            <i class="bi bi-x-circle fs-4 text-primary me-3 mt-1"></i>
+                            <div>
+                              <div class="fw-bold mb-1">No</div>
+                              <small class="text-muted">Breach data alone is sufficient for my needs.</small>
+                            </div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Recommendation Result (Pro / non-Core path) -->
+                  <div class="wizard-panel d-none" id="wizardResult">
+                    <div class="wizard-recommendation p-4 rounded-3 text-center">
+                      <div class="mb-2">
+                        <i class="bi bi-check-circle-fill text-success fs-3"></i>
+                      </div>
+                      <h3 class="h5 fw-bold mb-2">We recommend</h3>
+                      <div class="h3 fw-bold text-primary mb-2" id="wizardRecommendedPlanAlt"></div>
+                      <p class="text-muted mb-3" id="wizardRecommendedReasonAlt"></p>
+                      <button class="btn btn-primary" id="wizardViewPlanAlt">View this plan <i class="bi bi-arrow-down ms-1"></i></button>
+                    </div>
+                  </div>
+
+                  <!-- Domain lookup result (persists after lookup) -->
+                  <div id="wizardDomainResult" class="d-none mt-4"></div>
                 </div>
               </div>
             </div>
@@ -146,9 +411,115 @@
         </div>
       </section>
 
-      <!-- Pricing Section -->
-      <section class="py-5">
+      <!-- Three SKU Overview Cards -->
+      <section class="py-5 bg-dark-subtle-custom" id="skuOverview">
         <div class="container">
+          <!-- Plan Finder CTA -->
+          <div class="wizard-cta-banner mb-4 p-4 rounded-3">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+              <div>
+                <p class="fw-semibold mb-1">Not sure which plan fits your needs?</p>
+                <small class="text-muted">Answer a few questions and we'll recommend the best plan for you.</small>
+              </div>
+              <a href="#planFinderWizard" class="btn btn-primary">Find my plan <i class="bi bi-arrow-up ms-1"></i></a>
+            </div>
+          </div>
+
+          <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+              <h2 class="h2 fw-bold mb-3">Choose Your Plan</h2>
+              <p class="text-muted">Three tiers designed for different needs, from individual domain monitoring to full enterprise breach intelligence.</p>
+            </div>
+          </div>
+
+          <!-- Free Tier Strip -->
+          <div class="free-tier-strip mb-4 p-3 rounded-3">
+            <div class="d-flex align-items-center flex-wrap gap-3">
+              <span class="fw-semibold small text-white">Free:</span>
+              <span class="small"><i class="bi bi-check text-success me-1"></i><button class="feature-link" data-feature="email-search-browser">Browser email search</button></span>
+              <span class="small"><i class="bi bi-check text-success me-1"></i><button class="feature-link" data-feature="email-notifications">Email notifications</button></span>
+              <span class="small"><i class="bi bi-check text-success me-1"></i><button class="feature-link" data-feature="pwned-passwords">Pwned Passwords</button></span>
+              <span class="small"><i class="bi bi-check text-success me-1"></i><button class="feature-link" data-feature="domain-size-free">Domain monitoring (up to 10 breached addresses)</button></span>
+            </div>
+          </div>
+
+          <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+            <!-- Core -->
+            <div class="col">
+              <div class="card card-glow h-100 rounded-4 sku-card" id="skuCore">
+                <div class="card-body p-4 text-center d-flex flex-column">
+                  <h3 class="fw-bold mb-1">Core</h3>
+                  <div class="text-muted small mb-3">Small businesses</div>
+                  <div class="fs-3 fw-bold mb-1">From $5.30<span class="fs-6 fw-normal text-muted">/mo</span></div>
+                  <p class="text-muted small mb-4">Monitor your own domains with up to 20 domains per plan.</p>
+                  <ul class="list-unstyled text-start small mb-4 flex-grow-1">
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="api-access">Website and API access</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="plain-text-search">Plain text email search</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="domain-monitoring">1–20 domain monitoring</button></li>
+                  </ul>
+                  <a href="#corePlans" class="btn btn-outline-primary w-100">See Core plans</a>
+                </div>
+              </div>
+            </div>
+            <!-- Pro -->
+            <div class="col">
+              <div class="card card-glow h-100 rounded-4 sku-card sku-card-highlighted" id="skuPro">
+                <span class="badge bg-primary sku-badge">New</span>
+                <div class="card-body p-4 text-center d-flex flex-column">
+                  <h3 class="fw-bold mb-1">Pro</h3>
+                  <div class="text-muted small mb-3">Enterprises &amp; MSPs</div>
+                  <div class="fs-3 fw-bold mb-1">From $450<span class="fs-6 fw-normal text-muted">/mo</span></div>
+                  <p class="text-muted small mb-4">Monitor your own and your customers' domains with up to 800 domains.</p>
+                  <ul class="list-unstyled text-start small mb-4 flex-grow-1">
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Everything in Core, plus:</li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="customer-domains">Customer domain monitoring</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="bulk-domain-add">Bulk domain add</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="auto-subdomain">Auto subdomain verification</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="k-anonymity">k-Anonymity search</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="stealer-logs">Stealer logs (all plans)</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>No domain size limit</li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>EDU/NFP discounts available</li>
+                  </ul>
+                  <a href="#proPlans" class="btn btn-primary w-100">See Pro plans</a>
+                </div>
+              </div>
+            </div>
+            <!-- Enterprise -->
+            <div class="col">
+              <div class="card card-glow h-100 rounded-4 sku-card" id="skuEnterprise">
+                <div class="card-body p-4 text-center d-flex flex-column">
+                  <h3 class="fw-bold mb-1">Enterprise</h3>
+                  <div class="text-muted small mb-3">Enterprises &amp; MSPs</div>
+                  <div class="fs-3 fw-bold mb-1">From $2,000<span class="fs-6 fw-normal text-muted">/mo</span></div>
+                  <p class="text-muted small mb-4">White-label breach intelligence with real-time callbacks and invoice billing.</p>
+                  <ul class="list-unstyled text-start small mb-4 flex-grow-1">
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Everything in Pro, plus:</li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="white-label">White-label (no HIBP attribution)</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="real-time-callbacks">Real-time breach callbacks</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="invoice-billing">Invoice &amp; EFT payment</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>Legal/procurement docs</li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="k-anonymity">k-Anonymity search</button></li>
+                  </ul>
+                  <a href="mailto:support@haveibeenpwned.com" class="btn btn-outline-primary w-100">Contact us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Plan Details -->
+      <section class="py-5" id="corePlans">
+        <div class="container">
+          <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+              <h2 class="h2 fw-bold mb-3">Core Plans</h2>
+              <p class="text-muted">
+                For small businesses monitoring their own domains. Plans are sized by breached email addresses per domain and number of domains.
+              </p>
+            </div>
+          </div>
+
           <!-- Pricing Toggle -->
           <div class="d-flex align-items-center justify-content-end mb-4">
             <div class="pricing-toggle">
@@ -160,202 +531,131 @@
             <span class="ms-3 text-white-50 small">Save up to 16% with annual billing</span>
           </div>
 
-          <!-- Pricing Cards -->
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <!-- Pwned 1 -->
-            <div class="col">
-              <div class="card h-100 card-glow pricing-card-1 rounded-4 overflow-hidden position-relative transition">
-                <div class="card-header text-center border-bottom border-1 border-opacity-10 py-4">
-                  <h3 class="fw-bold mb-2">Pwned 1</h3>
-                  <div class="text-white-50 fs-5">10RPM</div>
-                </div>
-                <div class="card-body text-center py-4 d-flex flex-column justify-content-center">
-                  <div class="fs-1 fw-bold mb-2">
-                    <span class="price-value">$3.95</span>
-                  </div>
-                  <span class="text-white-50 pricing-period">per month</span>
-                </div>
-                <div class="card-footer p-4 border-top border-1 border-opacity-10">
-                  <div class="feature-container">
-                    <ul class="mb-4 ps-3">
-                      <li class="mb-2">10 email searches per minute</li>
-                      <li>
-                        Up to 25 breached email addresses per domain
-                        <i
-                          class="bi bi-info-circle ms-1"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Suitable for small personal domains or very small businesses"></i>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-primary">Subscribe</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pwned 2 -->
-            <div class="col">
-              <div class="card h-100 card-glow pricing-card-2 rounded-4 overflow-hidden position-relative transition">
-                <div class="card-header text-center border-bottom border-1 border-opacity-10 py-4">
-                  <h3 class="fw-bold mb-2">Pwned 2</h3>
-                  <div class="text-white-50 fs-5">50RPM</div>
-                </div>
-                <div class="card-body text-center py-4 d-flex flex-column justify-content-center">
-                  <div class="fs-1 fw-bold mb-2">
-                    <span class="price-value">$19</span>
-                  </div>
-                  <span class="text-white-50 pricing-period">per month</span>
-                </div>
-                <div class="card-footer p-4 border-top border-1 border-opacity-10">
-                  <div class="feature-container">
-                    <ul class="mb-4 ps-3">
-                      <li class="mb-2">50 email searches per minute</li>
-                      <li>
-                        Up to 100 breached email addresses per domain
-                        <i
-                          class="bi bi-info-circle ms-1"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Suitable for small businesses and organizations"></i>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-primary">Subscribe</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pwned 3 -->
-            <div class="col">
-              <div class="card h-100 card-glow pricing-card-3 rounded-4 overflow-hidden position-relative transition">
-                <div class="card-header text-center border-bottom border-1 border-opacity-10 py-4">
-                  <h3 class="fw-bold mb-2">Pwned 3</h3>
-                  <div class="text-white-50 fs-5">100RPM</div>
-                </div>
-                <div class="card-body text-center py-4 d-flex flex-column justify-content-center">
-                  <div class="fs-1 fw-bold mb-2">
-                    <span class="price-value">$32</span>
-                  </div>
-                  <span class="text-white-50 pricing-period">per month</span>
-                </div>
-                <div class="card-footer p-4 border-top border-1 border-opacity-10">
-                  <div class="feature-container">
-                    <ul class="mb-4 ps-3">
-                      <li class="mb-2">100 email searches per minute</li>
-                      <li>
-                        Up to 500 breached email addresses per domain
-                        <i
-                          class="bi bi-info-circle ms-1"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Suitable for medium-sized businesses and organizations"></i>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-primary">Subscribe</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pwned 4 -->
-            <div class="col">
-              <div class="card h-100 card-glow pricing-card-4 rounded-4 overflow-hidden position-relative transition">
-                <div class="card-header text-center border-bottom border-1 border-opacity-10 py-4">
-                  <h3 class="fw-bold mb-2">Pwned 4</h3>
-                  <div class="text-white-50 fs-5">500RPM</div>
-                </div>
-                <div class="card-body text-center py-4 d-flex flex-column justify-content-center">
-                  <div class="fs-1 fw-bold mb-2">
-                    <span class="price-value">$137</span>
-                  </div>
-                  <span class="text-white-50 pricing-period">per month</span>
-                </div>
-                <div class="card-footer p-4 border-top border-1 border-opacity-10">
-                  <div class="feature-container">
-                    <ul class="mb-4 ps-3">
-                      <li class="mb-2">500 email searches per minute</li>
-                      <li>
-                        Unlimited breached email addresses per domain
-                        <i
-                          class="bi bi-info-circle ms-1"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Suitable for large organizations with many email addresses"></i>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-primary">Subscribe</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pwned 5 -->
-            <div class="col">
-              <div class="card h-100 card-glow pricing-card-5 rounded-4 overflow-hidden position-relative transition">
-                <div class="card-header text-center border-bottom border-1 border-opacity-10 py-4">
-                  <h3 class="fw-bold mb-2">Pwned 5</h3>
-                  <div class="text-white-50 fs-5">1000RPM</div>
-                </div>
-                <div class="card-body text-center py-4 d-flex flex-column justify-content-center">
-                  <div class="fs-1 fw-bold mb-2">
-                    <span class="price-value">$274</span>
-                  </div>
-                  <span class="text-white-50 pricing-period">per month</span>
-                </div>
-                <div class="card-footer p-4 border-top border-1 border-opacity-10">
-                  <div class="feature-container">
-                    <ul class="mb-4 ps-3">
-                      <li class="mb-2">1000 email searches per minute</li>
-                      <li class="mb-2">
-                        Unlimited breached email addresses per domain
-                        <i
-                          class="bi bi-info-circle ms-1"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="top"
-                          title="Suitable for large organizations with high API usage requirements"></i>
-                      </li>
-                      <li>Access to stealer log searches</li>
-                    </ul>
-                  </div>
-                  <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-primary">Subscribe</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Enterprise -->
-            <div class="col">
-              <div class="card h-100 card-glow pricing-card-6 enterprise-card rounded-4 overflow-hidden position-relative transition">
-                <div class="card-header text-center border-bottom border-1 border-opacity-10 py-4">
-                  <h3 class="fw-bold mb-2">Enterprise</h3>
-                  <div class="text-white-50 fs-5">Custom</div>
-                </div>
-                <div class="card-body text-center py-4 d-flex flex-column justify-content-center">
-                  <div class="fs-1 fw-bold mb-2">
-                    <span class="price-value">Custom</span>
-                  </div>
-                  <span class="text-white-50 pricing-period">pricing</span>
-                </div>
-                <div class="card-footer p-4 border-top border-1 border-opacity-10">
-                  <div class="feature-container">
-                    <ul class="mb-4 ps-3">
-                      <li class="mb-2">Custom rate limits</li>
-                      <li class="mb-2">Dedicated support</li>
-                      <li>Volume discounts available</li>
-                    </ul>
-                  </div>
-                  <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-outline-primary">Contact us</a>
+          <div class="row justify-content-center">
+            <div class="col-lg-11">
+              <div class="card card-glow rounded-4 overflow-hidden">
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-borderless align-middle mb-0 plan-table" id="corePlanTable">
+                      <thead>
+                        <tr>
+                          <th class="text-white ps-4">Plan</th>
+                          <th class="text-white text-center">RPM</th>
+                          <th class="text-white text-center">Max Domain Size</th>
+                          <th class="text-white text-center">Max Domains</th>
+                          <th class="text-white text-center">Price</th>
+                          <th class="text-end pe-4"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="plan-row" data-plan="core1">
+                          <td class="ps-4">
+                            <div class="fw-bold">Core 1</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">10</span></td>
+                          <td class="text-center">25 addresses</td>
+                          <td class="text-center">1 domain</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$5.30" data-yearly="$53">$5.30</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="core2">
+                          <td class="ps-4">
+                            <div class="fw-bold">Core 2</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">50</span></td>
+                          <td class="text-center">100 addresses</td>
+                          <td class="text-center">3 domains</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$26" data-yearly="$260">$26</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="core3">
+                          <td class="ps-4">
+                            <div class="fw-bold">Core 3</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">100</span></td>
+                          <td class="text-center">500 addresses</td>
+                          <td class="text-center">5 domains</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$44" data-yearly="$440">$44</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="core4">
+                          <td class="ps-4">
+                            <div class="fw-bold">Core 4</div>
+                            <small class="text-muted">EDU/NFP discounts available</small>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">500</span></td>
+                          <td class="text-center">Unlimited</td>
+                          <td class="text-center">10 domains</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$190" data-yearly="$1,900">$190</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="core5">
+                          <td class="ps-4">
+                            <div class="fw-bold">Core 5</div>
+                            <small class="text-muted">EDU/NFP discounts available</small>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">1,000</span></td>
+                          <td class="text-center">Unlimited</td>
+                          <td class="text-center">20 domains</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$380" data-yearly="$3,800">$380</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="coreUltra4000">
+                          <td class="ps-4">
+                            <div class="fw-bold">Core Ultra 4000</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">4,000</span></td>
+                          <td class="text-center">Unlimited</td>
+                          <td class="text-center">20 domains</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$1,520" data-yearly="$15,200">$1,520</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="coreUltra8000">
+                          <td class="ps-4">
+                            <div class="fw-bold">Core Ultra 8000</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">8,000</span></td>
+                          <td class="text-center">Unlimited</td>
+                          <td class="text-center">20 domains</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$3,040" data-yearly="$30,400">$3,040</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="coreUltra12000">
+                          <td class="ps-4">
+                            <div class="fw-bold">Core Ultra 12000</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">12,000</span></td>
+                          <td class="text-center">Unlimited</td>
+                          <td class="text-center">20 domains</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$4,560" data-yearly="$45,600">$4,560</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
@@ -364,97 +664,301 @@
         </div>
       </section>
 
-      <!-- High-Tier Pricing Section -->
-      <section class="py-5 bg-dark-subtle-custom">
+      <!-- Pro Plan Details -->
+      <section class="py-5 bg-dark-subtle-custom" id="proPlans">
         <div class="container">
           <div class="row justify-content-center mb-4">
             <div class="col-lg-8 text-center">
-              <div class="section-heading">
-                <h2 class="h2 fw-bold mb-3 d-flex align-items-center justify-content-center">
-                  <i class="bi bi-lightning-charge-fill text-primary me-2"></i>
-                  High-Performance Tiers
-                </h2>
+              <h2 class="h2 fw-bold mb-3">
+                Pro Plans
+                <span class="badge bg-primary ms-2 align-middle fs-6">New</span>
+              </h2>
+              <p class="text-muted">For enterprises and MSPs monitoring their own and their customers' domains. No domain size limit on any plan.</p>
+              <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">Customer domain monitoring</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">Bulk domain add</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">Auto subdomain verification</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">k-Anonymity</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">Stealer logs</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">EDU/NFP discounts</span>
               </div>
-              <p class="text-muted mb-4">
-                For organizations requiring higher API throughput, our Ultra tiers provide enhanced capabilities. All plans include unlimited domain sizes and
-                access to stealer logs.
-              </p>
             </div>
           </div>
 
-          <!-- High-Tier Pricing Table -->
           <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-11">
               <div class="card card-glow rounded-4 overflow-hidden">
-                <div class="card-body p-4">
+                <div class="card-body p-0">
                   <div class="table-responsive">
-                    <table class="table table-borderless align-middle mb-0">
+                    <table class="table table-borderless align-middle mb-0 plan-table" id="proPlanTable">
                       <thead>
                         <tr>
-                          <th class="text-white">Plan</th>
-                          <th class="text-white text-center">API Rate</th>
+                          <th class="text-white ps-4">Plan</th>
+                          <th class="text-white text-center">Email RPM</th>
+                          <th class="text-white text-center">K-anon RPM</th>
+                          <th class="text-white text-center">Max Domains</th>
                           <th class="text-white text-center">Price</th>
-                          <th></th>
+                          <th class="text-end pe-4"></th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>
-                            <h5 class="mb-0 fw-bold">Pwned Ultra 1</h5>
-                            <small class="text-muted d-block">Unlimited domains, includes stealer logs</small>
+                        <tr class="plan-row" data-plan="pro1">
+                          <td class="ps-4">
+                            <div class="fw-bold">Pro 1</div>
                           </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">500</span></td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">250</span></td>
+                          <td class="text-center">50 domains</td>
                           <td class="text-center">
-                            <span class="badge bg-primary px-3 py-2 rounded-pill fs-6">4,000 RPM</span>
-                          </td>
-                          <td class="text-center">
-                            <div class="fw-bold fs-5"><span class="price-value">$995</span></div>
+                            <div class="fw-bold"><span class="price-value" data-monthly="$450" data-yearly="$4,500">$450</span></div>
                             <small class="text-muted pricing-period">per month</small>
                           </td>
-                          <td class="text-end">
-                            <a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a>
-                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
                         </tr>
-                        <tr>
-                          <td>
-                            <h5 class="mb-0 fw-bold">Pwned Ultra 2</h5>
-                            <small class="text-muted d-block">Unlimited domains, includes stealer logs</small>
+                        <tr class="plan-row" data-plan="pro2">
+                          <td class="ps-4">
+                            <div class="fw-bold">Pro 2</div>
                           </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">1,000</span></td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">500</span></td>
+                          <td class="text-center">100 domains</td>
                           <td class="text-center">
-                            <span class="badge bg-primary px-3 py-2 rounded-pill fs-6">8,000 RPM</span>
-                          </td>
-                          <td class="text-center">
-                            <div class="fw-bold fs-5"><span class="price-value">$1,850</span></div>
+                            <div class="fw-bold"><span class="price-value" data-monthly="$850" data-yearly="$8,500">$850</span></div>
                             <small class="text-muted pricing-period">per month</small>
                           </td>
-                          <td class="text-end">
-                            <a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a>
-                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
                         </tr>
-                        <tr>
-                          <td>
-                            <h5 class="mb-0 fw-bold">Pwned Ultra 3</h5>
-                            <small class="text-muted d-block">Unlimited domains, includes stealer logs</small>
+                        <tr class="plan-row" data-plan="pro3">
+                          <td class="ps-4">
+                            <div class="fw-bold">Pro 3</div>
                           </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">2,000</span></td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">1,000</span></td>
+                          <td class="text-center">200 domains</td>
                           <td class="text-center">
-                            <span class="badge bg-primary px-3 py-2 rounded-pill fs-6">12,000 RPM</span>
-                          </td>
-                          <td class="text-center">
-                            <div class="fw-bold fs-5"><span class="price-value">$2,750</span></div>
+                            <div class="fw-bold"><span class="price-value" data-monthly="$1,600" data-yearly="$16,000">$1,600</span></div>
                             <small class="text-muted pricing-period">per month</small>
                           </td>
-                          <td class="text-end">
-                            <a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="pro4">
+                          <td class="ps-4">
+                            <div class="fw-bold">Pro 4</div>
                           </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">4,000</span></td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">2,000</span></td>
+                          <td class="text-center">400 domains</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$3,000" data-yearly="$30,000">$3,000</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="pro5">
+                          <td class="ps-4">
+                            <div class="fw-bold">Pro 5</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">8,000</span></td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">4,000</span></td>
+                          <td class="text-center">800 domains</td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$5,600" data-yearly="$56,000">$5,600</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <!-- Enterprise Contact For Higher Rates -->
-              <div class="text-center mt-4">
-                <p class="text-muted mb-0">Need even higher rate limits? <a href="#" class="text-primary">Contact us</a> for custom enterprise solutions.</p>
+      <!-- FAQ Accordion -->
+      <section class="py-5 bg-dark-subtle-custom" id="pricingFAQ">
+        <div class="container">
+          <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+              <h2 class="h2 fw-bold mb-3">Frequently Asked Questions</h2>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq1"
+                      aria-expanded="false"
+                      aria-controls="faq1">
+                      What does "breached email addresses per domain" mean?
+                    </button>
+                  </h3>
+                  <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      This refers to the number of unique email addresses on your domain that have appeared in known data breaches. For example, if your domain
+                      is "example.com" and 50 email addresses from that domain have been found in breaches, your domain has 50 breached email addresses. This is
+                      <strong>not</strong> the number of employees or total email accounts you have -- only those that appear in breach data. You can check your
+                      domain's breach count using the plan finder above.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq2"
+                      aria-expanded="false"
+                      aria-controls="faq2">
+                      What's the difference between Core and Pro?
+                    </button>
+                  </h3>
+                  <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      <strong>Core</strong> is designed for organisations monitoring their own domains. Plans are sized by the number of breached email
+                      addresses per domain and how many domains you need. <strong>Pro</strong> is designed for enterprises and MSPs who also need to monitor
+                      their customers' domains. Pro includes additional features like bulk domain add, auto subdomain verification, k-anonymity search, stealer
+                      logs on all plans, and no domain size limit. Pro also offers EDU/NFP discounts and reseller access on all plans.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq3"
+                      aria-expanded="false"
+                      aria-controls="faq3">
+                      I'm an MSP, which plan do I need?
+                    </button>
+                  </h3>
+                  <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      As an MSP, you'll need a <strong>Pro</strong> plan. Pro plans allow you to monitor your customers' domains in addition to your own, with
+                      domain limits ranging from 50 to unlimited. Pro includes customer domain monitoring, bulk domain add, and auto subdomain verification to
+                      make managing multiple clients straightforward. All Pro plans include EDU/NFP discounts and reseller access.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq4"
+                      aria-expanded="false"
+                      aria-controls="faq4">
+                      What happens if I exceed my domain limit?
+                    </button>
+                  </h3>
+                  <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      If you need to monitor more domains than your current plan allows, you'll need to upgrade to a higher-tier plan. You can upgrade at any
+                      time and your billing will be prorated. Use the plan finder above to determine which plan fits your domain count needs.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq5"
+                      aria-expanded="false"
+                      aria-controls="faq5">
+                      Do you offer EDU/nonprofit discounts?
+                    </button>
+                  </h3>
+                  <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      Yes. For Core plans, EDU/NFP discounts are available on Core 4 and above. For Pro plans, EDU/NFP discounts are available on all tiers.
+                      Contact us for enterprise pricing for educational institutions and nonprofits.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq6"
+                      aria-expanded="false"
+                      aria-controls="faq6">
+                      Can I upgrade from Core to Pro?
+                    </button>
+                  </h3>
+                  <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      Yes, you can upgrade from a Core plan to a Pro plan at any time. Your billing will be adjusted accordingly. If you're unsure which Pro
+                      plan is right for you, use the plan finder wizard at the top of this page.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#faq7"
+                      aria-expanded="false"
+                      aria-controls="faq7">
+                      What are callbacks?
+                    </button>
+                  </h3>
+                  <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                    <div class="accordion-body text-muted">
+                      Callbacks are a real-time breach notification feature exclusive to the Enterprise tier. When a new breach is loaded into HIBP that affects
+                      your monitored domains, a callback is sent to your specified endpoint immediately. This enables you to build automated workflows that
+                      respond to breaches in real time, rather than polling the API for changes.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Detail Modal -->
+      <div class="modal fade" id="featureDetailModal" tabindex="-1" aria-labelledby="featureDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header border-0">
+              <h5 class="modal-title fw-bold" id="featureDetailModalLabel"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pt-0 text-muted" id="featureDetailModalBody"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enterprise CTA -->
+      <section class="py-5" id="enterpriseCTA">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+              <div class="card card-glow rounded-4 p-5">
+                <h2 class="h3 fw-bold mb-3">Need Enterprise-Grade Breach Intelligence?</h2>
+                <p class="text-muted mb-4">
+                  Get white-label access, real-time breach callbacks, invoice billing, and dedicated support. Enterprise plans start at $2,000/month.
+                </p>
+                <div>
+                  <a href="mailto:support@haveibeenpwned.com" class="btn btn-primary btn-lg px-5">Contact Us</a>
+                </div>
               </div>
             </div>
           </div>
