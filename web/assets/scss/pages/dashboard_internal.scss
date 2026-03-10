@@ -616,3 +616,10 @@
     }
   }
 }
+
+// Domains table — uniform row height so the warning sub-line on some rows
+// doesn't make those rows visually stand out from the rest.
+#domainsTableBody td {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
