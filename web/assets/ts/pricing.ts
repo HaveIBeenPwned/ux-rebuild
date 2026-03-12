@@ -4,7 +4,7 @@ import { LoadingButton, type LoadingButtonElement } from "./loadingButton";
 interface PlanDef {
   id: string;
   name: string;
-  tier: "core" | "pro";
+  tier: "core" | "pro" | "highRpm";
   maxDomains: number;
   maxDomainSize: number; // 0 = unlimited
   stealerLogs: boolean;
@@ -16,9 +16,12 @@ const CORE_PLANS: PlanDef[] = [
   { id: "core3", name: "Core 3", tier: "core", maxDomains: 5, maxDomainSize: 500, stealerLogs: false },
   { id: "core4", name: "Core 4", tier: "core", maxDomains: 10, maxDomainSize: 0, stealerLogs: false },
   { id: "core5", name: "Core 5", tier: "core", maxDomains: 20, maxDomainSize: 0, stealerLogs: false },
-  { id: "coreUltra4000", name: "Core Ultra 4000", tier: "core", maxDomains: 20, maxDomainSize: 0, stealerLogs: false },
-  { id: "coreUltra8000", name: "Core Ultra 8000", tier: "core", maxDomains: 20, maxDomainSize: 0, stealerLogs: false },
-  { id: "coreUltra12000", name: "Core Ultra 12000", tier: "core", maxDomains: 20, maxDomainSize: 0, stealerLogs: false },
+];
+
+const HIGH_RPM_PLANS: PlanDef[] = [
+  { id: "highRpm4000", name: "High RPM 4000", tier: "highRpm", maxDomains: 0, maxDomainSize: 0, stealerLogs: false },
+  { id: "highRpm8000", name: "High RPM 8000", tier: "highRpm", maxDomains: 0, maxDomainSize: 0, stealerLogs: false },
+  { id: "highRpm12000", name: "High RPM 12000", tier: "highRpm", maxDomains: 0, maxDomainSize: 0, stealerLogs: false },
 ];
 
 const PRO_PLANS: PlanDef[] = [
@@ -135,7 +138,16 @@ interface RecommendInput {
 }
 
 function recommendPlan(input: RecommendInput): { plan: PlanDef; reason: string } {
-  const { useCase, domainCount, breachCount, needsAnonymity, needsStealerLogs } = input;
+  const { useCase, domainCount, breachCount, needsAnonymity, needsStealerLogs, apiRpmTier, featureMode } = input;
+
+  // High RPM path: email-only (or email+domain) with high RPM need
+  if (apiRpmTier === "high" && featureMode === "email") {
+    const plan = HIGH_RPM_PLANS[0];
+    return {
+      plan,
+      reason: "High RPM plans offer 4,000–12,000 RPM with k-anonymity for privacy-preserving email lookups. No domain monitoring is included.",
+    };
+  }
 
   // Pro-forcing conditions
   if (needsAnonymity || useCase === "customers" || needsStealerLogs || domainCount > 20) {
@@ -294,6 +306,8 @@ function initWizard() {
     }
   }
 
+  const restartRow = document.getElementById("wizardRestartRow");
+
   function showPanel(panel: HTMLElement) {
     for (const s of steps) {
       s.classList.toggle("d-none", s !== panel);
@@ -302,6 +316,9 @@ function initWizard() {
     for (let i = 0; i < stepIndicators.length; i++) {
       stepIndicators[i].classList.toggle("active", i <= idx);
       stepIndicators[i].classList.toggle("completed", i < idx);
+    }
+    if (restartRow) {
+      restartRow.classList.toggle("d-none", panel === step0);
     }
   }
 
@@ -495,6 +512,32 @@ function initWizard() {
   if (viewPlanBtnAlt) {
     viewPlanBtnAlt.addEventListener("click", () => handleViewPlan());
   }
+
+  const restartBtn = document.getElementById("wizardRestart");
+  if (restartBtn) {
+    restartBtn.addEventListener("click", () => {
+      featureMode = "both";
+      domainApiMode = null;
+      useCase = "own";
+      domainCount = 1;
+      breachCount = undefined;
+      needsApi = false;
+      needsAnonymity = false;
+      apiRpmTier = null;
+      needsStealerLogs = false;
+      for (const el of wizard.queryHtmlElements<HTMLElement>(".wizard-option-card.selected")) {
+        el.classList.remove("selected");
+      }
+      for (const el of wizard.queryHtmlElements<HTMLElement>(".wizard-rpm-btn.active")) {
+        el.classList.remove("active");
+      }
+      for (const el of wizard.queryHtmlElements<HTMLElement>(".wizard-domain-btn.active")) {
+        el.classList.remove("active");
+      }
+      clearHighlights();
+      showPanel(step0);
+    });
+  }
 }
 
 // Highlight the recommended plan row and SKU card
@@ -506,7 +549,7 @@ function highlightRecommendedPlan(plan: PlanDef) {
     row.classList.add("plan-row-recommended");
   }
 
-  const skuId = plan.tier === "pro" ? "skuPro" : "skuCore";
+  const skuId = plan.tier === "pro" ? "skuPro" : plan.tier === "highRpm" ? "skuHighRpm" : "skuCore";
   const skuCard = document.getElementById(skuId);
   if (skuCard) {
     skuCard.classList.add("sku-card-recommended");
@@ -514,7 +557,7 @@ function highlightRecommendedPlan(plan: PlanDef) {
     if (!badge) {
       badge = document.createElement("span");
       badge.className = "badge bg-success sku-badge sku-recommended-badge";
-      badge.textContent = "Recommended for you";
+      badge.textContent = "Recommended";
       skuCard.appendChild(badge);
     }
     const staticBadge = skuCard.querySelector<HTMLElement>(".sku-badge:not(.sku-recommended-badge)");

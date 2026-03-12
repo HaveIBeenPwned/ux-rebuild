@@ -235,6 +235,9 @@
                   <!-- Step 2b: API Rate -->
                   <div class="wizard-panel d-none" id="wizardStep2b">
                     <h3 class="h5 fw-bold mb-3">What API rate do you need?</h3>
+                    <p class="text-muted small mb-3">
+                      Plans are differentiated by the number of API requests you can make per minute (RPM). Higher RPM tiers cost more but allow faster, higher-volume querying.
+                    </p>
                     <div class="wizard-domain-buttons d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="API rate selection">
                       <button class="btn btn-outline-primary wizard-rpm-btn" data-rpm="low">Low (10-50 RPM)</button>
                       <button class="btn btn-outline-primary wizard-rpm-btn" data-rpm="medium">Medium (100-500 RPM)</button>
@@ -249,7 +252,7 @@
 
                     <!-- Use case -->
                     <div class="mb-4">
-                      <p class="text-muted small fw-semibold mb-2">Whose domains are you monitoring?</p>
+                      <p class="text-muted fw-semibold mb-2">Whose domains are you monitoring?</p>
                       <div class="row g-2">
                         <div class="col-md-6">
                           <button class="wizard-option-card w-100 text-start p-3" data-usecase="own" aria-label="Monitor my own domains">
@@ -278,7 +281,10 @@
 
                     <!-- Domain add mode -->
                     <div class="mb-4">
-                      <p class="text-muted small fw-semibold mb-2">How would you like to add domains?</p>
+                      <p class="text-muted fw-semibold mb-2">How would you like to add domains?</p>
+                      <p class="text-muted small mb-3">
+                        The API allows you to add and remove domains programmatically or in bulk — ideal for automation. The dashboard requires adding each domain individually, which is fine for smaller setups but becomes laborious at scale.
+                      </p>
                       <div class="row g-2">
                         <div class="col-md-6">
                           <button class="wizard-option-card w-100 text-start p-3" data-domain-api="api" aria-label="Add domains via API or bulk upload">
@@ -307,7 +313,7 @@
 
                     <!-- Domain count -->
                     <div>
-                      <p class="text-muted small fw-semibold mb-2">How many domains do you need to monitor?</p>
+                      <p class="text-muted fw-semibold mb-2">How many domains do you need to monitor?</p>
                       <div class="wizard-domain-buttons d-flex flex-wrap justify-content-center gap-2" role="group" aria-label="Domain count selection">
                         <button class="btn btn-outline-primary wizard-domain-btn" data-count="1">1–5</button>
                         <button class="btn btn-outline-primary wizard-domain-btn" data-count="10">5–20</button>
@@ -404,6 +410,13 @@
 
                   <!-- Domain lookup result (persists after lookup) -->
                   <div id="wizardDomainResult" class="d-none mt-4"></div>
+
+                  <!-- Restart button (shown after step 0) -->
+                  <div class="text-end mt-3 d-none" id="wizardRestartRow">
+                    <button class="btn btn-link btn-sm text-muted p-0" id="wizardRestart">
+                      <i class="bi bi-arrow-counterclockwise me-1"></i>Restart wizard
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -428,7 +441,7 @@
           <div class="row justify-content-center mb-4">
             <div class="col-lg-8 text-center">
               <h2 class="h2 fw-bold mb-3">Choose Your Plan</h2>
-              <p class="text-muted">Three tiers designed for different needs, from individual domain monitoring to full enterprise breach intelligence.</p>
+              <p class="text-muted">Four tiers designed for different needs: Core for small businesses, Pro for enterprises and MSPs, High RPM for high-volume API users, and Enterprise for white-label deployments.</p>
             </div>
           </div>
 
@@ -443,7 +456,7 @@
             </div>
           </div>
 
-          <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center">
             <!-- Core -->
             <div class="col">
               <div class="card card-glow h-100 rounded-4 sku-card" id="skuCore">
@@ -481,6 +494,23 @@
                     <li class="mb-2"><i class="bi bi-check text-success me-2"></i>EDU/NFP discounts available</li>
                   </ul>
                   <a href="#proPlans" class="btn btn-primary w-100">See Pro plans</a>
+                </div>
+              </div>
+            </div>
+            <!-- High RPM -->
+            <div class="col">
+              <div class="card card-glow h-100 rounded-4 sku-card" id="skuHighRpm">
+                <div class="card-body p-4 text-center d-flex flex-column">
+                  <h3 class="fw-bold mb-1">High RPM</h3>
+                  <div class="text-muted small mb-3">High-volume API users</div>
+                  <div class="fs-3 fw-bold mb-1">From $1,520<span class="fs-6 fw-normal text-muted">/mo</span></div>
+                  <p class="text-muted small mb-4">High-throughput email API access with k-anonymity. No domain monitoring.</p>
+                  <ul class="list-unstyled text-start small mb-4 flex-grow-1">
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i>4,000–12,000 RPM</li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="k-anonymity">k-Anonymity search</button></li>
+                    <li class="mb-2"><i class="bi bi-check text-success me-2"></i><button class="feature-link" data-feature="plain-text-search">Plain text email search</button></li>
+                  </ul>
+                  <a href="#highRpmPlans" class="btn btn-outline-primary w-100">See High RPM plans</a>
                 </div>
               </div>
             </div>
@@ -615,45 +645,6 @@
                           </td>
                           <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
                         </tr>
-                        <tr class="plan-row" data-plan="coreUltra4000">
-                          <td class="ps-4">
-                            <div class="fw-bold">Core Ultra 4000</div>
-                          </td>
-                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">4,000</span></td>
-                          <td class="text-center">Unlimited</td>
-                          <td class="text-center">20 domains</td>
-                          <td class="text-center">
-                            <div class="fw-bold"><span class="price-value" data-monthly="$1,520" data-yearly="$15,200">$1,520</span></div>
-                            <small class="text-muted pricing-period">per month</small>
-                          </td>
-                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
-                        </tr>
-                        <tr class="plan-row" data-plan="coreUltra8000">
-                          <td class="ps-4">
-                            <div class="fw-bold">Core Ultra 8000</div>
-                          </td>
-                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">8,000</span></td>
-                          <td class="text-center">Unlimited</td>
-                          <td class="text-center">20 domains</td>
-                          <td class="text-center">
-                            <div class="fw-bold"><span class="price-value" data-monthly="$3,040" data-yearly="$30,400">$3,040</span></div>
-                            <small class="text-muted pricing-period">per month</small>
-                          </td>
-                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
-                        </tr>
-                        <tr class="plan-row" data-plan="coreUltra12000">
-                          <td class="ps-4">
-                            <div class="fw-bold">Core Ultra 12000</div>
-                          </td>
-                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">12,000</span></td>
-                          <td class="text-center">Unlimited</td>
-                          <td class="text-center">20 domains</td>
-                          <td class="text-center">
-                            <div class="fw-bold"><span class="price-value" data-monthly="$4,560" data-yearly="$45,600">$4,560</span></div>
-                            <small class="text-muted pricing-period">per month</small>
-                          </td>
-                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
-                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -763,6 +754,85 @@
                           <td class="text-center">800 domains</td>
                           <td class="text-center">
                             <div class="fw-bold"><span class="price-value" data-monthly="$5,600" data-yearly="$56,000">$5,600</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- High RPM Plan Details -->
+      <section class="py-5" id="highRpmPlans">
+        <div class="container">
+          <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+              <h2 class="h2 fw-bold mb-3">High RPM Plans</h2>
+              <p class="text-muted">
+                For high-volume API users who need fast, privacy-preserving email lookups. k-Anonymity enabled on all plans. No domain monitoring included.
+              </p>
+              <div class="d-flex flex-wrap justify-content-center gap-2 mt-3">
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">k-Anonymity search</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">Plain text email search</span>
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2">4,000–12,000 RPM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-lg-11">
+              <div class="card card-glow rounded-4 overflow-hidden">
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-borderless align-middle mb-0 plan-table" id="highRpmPlanTable">
+                      <thead>
+                        <tr>
+                          <th class="text-white ps-4">Plan</th>
+                          <th class="text-white text-center">RPM</th>
+                          <th class="text-white text-center">K-anon RPM</th>
+                          <th class="text-white text-center">Price</th>
+                          <th class="text-end pe-4"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="plan-row" data-plan="highRpm4000">
+                          <td class="ps-4">
+                            <div class="fw-bold">High RPM 4000</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">4,000</span></td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">2,000</span></td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$1,520" data-yearly="$15,200">$1,520</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="highRpm8000">
+                          <td class="ps-4">
+                            <div class="fw-bold">High RPM 8000</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">8,000</span></td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">4,000</span></td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$3,040" data-yearly="$30,400">$3,040</span></div>
+                            <small class="text-muted pricing-period">per month</small>
+                          </td>
+                          <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>
+                        </tr>
+                        <tr class="plan-row" data-plan="highRpm12000">
+                          <td class="ps-4">
+                            <div class="fw-bold">High RPM 12000</div>
+                          </td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">12,000</span></td>
+                          <td class="text-center"><span class="badge bg-primary bg-opacity-25 text-primary px-3 py-2 rounded-pill">6,000</span></td>
+                          <td class="text-center">
+                            <div class="fw-bold"><span class="price-value" data-monthly="$4,560" data-yearly="$45,600">$4,560</span></div>
                             <small class="text-muted pricing-period">per month</small>
                           </td>
                           <td class="text-end pe-4"><a href="#" class="btn btn-primary btn-sm px-4">Subscribe</a></td>

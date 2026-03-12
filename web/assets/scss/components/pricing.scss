@@ -111,7 +111,7 @@
 }
 
 .wizard-step-label {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
   transition: color 0.3s ease;
 }
@@ -145,6 +145,11 @@
   > h3 {
     text-align: center;
   }
+}
+
+.wizard-panel small,
+.wizard-panel .small {
+  font-size: 14px;
 }
 
 // Wizard option cards
